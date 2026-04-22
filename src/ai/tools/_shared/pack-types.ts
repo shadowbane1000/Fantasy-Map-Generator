@@ -30,6 +30,7 @@ export interface RawState {
   urban?: number;
   provinces?: number[];
   neighbors?: number[];
+  military?: RawRegiment[];
   lock?: boolean;
   removed?: boolean;
 }
@@ -152,6 +153,21 @@ export interface RawNote {
   id: string;
   name?: string;
   legend?: string;
+}
+
+export interface RawRegiment {
+  i: number;
+  name?: string;
+  t?: number;
+  a?: number;
+  u?: Record<string, number>;
+  n?: number;
+  type?: string;
+  cell?: number;
+  x?: number;
+  y?: number;
+  state?: number;
+  icon?: string;
 }
 
 export interface RawZone {

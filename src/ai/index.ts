@@ -11,6 +11,7 @@ import { listBurgsTool } from "./tools/list-burgs";
 import { listCulturesTool } from "./tools/list-cultures";
 import { listMarkersTool } from "./tools/list-markers";
 import { listProvincesTool } from "./tools/list-provinces";
+import { listRegimentsTool } from "./tools/list-regiments";
 import { listReligionsTool } from "./tools/list-religions";
 import { listRiversTool } from "./tools/list-rivers";
 import { listRoutesTool } from "./tools/list-routes";
@@ -92,6 +93,11 @@ export {
   createListProvincesTool,
   listProvincesTool,
 } from "./tools/list-provinces";
+export {
+  createListRegimentsTool,
+  listRegimentsTool,
+  readRegimentsFromPack,
+} from "./tools/list-regiments";
 export {
   createListReligionsTool,
   listReligionsTool,
@@ -291,6 +297,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listMarkersTool);
   registry.register(listRiversTool);
   registry.register(listRoutesTool);
+  registry.register(listRegimentsTool);
   registry.register(listZonesTool);
   registry.register(setMapNameTool);
   registry.register(renameStateTool);

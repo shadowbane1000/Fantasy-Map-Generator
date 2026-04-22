@@ -17,6 +17,7 @@ export type {
   RawMarker,
   RawNote,
   RawProvince,
+  RawRegiment,
   RawReligion,
   RawRiver,
   RawRoute,
