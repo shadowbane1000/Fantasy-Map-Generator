@@ -37,6 +37,7 @@ import { saveMapTool } from "./tools/save-map";
 import { setBurgCultureTool } from "./tools/set-burg-culture";
 import { setBurgPopulationTool } from "./tools/set-burg-population";
 import { setBurgTypeTool } from "./tools/set-burg-type";
+import { setClimateTool } from "./tools/set-climate";
 import { setCultureColorTool } from "./tools/set-culture-color";
 import { setEntityExpansionismTool } from "./tools/set-entity-expansionism";
 import { setEntityLockTool } from "./tools/set-entity-lock";
@@ -222,6 +223,11 @@ export {
   setBurgTypeTool,
 } from "./tools/set-burg-type";
 export {
+  CLIMATE_FIELDS,
+  createSetClimateTool,
+  setClimateTool,
+} from "./tools/set-climate";
+export {
   createSetCultureColorTool,
   setCultureColorTool,
 } from "./tools/set-culture-color";
@@ -338,6 +344,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listZonesTool);
   registry.register(setMapNameTool);
   registry.register(setMeasurementUnitsTool);
+  registry.register(setClimateTool);
   registry.register(renameStateTool);
   registry.register(renameBurgTool);
   registry.register(renameCultureTool);
