@@ -15,6 +15,7 @@ import { listReligionsTool } from "./tools/list-religions";
 import { listRiversTool } from "./tools/list-rivers";
 import { listRoutesTool } from "./tools/list-routes";
 import { listStatesTool } from "./tools/list-states";
+import { listZonesTool } from "./tools/list-zones";
 import { loadMapTool } from "./tools/load-map";
 import { regenerateMapTool } from "./tools/regenerate-map";
 import { removeBurgTool } from "./tools/remove-burg";
@@ -104,6 +105,11 @@ export {
   createListStatesTool,
   listStatesTool,
 } from "./tools/list-states";
+export {
+  createListZonesTool,
+  listZonesTool,
+  readZonesFromPack,
+} from "./tools/list-zones";
 export {
   createLoadMapTool,
   isValidMapUrl,
@@ -243,6 +249,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listMarkersTool);
   registry.register(listRiversTool);
   registry.register(listRoutesTool);
+  registry.register(listZonesTool);
   registry.register(setMapNameTool);
   registry.register(renameStateTool);
   registry.register(renameBurgTool);

@@ -21,6 +21,7 @@ export type {
   RawRiver,
   RawRoute,
   RawState,
+  RawZone,
 } from "./pack-types";
 export {
   createPaginatedListTool,

@@ -154,6 +154,15 @@ export interface RawNote {
   legend?: string;
 }
 
+export interface RawZone {
+  i: number;
+  name?: string;
+  type?: string;
+  color?: string;
+  cells?: number[];
+  hidden?: boolean;
+}
+
 export interface Pack {
   states?: RawState[];
   burgs?: RawBurg[];
@@ -163,6 +172,7 @@ export interface Pack {
   markers?: RawMarker[];
   rivers?: RawRiver[];
   routes?: RawRoute[];
+  zones?: RawZone[];
   cells?: {
     i?: unknown[];
     state?: unknown[];
