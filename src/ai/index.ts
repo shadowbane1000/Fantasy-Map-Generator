@@ -48,6 +48,7 @@ import { setBurgPopulationTool } from "./tools/set-burg-population";
 import { setBurgTypeTool } from "./tools/set-burg-type";
 import { setClimateTool } from "./tools/set-climate";
 import { setCultureColorTool } from "./tools/set-culture-color";
+import { setCultureTypeTool } from "./tools/set-culture-type";
 import { setDiplomacyTool } from "./tools/set-diplomacy";
 import { setEntityExpansionismTool } from "./tools/set-entity-expansionism";
 import { setEntityLockTool } from "./tools/set-entity-lock";
@@ -288,6 +289,12 @@ export {
   setCultureColorTool,
 } from "./tools/set-culture-color";
 export {
+  CULTURE_TYPES,
+  createSetCultureTypeTool,
+  resolveCultureType,
+  setCultureTypeTool,
+} from "./tools/set-culture-type";
+export {
   createSetDiplomacyTool,
   DIPLOMACY_RELATIONS,
   resolveRelation,
@@ -451,6 +458,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameZoneTool);
   registry.register(setStateColorTool);
   registry.register(setCultureColorTool);
+  registry.register(setCultureTypeTool);
   registry.register(setReligionColorTool);
   registry.register(setProvinceColorTool);
   registry.register(setZoneColorTool);
