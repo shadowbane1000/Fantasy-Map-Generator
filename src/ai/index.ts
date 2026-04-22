@@ -27,6 +27,7 @@ import { removeMarkerTool } from "./tools/remove-marker";
 import { removeNoteTool } from "./tools/remove-note";
 import { removeRegimentTool } from "./tools/remove-regiment";
 import { removeZoneTool } from "./tools/remove-zone";
+import { renameBiomeTool } from "./tools/rename-biome";
 import { renameBurgTool } from "./tools/rename-burg";
 import { renameCultureTool } from "./tools/rename-culture";
 import { renameProvinceTool } from "./tools/rename-province";
@@ -179,6 +180,11 @@ export {
   createRemoveZoneTool,
   removeZoneTool,
 } from "./tools/remove-zone";
+export {
+  createRenameBiomeTool,
+  findBiomeByRef,
+  renameBiomeTool,
+} from "./tools/rename-biome";
 export {
   createRenameBurgTool,
   renameBurgTool,
@@ -366,6 +372,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setGeographyTool);
   registry.register(renameStateTool);
   registry.register(renameBurgTool);
+  registry.register(renameBiomeTool);
   registry.register(renameCultureTool);
   registry.register(renameReligionTool);
   registry.register(renameProvinceTool);
