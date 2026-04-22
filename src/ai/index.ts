@@ -41,6 +41,7 @@ import { setClimateTool } from "./tools/set-climate";
 import { setCultureColorTool } from "./tools/set-culture-color";
 import { setEntityExpansionismTool } from "./tools/set-entity-expansionism";
 import { setEntityLockTool } from "./tools/set-entity-lock";
+import { setGeographyTool } from "./tools/set-geography";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
 import { setLayerVisibilityTool } from "./tools/set-layer-visibility";
 import { setMapNameTool } from "./tools/set-map-name";
@@ -244,6 +245,11 @@ export {
   setEntityLockTool,
 } from "./tools/set-entity-lock";
 export {
+  createSetGeographyTool,
+  GEOGRAPHY_FIELDS,
+  setGeographyTool,
+} from "./tools/set-geography";
+export {
   createSetHeightmapTemplateTool,
   DISPLAY_NAMES as HEIGHTMAP_TEMPLATE_DISPLAY_NAMES,
   resolveTemplateKey,
@@ -345,6 +351,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setMapNameTool);
   registry.register(setMeasurementUnitsTool);
   registry.register(setClimateTool);
+  registry.register(setGeographyTool);
   registry.register(renameStateTool);
   registry.register(renameBurgTool);
   registry.register(renameCultureTool);
