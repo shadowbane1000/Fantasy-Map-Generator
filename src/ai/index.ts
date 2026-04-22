@@ -35,6 +35,7 @@ import { renameProvinceTool } from "./tools/rename-province";
 import { renameRegimentTool } from "./tools/rename-regiment";
 import { renameReligionTool } from "./tools/rename-religion";
 import { renameRiverTool } from "./tools/rename-river";
+import { renameRouteTool } from "./tools/rename-route";
 import { renameStateTool } from "./tools/rename-state";
 import { renameZoneTool } from "./tools/rename-zone";
 import { saveMapTool } from "./tools/save-map";
@@ -222,6 +223,11 @@ export {
   renameRiverTool,
 } from "./tools/rename-river";
 export {
+  createRenameRouteTool,
+  findRouteByRef,
+  renameRouteTool,
+} from "./tools/rename-route";
+export {
   createRenameStateTool,
   renameStateTool,
 } from "./tools/rename-state";
@@ -406,6 +412,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameReligionTool);
   registry.register(renameProvinceTool);
   registry.register(renameRiverTool);
+  registry.register(renameRouteTool);
   registry.register(renameRegimentTool);
   registry.register(setRegimentUnitTool);
   registry.register(renameZoneTool);
