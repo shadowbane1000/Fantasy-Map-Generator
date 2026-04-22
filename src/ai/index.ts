@@ -11,6 +11,7 @@ import { getMapInfoTool } from "./tools/get-map-info";
 import { listBiomesTool } from "./tools/list-biomes";
 import { listBurgsTool } from "./tools/list-burgs";
 import { listCulturesTool } from "./tools/list-cultures";
+import { listDiplomacyTool } from "./tools/list-diplomacy";
 import { listMarkersTool } from "./tools/list-markers";
 import { listNotesTool } from "./tools/list-notes";
 import { listProvincesTool } from "./tools/list-provinces";
@@ -114,6 +115,11 @@ export {
   createListCulturesTool,
   listCulturesTool,
 } from "./tools/list-cultures";
+export {
+  createListDiplomacyTool,
+  listDiplomacyTool,
+  readDiplomacyFromPack,
+} from "./tools/list-diplomacy";
 export {
   createListMarkersTool,
   listMarkersTool,
@@ -413,6 +419,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listBurgsTool);
   registry.register(listBiomesTool);
   registry.register(listCulturesTool);
+  registry.register(listDiplomacyTool);
   registry.register(listReligionsTool);
   registry.register(listProvincesTool);
   registry.register(listMarkersTool);
