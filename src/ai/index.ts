@@ -43,6 +43,7 @@ import { setStateColorTool } from "./tools/set-state-color";
 import { setStateFormTool } from "./tools/set-state-form";
 import { setWorldRatesTool } from "./tools/set-world-rates";
 import { setYearAndEraTool } from "./tools/set-year-and-era";
+import { setZoneVisibilityTool } from "./tools/set-zone-visibility";
 
 export { AnthropicApiError, AnthropicClient } from "./anthropic-client";
 export { clearApiKey, getApiKey, setApiKey } from "./api-key";
@@ -237,6 +238,11 @@ export {
   deriveEraShort,
   setYearAndEraTool,
 } from "./tools/set-year-and-era";
+export {
+  createSetZoneVisibilityTool,
+  findZoneByRef,
+  setZoneVisibilityTool,
+} from "./tools/set-zone-visibility";
 
 export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
@@ -273,6 +279,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setLayerVisibilityTool);
   registry.register(applyLayersPresetTool);
   registry.register(setYearAndEraTool);
+  registry.register(setZoneVisibilityTool);
   registry.register(focusOnMapTool);
   registry.register(regenerateMapTool);
   registry.register(saveMapTool);
