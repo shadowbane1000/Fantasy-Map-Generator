@@ -10,6 +10,7 @@ import { getMapInfoTool } from "./tools/get-map-info";
 import { listBurgsTool } from "./tools/list-burgs";
 import { listCulturesTool } from "./tools/list-cultures";
 import { listMarkersTool } from "./tools/list-markers";
+import { listNotesTool } from "./tools/list-notes";
 import { listProvincesTool } from "./tools/list-provinces";
 import { listRegimentsTool } from "./tools/list-regiments";
 import { listReligionsTool } from "./tools/list-religions";
@@ -91,6 +92,12 @@ export {
   listMarkersTool,
   readMarkersFromPack,
 } from "./tools/list-markers";
+export {
+  classifyNoteId,
+  createListNotesTool,
+  listNotesTool,
+  stripHtml,
+} from "./tools/list-notes";
 export {
   createListProvincesTool,
   listProvincesTool,
@@ -309,6 +316,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listRiversTool);
   registry.register(listRoutesTool);
   registry.register(listRegimentsTool);
+  registry.register(listNotesTool);
   registry.register(listZonesTool);
   registry.register(setMapNameTool);
   registry.register(renameStateTool);
