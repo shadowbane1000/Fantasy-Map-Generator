@@ -46,6 +46,7 @@ import { setMapNameTool } from "./tools/set-map-name";
 import { setMarkerLockTool } from "./tools/set-marker-lock";
 import { setMarkerNoteTool } from "./tools/set-marker-note";
 import { setMarkerPinnedTool } from "./tools/set-marker-pinned";
+import { setMeasurementUnitsTool } from "./tools/set-measurement-units";
 import { setNoteTool } from "./tools/set-note";
 import { setProvinceColorTool } from "./tools/set-province-color";
 import { setReligionColorTool } from "./tools/set-religion-color";
@@ -262,6 +263,13 @@ export {
   setMarkerPinnedTool,
 } from "./tools/set-marker-pinned";
 export {
+  canonDistance,
+  canonHeight,
+  canonTemperature,
+  createSetMeasurementUnitsTool,
+  setMeasurementUnitsTool,
+} from "./tools/set-measurement-units";
+export {
   createSetNoteTool,
   setNoteTool,
 } from "./tools/set-note";
@@ -329,6 +337,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listNotesTool);
   registry.register(listZonesTool);
   registry.register(setMapNameTool);
+  registry.register(setMeasurementUnitsTool);
   registry.register(renameStateTool);
   registry.register(renameBurgTool);
   registry.register(renameCultureTool);
