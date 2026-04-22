@@ -39,6 +39,7 @@ import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
 import { setLayerVisibilityTool } from "./tools/set-layer-visibility";
 import { setMapNameTool } from "./tools/set-map-name";
 import { setMarkerNoteTool } from "./tools/set-marker-note";
+import { setMarkerPinnedTool } from "./tools/set-marker-pinned";
 import { setProvinceColorTool } from "./tools/set-province-color";
 import { setReligionColorTool } from "./tools/set-religion-color";
 import { setRiverTypeTool } from "./tools/set-river-type";
@@ -222,6 +223,10 @@ export {
   setMarkerNoteTool,
 } from "./tools/set-marker-note";
 export {
+  createSetMarkerPinnedTool,
+  setMarkerPinnedTool,
+} from "./tools/set-marker-pinned";
+export {
   createSetProvinceColorTool,
   setProvinceColorTool,
 } from "./tools/set-province-color";
@@ -302,6 +307,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setStateCapitalTool);
   registry.register(setEntityExpansionismTool);
   registry.register(setMarkerNoteTool);
+  registry.register(setMarkerPinnedTool);
   registry.register(setHeightmapTemplateTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
