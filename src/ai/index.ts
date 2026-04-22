@@ -22,6 +22,7 @@ import { listStatesTool } from "./tools/list-states";
 import { listZonesTool } from "./tools/list-zones";
 import { loadMapTool } from "./tools/load-map";
 import { regenerateMapTool } from "./tools/regenerate-map";
+import { removeBiomeTool } from "./tools/remove-biome";
 import { removeBurgTool } from "./tools/remove-burg";
 import { removeMarkerTool } from "./tools/remove-marker";
 import { removeNoteTool } from "./tools/remove-note";
@@ -162,6 +163,11 @@ export {
   createRegenerateMapTool,
   regenerateMapTool,
 } from "./tools/regenerate-map";
+export {
+  createRemoveBiomeTool,
+  DEFAULT_BIOME_COUNT,
+  removeBiomeTool,
+} from "./tools/remove-biome";
 export {
   createRemoveBurgTool,
   removeBurgTool,
@@ -385,6 +391,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameBiomeTool);
   registry.register(setBiomeColorTool);
   registry.register(setBiomeHabitabilityTool);
+  registry.register(removeBiomeTool);
   registry.register(renameCultureTool);
   registry.register(renameReligionTool);
   registry.register(renameProvinceTool);
