@@ -62,6 +62,7 @@ import { setMarkerNoteTool } from "./tools/set-marker-note";
 import { setMarkerPinnedTool } from "./tools/set-marker-pinned";
 import { setMeasurementUnitsTool } from "./tools/set-measurement-units";
 import { setNoteTool } from "./tools/set-note";
+import { setProvinceCapitalTool } from "./tools/set-province-capital";
 import { setProvinceColorTool } from "./tools/set-province-color";
 import { setRegimentUnitTool } from "./tools/set-regiment-unit";
 import { setReligionColorTool } from "./tools/set-religion-color";
@@ -362,6 +363,10 @@ export {
   setNoteTool,
 } from "./tools/set-note";
 export {
+  createSetProvinceCapitalTool,
+  setProvinceCapitalTool,
+} from "./tools/set-province-capital";
+export {
   createSetProvinceColorTool,
   setProvinceColorTool,
 } from "./tools/set-province-color";
@@ -488,6 +493,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setBurgCultureTool);
   registry.register(setBurgTypeTool);
   registry.register(setStateCapitalTool);
+  registry.register(setProvinceCapitalTool);
   registry.register(setEntityExpansionismTool);
   registry.register(setDiplomacyTool);
   registry.register(setMarkerNoteTool);
