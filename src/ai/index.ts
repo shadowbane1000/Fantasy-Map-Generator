@@ -47,6 +47,7 @@ import { setBurgPopulationTool } from "./tools/set-burg-population";
 import { setBurgTypeTool } from "./tools/set-burg-type";
 import { setClimateTool } from "./tools/set-climate";
 import { setCultureColorTool } from "./tools/set-culture-color";
+import { setDiplomacyTool } from "./tools/set-diplomacy";
 import { setEntityExpansionismTool } from "./tools/set-entity-expansionism";
 import { setEntityLockTool } from "./tools/set-entity-lock";
 import { setGeographyTool } from "./tools/set-geography";
@@ -281,6 +282,13 @@ export {
   setCultureColorTool,
 } from "./tools/set-culture-color";
 export {
+  createSetDiplomacyTool,
+  DIPLOMACY_RELATIONS,
+  resolveRelation,
+  reverseRelation,
+  setDiplomacyTool,
+} from "./tools/set-diplomacy";
+export {
   createSetEntityExpansionismTool,
   EXPANSIONABLE_TYPES,
   resolveExpansionableType,
@@ -446,6 +454,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setBurgTypeTool);
   registry.register(setStateCapitalTool);
   registry.register(setEntityExpansionismTool);
+  registry.register(setDiplomacyTool);
   registry.register(setMarkerNoteTool);
   registry.register(setMarkerPinnedTool);
   registry.register(setMarkerLockTool);

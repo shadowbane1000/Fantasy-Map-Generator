@@ -31,6 +31,7 @@ export interface RawState {
   provinces?: number[];
   neighbors?: number[];
   military?: RawRegiment[];
+  diplomacy?: string[];
   lock?: boolean;
   removed?: boolean;
 }
