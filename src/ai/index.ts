@@ -61,6 +61,7 @@ import { setProvinceColorTool } from "./tools/set-province-color";
 import { setRegimentUnitTool } from "./tools/set-regiment-unit";
 import { setReligionColorTool } from "./tools/set-religion-color";
 import { setRiverTypeTool } from "./tools/set-river-type";
+import { setRouteGroupTool } from "./tools/set-route-group";
 import { setStateCapitalTool } from "./tools/set-state-capital";
 import { setStateColorTool } from "./tools/set-state-color";
 import { setStateFormTool } from "./tools/set-state-form";
@@ -343,6 +344,10 @@ export {
   setRiverTypeTool,
 } from "./tools/set-river-type";
 export {
+  createSetRouteGroupTool,
+  setRouteGroupTool,
+} from "./tools/set-route-group";
+export {
   createSetStateCapitalTool,
   setStateCapitalTool,
 } from "./tools/set-state-capital";
@@ -413,6 +418,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameProvinceTool);
   registry.register(renameRiverTool);
   registry.register(renameRouteTool);
+  registry.register(setRouteGroupTool);
   registry.register(renameRegimentTool);
   registry.register(setRegimentUnitTool);
   registry.register(renameZoneTool);
