@@ -38,6 +38,7 @@ import { renameStateTool } from "./tools/rename-state";
 import { renameZoneTool } from "./tools/rename-zone";
 import { saveMapTool } from "./tools/save-map";
 import { setBiomeColorTool } from "./tools/set-biome-color";
+import { setBiomeHabitabilityTool } from "./tools/set-biome-habitability";
 import { setBurgCultureTool } from "./tools/set-burg-culture";
 import { setBurgPopulationTool } from "./tools/set-burg-population";
 import { setBurgTypeTool } from "./tools/set-burg-type";
@@ -230,6 +231,10 @@ export {
   setBiomeColorTool,
 } from "./tools/set-biome-color";
 export {
+  createSetBiomeHabitabilityTool,
+  setBiomeHabitabilityTool,
+} from "./tools/set-biome-habitability";
+export {
   createSetBurgCultureTool,
   setBurgCultureTool,
 } from "./tools/set-burg-culture";
@@ -379,6 +384,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameBurgTool);
   registry.register(renameBiomeTool);
   registry.register(setBiomeColorTool);
+  registry.register(setBiomeHabitabilityTool);
   registry.register(renameCultureTool);
   registry.register(renameReligionTool);
   registry.register(renameProvinceTool);
