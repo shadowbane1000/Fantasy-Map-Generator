@@ -38,6 +38,7 @@ import { setEntityLockTool } from "./tools/set-entity-lock";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
 import { setLayerVisibilityTool } from "./tools/set-layer-visibility";
 import { setMapNameTool } from "./tools/set-map-name";
+import { setMarkerLockTool } from "./tools/set-marker-lock";
 import { setMarkerNoteTool } from "./tools/set-marker-note";
 import { setMarkerPinnedTool } from "./tools/set-marker-pinned";
 import { setProvinceColorTool } from "./tools/set-province-color";
@@ -218,6 +219,10 @@ export {
 } from "./tools/set-layer-visibility";
 export { setMapNameTool } from "./tools/set-map-name";
 export {
+  createSetMarkerLockTool,
+  setMarkerLockTool,
+} from "./tools/set-marker-lock";
+export {
   createSetMarkerNoteTool,
   findMarkerNoteRef,
   setMarkerNoteTool,
@@ -308,6 +313,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setEntityExpansionismTool);
   registry.register(setMarkerNoteTool);
   registry.register(setMarkerPinnedTool);
+  registry.register(setMarkerLockTool);
   registry.register(setHeightmapTemplateTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
