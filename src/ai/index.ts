@@ -44,6 +44,7 @@ import { setStateColorTool } from "./tools/set-state-color";
 import { setStateFormTool } from "./tools/set-state-form";
 import { setWorldRatesTool } from "./tools/set-world-rates";
 import { setYearAndEraTool } from "./tools/set-year-and-era";
+import { setZoneColorTool } from "./tools/set-zone-color";
 import { setZoneVisibilityTool } from "./tools/set-zone-visibility";
 
 export { AnthropicApiError, AnthropicClient } from "./anthropic-client";
@@ -244,6 +245,10 @@ export {
   setYearAndEraTool,
 } from "./tools/set-year-and-era";
 export {
+  createSetZoneColorTool,
+  setZoneColorTool,
+} from "./tools/set-zone-color";
+export {
   createSetZoneVisibilityTool,
   findZoneByRef,
   setZoneVisibilityTool,
@@ -272,6 +277,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setCultureColorTool);
   registry.register(setReligionColorTool);
   registry.register(setProvinceColorTool);
+  registry.register(setZoneColorTool);
   registry.register(setBurgPopulationTool);
   registry.register(setBurgCultureTool);
   registry.register(setBurgTypeTool);
