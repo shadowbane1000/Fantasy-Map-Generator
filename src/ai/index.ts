@@ -8,6 +8,7 @@ import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { exportMapTool } from "./tools/export-map";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getMapInfoTool } from "./tools/get-map-info";
+import { listBiomesTool } from "./tools/list-biomes";
 import { listBurgsTool } from "./tools/list-burgs";
 import { listCulturesTool } from "./tools/list-cultures";
 import { listMarkersTool } from "./tools/list-markers";
@@ -89,6 +90,11 @@ export {
   createGetMapInfoTool,
   getMapInfoTool,
 } from "./tools/get-map-info";
+export {
+  createListBiomesTool,
+  listBiomesTool,
+  readBiomesFromPack,
+} from "./tools/list-biomes";
 export {
   createListBurgsTool,
   listBurgsTool,
@@ -344,6 +350,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getMapInfoTool);
   registry.register(listStatesTool);
   registry.register(listBurgsTool);
+  registry.register(listBiomesTool);
   registry.register(listCulturesTool);
   registry.register(listReligionsTool);
   registry.register(listProvincesTool);
