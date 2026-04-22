@@ -20,6 +20,7 @@ import { loadMapTool } from "./tools/load-map";
 import { regenerateMapTool } from "./tools/regenerate-map";
 import { removeBurgTool } from "./tools/remove-burg";
 import { removeMarkerTool } from "./tools/remove-marker";
+import { removeZoneTool } from "./tools/remove-zone";
 import { renameBurgTool } from "./tools/rename-burg";
 import { renameCultureTool } from "./tools/rename-culture";
 import { renameProvinceTool } from "./tools/rename-province";
@@ -131,6 +132,10 @@ export {
   createRemoveMarkerTool,
   removeMarkerTool,
 } from "./tools/remove-marker";
+export {
+  createRemoveZoneTool,
+  removeZoneTool,
+} from "./tools/remove-zone";
 export {
   createRenameBurgTool,
   renameBurgTool,
@@ -299,6 +304,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(exportMapTool);
   registry.register(removeBurgTool);
   registry.register(removeMarkerTool);
+  registry.register(removeZoneTool);
   return registry;
 }
 
