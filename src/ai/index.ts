@@ -74,6 +74,7 @@ import { setRiverTypeTool } from "./tools/set-river-type";
 import { setRouteGroupTool } from "./tools/set-route-group";
 import { setStateCapitalTool } from "./tools/set-state-capital";
 import { setStateColorTool } from "./tools/set-state-color";
+import { setStateCultureTool } from "./tools/set-state-culture";
 import { setStateFormTool } from "./tools/set-state-form";
 import { setWorldRatesTool } from "./tools/set-world-rates";
 import { setYearAndEraTool } from "./tools/set-year-and-era";
@@ -416,6 +417,10 @@ export {
   setStateColorTool,
 } from "./tools/set-state-color";
 export {
+  createSetStateCultureTool,
+  setStateCultureTool,
+} from "./tools/set-state-culture";
+export {
   allCanonicalFormNames,
   createSetStateFormTool,
   FORM_CATEGORIES,
@@ -500,6 +505,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setBurgCultureTool);
   registry.register(setBurgTypeTool);
   registry.register(setStateCapitalTool);
+  registry.register(setStateCultureTool);
   registry.register(setProvinceCapitalTool);
   registry.register(setEntityExpansionismTool);
   registry.register(setDiplomacyTool);
