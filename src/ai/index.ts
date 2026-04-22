@@ -76,6 +76,7 @@ import { setStateCapitalTool } from "./tools/set-state-capital";
 import { setStateColorTool } from "./tools/set-state-color";
 import { setStateCultureTool } from "./tools/set-state-culture";
 import { setStateFormTool } from "./tools/set-state-form";
+import { setStateTypeTool } from "./tools/set-state-type";
 import { setWorldRatesTool } from "./tools/set-world-rates";
 import { setYearAndEraTool } from "./tools/set-year-and-era";
 import { setZoneColorTool } from "./tools/set-zone-color";
@@ -429,6 +430,12 @@ export {
   setStateFormTool,
 } from "./tools/set-state-form";
 export {
+  createSetStateTypeTool,
+  resolveStateType,
+  STATE_TYPES,
+  setStateTypeTool,
+} from "./tools/set-state-type";
+export {
   createSetWorldRatesTool,
   setWorldRatesTool,
   validateRatesInput,
@@ -516,6 +523,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setHeightmapTemplateTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
+  registry.register(setStateTypeTool);
   registry.register(setWorldRatesTool);
   registry.register(setLayerVisibilityTool);
   registry.register(applyLayersPresetTool);
