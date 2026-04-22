@@ -41,6 +41,7 @@ import { setMapNameTool } from "./tools/set-map-name";
 import { setMarkerNoteTool } from "./tools/set-marker-note";
 import { setProvinceColorTool } from "./tools/set-province-color";
 import { setReligionColorTool } from "./tools/set-religion-color";
+import { setRiverTypeTool } from "./tools/set-river-type";
 import { setStateCapitalTool } from "./tools/set-state-capital";
 import { setStateColorTool } from "./tools/set-state-color";
 import { setStateFormTool } from "./tools/set-state-form";
@@ -229,6 +230,10 @@ export {
   setReligionColorTool,
 } from "./tools/set-religion-color";
 export {
+  createSetRiverTypeTool,
+  setRiverTypeTool,
+} from "./tools/set-river-type";
+export {
   createSetStateCapitalTool,
   setStateCapitalTool,
 } from "./tools/set-state-capital";
@@ -290,6 +295,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setReligionColorTool);
   registry.register(setProvinceColorTool);
   registry.register(setZoneColorTool);
+  registry.register(setRiverTypeTool);
   registry.register(setBurgPopulationTool);
   registry.register(setBurgCultureTool);
   registry.register(setBurgTypeTool);
