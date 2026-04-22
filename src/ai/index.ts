@@ -25,6 +25,7 @@ import { removeZoneTool } from "./tools/remove-zone";
 import { renameBurgTool } from "./tools/rename-burg";
 import { renameCultureTool } from "./tools/rename-culture";
 import { renameProvinceTool } from "./tools/rename-province";
+import { renameRegimentTool } from "./tools/rename-regiment";
 import { renameReligionTool } from "./tools/rename-religion";
 import { renameRiverTool } from "./tools/rename-river";
 import { renameStateTool } from "./tools/rename-state";
@@ -158,6 +159,11 @@ export {
   createRenameProvinceTool,
   renameProvinceTool,
 } from "./tools/rename-province";
+export {
+  createRenameRegimentTool,
+  findRegimentByRef,
+  renameRegimentTool,
+} from "./tools/rename-regiment";
 export {
   createRenameReligionTool,
   renameReligionTool,
@@ -306,6 +312,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameReligionTool);
   registry.register(renameProvinceTool);
   registry.register(renameRiverTool);
+  registry.register(renameRegimentTool);
   registry.register(renameZoneTool);
   registry.register(setStateColorTool);
   registry.register(setCultureColorTool);
