@@ -47,6 +47,7 @@ import { setBurgCultureTool } from "./tools/set-burg-culture";
 import { setBurgPopulationTool } from "./tools/set-burg-population";
 import { setBurgTypeTool } from "./tools/set-burg-type";
 import { setClimateTool } from "./tools/set-climate";
+import { setCultureBaseTool } from "./tools/set-culture-base";
 import { setCultureColorTool } from "./tools/set-culture-color";
 import { setCultureTypeTool } from "./tools/set-culture-type";
 import { setDiplomacyTool } from "./tools/set-diplomacy";
@@ -289,6 +290,11 @@ export {
   setClimateTool,
 } from "./tools/set-climate";
 export {
+  createSetCultureBaseTool,
+  resolveNameBase,
+  setCultureBaseTool,
+} from "./tools/set-culture-base";
+export {
   createSetCultureColorTool,
   setCultureColorTool,
 } from "./tools/set-culture-color";
@@ -481,6 +487,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setStateColorTool);
   registry.register(setCultureColorTool);
   registry.register(setCultureTypeTool);
+  registry.register(setCultureBaseTool);
   registry.register(setReligionColorTool);
   registry.register(setReligionTypeTool);
   registry.register(setReligionFormTool);
