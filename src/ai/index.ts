@@ -65,6 +65,7 @@ import { setNoteTool } from "./tools/set-note";
 import { setProvinceColorTool } from "./tools/set-province-color";
 import { setRegimentUnitTool } from "./tools/set-regiment-unit";
 import { setReligionColorTool } from "./tools/set-religion-color";
+import { setReligionTypeTool } from "./tools/set-religion-type";
 import { setRiverTypeTool } from "./tools/set-river-type";
 import { setRouteGroupTool } from "./tools/set-route-group";
 import { setStateCapitalTool } from "./tools/set-state-capital";
@@ -371,6 +372,12 @@ export {
   setReligionColorTool,
 } from "./tools/set-religion-color";
 export {
+  createSetReligionTypeTool,
+  RELIGION_TYPES,
+  resolveReligionType,
+  setReligionTypeTool,
+} from "./tools/set-religion-type";
+export {
   createSetRiverTypeTool,
   setRiverTypeTool,
 } from "./tools/set-river-type";
@@ -460,6 +467,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setCultureColorTool);
   registry.register(setCultureTypeTool);
   registry.register(setReligionColorTool);
+  registry.register(setReligionTypeTool);
   registry.register(setProvinceColorTool);
   registry.register(setZoneColorTool);
   registry.register(setZoneTypeTool);
