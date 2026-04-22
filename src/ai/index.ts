@@ -57,6 +57,7 @@ import { setMarkerPinnedTool } from "./tools/set-marker-pinned";
 import { setMeasurementUnitsTool } from "./tools/set-measurement-units";
 import { setNoteTool } from "./tools/set-note";
 import { setProvinceColorTool } from "./tools/set-province-color";
+import { setRegimentUnitTool } from "./tools/set-regiment-unit";
 import { setReligionColorTool } from "./tools/set-religion-color";
 import { setRiverTypeTool } from "./tools/set-river-type";
 import { setStateCapitalTool } from "./tools/set-state-capital";
@@ -324,6 +325,10 @@ export {
   setProvinceColorTool,
 } from "./tools/set-province-color";
 export {
+  createSetRegimentUnitTool,
+  setRegimentUnitTool,
+} from "./tools/set-regiment-unit";
+export {
   createSetReligionColorTool,
   setReligionColorTool,
 } from "./tools/set-religion-color";
@@ -402,6 +407,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameProvinceTool);
   registry.register(renameRiverTool);
   registry.register(renameRegimentTool);
+  registry.register(setRegimentUnitTool);
   registry.register(renameZoneTool);
   registry.register(setStateColorTool);
   registry.register(setCultureColorTool);
