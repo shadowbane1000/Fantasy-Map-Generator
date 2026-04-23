@@ -30,6 +30,7 @@ import { findBurgsByStateTool } from "./tools/find-burgs-by-state";
 import { findBurgsByTypeTool } from "./tools/find-burgs-by-type";
 import { findBurgsInAreaTool } from "./tools/find-burgs-in-area";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
+import { findCellsAdjacentToEntityTool } from "./tools/find-cells-adjacent-to-entity";
 import { findCellsByBiomeTool } from "./tools/find-cells-by-biome";
 import { findCellsByHeightRangeTool } from "./tools/find-cells-by-height-range";
 import { findCellsByPopulationRangeTool } from "./tools/find-cells-by-population-range";
@@ -412,6 +413,19 @@ export {
   findCellAtCoordsTool,
   scanPackForNearestCell,
 } from "./tools/find-cell-at-coords";
+export {
+  ADJACENT_ENTITY_TYPES,
+  type AdjacentEntityCellsHit,
+  type AdjacentEntityType,
+  type CollectAdjacentCellsResult,
+  collectAdjacentCellsForEntity,
+  createFindCellsAdjacentToEntityTool,
+  DEFAULT_FIND_CELLS_ADJACENT_TO_ENTITY_LIMIT,
+  defaultFindCellsAdjacentToEntityRuntime,
+  type FindCellsAdjacentToEntityRuntime,
+  findCellsAdjacentToEntityTool,
+  MAX_FIND_CELLS_ADJACENT_TO_ENTITY_LIMIT,
+} from "./tools/find-cells-adjacent-to-entity";
 export {
   createFindCellsByBiomeTool,
   DEFAULT_FIND_CELLS_BY_BIOME_LIMIT,
@@ -1671,6 +1685,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getFeatureInfoTool);
   registry.register(getEntityCellsTool);
   registry.register(findAdjacentEntitiesTool);
+  registry.register(findCellsAdjacentToEntityTool);
   registry.register(findCellAtCoordsTool);
   registry.register(findCellsInRadiusTool);
   registry.register(findCellsByBiomeTool);
