@@ -26,6 +26,7 @@ import { exportMapTool } from "./tools/export-map";
 import { findBurgsInAreaTool } from "./tools/find-burgs-in-area";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
 import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
+import { findMarkersInAreaTool } from "./tools/find-markers-in-area";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
 import { findNearestMarkerTool } from "./tools/find-nearest-marker";
 import { findNearestRiverTool } from "./tools/find-nearest-river";
@@ -334,6 +335,20 @@ export {
   findCellsInRadiusTool,
   MAX_FIND_CELLS_IN_RADIUS_LIMIT,
 } from "./tools/find-cells-in-radius";
+export {
+  createFindMarkersInAreaTool,
+  DEFAULT_FIND_MARKERS_IN_AREA_LIMIT,
+  defaultFindMarkersInAreaRuntime,
+  type FindMarkersInAreaArea,
+  type FindMarkersInAreaHit,
+  type FindMarkersInAreaPayload,
+  type FindMarkersInAreaQuery,
+  type FindMarkersInAreaResult,
+  type FindMarkersInAreaRuntime,
+  findMarkersInAreaInPack,
+  findMarkersInAreaTool,
+  MAX_FIND_MARKERS_IN_AREA_LIMIT,
+} from "./tools/find-markers-in-area";
 export {
   createFindNearestBurgTool,
   defaultFindNearestBurgRuntime,
@@ -1364,6 +1379,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listProvincesTool);
   registry.register(listMarkersTool);
   registry.register(findNearestMarkerTool);
+  registry.register(findMarkersInAreaTool);
   registry.register(listRiversTool);
   registry.register(findNearestRiverTool);
   registry.register(listRoutesTool);
