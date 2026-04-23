@@ -78,6 +78,7 @@ import { setReligionFormTool } from "./tools/set-religion-form";
 import { setReligionTypeTool } from "./tools/set-religion-type";
 import { setRiverTypeTool } from "./tools/set-river-type";
 import { setRouteGroupTool } from "./tools/set-route-group";
+import { setRouteLockTool } from "./tools/set-route-lock";
 import { setStateCapitalTool } from "./tools/set-state-capital";
 import { setStateColorTool } from "./tools/set-state-color";
 import { setStateCultureTool } from "./tools/set-state-culture";
@@ -445,6 +446,10 @@ export {
   setRouteGroupTool,
 } from "./tools/set-route-group";
 export {
+  createSetRouteLockTool,
+  setRouteLockTool,
+} from "./tools/set-route-lock";
+export {
   createSetStateCapitalTool,
   setStateCapitalTool,
 } from "./tools/set-state-capital";
@@ -528,6 +533,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameRiverTool);
   registry.register(renameRouteTool);
   registry.register(setRouteGroupTool);
+  registry.register(setRouteLockTool);
   registry.register(removeRouteTool);
   registry.register(renameRegimentTool);
   registry.register(setRegimentUnitTool);
