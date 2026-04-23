@@ -53,6 +53,7 @@ import { listRegimentsTool } from "./tools/list-regiments";
 import { listReligionsTool } from "./tools/list-religions";
 import { listRiversTool } from "./tools/list-rivers";
 import { listRoutesTool } from "./tools/list-routes";
+import { listRulersTool } from "./tools/list-rulers";
 import { listStatesTool } from "./tools/list-states";
 import { listZonesTool } from "./tools/list-zones";
 import { loadMapTool } from "./tools/load-map";
@@ -493,6 +494,13 @@ export {
   readRoutesFromPack,
   resolveRouteGroup,
 } from "./tools/list-routes";
+export {
+  createListRulersTool,
+  listRulersTool,
+  type RulerSummary,
+  type RulersRuntime,
+  readRulersFromCollection,
+} from "./tools/list-rulers";
 export {
   createListStatesTool,
   listStatesTool,
@@ -1233,6 +1241,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listMarkersTool);
   registry.register(listRiversTool);
   registry.register(listRoutesTool);
+  registry.register(listRulersTool);
   registry.register(listRegimentsTool);
   registry.register(listNotesTool);
   registry.register(listZonesTool);
