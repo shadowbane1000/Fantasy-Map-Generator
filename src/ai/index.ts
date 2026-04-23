@@ -22,6 +22,7 @@ import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { exportMapTool } from "./tools/export-map";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getMapInfoTool } from "./tools/get-map-info";
+import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
 import { listBurgsTool } from "./tools/list-burgs";
 import { listCulturesTool } from "./tools/list-cultures";
@@ -249,6 +250,10 @@ export {
   createGetMapInfoTool,
   getMapInfoTool,
 } from "./tools/get-map-info";
+export {
+  createInvertHeightmapTool,
+  invertHeightmapTool,
+} from "./tools/invert-heightmap";
 export {
   createListBiomesTool,
   listBiomesTool,
@@ -1032,6 +1037,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addTroughTool);
   registry.register(addStraitTool);
   registry.register(modifyHeightmapTool);
+  registry.register(invertHeightmapTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setProvinceFormTool);
