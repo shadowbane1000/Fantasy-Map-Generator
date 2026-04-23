@@ -130,6 +130,7 @@ export interface RawMarker {
   dx?: number;
   dy?: number;
   px?: number;
+  size?: number;
   pinned?: boolean;
   lock?: boolean;
   removed?: boolean;
