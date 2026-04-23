@@ -1283,6 +1283,11 @@ const regenerateMap = debounce(async function (options) {
   clearMainTip();
 }, 250);
 
+// Classic-script top-level `const` bindings don't attach to `window`, so module
+// scripts (e.g. the AI chat tools loaded via `<script type="module">`) can't
+// reach `regenerateMap` through `globalThis`. Expose it explicitly.
+window.regenerateMap = regenerateMap;
+
 // clear the map
 function undraw() {
   viewbox
