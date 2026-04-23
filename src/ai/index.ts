@@ -117,6 +117,7 @@ import { setHeightExponentTool } from "./tools/set-height-exponent";
 import { setHeightmapOptionsTool } from "./tools/set-heightmap-options";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
 import { setLabelTextTool } from "./tools/set-label-text";
+import { setLayerFillTool } from "./tools/set-layer-fill";
 import { setLayerFilterTool } from "./tools/set-layer-filter";
 import { setLayerOpacityTool } from "./tools/set-layer-opacity";
 import { setLayerStrokeWidthTool } from "./tools/set-layer-stroke-width";
@@ -715,6 +716,12 @@ export {
   setLabelTextTool,
 } from "./tools/set-label-text";
 export {
+  createSetLayerFillTool,
+  defaultLayerFillRuntime,
+  type LayerFillRuntime,
+  setLayerFillTool,
+} from "./tools/set-layer-fill";
+export {
   createSetLayerFilterTool,
   defaultLayerFilterRuntime,
   FILTER_IDS,
@@ -1111,6 +1118,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setLayerOpacityTool);
   registry.register(setLayerStrokeWidthTool);
   registry.register(setLayerFilterTool);
+  registry.register(setLayerFillTool);
   registry.register(setFontFamilyTool);
   registry.register(setFontSizeTool);
   registry.register(setYearAndEraTool);
