@@ -38,6 +38,7 @@ import { getRegimentInfoTool } from "./tools/get-regiment-info";
 import { getReligionInfoTool } from "./tools/get-religion-info";
 import { getRiverInfoTool } from "./tools/get-river-info";
 import { getStateInfoTool } from "./tools/get-state-info";
+import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
 import { listBurgsTool } from "./tools/list-burgs";
@@ -406,6 +407,12 @@ export {
   type StateInfo,
   type StateInfoRuntime,
 } from "./tools/get-state-info";
+export {
+  createGetZoneInfoTool,
+  DEFAULT_ZONE_CELLS_LIMIT,
+  getZoneInfoTool,
+  MAX_ZONE_CELLS_LIMIT,
+} from "./tools/get-zone-info";
 export {
   createInvertHeightmapTool,
   invertHeightmapTool,
@@ -1188,6 +1195,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getBiomeInfoTool);
   registry.register(getMarkerInfoTool);
   registry.register(getRegimentInfoTool);
+  registry.register(getZoneInfoTool);
   registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
   registry.register(listStatesTool);
