@@ -34,6 +34,7 @@ import { regenerateBurgNameTool } from "./tools/regenerate-burg-name";
 import { regenerateDomainTool } from "./tools/regenerate-domain";
 import { regenerateEmblemsTool } from "./tools/regenerate-emblems";
 import { regenerateMapTool } from "./tools/regenerate-map";
+import { regenerateStateNameTool } from "./tools/regenerate-state-name";
 import { regenerateZonesTool } from "./tools/regenerate-zones";
 import { removeBiomeTool } from "./tools/remove-biome";
 import { removeBurgTool } from "./tools/remove-burg";
@@ -270,6 +271,12 @@ export {
   createRegenerateMapTool,
   regenerateMapTool,
 } from "./tools/regenerate-map";
+export {
+  createRegenerateStateNameTool,
+  regenerateStateNameTool,
+  resolveStateNameMode,
+  STATE_NAME_MODES,
+} from "./tools/regenerate-state-name";
 export {
   createRegenerateZonesTool,
   DEFAULT_ZONES_MULTIPLIER,
@@ -777,6 +784,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateEmblemsTool);
   registry.register(regenerateDomainTool);
   registry.register(regenerateBurgNameTool);
+  registry.register(regenerateStateNameTool);
   registry.register(regenerateZonesTool);
   registry.register(saveMapTool);
   registry.register(loadMapTool);
