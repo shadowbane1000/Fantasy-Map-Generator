@@ -39,6 +39,7 @@ import { regenerateDomainTool } from "./tools/regenerate-domain";
 import { regenerateEmblemsTool } from "./tools/regenerate-emblems";
 import { regenerateMapTool } from "./tools/regenerate-map";
 import { regenerateProvinceNameTool } from "./tools/regenerate-province-name";
+import { regenerateStateCoaTool } from "./tools/regenerate-state-coa";
 import { regenerateStateNameTool } from "./tools/regenerate-state-name";
 import { regenerateZonesTool } from "./tools/regenerate-zones";
 import { removeBiomeTool } from "./tools/remove-biome";
@@ -303,6 +304,10 @@ export {
   regenerateProvinceNameTool,
   resolveProvinceNameMode,
 } from "./tools/regenerate-province-name";
+export {
+  createRegenerateStateCoaTool,
+  regenerateStateCoaTool,
+} from "./tools/regenerate-state-coa";
 export {
   createRegenerateStateNameTool,
   regenerateStateNameTool,
@@ -841,6 +846,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateMapTool);
   registry.register(regenerateEmblemsTool);
   registry.register(regenerateBurgCoaTool);
+  registry.register(regenerateStateCoaTool);
   registry.register(regenerateDomainTool);
   registry.register(regenerateBurgNameTool);
   registry.register(regenerateStateNameTool);
