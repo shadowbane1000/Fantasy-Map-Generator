@@ -1,0 +1,26 @@
+# Tasks 227 — `find_cultures_by_type`
+
+- [x] Read `src/ai/tools/find-states-by-culture.ts` (+ test) — culture-ref analog.
+- [x] Read `src/ai/tools/find-burgs-by-type.ts` (+ test) — type-filter pattern.
+- [x] Read `src/ai/tools/set-culture-type.ts` — known culture types.
+- [x] Read `src/ai/tools/list-cultures.ts` — culture summary shape.
+- [x] Read `src/ai/tools/_shared/index.ts` and `pack-types.ts` for `RawCulture` shape.
+- [x] Capture lint baseline: 7 warnings / 1 info / 0 errors.
+- [ ] Write `src/ai/tools/find-cultures-by-type.ts`:
+  - `DEFAULT_FIND_CULTURES_BY_TYPE_LIMIT = 10000`, `MAX_FIND_CULTURES_BY_TYPE_LIMIT = 100000`
+  - `FindCulturesByTypeHit`, `FindCulturesByTypePayload`, `FindCulturesByTypeResult`
+  - `PackLike` (cultures)
+  - `findCulturesByTypeInPack` — skips `removed`; case-insensitive string compare against `culture.type`
+  - `FindCulturesByTypeRuntime`, `defaultFindCulturesByTypeRuntime`
+  - `parseLimit`
+  - `createFindCulturesByTypeTool`, `findCulturesByTypeTool`
+- [ ] Write `src/ai/tools/find-cultures-by-type.test.ts`:
+  - Pure scanner: multi-match case-insensitive, second type, culture 0 included when type matches, empty result, skip removed, skip cultures with no type, limit truncation, field population, field fall-through, not-ready variants.
+  - Tool surface: ok canonical, ok case-insensitive variants, rejects invalid type (null, "", whitespace, non-string), not-ready, explicit limit, invalid limit, default limit, boundaries, empty, schema + constants.
+  - Default runtime integration: find via default runtime, end-to-end, pack-missing.
+- [ ] Register tool in `src/ai/index.ts` (import + re-exports + `registry.register`).
+- [ ] Add `README_AI.md` row near the `find_states_by_culture` row.
+- [ ] Run `npm run build` — must succeed.
+- [ ] Run `npm test` — all pass.
+- [ ] Run `npm run lint` — baseline unchanged (7 / 1 / 0).
+- [ ] Commit with specific files staged.
