@@ -6,6 +6,7 @@ import { ToolRegistry } from "./tools";
 import { addBurgTool } from "./tools/add-burg";
 import { addCultureTool } from "./tools/add-culture";
 import { addMarkerTool } from "./tools/add-marker";
+import { addProvinceTool } from "./tools/add-province";
 import { addRegimentTool } from "./tools/add-regiment";
 import { addReligionTool } from "./tools/add-religion";
 import { addRouteTool } from "./tools/add-route";
@@ -163,6 +164,10 @@ export {
   addMarkerTool,
   createAddMarkerTool,
 } from "./tools/add-marker";
+export {
+  addProvinceTool,
+  createAddProvinceTool,
+} from "./tools/add-province";
 export {
   addRegimentTool,
   createAddRegimentTool,
@@ -960,6 +965,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addReligionTool);
   registry.register(addRegimentTool);
   registry.register(addStateTool);
+  registry.register(addProvinceTool);
   registry.register(addZoneTool);
   registry.register(moveMarkerTool);
   registry.register(moveRegimentTool);
