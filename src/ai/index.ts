@@ -42,6 +42,7 @@ import { findCellsByTemperatureRangeTool } from "./tools/find-cells-by-temperatu
 import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
 import { findCoastCellsTool } from "./tools/find-coast-cells";
 import { findCulturesByTypeTool } from "./tools/find-cultures-by-type";
+import { findMarkersByStateTool } from "./tools/find-markers-by-state";
 import { findMarkersByTypeTool } from "./tools/find-markers-by-type";
 import { findMarkersInAreaTool } from "./tools/find-markers-in-area";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
@@ -568,6 +569,18 @@ export {
   findCulturesByTypeTool,
   MAX_FIND_CULTURES_BY_TYPE_LIMIT,
 } from "./tools/find-cultures-by-type";
+export {
+  createFindMarkersByStateTool,
+  DEFAULT_FIND_MARKERS_BY_STATE_LIMIT,
+  defaultFindMarkersByStateRuntime,
+  type FindMarkersByStateHit,
+  type FindMarkersByStatePayload,
+  type FindMarkersByStateResult,
+  type FindMarkersByStateRuntime,
+  findMarkersByStateInPack,
+  findMarkersByStateTool,
+  MAX_FIND_MARKERS_BY_STATE_LIMIT,
+} from "./tools/find-markers-by-state";
 export {
   createFindMarkersByTypeTool,
   DEFAULT_FIND_MARKERS_BY_TYPE_LIMIT,
@@ -1831,6 +1844,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findNearestMarkerTool);
   registry.register(findMarkersInAreaTool);
   registry.register(findMarkersByTypeTool);
+  registry.register(findMarkersByStateTool);
   registry.register(listRiversTool);
   registry.register(findNearestRiverTool);
   registry.register(findRiversInAreaTool);
