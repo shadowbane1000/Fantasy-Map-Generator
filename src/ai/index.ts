@@ -27,6 +27,7 @@ import { findBurgsInAreaTool } from "./tools/find-burgs-in-area";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
 import { findCellsByBiomeTool } from "./tools/find-cells-by-biome";
 import { findCellsByHeightRangeTool } from "./tools/find-cells-by-height-range";
+import { findCellsByPopulationRangeTool } from "./tools/find-cells-by-population-range";
 import { findCellsByPrecipitationRangeTool } from "./tools/find-cells-by-precipitation-range";
 import { findCellsByTemperatureRangeTool } from "./tools/find-cells-by-temperature-range";
 import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
@@ -353,6 +354,18 @@ export {
   MAX_HEIGHT,
   MIN_HEIGHT,
 } from "./tools/find-cells-by-height-range";
+export {
+  createFindCellsByPopulationRangeTool,
+  DEFAULT_FIND_CELLS_BY_POPULATION_RANGE_LIMIT,
+  defaultFindCellsByPopulationRangeRuntime,
+  type FindCellsByPopulationRangeHit,
+  type FindCellsByPopulationRangeResult,
+  type FindCellsByPopulationRangeRuntime,
+  findCellsByPopulationRangeInPack,
+  findCellsByPopulationRangeTool,
+  MAX_FIND_CELLS_BY_POPULATION_RANGE_LIMIT,
+  MIN_POPULATION,
+} from "./tools/find-cells-by-population-range";
 export {
   createFindCellsByPrecipitationRangeTool,
   DEFAULT_FIND_CELLS_BY_PRECIPITATION_RANGE_LIMIT,
@@ -1444,6 +1457,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findCellsByHeightRangeTool);
   registry.register(findCellsByTemperatureRangeTool);
   registry.register(findCellsByPrecipitationRangeTool);
+  registry.register(findCellsByPopulationRangeTool);
   registry.register(listStatesTool);
   registry.register(listStylePresetsTool);
   registry.register(listBurgsTool);
