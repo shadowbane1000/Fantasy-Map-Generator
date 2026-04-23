@@ -27,6 +27,7 @@ import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getCellInfoTool } from "./tools/get-cell-info";
+import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getMapInfoTool } from "./tools/get-map-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
@@ -303,6 +304,19 @@ export {
   getCellInfoTool,
   readCellFromState,
 } from "./tools/get-cell-info";
+export {
+  type CollectEntityCellsResult,
+  collectCellsForEntity,
+  createGetEntityCellsTool,
+  DEFAULT_GET_ENTITY_CELLS_LIMIT,
+  defaultGetEntityCellsRuntime,
+  ENTITY_TYPES,
+  type EntityCellsHit,
+  type EntityType,
+  type GetEntityCellsRuntime,
+  getEntityCellsTool,
+  MAX_GET_ENTITY_CELLS_LIMIT,
+} from "./tools/get-entity-cells";
 export {
   createGetMapInfoTool,
   getMapInfoTool,
@@ -1070,6 +1084,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
   registry.register(getMapInfoTool);
   registry.register(getCellInfoTool);
+  registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
   registry.register(listStatesTool);
   registry.register(listBurgsTool);
