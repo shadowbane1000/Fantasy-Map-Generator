@@ -36,6 +36,7 @@ import { getCellInfoTool } from "./tools/get-cell-info";
 import { getCultureInfoTool } from "./tools/get-culture-info";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getFeatureInfoTool } from "./tools/get-feature-info";
+import { getLayerStyleTool } from "./tools/get-layer-style";
 import { getMapInfoTool } from "./tools/get-map-info";
 import { getMarkerInfoTool } from "./tools/get-marker-info";
 import { getProvinceInfoTool } from "./tools/get-province-info";
@@ -424,6 +425,13 @@ export {
   getFeatureInfoTool,
   readFeatureInfoFromPack,
 } from "./tools/get-feature-info";
+export {
+  createGetLayerStyleTool,
+  defaultLayerStyleRuntime,
+  getLayerStyleTool,
+  type LayerStyleAttrs,
+  type LayerStyleRuntime,
+} from "./tools/get-layer-style";
 export {
   createGetMapInfoTool,
   getMapInfoTool,
@@ -1474,6 +1482,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setLayerStrokeDasharrayTool);
   registry.register(setLayerFilterTool);
   registry.register(setLayerFillTool);
+  registry.register(getLayerStyleTool);
   registry.register(setFontFamilyTool);
   registry.register(setFontSizeTool);
   registry.register(setYearAndEraTool);
