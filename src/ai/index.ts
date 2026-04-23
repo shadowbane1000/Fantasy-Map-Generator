@@ -45,6 +45,7 @@ import { findMarkersInAreaTool } from "./tools/find-markers-in-area";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
 import { findNearestMarkerTool } from "./tools/find-nearest-marker";
 import { findNearestRiverTool } from "./tools/find-nearest-river";
+import { findNotesByPrefixTool } from "./tools/find-notes-by-prefix";
 import { findProvincesByStateTool } from "./tools/find-provinces-by-state";
 import { findRegimentsByStateTool } from "./tools/find-regiments-by-state";
 import { findReligionsByCultureTool } from "./tools/find-religions-by-culture";
@@ -598,6 +599,18 @@ export {
   findNearestRiverInPack,
   findNearestRiverTool,
 } from "./tools/find-nearest-river";
+export {
+  createFindNotesByPrefixTool,
+  DEFAULT_FIND_NOTES_BY_PREFIX_LIMIT,
+  defaultFindNotesByPrefixRuntime,
+  type FindNotesByPrefixPayload,
+  type FindNotesByPrefixRuntime,
+  findNotesByPrefixInNotes,
+  findNotesByPrefixTool,
+  MAX_FIND_NOTES_BY_PREFIX_LIMIT,
+  NOTE_LEGEND_PREVIEW_MAX,
+  type NoteMatch,
+} from "./tools/find-notes-by-prefix";
 export {
   createFindProvincesByStateTool,
   DEFAULT_FIND_PROVINCES_BY_STATE_LIMIT,
@@ -1797,6 +1810,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listRulersTool);
   registry.register(listRegimentsTool);
   registry.register(listNotesTool);
+  registry.register(findNotesByPrefixTool);
   registry.register(listZonesTool);
   registry.register(findZonesByTypeTool);
   registry.register(setMapNameTool);
