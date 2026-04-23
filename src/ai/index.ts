@@ -69,6 +69,7 @@ import { renameZoneTool } from "./tools/rename-zone";
 import { saveMapTool } from "./tools/save-map";
 import { setBiomeColorTool } from "./tools/set-biome-color";
 import { setBiomeHabitabilityTool } from "./tools/set-biome-habitability";
+import { setBurgCoaCustomTool } from "./tools/set-burg-coa-custom";
 import { setBurgCultureTool } from "./tools/set-burg-culture";
 import { setBurgFeatureTool } from "./tools/set-burg-feature";
 import { setBurgGroupTool } from "./tools/set-burg-group";
@@ -441,6 +442,10 @@ export {
   createSetBiomeHabitabilityTool,
   setBiomeHabitabilityTool,
 } from "./tools/set-biome-habitability";
+export {
+  createSetBurgCoaCustomTool,
+  setBurgCoaCustomTool,
+} from "./tools/set-burg-coa-custom";
 export {
   createSetBurgCultureTool,
   setBurgCultureTool,
@@ -886,6 +891,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateBurgCoaTool);
   registry.register(regenerateStateCoaTool);
   registry.register(regenerateProvinceCoaTool);
+  registry.register(setBurgCoaCustomTool);
   registry.register(regenerateDomainTool);
   registry.register(regenerateBurgNameTool);
   registry.register(regenerateStateNameTool);
