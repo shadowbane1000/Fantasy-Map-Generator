@@ -94,6 +94,7 @@ import { setGeographyTool } from "./tools/set-geography";
 import { setHeightExponentTool } from "./tools/set-height-exponent";
 import { setHeightmapOptionsTool } from "./tools/set-heightmap-options";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
+import { setLabelTextTool } from "./tools/set-label-text";
 import { setLayerVisibilityTool } from "./tools/set-layer-visibility";
 import { setMapNameTool } from "./tools/set-map-name";
 import { setMarkerColorsTool } from "./tools/set-marker-colors";
@@ -580,6 +581,11 @@ export {
   TEMPLATE_KEYS,
 } from "./tools/set-heightmap-template";
 export {
+  createSetLabelTextTool,
+  defaultSetLabelTextRuntime,
+  setLabelTextTool,
+} from "./tools/set-label-text";
+export {
   createSetLayerVisibilityTool,
   setLayerVisibilityTool,
 } from "./tools/set-layer-visibility";
@@ -824,6 +830,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listNotesTool);
   registry.register(listZonesTool);
   registry.register(setMapNameTool);
+  registry.register(setLabelTextTool);
   registry.register(setMeasurementUnitsTool);
   registry.register(setClimateTool);
   registry.register(setCellsDensityTool);
