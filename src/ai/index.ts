@@ -49,6 +49,7 @@ import { setBiomeColorTool } from "./tools/set-biome-color";
 import { setBiomeHabitabilityTool } from "./tools/set-biome-habitability";
 import { setBurgCultureTool } from "./tools/set-burg-culture";
 import { setBurgFeatureTool } from "./tools/set-burg-feature";
+import { setBurgGroupTool } from "./tools/set-burg-group";
 import { setBurgPopulationTool } from "./tools/set-burg-population";
 import { setBurgPortTool } from "./tools/set-burg-port";
 import { setBurgTypeTool } from "./tools/set-burg-type";
@@ -308,6 +309,10 @@ export {
   resolveBurgFeature,
   setBurgFeatureTool,
 } from "./tools/set-burg-feature";
+export {
+  createSetBurgGroupTool,
+  setBurgGroupTool,
+} from "./tools/set-burg-group";
 export {
   createSetBurgPopulationTool,
   scaleDisplayToInternal,
@@ -583,6 +588,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setBurgTypeTool);
   registry.register(setBurgFeatureTool);
   registry.register(setBurgPortTool);
+  registry.register(setBurgGroupTool);
   registry.register(setStateCapitalTool);
   registry.register(setStateCultureTool);
   registry.register(setProvinceCapitalTool);
