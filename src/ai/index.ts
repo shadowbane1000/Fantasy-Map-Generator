@@ -56,6 +56,7 @@ import { listMarkerPinsTool } from "./tools/list-marker-pins";
 import { listMarkersTool } from "./tools/list-markers";
 import { listNotesTool } from "./tools/list-notes";
 import { listProvincesTool } from "./tools/list-provinces";
+import { listRegimentUnitsTool } from "./tools/list-regiment-units";
 import { listRegimentsTool } from "./tools/list-regiments";
 import { listReligionsTool } from "./tools/list-religions";
 import { listRiversTool } from "./tools/list-rivers";
@@ -545,6 +546,13 @@ export {
   createListProvincesTool,
   listProvincesTool,
 } from "./tools/list-provinces";
+export {
+  createListRegimentUnitsTool,
+  defaultRegimentUnitsRuntime,
+  listRegimentUnitsTool,
+  type RegimentUnit,
+  type RegimentUnitsRuntime,
+} from "./tools/list-regiment-units";
 export {
   createListRegimentsTool,
   listRegimentsTool,
@@ -1358,6 +1366,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeRouteTool);
   registry.register(addRouteTool);
   registry.register(renameRegimentTool);
+  registry.register(listRegimentUnitsTool);
   registry.register(setRegimentUnitTool);
   registry.register(setRegimentNavalTool);
   registry.register(setRegimentIconTool);
