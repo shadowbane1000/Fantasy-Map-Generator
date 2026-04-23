@@ -154,6 +154,7 @@ import { setYearAndEraTool } from "./tools/set-year-and-era";
 import { setZoneColorTool } from "./tools/set-zone-color";
 import { setZoneTypeTool } from "./tools/set-zone-type";
 import { setZoneVisibilityTool } from "./tools/set-zone-visibility";
+import { smoothHeightmapTool } from "./tools/smooth-heightmap";
 import { splitRegimentTool } from "./tools/split-regiment";
 
 export { AnthropicApiError, AnthropicClient } from "./anthropic-client";
@@ -883,6 +884,12 @@ export {
   setZoneVisibilityTool,
 } from "./tools/set-zone-visibility";
 export {
+  createSmoothHeightmapTool,
+  DEFAULT_SMOOTH_ADD,
+  DEFAULT_SMOOTH_FACTOR,
+  smoothHeightmapTool,
+} from "./tools/smooth-heightmap";
+export {
   createSplitRegimentTool,
   splitRegimentTool,
 } from "./tools/split-regiment";
@@ -980,6 +987,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setNoteTool);
   registry.register(setHeightmapTemplateTool);
   registry.register(setHeightmapOptionsTool);
+  registry.register(smoothHeightmapTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setProvinceFormTool);
