@@ -22,6 +22,7 @@ import { listRoutesTool } from "./tools/list-routes";
 import { listStatesTool } from "./tools/list-states";
 import { listZonesTool } from "./tools/list-zones";
 import { loadMapTool } from "./tools/load-map";
+import { moveBurgTool } from "./tools/move-burg";
 import { moveMarkerTool } from "./tools/move-marker";
 import { moveRegimentTool } from "./tools/move-regiment";
 import { regenerateMapTool } from "./tools/regenerate-map";
@@ -199,6 +200,10 @@ export {
   loadMapTool,
   resolveLoadSource,
 } from "./tools/load-map";
+export {
+  createMoveBurgTool,
+  moveBurgTool,
+} from "./tools/move-burg";
 export {
   createMoveMarkerTool,
   moveMarkerTool,
@@ -660,6 +665,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addMarkerTool);
   registry.register(moveMarkerTool);
   registry.register(moveRegimentTool);
+  registry.register(moveBurgTool);
   registry.register(removeNoteTool);
   registry.register(removeProvinceTool);
   registry.register(removeRegimentTool);
