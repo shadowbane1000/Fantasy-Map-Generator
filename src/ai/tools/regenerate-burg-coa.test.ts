@@ -173,14 +173,15 @@ describe("regenerate_burg_coa tool", () => {
 });
 
 describe("defaultRegenerateBurgCoaRuntime (integration)", () => {
-  const generateCoa = vi.fn<
-    (
-      parent: RawCoa | null,
-      kinship: number | null,
-      dominion: number | null,
-      type?: string | null,
-    ) => RawCoa
-  >();
+  const generateCoa =
+    vi.fn<
+      (
+        parent: RawCoa | null,
+        kinship: number | null,
+        dominion: number | null,
+        type?: string | null,
+      ) => RawCoa
+    >();
   const getShield = vi.fn((_culture: number, _state?: number) => "heater");
   const trigger = vi.fn();
   const existingCoaEl = { remove: vi.fn() };
@@ -305,7 +306,7 @@ describe("defaultRegenerateBurgCoaRuntime (integration)", () => {
 
   it("falls back to state parent when cell has no province", async () => {
     const pack = (
-      globalThis as {
+      globalThis as unknown as {
         pack: { burgs: RawBurg[]; cells: { province: number[] } };
       }
     ).pack;
