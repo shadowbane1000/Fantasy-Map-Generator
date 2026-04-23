@@ -27,6 +27,7 @@ import { findBurgsInAreaTool } from "./tools/find-burgs-in-area";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
 import { findCellsByBiomeTool } from "./tools/find-cells-by-biome";
 import { findCellsByHeightRangeTool } from "./tools/find-cells-by-height-range";
+import { findCellsByTemperatureRangeTool } from "./tools/find-cells-by-temperature-range";
 import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
 import { findMarkersInAreaTool } from "./tools/find-markers-in-area";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
@@ -351,6 +352,19 @@ export {
   MAX_HEIGHT,
   MIN_HEIGHT,
 } from "./tools/find-cells-by-height-range";
+export {
+  createFindCellsByTemperatureRangeTool,
+  DEFAULT_FIND_CELLS_BY_TEMPERATURE_RANGE_LIMIT,
+  defaultFindCellsByTemperatureRangeRuntime,
+  type FindCellsByTemperatureRangeHit,
+  type FindCellsByTemperatureRangeResult,
+  type FindCellsByTemperatureRangeRuntime,
+  findCellsByTemperatureRangeInPack,
+  findCellsByTemperatureRangeTool,
+  MAX_FIND_CELLS_BY_TEMPERATURE_RANGE_LIMIT,
+  MAX_TEMPERATURE,
+  MIN_TEMPERATURE,
+} from "./tools/find-cells-by-temperature-range";
 export {
   createFindCellsInRadiusTool,
   DEFAULT_FIND_CELLS_IN_RADIUS_LIMIT,
@@ -1414,6 +1428,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findCellsInRadiusTool);
   registry.register(findCellsByBiomeTool);
   registry.register(findCellsByHeightRangeTool);
+  registry.register(findCellsByTemperatureRangeTool);
   registry.register(listStatesTool);
   registry.register(listStylePresetsTool);
   registry.register(listBurgsTool);
