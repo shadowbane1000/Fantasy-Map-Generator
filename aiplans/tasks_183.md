@@ -1,0 +1,24 @@
+# Tasks 183 — `get_burg_info`
+
+- [x] Capture baselines: lint (7w / 1i / 0e) and tests (2573 passing / 194 files).
+- [x] Read analogs: `get-cell-info.ts(+test)`, `list-burgs.ts`, `find-nearest-burg.ts`, `rename-burg.ts`, `set-burg-feature.ts`.
+- [x] Read `_shared/index.ts`, `_shared/find-entity.ts`, `_shared/entity-ref.ts`, `_shared/pack-types.ts`, `_shared/results.ts`, `_shared/globals.ts`.
+- [x] Confirm burg religion / province derivation: `public/modules/ui/burgs-overview.js` uses `pack.cells.religion[b.cell]` and `pack.cells.province[b.cell]`.
+- [ ] Write `src/ai/tools/get-burg-info.ts`:
+  - `NamedRef = { id: number; name: string | null }`.
+  - `BurgFeatureFlags = { citadel, walls, plaza, temple, shanty }` (all boolean).
+  - `BurgInfo = { i, name, cell, x, y, population, culture, religion, state, province, type, group, feature_flags, port, port_feature, capital, coa: {present, custom}, lock }`.
+  - `PackLike` with burgs, states, provinces, cultures, religions, and `cells.religion` / `cells.province` arrays.
+  - `readBurgInfoFromPack(pack, ref)` → `BurgInfo | "not-ready" | "not-found"`.
+  - `BurgInfoRuntime` + `defaultBurgInfoRuntime` (reads `globalThis.pack`).
+  - `createGetBurgInfoTool(runtime)` with schema, validation, error mapping.
+  - `getBurgInfoTool` module-level default.
+- [ ] Write `src/ai/tools/get-burg-info.test.ts`:
+  - Pure/seam describe: happy-path full-population, numeric + name refs, case-insensitive name, unknown culture/religion/state/province -> `{id, name: null}`, neutral religion (cell value 0), feature flags booleanized, coa present/custom flags, capital / non-capital, port + port_feature, rejects placeholder (i=0), rejects removed burgs, rejects non-int-non-string ref, unknown ref, not-ready.
+  - `defaultBurgInfoRuntime` integration describe: sets/restores `globalThis.pack` via `as unknown as {...}`, verifies happy and not-ready paths through the tool.
+- [ ] Register in `src/ai/index.ts`: import + re-export block + `registry.register(getBurgInfoTool)` right after `getCellInfoTool`.
+- [ ] Add README_AI.md row after `get_cell_info` describing tool, inputs, returned fields, API-key note, example phrases.
+- [ ] Run `npm run build` → green.
+- [ ] Run `npm test` → all pass; record delta.
+- [ ] Run `npm run lint` → matches baseline.
+- [ ] Commit with `feat(ai): add get_burg_info tool` and body.
