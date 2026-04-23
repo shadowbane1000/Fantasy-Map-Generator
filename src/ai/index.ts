@@ -8,6 +8,7 @@ import { addBurgTool } from "./tools/add-burg";
 import { addCultureTool } from "./tools/add-culture";
 import { addHillTool } from "./tools/add-hill";
 import { addMarkerTool } from "./tools/add-marker";
+import { addPitTool } from "./tools/add-pit";
 import { addProvinceTool } from "./tools/add-province";
 import { addRangeTool } from "./tools/add-range";
 import { addRegimentTool } from "./tools/add-regiment";
@@ -187,6 +188,10 @@ export {
   addMarkerTool,
   createAddMarkerTool,
 } from "./tools/add-marker";
+export {
+  addPitTool,
+  createAddPitTool,
+} from "./tools/add-pit";
 export {
   addProvinceTool,
   createAddProvinceTool,
@@ -1008,6 +1013,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(smoothHeightmapTool);
   registry.register(addHillTool);
   registry.register(addRangeTool);
+  registry.register(addPitTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setProvinceFormTool);
