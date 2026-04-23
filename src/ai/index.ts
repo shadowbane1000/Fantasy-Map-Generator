@@ -40,6 +40,7 @@ import { findNearestMarkerTool } from "./tools/find-nearest-marker";
 import { findNearestRiverTool } from "./tools/find-nearest-river";
 import { findProvincesByStateTool } from "./tools/find-provinces-by-state";
 import { findRegimentsByStateTool } from "./tools/find-regiments-by-state";
+import { findRiversInAreaTool } from "./tools/find-rivers-in-area";
 import { findStatesByCultureTool } from "./tools/find-states-by-culture";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
@@ -520,6 +521,20 @@ export {
   findRegimentsByStateTool,
   MAX_FIND_REGIMENTS_BY_STATE_LIMIT,
 } from "./tools/find-regiments-by-state";
+export {
+  createFindRiversInAreaTool,
+  DEFAULT_FIND_RIVERS_IN_AREA_LIMIT,
+  defaultFindRiversInAreaRuntime,
+  type FindRiversInAreaArea,
+  type FindRiversInAreaHit,
+  type FindRiversInAreaPayload,
+  type FindRiversInAreaQuery,
+  type FindRiversInAreaResult,
+  type FindRiversInAreaRuntime,
+  findRiversInAreaInPack,
+  findRiversInAreaTool,
+  MAX_FIND_RIVERS_IN_AREA_LIMIT,
+} from "./tools/find-rivers-in-area";
 export {
   createFindStatesByCultureTool,
   DEFAULT_FIND_STATES_BY_CULTURE_LIMIT,
@@ -1565,6 +1580,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findMarkersInAreaTool);
   registry.register(listRiversTool);
   registry.register(findNearestRiverTool);
+  registry.register(findRiversInAreaTool);
   registry.register(listRoutesTool);
   registry.register(listRulersTool);
   registry.register(listRegimentsTool);
