@@ -111,6 +111,7 @@ import { setOnloadBehaviorTool } from "./tools/set-onload-behavior";
 import { setProvinceCapitalTool } from "./tools/set-province-capital";
 import { setProvinceCoaCustomTool } from "./tools/set-province-coa-custom";
 import { setProvinceColorTool } from "./tools/set-province-color";
+import { setProvinceFormTool } from "./tools/set-province-form";
 import { setRegimentIconTool } from "./tools/set-regiment-icon";
 import { setRegimentNavalTool } from "./tools/set-regiment-naval";
 import { setRegimentUnitTool } from "./tools/set-regiment-unit";
@@ -661,6 +662,10 @@ export {
   setProvinceColorTool,
 } from "./tools/set-province-color";
 export {
+  createSetProvinceFormTool,
+  setProvinceFormTool,
+} from "./tools/set-province-form";
+export {
   createSetRegimentIconTool,
   setRegimentIconTool,
 } from "./tools/set-regiment-icon";
@@ -886,6 +891,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setHeightmapOptionsTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
+  registry.register(setProvinceFormTool);
   registry.register(setStateTypeTool);
   registry.register(setStateLabelsModeTool);
   registry.register(setStylePresetTool);
