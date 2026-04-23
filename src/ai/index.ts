@@ -120,6 +120,7 @@ import { setLabelTextTool } from "./tools/set-label-text";
 import { setLayerFillTool } from "./tools/set-layer-fill";
 import { setLayerFilterTool } from "./tools/set-layer-filter";
 import { setLayerOpacityTool } from "./tools/set-layer-opacity";
+import { setLayerStrokeColorTool } from "./tools/set-layer-stroke-color";
 import { setLayerStrokeWidthTool } from "./tools/set-layer-stroke-width";
 import { setLayerVisibilityTool } from "./tools/set-layer-visibility";
 import { setMapNameTool } from "./tools/set-map-name";
@@ -738,6 +739,12 @@ export {
   setLayerOpacityTool,
 } from "./tools/set-layer-opacity";
 export {
+  createSetLayerStrokeColorTool,
+  defaultLayerStrokeColorRuntime,
+  type LayerStrokeColorRuntime,
+  setLayerStrokeColorTool,
+} from "./tools/set-layer-stroke-color";
+export {
   createSetLayerStrokeWidthTool,
   defaultLayerStrokeWidthRuntime,
   type LayerStrokeWidthRuntime,
@@ -1117,6 +1124,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(applyLayersPresetTool);
   registry.register(setLayerOpacityTool);
   registry.register(setLayerStrokeWidthTool);
+  registry.register(setLayerStrokeColorTool);
   registry.register(setLayerFilterTool);
   registry.register(setLayerFillTool);
   registry.register(setFontFamilyTool);
