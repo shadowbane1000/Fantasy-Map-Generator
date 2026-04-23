@@ -41,6 +41,7 @@ import { getFeatureInfoTool } from "./tools/get-feature-info";
 import { getLayerStyleTool } from "./tools/get-layer-style";
 import { getMapInfoTool } from "./tools/get-map-info";
 import { getMarkerInfoTool } from "./tools/get-marker-info";
+import { getNoteInfoTool } from "./tools/get-note-info";
 import { getProvinceInfoTool } from "./tools/get-province-info";
 import { getRegimentInfoTool } from "./tools/get-regiment-info";
 import { getReligionInfoTool } from "./tools/get-religion-info";
@@ -473,6 +474,14 @@ export {
   type MarkerInfoRuntime,
   readMarkerInfoFromPack,
 } from "./tools/get-marker-info";
+export {
+  createGetNoteInfoTool,
+  defaultNoteInfoRuntime,
+  getNoteInfoTool,
+  type NoteInfo,
+  type NoteInfoRuntime,
+  type ReadNoteInfoResult,
+} from "./tools/get-note-info";
 export {
   createGetProvinceInfoTool,
   defaultProvinceInfoRuntime,
@@ -1382,6 +1391,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getRouteInfoTool);
   registry.register(getBiomeInfoTool);
   registry.register(getMarkerInfoTool);
+  registry.register(getNoteInfoTool);
   registry.register(getRegimentInfoTool);
   registry.register(getZoneInfoTool);
   registry.register(getFeatureInfoTool);
