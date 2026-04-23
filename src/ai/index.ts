@@ -23,6 +23,7 @@ import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
+import { findNearestBurgTool } from "./tools/find-nearest-burg";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getCellInfoTool } from "./tools/get-cell-info";
 import { getMapInfoTool } from "./tools/get-map-info";
@@ -272,6 +273,16 @@ export {
   exportMapTool,
   resolveExportFormat,
 } from "./tools/export-map";
+export {
+  createFindNearestBurgTool,
+  defaultFindNearestBurgRuntime,
+  type FindNearestBurgHit,
+  type FindNearestBurgQuery,
+  type FindNearestBurgResult,
+  type FindNearestBurgRuntime,
+  findNearestBurgInPack,
+  findNearestBurgTool,
+} from "./tools/find-nearest-burg";
 export {
   createFocusOnMapTool,
   focusOnMapTool,
@@ -1053,6 +1064,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getCellInfoTool);
   registry.register(listStatesTool);
   registry.register(listBurgsTool);
+  registry.register(findNearestBurgTool);
   registry.register(listBiomesTool);
   registry.register(listCulturesTool);
   registry.register(listDiplomacyTool);
