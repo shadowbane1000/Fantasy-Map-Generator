@@ -116,6 +116,7 @@ import { setHeightmapOptionsTool } from "./tools/set-heightmap-options";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
 import { setLabelTextTool } from "./tools/set-label-text";
 import { setLayerOpacityTool } from "./tools/set-layer-opacity";
+import { setLayerStrokeWidthTool } from "./tools/set-layer-stroke-width";
 import { setLayerVisibilityTool } from "./tools/set-layer-visibility";
 import { setMapNameTool } from "./tools/set-map-name";
 import { setMarkerColorsTool } from "./tools/set-marker-colors";
@@ -703,6 +704,14 @@ export {
   setLayerOpacityTool,
 } from "./tools/set-layer-opacity";
 export {
+  createSetLayerStrokeWidthTool,
+  defaultLayerStrokeWidthRuntime,
+  type LayerStrokeWidthRuntime,
+  setLayerStrokeWidthTool,
+  WIDTH_MAX,
+  WIDTH_MIN,
+} from "./tools/set-layer-stroke-width";
+export {
   createSetLayerVisibilityTool,
   LAYER_SPECS,
   setLayerVisibilityTool,
@@ -1073,6 +1082,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setLayerVisibilityTool);
   registry.register(applyLayersPresetTool);
   registry.register(setLayerOpacityTool);
+  registry.register(setLayerStrokeWidthTool);
   registry.register(setYearAndEraTool);
   registry.register(setZoneVisibilityTool);
   registry.register(focusOnMapTool);
