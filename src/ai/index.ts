@@ -29,6 +29,7 @@ import { focusOnMapTool } from "./tools/focus-on-map";
 import { getCellInfoTool } from "./tools/get-cell-info";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getMapInfoTool } from "./tools/get-map-info";
+import { getStateInfoTool } from "./tools/get-state-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
 import { listBurgsTool } from "./tools/list-burgs";
@@ -322,6 +323,14 @@ export {
   createGetMapInfoTool,
   getMapInfoTool,
 } from "./tools/get-map-info";
+export {
+  createGetStateInfoTool,
+  defaultStateInfoRuntime,
+  getStateInfoTool,
+  readStateInfoFromPack,
+  type StateInfo,
+  type StateInfoRuntime,
+} from "./tools/get-state-info";
 export {
   createInvertHeightmapTool,
   invertHeightmapTool,
@@ -1095,6 +1104,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
   registry.register(getMapInfoTool);
   registry.register(getCellInfoTool);
+  registry.register(getStateInfoTool);
   registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
   registry.register(listStatesTool);
