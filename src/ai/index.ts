@@ -46,6 +46,7 @@ import { setBiomeHabitabilityTool } from "./tools/set-biome-habitability";
 import { setBurgCultureTool } from "./tools/set-burg-culture";
 import { setBurgFeatureTool } from "./tools/set-burg-feature";
 import { setBurgPopulationTool } from "./tools/set-burg-population";
+import { setBurgPortTool } from "./tools/set-burg-port";
 import { setBurgTypeTool } from "./tools/set-burg-type";
 import { setClimateTool } from "./tools/set-climate";
 import { setCultureBaseTool } from "./tools/set-culture-base";
@@ -289,6 +290,10 @@ export {
   setBurgPopulationTool,
 } from "./tools/set-burg-population";
 export {
+  createSetBurgPortTool,
+  setBurgPortTool,
+} from "./tools/set-burg-port";
+export {
   BURG_TYPES,
   createSetBurgTypeTool,
   resolveBurgType,
@@ -524,6 +529,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setBurgCultureTool);
   registry.register(setBurgTypeTool);
   registry.register(setBurgFeatureTool);
+  registry.register(setBurgPortTool);
   registry.register(setStateCapitalTool);
   registry.register(setStateCultureTool);
   registry.register(setProvinceCapitalTool);
