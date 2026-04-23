@@ -10,6 +10,12 @@
  * than redeclaring a local interface.
  */
 
+export interface RawCoa {
+  shield?: string;
+  custom?: unknown;
+  [key: string]: unknown;
+}
+
 export interface RawState {
   i: number;
   name?: string;
@@ -32,6 +38,7 @@ export interface RawState {
   neighbors?: number[];
   military?: RawRegiment[];
   diplomacy?: string[];
+  coa?: RawCoa;
   lock?: boolean;
   removed?: boolean;
 }
@@ -50,7 +57,7 @@ export interface RawBurg {
   population?: number;
   feature?: number;
   group?: string;
-  coa?: unknown;
+  coa?: RawCoa;
   lock?: boolean;
   citadel?: number;
   walls?: number;
@@ -106,6 +113,7 @@ export interface RawProvince {
   burg?: number;
   center?: number;
   pole?: [number, number] | number[];
+  coa?: RawCoa;
   lock?: boolean;
   removed?: boolean;
 }

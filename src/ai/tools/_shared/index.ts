@@ -13,6 +13,7 @@ export { getGlobal, getNotes, getPack, getPackCollection } from "./globals";
 export type {
   Pack,
   RawBurg,
+  RawCoa,
   RawCulture,
   RawMarker,
   RawNote,
