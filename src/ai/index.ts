@@ -67,6 +67,7 @@ import { setHeightExponentTool } from "./tools/set-height-exponent";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
 import { setLayerVisibilityTool } from "./tools/set-layer-visibility";
 import { setMapNameTool } from "./tools/set-map-name";
+import { setMarkerColorsTool } from "./tools/set-marker-colors";
 import { setMarkerIconTool } from "./tools/set-marker-icon";
 import { setMarkerLockTool } from "./tools/set-marker-lock";
 import { setMarkerNoteTool } from "./tools/set-marker-note";
@@ -403,6 +404,12 @@ export {
 } from "./tools/set-layer-visibility";
 export { setMapNameTool } from "./tools/set-map-name";
 export {
+  createSetMarkerColorsTool,
+  DEFAULT_MARKER_FILL,
+  DEFAULT_MARKER_STROKE,
+  setMarkerColorsTool,
+} from "./tools/set-marker-colors";
+export {
   createSetMarkerIconTool,
   setMarkerIconTool,
 } from "./tools/set-marker-icon";
@@ -620,6 +627,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setMarkerIconTool);
   registry.register(setMarkerSizeTool);
   registry.register(setMarkerPinTool);
+  registry.register(setMarkerColorsTool);
   registry.register(setNoteTool);
   registry.register(setHeightmapTemplateTool);
   registry.register(setEntityLockTool);
