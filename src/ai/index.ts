@@ -26,6 +26,7 @@ import { exportMapTool } from "./tools/export-map";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
 import { focusOnMapTool } from "./tools/focus-on-map";
+import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getMapInfoTool } from "./tools/get-map-info";
@@ -298,6 +299,16 @@ export {
   createFocusOnMapTool,
   focusOnMapTool,
 } from "./tools/focus-on-map";
+export {
+  type BurgCoaInfo,
+  type BurgFeatureFlags,
+  type BurgInfo,
+  type BurgInfoRuntime,
+  createGetBurgInfoTool,
+  defaultBurgInfoRuntime,
+  getBurgInfoTool,
+  readBurgInfoFromPack,
+} from "./tools/get-burg-info";
 export {
   type CellInfo,
   type CellInfoRuntime,
@@ -1105,6 +1116,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getMapInfoTool);
   registry.register(getCellInfoTool);
   registry.register(getStateInfoTool);
+  registry.register(getBurgInfoTool);
   registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
   registry.register(listStatesTool);
