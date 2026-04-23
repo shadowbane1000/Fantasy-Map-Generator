@@ -149,6 +149,7 @@ export interface RawRiver {
   discharge?: number;
   width?: number;
   sourceWidth?: number;
+  widthFactor?: number;
   source?: number;
   mouth?: number;
   parent?: number;
