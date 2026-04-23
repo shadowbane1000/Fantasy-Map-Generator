@@ -1,0 +1,22 @@
+# Tasks 181 — `get_entity_cells`
+
+- [x] Capture baselines: lint (7w / 1i / 0e) and tests (2521 passing / 192 files).
+- [x] Read analogs: `get-cell-info.ts(+test)`, `find-nearest-burg.ts(+test)`, `list-states.ts`, `list-provinces.ts`, `list-cultures.ts`, `list-religions.ts`.
+- [x] Read `_shared/index.ts`, `_shared/find-entity.ts`, `_shared/results.ts`, `_shared/entity-ref.ts`, `_shared/globals.ts`.
+- [x] Read `src/types/PackedGraph.ts` for `pack.cells.state|province|culture|religion`.
+- [ ] Write `src/ai/tools/get-entity-cells.ts`:
+  - `EntityType = "state" | "province" | "culture" | "religion"`.
+  - `PackLike` with `cells?.{i,state,province,culture,religion}`, and the four collections.
+  - `collectCellsForEntity(pack, type, ref, limit)` pure function → `{ i, name, cells, count } | "not-ready" | "unknown-entity"`.
+  - `GetEntityCellsRuntime` + `defaultGetEntityCellsRuntime` (reads `globalThis.pack`).
+  - `createGetEntityCellsTool` with schema, validation, error mapping.
+  - `getEntityCellsTool` module-level default export.
+- [ ] Write `src/ai/tools/get-entity-cells.test.ts`:
+  - Pure/seam describe block: per-type happy paths, numeric + name refs, case-insensitive, skipping placeholder, removed entries, limit truncation keeps `count` full, default limit, unknown entity, invalid type, invalid limit, not-ready.
+  - `defaultGetEntityCellsRuntime` integration describe block: sets/restores `globalThis.pack`, tool wire-up for happy path and not-ready.
+- [ ] Register in `src/ai/index.ts`: import + re-export + `registry.register(getEntityCellsTool)` right after `getCellInfoTool`.
+- [ ] Add README_AI.md row after `get_cell_info` describing tool, inputs, limits, API-key note, example phrases.
+- [ ] Run `npm run build` → green.
+- [ ] Run `npm test` → all pass; record delta.
+- [ ] Run `npm run lint` → matches baseline.
+- [ ] Commit with `feat(ai): add get_entity_cells tool` and body.
