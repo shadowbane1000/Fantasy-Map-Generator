@@ -64,6 +64,7 @@ import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
 import { getCultureInfoTool } from "./tools/get-culture-info";
+import { getDiplomacyBetweenTool } from "./tools/get-diplomacy-between";
 import { getEntityBboxTool } from "./tools/get-entity-bbox";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getEntityCentroidTool } from "./tools/get-entity-centroid";
@@ -817,6 +818,14 @@ export {
   getCultureInfoTool,
   readCultureInfoFromPack,
 } from "./tools/get-culture-info";
+export {
+  createGetDiplomacyBetweenTool,
+  type DiplomacyBetween,
+  type DiplomacyBetweenRuntime,
+  defaultDiplomacyBetweenRuntime,
+  getDiplomacyBetweenTool,
+  readDiplomacyBetweenFromPack,
+} from "./tools/get-diplomacy-between";
 export {
   type Bbox,
   type CollectEntityBboxResult,
@@ -1802,6 +1811,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getEntityCellsTool);
   registry.register(getEntityBboxTool);
   registry.register(getEntityCentroidTool);
+  registry.register(getDiplomacyBetweenTool);
   registry.register(findAdjacentEntitiesTool);
   registry.register(findCellsAdjacentToEntityTool);
   registry.register(findCellAtCoordsTool);
