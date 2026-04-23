@@ -115,6 +115,7 @@ import { setMarkerTypeTool } from "./tools/set-marker-type";
 import { setMeasurementUnitsTool } from "./tools/set-measurement-units";
 import { setNoteTool } from "./tools/set-note";
 import { setOnloadBehaviorTool } from "./tools/set-onload-behavior";
+import { setPrecipitationTool } from "./tools/set-precipitation";
 import { setProvinceCapitalTool } from "./tools/set-province-capital";
 import { setProvinceCoaCustomTool } from "./tools/set-province-coa-custom";
 import { setProvinceColorTool } from "./tools/set-province-color";
@@ -686,6 +687,12 @@ export {
   setOnloadBehaviorTool,
 } from "./tools/set-onload-behavior";
 export {
+  createSetPrecipitationTool,
+  PRECIPITATION_MAX,
+  PRECIPITATION_MIN,
+  setPrecipitationTool,
+} from "./tools/set-precipitation";
+export {
   createSetProvinceCapitalTool,
   setProvinceCapitalTool,
 } from "./tools/set-province-capital";
@@ -934,6 +941,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setStateLabelsModeTool);
   registry.register(setStylePresetTool);
   registry.register(setOnloadBehaviorTool);
+  registry.register(setPrecipitationTool);
   registry.register(setWorldRatesTool);
   registry.register(setLayerVisibilityTool);
   registry.register(applyLayersPresetTool);
