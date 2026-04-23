@@ -23,6 +23,7 @@ import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
+import { findAdjacentEntitiesTool } from "./tools/find-adjacent-entities";
 import { findBurgsByCultureTool } from "./tools/find-burgs-by-culture";
 import { findBurgsByReligionTool } from "./tools/find-burgs-by-religion";
 import { findBurgsByStateTool } from "./tools/find-burgs-by-state";
@@ -324,6 +325,20 @@ export {
   exportMapTool,
   resolveExportFormat,
 } from "./tools/export-map";
+export {
+  ADJACENT_ENTITY_TYPES,
+  type AdjacentEntityRef,
+  type AdjacentEntityType,
+  createFindAdjacentEntitiesTool,
+  DEFAULT_FIND_ADJACENT_ENTITIES_LIMIT,
+  defaultFindAdjacentEntitiesRuntime,
+  type FindAdjacentEntitiesHit,
+  type FindAdjacentEntitiesResult,
+  type FindAdjacentEntitiesRuntime,
+  findAdjacentEntitiesInPack,
+  findAdjacentEntitiesTool,
+  MAX_FIND_ADJACENT_ENTITIES_LIMIT,
+} from "./tools/find-adjacent-entities";
 export {
   createFindBurgsByCultureTool,
   DEFAULT_FIND_BURGS_BY_CULTURE_LIMIT,
@@ -1655,6 +1670,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getZoneInfoTool);
   registry.register(getFeatureInfoTool);
   registry.register(getEntityCellsTool);
+  registry.register(findAdjacentEntitiesTool);
   registry.register(findCellAtCoordsTool);
   registry.register(findCellsInRadiusTool);
   registry.register(findCellsByBiomeTool);
