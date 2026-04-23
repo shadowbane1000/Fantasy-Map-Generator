@@ -25,6 +25,7 @@ import { loadMapTool } from "./tools/load-map";
 import { moveBurgTool } from "./tools/move-burg";
 import { moveMarkerTool } from "./tools/move-marker";
 import { moveRegimentTool } from "./tools/move-regiment";
+import { regenerateEmblemsTool } from "./tools/regenerate-emblems";
 import { regenerateMapTool } from "./tools/regenerate-map";
 import { removeBiomeTool } from "./tools/remove-biome";
 import { removeBurgTool } from "./tools/remove-burg";
@@ -212,6 +213,10 @@ export {
   createMoveRegimentTool,
   moveRegimentTool,
 } from "./tools/move-regiment";
+export {
+  createRegenerateEmblemsTool,
+  regenerateEmblemsTool,
+} from "./tools/regenerate-emblems";
 export {
   createRegenerateMapTool,
   regenerateMapTool,
@@ -656,6 +661,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setZoneVisibilityTool);
   registry.register(focusOnMapTool);
   registry.register(regenerateMapTool);
+  registry.register(regenerateEmblemsTool);
   registry.register(saveMapTool);
   registry.register(loadMapTool);
   registry.register(exportMapTool);
