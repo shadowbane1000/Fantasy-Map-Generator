@@ -50,6 +50,7 @@ import { listBurgsTool } from "./tools/list-burgs";
 import { listCulturesTool } from "./tools/list-cultures";
 import { listCulturesSetsTool } from "./tools/list-cultures-sets";
 import { listDiplomacyTool } from "./tools/list-diplomacy";
+import { listEmblemShapesTool } from "./tools/list-emblem-shapes";
 import { listFeaturesTool } from "./tools/list-features";
 import { listHeightmapTemplatesTool } from "./tools/list-heightmap-templates";
 import { listMarkerPinsTool } from "./tools/list-marker-pins";
@@ -507,6 +508,13 @@ export {
   listDiplomacyTool,
   readDiplomacyFromPack,
 } from "./tools/list-diplomacy";
+export {
+  createListEmblemShapesTool,
+  defaultEmblemShapesListRuntime,
+  type EmblemShapeEntry,
+  type EmblemShapesListRuntime,
+  listEmblemShapesTool,
+} from "./tools/list-emblem-shapes";
 export {
   createListFeaturesTool,
   defaultFeaturesRuntime,
@@ -1382,6 +1390,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setCulturesSetTool);
   registry.register(listCulturesSetsTool);
   registry.register(setDefaultEmblemShapeTool);
+  registry.register(listEmblemShapesTool);
   registry.register(setReligionCenterTool);
   registry.register(setReligionColorTool);
   registry.register(setReligionTypeTool);
