@@ -57,6 +57,7 @@ import { listEmblemShapesTool } from "./tools/list-emblem-shapes";
 import { listFeaturesTool } from "./tools/list-features";
 import { listHeightmapTemplatesTool } from "./tools/list-heightmap-templates";
 import { listMarkerPinsTool } from "./tools/list-marker-pins";
+import { listMarkerTypesTool } from "./tools/list-marker-types";
 import { listMarkersTool } from "./tools/list-markers";
 import { listNotesTool } from "./tools/list-notes";
 import { listProvincesTool } from "./tools/list-provinces";
@@ -577,6 +578,17 @@ export {
   type MarkerPinEntry,
   type MarkerPinListRuntime,
 } from "./tools/list-marker-pins";
+export {
+  createListMarkerTypesTool,
+  defaultMarkerTypesRuntime,
+  listMarkerTypesTool,
+  type MarkerTypeCount,
+  type MarkerTypesPackLike,
+  type MarkerTypesRuntime,
+  type MarkerTypesSummary,
+  readMarkerTypesFromPack,
+  UNTYPED_MARKER_BUCKET,
+} from "./tools/list-marker-types";
 export {
   createListMarkersTool,
   listMarkersTool,
@@ -1378,6 +1390,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listReligionsTool);
   registry.register(listProvincesTool);
   registry.register(listMarkersTool);
+  registry.register(listMarkerTypesTool);
   registry.register(findNearestMarkerTool);
   registry.register(findMarkersInAreaTool);
   registry.register(listRiversTool);
