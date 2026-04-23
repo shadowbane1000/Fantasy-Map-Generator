@@ -48,6 +48,7 @@ import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
 import { listBurgsTool } from "./tools/list-burgs";
 import { listCulturesTool } from "./tools/list-cultures";
+import { listCulturesSetsTool } from "./tools/list-cultures-sets";
 import { listDiplomacyTool } from "./tools/list-diplomacy";
 import { listFeaturesTool } from "./tools/list-features";
 import { listHeightmapTemplatesTool } from "./tools/list-heightmap-templates";
@@ -492,6 +493,13 @@ export {
   createListCulturesTool,
   listCulturesTool,
 } from "./tools/list-cultures";
+export {
+  type CulturesSetEntry,
+  createListCulturesSetsTool,
+  cultureSetDisplayName,
+  listCulturesSetsEntries,
+  listCulturesSetsTool,
+} from "./tools/list-cultures-sets";
 export {
   createListDiplomacyTool,
   listDiplomacyTool,
@@ -1355,6 +1363,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setCultureOriginsTool);
   registry.register(setCultureShieldTool);
   registry.register(setCulturesSetTool);
+  registry.register(listCulturesSetsTool);
   registry.register(setDefaultEmblemShapeTool);
   registry.register(setReligionCenterTool);
   registry.register(setReligionColorTool);
