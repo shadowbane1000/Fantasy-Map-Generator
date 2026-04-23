@@ -89,6 +89,7 @@ import { setClimateTool } from "./tools/set-climate";
 import { setCultureBaseTool } from "./tools/set-culture-base";
 import { setCultureCenterTool } from "./tools/set-culture-center";
 import { setCultureColorTool } from "./tools/set-culture-color";
+import { setCultureOriginsTool } from "./tools/set-culture-origins";
 import { setCultureShieldTool } from "./tools/set-culture-shield";
 import { setCultureTypeTool } from "./tools/set-culture-type";
 import { setCulturesSetTool } from "./tools/set-cultures-set";
@@ -550,6 +551,10 @@ export {
   setCultureColorTool,
 } from "./tools/set-culture-color";
 export {
+  createSetCultureOriginsTool,
+  setCultureOriginsTool,
+} from "./tools/set-culture-origins";
+export {
   CULTURE_SHIELDS,
   createSetCultureShieldTool,
   resolveCultureShield,
@@ -918,6 +923,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setCultureTypeTool);
   registry.register(setCultureBaseTool);
   registry.register(setCultureCenterTool);
+  registry.register(setCultureOriginsTool);
   registry.register(setCultureShieldTool);
   registry.register(setCulturesSetTool);
   registry.register(setDefaultEmblemShapeTool);
