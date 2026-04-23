@@ -37,6 +37,7 @@ import { findCellsByPopulationRangeTool } from "./tools/find-cells-by-population
 import { findCellsByPrecipitationRangeTool } from "./tools/find-cells-by-precipitation-range";
 import { findCellsByTemperatureRangeTool } from "./tools/find-cells-by-temperature-range";
 import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
+import { findCoastCellsTool } from "./tools/find-coast-cells";
 import { findCulturesByTypeTool } from "./tools/find-cultures-by-type";
 import { findMarkersByTypeTool } from "./tools/find-markers-by-type";
 import { findMarkersInAreaTool } from "./tools/find-markers-in-area";
@@ -500,6 +501,18 @@ export {
   findCellsInRadiusTool,
   MAX_FIND_CELLS_IN_RADIUS_LIMIT,
 } from "./tools/find-cells-in-radius";
+export {
+  createFindCoastCellsTool,
+  DEFAULT_FIND_COAST_CELLS_LIMIT,
+  defaultFindCoastCellsRuntime,
+  type FindCoastCellsHit,
+  type FindCoastCellsResult,
+  type FindCoastCellsRuntime,
+  type FindCoastSide,
+  findCoastCellsInPack,
+  findCoastCellsTool,
+  MAX_FIND_COAST_CELLS_LIMIT,
+} from "./tools/find-coast-cells";
 export {
   createFindCulturesByTypeTool,
   DEFAULT_FIND_CULTURES_BY_TYPE_LIMIT,
@@ -1715,6 +1728,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findCellsByTemperatureRangeTool);
   registry.register(findCellsByPrecipitationRangeTool);
   registry.register(findCellsByPopulationRangeTool);
+  registry.register(findCoastCellsTool);
   registry.register(listStatesTool);
   registry.register(listStylePresetsTool);
   registry.register(listBurgsTool);
