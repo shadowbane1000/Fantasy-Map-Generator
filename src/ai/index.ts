@@ -23,6 +23,7 @@ import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
+import { findBurgsInAreaTool } from "./tools/find-burgs-in-area";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
 import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
@@ -299,6 +300,20 @@ export {
   exportMapTool,
   resolveExportFormat,
 } from "./tools/export-map";
+export {
+  createFindBurgsInAreaTool,
+  DEFAULT_FIND_BURGS_IN_AREA_LIMIT,
+  defaultFindBurgsInAreaRuntime,
+  type FindBurgsInAreaArea,
+  type FindBurgsInAreaHit,
+  type FindBurgsInAreaPayload,
+  type FindBurgsInAreaQuery,
+  type FindBurgsInAreaResult,
+  type FindBurgsInAreaRuntime,
+  findBurgsInAreaInPack,
+  findBurgsInAreaTool,
+  MAX_FIND_BURGS_IN_AREA_LIMIT,
+} from "./tools/find-burgs-in-area";
 export {
   createFindCellAtCoordsTool,
   defaultFindCellRuntime,
@@ -1330,6 +1345,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listStylePresetsTool);
   registry.register(listBurgsTool);
   registry.register(findNearestBurgTool);
+  registry.register(findBurgsInAreaTool);
   registry.register(measureDistanceTool);
   registry.register(listBiomesTool);
   registry.register(listCulturesTool);
