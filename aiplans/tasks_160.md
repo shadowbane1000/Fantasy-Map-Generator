@@ -1,0 +1,29 @@
+# Tasks — Plan 160 (`add_strait`)
+
+- [x] Confirm cwd is the worktree and master is up to date.
+- [x] Read `src/modules/heightmap-generator.ts` around addStrait (2-arg signature — `width`, `direction = "vertical"`).
+- [x] Read `public/modules/ui/heightmap-editor.js` Strait handler (line ~1087).
+- [x] Read `src/ai/tools/add-trough.ts` + test for the pattern.
+- [x] Read `src/ai/tools/add-hill.ts` for shared constants (NOT re-used here — strait has no X/Y).
+- [x] Read `src/ai/tools/_shared/index.ts` helpers.
+- [x] Record baseline: 172 test files / 2140 tests / 7 warnings / 1 info / 0 errors.
+- [x] Write `aiplans/plan_160.md`.
+- [x] Write `aiplans/tasks_160.md`.
+- [ ] Create `src/ai/tools/add-strait.ts`:
+  - [ ] `AddStraitRuntime` interface `{ addStrait(width, direction): { cellsChanged } }`
+  - [ ] `defaultAddStraitRuntime` — setGraph → addStrait → getHeights → count changes
+  - [ ] `coerceWidth` — accepts number | string, coerces to string, rejects NaN/∞/empty
+  - [ ] `coerceDirection` — default `"vertical"`, validates `"vertical"` | `"horizontal"`, rejects non-strings
+  - [ ] `createAddStraitTool(runtime?)` exporting schema with `width` required
+  - [ ] `addStraitTool` singleton export
+  - [ ] Do NOT re-export `DEFAULT_RANGE_X` / `DEFAULT_RANGE_Y` (unused here).
+- [ ] Create `src/ai/tools/add-strait.test.ts` covering all 12 scenarios listed in the plan.
+- [ ] Update `src/ai/index.ts`:
+  - [ ] Import `addStraitTool`.
+  - [ ] Re-export `{ addStraitTool, createAddStraitTool }` only.
+  - [ ] `registry.register(addStraitTool)` near `addTroughTool`.
+- [ ] Add `add_strait` row to `README_AI.md` near the `add_trough` row (description + examples + API-key note).
+- [ ] `npm run build` — must succeed.
+- [ ] `npm test` — all pass; count = 2140 + 13 = 2153 (or close).
+- [ ] `npm run lint` — must match baseline 7 warnings / 1 info / 0 errors.
+- [ ] `git add` the specific files; commit `feat(ai): add add_strait tool`.
