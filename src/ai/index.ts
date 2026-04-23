@@ -31,6 +31,7 @@ import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
 import { getCultureInfoTool } from "./tools/get-culture-info";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
+import { getFeatureInfoTool } from "./tools/get-feature-info";
 import { getMapInfoTool } from "./tools/get-map-info";
 import { getMarkerInfoTool } from "./tools/get-marker-info";
 import { getProvinceInfoTool } from "./tools/get-province-info";
@@ -355,6 +356,14 @@ export {
   getEntityCellsTool,
   MAX_GET_ENTITY_CELLS_LIMIT,
 } from "./tools/get-entity-cells";
+export {
+  createGetFeatureInfoTool,
+  defaultFeatureInfoRuntime,
+  type FeatureInfo,
+  type FeatureInfoRuntime,
+  getFeatureInfoTool,
+  readFeatureInfoFromPack,
+} from "./tools/get-feature-info";
 export {
   createGetMapInfoTool,
   getMapInfoTool,
@@ -1209,6 +1218,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getMarkerInfoTool);
   registry.register(getRegimentInfoTool);
   registry.register(getZoneInfoTool);
+  registry.register(getFeatureInfoTool);
   registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
   registry.register(listStatesTool);
