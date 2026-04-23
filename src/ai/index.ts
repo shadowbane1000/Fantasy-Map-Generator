@@ -34,6 +34,7 @@ import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getMapInfoTool } from "./tools/get-map-info";
 import { getMarkerInfoTool } from "./tools/get-marker-info";
 import { getProvinceInfoTool } from "./tools/get-province-info";
+import { getRegimentInfoTool } from "./tools/get-regiment-info";
 import { getReligionInfoTool } from "./tools/get-religion-info";
 import { getRiverInfoTool } from "./tools/get-river-info";
 import { getStateInfoTool } from "./tools/get-state-info";
@@ -373,6 +374,14 @@ export {
   type ProvinceInfoRuntime,
   readProvinceInfoFromPack,
 } from "./tools/get-province-info";
+export {
+  createGetRegimentInfoTool,
+  defaultRegimentInfoRuntime,
+  getRegimentInfoTool,
+  type RegimentInfo,
+  type RegimentInfoRuntime,
+  readRegimentInfoFromPack,
+} from "./tools/get-regiment-info";
 export {
   createGetReligionInfoTool,
   defaultReligionInfoRuntime,
@@ -1178,6 +1187,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getRiverInfoTool);
   registry.register(getBiomeInfoTool);
   registry.register(getMarkerInfoTool);
+  registry.register(getRegimentInfoTool);
   registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
   registry.register(listStatesTool);
