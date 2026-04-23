@@ -52,6 +52,11 @@ export interface RawBurg {
   group?: string;
   coa?: unknown;
   lock?: boolean;
+  citadel?: number;
+  walls?: number;
+  plaza?: number;
+  temple?: number;
+  shanty?: number;
   removed?: boolean;
 }
 
