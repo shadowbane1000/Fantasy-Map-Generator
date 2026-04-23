@@ -24,6 +24,7 @@ import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
+import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
@@ -296,6 +297,18 @@ export {
   findCellAtCoordsTool,
   scanPackForNearestCell,
 } from "./tools/find-cell-at-coords";
+export {
+  createFindCellsInRadiusTool,
+  DEFAULT_FIND_CELLS_IN_RADIUS_LIMIT,
+  defaultFindCellsInRadiusRuntime,
+  type FindCellsInRadiusHit,
+  type FindCellsInRadiusQuery,
+  type FindCellsInRadiusResult,
+  type FindCellsInRadiusRuntime,
+  findCellsInRadiusInPack,
+  findCellsInRadiusTool,
+  MAX_FIND_CELLS_IN_RADIUS_LIMIT,
+} from "./tools/find-cells-in-radius";
 export {
   createFindNearestBurgTool,
   defaultFindNearestBurgRuntime,
@@ -1229,6 +1242,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getFeatureInfoTool);
   registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
+  registry.register(findCellsInRadiusTool);
   registry.register(listStatesTool);
   registry.register(listBurgsTool);
   registry.register(findNearestBurgTool);
