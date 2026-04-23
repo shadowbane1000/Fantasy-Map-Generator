@@ -143,6 +143,7 @@ import { setStateFormTool } from "./tools/set-state-form";
 import { setStateLabelsModeTool } from "./tools/set-state-labels-mode";
 import { setStateTypeTool } from "./tools/set-state-type";
 import { setStylePresetTool } from "./tools/set-style-preset";
+import { setWindTool } from "./tools/set-wind";
 import { setWorldRatesTool } from "./tools/set-world-rates";
 import { setYearAndEraTool } from "./tools/set-year-and-era";
 import { setZoneColorTool } from "./tools/set-zone-color";
@@ -825,6 +826,15 @@ export {
   setStylePresetTool,
 } from "./tools/set-style-preset";
 export {
+  createSetWindTool,
+  DEFAULT_WINDS,
+  normaliseAngle as normaliseWindAngle,
+  resolveBand as resolveWindBand,
+  setWindTool,
+  WIND_BAND_ALIASES,
+  WIND_BAND_COUNT,
+} from "./tools/set-wind";
+export {
   createSetWorldRatesTool,
   setWorldRatesTool,
   validateRatesInput,
@@ -949,6 +959,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setStylePresetTool);
   registry.register(setOnloadBehaviorTool);
   registry.register(setPrecipitationTool);
+  registry.register(setWindTool);
   registry.register(setWorldRatesTool);
   registry.register(setLayerVisibilityTool);
   registry.register(applyLayersPresetTool);
