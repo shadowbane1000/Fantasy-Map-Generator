@@ -8,6 +8,7 @@ import { addCultureTool } from "./tools/add-culture";
 import { addMarkerTool } from "./tools/add-marker";
 import { addRegimentTool } from "./tools/add-regiment";
 import { addReligionTool } from "./tools/add-religion";
+import { addRouteTool } from "./tools/add-route";
 import { addStateTool } from "./tools/add-state";
 import { addZoneTool } from "./tools/add-zone";
 import { applyLayersPresetTool } from "./tools/apply-layers-preset";
@@ -170,6 +171,10 @@ export {
   addReligionTool,
   createAddReligionTool,
 } from "./tools/add-religion";
+export {
+  addRouteTool,
+  createAddRouteTool,
+} from "./tools/add-route";
 export {
   addStateTool,
   createAddStateTool,
@@ -861,6 +866,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setRouteGroupTool);
   registry.register(setRouteLockTool);
   registry.register(removeRouteTool);
+  registry.register(addRouteTool);
   registry.register(renameRegimentTool);
   registry.register(setRegimentUnitTool);
   registry.register(setRegimentNavalTool);
