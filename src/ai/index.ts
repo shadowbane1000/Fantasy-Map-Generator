@@ -94,6 +94,7 @@ import { setMarkerLockTool } from "./tools/set-marker-lock";
 import { setMarkerNoteTool } from "./tools/set-marker-note";
 import { setMarkerPinTool } from "./tools/set-marker-pin";
 import { setMarkerPinnedTool } from "./tools/set-marker-pinned";
+import { setMarkerShiftTool } from "./tools/set-marker-shift";
 import { setMarkerSizeTool } from "./tools/set-marker-size";
 import { setMarkerTypeTool } from "./tools/set-marker-type";
 import { setMeasurementUnitsTool } from "./tools/set-measurement-units";
@@ -568,6 +569,13 @@ export {
   setMarkerPinnedTool,
 } from "./tools/set-marker-pinned";
 export {
+  createSetMarkerShiftTool,
+  DEFAULT_MARKER_SHIFT,
+  MARKER_SHIFT_MAX,
+  MARKER_SHIFT_MIN,
+  setMarkerShiftTool,
+} from "./tools/set-marker-shift";
+export {
   createSetMarkerSizeTool,
   DEFAULT_MARKER_SIZE,
   setMarkerSizeTool,
@@ -798,6 +806,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setMarkerIconTool);
   registry.register(setMarkerSizeTool);
   registry.register(setMarkerIconSizeTool);
+  registry.register(setMarkerShiftTool);
   registry.register(setMarkerPinTool);
   registry.register(setMarkerColorsTool);
   registry.register(setNoteTool);
