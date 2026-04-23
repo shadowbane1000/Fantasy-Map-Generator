@@ -3,6 +3,7 @@ import { getApiKey } from "./api-key";
 import { ChatController } from "./chat-controller";
 import { mountChatWindow } from "./chat-window";
 import { ToolRegistry } from "./tools";
+import { addBurgTool } from "./tools/add-burg";
 import { addMarkerTool } from "./tools/add-marker";
 import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { exportMapTool } from "./tools/export-map";
@@ -110,6 +111,10 @@ export { clearApiKey, getApiKey, setApiKey } from "./api-key";
 export { ChatController } from "./chat-controller";
 export { mountChatWindow } from "./chat-window";
 export { ToolRegistry } from "./tools";
+export {
+  addBurgTool,
+  createAddBurgTool,
+} from "./tools/add-burg";
 export {
   addMarkerTool,
   createAddMarkerTool,
@@ -678,6 +683,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeCultureTool);
   registry.register(removeMarkerTool);
   registry.register(addMarkerTool);
+  registry.register(addBurgTool);
   registry.register(moveMarkerTool);
   registry.register(moveRegimentTool);
   registry.register(moveBurgTool);
