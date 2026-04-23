@@ -48,6 +48,7 @@ import { removeNoteTool } from "./tools/remove-note";
 import { removeProvinceTool } from "./tools/remove-province";
 import { removeRegimentTool } from "./tools/remove-regiment";
 import { removeReligionTool } from "./tools/remove-religion";
+import { removeRiverTool } from "./tools/remove-river";
 import { removeRouteTool } from "./tools/remove-route";
 import { removeStateTool } from "./tools/remove-state";
 import { removeZoneTool } from "./tools/remove-zone";
@@ -341,6 +342,10 @@ export {
   createRemoveReligionTool,
   removeReligionTool,
 } from "./tools/remove-religion";
+export {
+  createRemoveRiverTool,
+  removeRiverTool,
+} from "./tools/remove-river";
 export {
   createRemoveRouteTool,
   removeRouteTool,
@@ -857,6 +862,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeProvinceTool);
   registry.register(removeRegimentTool);
   registry.register(removeReligionTool);
+  registry.register(removeRiverTool);
   registry.register(removeStateTool);
   registry.register(removeZoneTool);
   return registry;
