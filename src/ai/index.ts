@@ -15,6 +15,7 @@ import { addRegimentTool } from "./tools/add-regiment";
 import { addReligionTool } from "./tools/add-religion";
 import { addRouteTool } from "./tools/add-route";
 import { addStateTool } from "./tools/add-state";
+import { addTroughTool } from "./tools/add-trough";
 import { addZoneTool } from "./tools/add-zone";
 import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { exportMapTool } from "./tools/export-map";
@@ -216,6 +217,10 @@ export {
   addStateTool,
   createAddStateTool,
 } from "./tools/add-state";
+export {
+  addTroughTool,
+  createAddTroughTool,
+} from "./tools/add-trough";
 export {
   addZoneTool,
   createAddZoneTool,
@@ -1014,6 +1019,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addHillTool);
   registry.register(addRangeTool);
   registry.register(addPitTool);
+  registry.register(addTroughTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setProvinceFormTool);
