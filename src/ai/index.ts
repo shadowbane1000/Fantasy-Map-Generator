@@ -36,6 +36,7 @@ import { listRoutesTool } from "./tools/list-routes";
 import { listStatesTool } from "./tools/list-states";
 import { listZonesTool } from "./tools/list-zones";
 import { loadMapTool } from "./tools/load-map";
+import { maskHeightmapTool } from "./tools/mask-heightmap";
 import { mergeStatesTool } from "./tools/merge-states";
 import { modifyHeightmapTool } from "./tools/modify-heightmap";
 import { moveBurgTool } from "./tools/move-burg";
@@ -319,6 +320,10 @@ export {
   loadMapTool,
   resolveLoadSource,
 } from "./tools/load-map";
+export {
+  createMaskHeightmapTool,
+  maskHeightmapTool,
+} from "./tools/mask-heightmap";
 export {
   createMergeStatesTool,
   mergeStatesTool,
@@ -1032,6 +1037,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addTroughTool);
   registry.register(addStraitTool);
   registry.register(modifyHeightmapTool);
+  registry.register(maskHeightmapTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setProvinceFormTool);
