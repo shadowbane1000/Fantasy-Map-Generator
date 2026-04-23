@@ -71,6 +71,7 @@ import { setCultureColorTool } from "./tools/set-culture-color";
 import { setCultureShieldTool } from "./tools/set-culture-shield";
 import { setCultureTypeTool } from "./tools/set-culture-type";
 import { setCulturesSetTool } from "./tools/set-cultures-set";
+import { setDefaultEmblemShapeTool } from "./tools/set-default-emblem-shape";
 import { setDiplomacyTool } from "./tools/set-diplomacy";
 import { setEntityExpansionismTool } from "./tools/set-entity-expansionism";
 import { setEntityLockTool } from "./tools/set-entity-lock";
@@ -439,6 +440,13 @@ export {
   setCulturesSetTool,
 } from "./tools/set-cultures-set";
 export {
+  createSetDefaultEmblemShapeTool,
+  DEFAULT_EMBLEM_SHAPES,
+  DIVERSIFORM_SHAPES,
+  resolveEmblemShape,
+  setDefaultEmblemShapeTool,
+} from "./tools/set-default-emblem-shape";
+export {
   createSetDiplomacyTool,
   DIPLOMACY_RELATIONS,
   resolveRelation,
@@ -715,6 +723,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setCultureBaseTool);
   registry.register(setCultureShieldTool);
   registry.register(setCulturesSetTool);
+  registry.register(setDefaultEmblemShapeTool);
   registry.register(setReligionColorTool);
   registry.register(setReligionTypeTool);
   registry.register(setReligionFormTool);
