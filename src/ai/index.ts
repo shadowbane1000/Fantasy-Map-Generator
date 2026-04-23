@@ -52,6 +52,7 @@ import { listCulturesSetsTool } from "./tools/list-cultures-sets";
 import { listDiplomacyTool } from "./tools/list-diplomacy";
 import { listFeaturesTool } from "./tools/list-features";
 import { listHeightmapTemplatesTool } from "./tools/list-heightmap-templates";
+import { listMarkerPinsTool } from "./tools/list-marker-pins";
 import { listMarkersTool } from "./tools/list-markers";
 import { listNotesTool } from "./tools/list-notes";
 import { listProvincesTool } from "./tools/list-provinces";
@@ -522,6 +523,13 @@ export {
   listHeightmapTemplatesTool,
   readHeightmapListFromGlobals,
 } from "./tools/list-heightmap-templates";
+export {
+  createListMarkerPinsTool,
+  defaultMarkerPinListRuntime,
+  listMarkerPinsTool,
+  type MarkerPinEntry,
+  type MarkerPinListRuntime,
+} from "./tools/list-marker-pins";
 export {
   createListMarkersTool,
   listMarkersTool,
@@ -1398,6 +1406,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setMarkerIconSizeTool);
   registry.register(setMarkerShiftTool);
   registry.register(setMarkerPinTool);
+  registry.register(listMarkerPinsTool);
   registry.register(setMarkerColorsTool);
   registry.register(setNoteTool);
   registry.register(setHeightmapTemplateTool);
