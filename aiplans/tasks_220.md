@@ -1,0 +1,28 @@
+# Tasks 220 — `find_states_by_culture`
+
+- [x] Read `src/ai/tools/find-burgs-by-culture.ts` (+ test) — direct analog.
+- [x] Read `src/ai/tools/list-states.ts` — state summary shape.
+- [x] Read `src/ai/tools/get-culture-info.ts` — states_count scan via `state.culture`.
+- [x] Read `src/ai/tools/_shared/index.ts` and `pack-types.ts` for `RawState` shape.
+- [x] Capture lint baseline: 7 warnings / 1 info / 0 errors.
+- [ ] Write `src/ai/tools/find-states-by-culture.ts`:
+  - `DEFAULT_FIND_STATES_BY_CULTURE_LIMIT = 10000`, `MAX_FIND_STATES_BY_CULTURE_LIMIT = 100000`
+  - `FindStatesByCultureHit`, `FindStatesByCulturePayload`, `FindStatesByCultureResult`
+  - `ResolvedCulture`, `ResolveCultureResult`
+  - `PackLike` (states, cultures, burgs)
+  - `resolveCultureRefInPack` (allows id 0)
+  - `findStatesByCultureInPack` — skips `i === 0` (Neutrals) and `removed`; capital-name lookup from `pack.burgs[state.capital]?.name`
+  - `FindStatesByCultureRuntime`, `defaultFindStatesByCultureRuntime`
+  - `parseLimit`, `parseCultureRef`
+  - `createFindStatesByCultureTool`, `findStatesByCultureTool`
+- [ ] Write `src/ai/tools/find-states-by-culture.test.ts`:
+  - Pure scanner: multi-match, second culture, culture 0, empty culture, skip i=0 & removed, limit truncation, field shape, capital-null case, not-ready variants.
+  - `resolveCultureRefInPack`: id / name / 0 / not-found (unknown, removed, OOR) / not-ready.
+  - Tool surface: ok numeric, ok string, ok 0, rejects invalid culture, not-found, not-ready via resolve, not-ready via find, explicit limit, invalid limit, default limit, empty, schema & constants.
+  - Default runtime integration: resolve, find, end-to-end, pack-missing.
+- [ ] Register tool in `src/ai/index.ts` (import + re-exports + `registry.register`).
+- [ ] Add `README_AI.md` row after the `find_burgs_by_religion` row.
+- [ ] Run `npm run build` — must succeed.
+- [ ] Run `npm test` — all pass.
+- [ ] Run `npm run lint` — baseline unchanged (7 / 1 / 0).
+- [ ] Commit with specific files staged.
