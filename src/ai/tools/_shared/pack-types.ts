@@ -101,6 +101,7 @@ export interface RawReligion {
   expansion?: string;
   expansionism?: number;
   origins?: number[];
+  center?: number;
   code?: string;
   lock?: boolean;
   removed?: boolean;

@@ -6,6 +6,7 @@ import { ToolRegistry } from "./tools";
 import { addBurgTool } from "./tools/add-burg";
 import { addCultureTool } from "./tools/add-culture";
 import { addMarkerTool } from "./tools/add-marker";
+import { addReligionTool } from "./tools/add-religion";
 import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { exportMapTool } from "./tools/export-map";
 import { focusOnMapTool } from "./tools/focus-on-map";
@@ -125,6 +126,10 @@ export {
   addMarkerTool,
   createAddMarkerTool,
 } from "./tools/add-marker";
+export {
+  addReligionTool,
+  createAddReligionTool,
+} from "./tools/add-religion";
 export {
   applyLayersPresetTool,
   createApplyLayersPresetTool,
@@ -697,6 +702,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addMarkerTool);
   registry.register(addBurgTool);
   registry.register(addCultureTool);
+  registry.register(addReligionTool);
   registry.register(moveMarkerTool);
   registry.register(moveRegimentTool);
   registry.register(moveBurgTool);
