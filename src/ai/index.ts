@@ -22,6 +22,7 @@ import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { exportMapTool } from "./tools/export-map";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getMapInfoTool } from "./tools/get-map-info";
+import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
 import { listBurgsTool } from "./tools/list-burgs";
@@ -251,6 +252,12 @@ export {
   createGetMapInfoTool,
   getMapInfoTool,
 } from "./tools/get-map-info";
+export {
+  createGetZoneInfoTool,
+  DEFAULT_ZONE_CELLS_LIMIT,
+  getZoneInfoTool,
+  MAX_ZONE_CELLS_LIMIT,
+} from "./tools/get-zone-info";
 export {
   createInvertHeightmapTool,
   invertHeightmapTool,
@@ -944,6 +951,7 @@ export {
 export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
   registry.register(getMapInfoTool);
+  registry.register(getZoneInfoTool);
   registry.register(listStatesTool);
   registry.register(listBurgsTool);
   registry.register(listBiomesTool);
