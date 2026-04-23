@@ -38,6 +38,7 @@ import { regenerateBurgNameTool } from "./tools/regenerate-burg-name";
 import { regenerateDomainTool } from "./tools/regenerate-domain";
 import { regenerateEmblemsTool } from "./tools/regenerate-emblems";
 import { regenerateMapTool } from "./tools/regenerate-map";
+import { regenerateProvinceCoaTool } from "./tools/regenerate-province-coa";
 import { regenerateProvinceNameTool } from "./tools/regenerate-province-name";
 import { regenerateStateCoaTool } from "./tools/regenerate-state-coa";
 import { regenerateStateNameTool } from "./tools/regenerate-state-name";
@@ -103,6 +104,7 @@ import { setMarkerSizeTool } from "./tools/set-marker-size";
 import { setMarkerTypeTool } from "./tools/set-marker-type";
 import { setMeasurementUnitsTool } from "./tools/set-measurement-units";
 import { setNoteTool } from "./tools/set-note";
+import { setOnloadBehaviorTool } from "./tools/set-onload-behavior";
 import { setProvinceCapitalTool } from "./tools/set-province-capital";
 import { setProvinceColorTool } from "./tools/set-province-color";
 import { setRegimentIconTool } from "./tools/set-regiment-icon";
@@ -298,6 +300,10 @@ export {
   createRegenerateMapTool,
   regenerateMapTool,
 } from "./tools/regenerate-map";
+export {
+  createRegenerateProvinceCoaTool,
+  regenerateProvinceCoaTool,
+} from "./tools/regenerate-province-coa";
 export {
   composeProvinceFullName,
   createRegenerateProvinceNameTool,
@@ -617,6 +623,12 @@ export {
   setNoteTool,
 } from "./tools/set-note";
 export {
+  createSetOnloadBehaviorTool,
+  ONLOAD_BEHAVIORS,
+  resolveOnloadBehavior,
+  setOnloadBehaviorTool,
+} from "./tools/set-onload-behavior";
+export {
   createSetProvinceCapitalTool,
   setProvinceCapitalTool,
 } from "./tools/set-province-capital";
@@ -843,6 +855,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setStateTypeTool);
   registry.register(setStateLabelsModeTool);
   registry.register(setStylePresetTool);
+  registry.register(setOnloadBehaviorTool);
   registry.register(setWorldRatesTool);
   registry.register(setLayerVisibilityTool);
   registry.register(applyLayersPresetTool);
@@ -853,6 +866,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateEmblemsTool);
   registry.register(regenerateBurgCoaTool);
   registry.register(regenerateStateCoaTool);
+  registry.register(regenerateProvinceCoaTool);
   registry.register(regenerateDomainTool);
   registry.register(regenerateBurgNameTool);
   registry.register(regenerateStateNameTool);
