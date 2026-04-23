@@ -60,6 +60,7 @@ import { listRiversTool } from "./tools/list-rivers";
 import { listRoutesTool } from "./tools/list-routes";
 import { listRulersTool } from "./tools/list-rulers";
 import { listStatesTool } from "./tools/list-states";
+import { listStylePresetsTool } from "./tools/list-style-presets";
 import { listZonesTool } from "./tools/list-zones";
 import { loadMapTool } from "./tools/load-map";
 import { maskHeightmapTool } from "./tools/mask-heightmap";
@@ -561,6 +562,13 @@ export {
   createListStatesTool,
   listStatesTool,
 } from "./tools/list-states";
+export {
+  createListStylePresetsTool,
+  defaultStylePresetListRuntime,
+  listStylePresetsTool,
+  type StylePresetEntry,
+  type StylePresetListRuntime,
+} from "./tools/list-style-presets";
 export {
   createListZonesTool,
   listZonesTool,
@@ -1287,6 +1295,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findCellAtCoordsTool);
   registry.register(findCellsInRadiusTool);
   registry.register(listStatesTool);
+  registry.register(listStylePresetsTool);
   registry.register(listBurgsTool);
   registry.register(findNearestBurgTool);
   registry.register(measureDistanceTool);
