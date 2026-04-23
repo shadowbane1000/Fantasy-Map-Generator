@@ -77,6 +77,7 @@ import { saveMapTool } from "./tools/save-map";
 import { setBiomeColorTool } from "./tools/set-biome-color";
 import { setBiomeCostTool } from "./tools/set-biome-cost";
 import { setBiomeHabitabilityTool } from "./tools/set-biome-habitability";
+import { setBiomeIconsDensityTool } from "./tools/set-biome-icons-density";
 import { setBurgCoaCustomTool } from "./tools/set-burg-coa-custom";
 import { setBurgCultureTool } from "./tools/set-burg-culture";
 import { setBurgFeatureTool } from "./tools/set-burg-feature";
@@ -493,6 +494,10 @@ export {
   setBiomeHabitabilityTool,
 } from "./tools/set-biome-habitability";
 export {
+  createSetBiomeIconsDensityTool,
+  setBiomeIconsDensityTool,
+} from "./tools/set-biome-icons-density";
+export {
   createSetBurgCoaCustomTool,
   setBurgCoaCustomTool,
 } from "./tools/set-burg-coa-custom";
@@ -907,6 +912,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setBiomeColorTool);
   registry.register(setBiomeCostTool);
   registry.register(setBiomeHabitabilityTool);
+  registry.register(setBiomeIconsDensityTool);
   registry.register(removeBiomeTool);
   registry.register(renameCultureTool);
   registry.register(renameReligionTool);
