@@ -132,6 +132,7 @@ import { setReligionCultureTool } from "./tools/set-religion-culture";
 import { setReligionDeityTool } from "./tools/set-religion-deity";
 import { setReligionExpansionTool } from "./tools/set-religion-expansion";
 import { setReligionFormTool } from "./tools/set-religion-form";
+import { setReligionOriginsTool } from "./tools/set-religion-origins";
 import { setReligionTypeTool } from "./tools/set-religion-type";
 import { setRiverTypeTool } from "./tools/set-river-type";
 import { setRiverWidthTool } from "./tools/set-river-width";
@@ -765,6 +766,10 @@ export {
   setReligionFormTool,
 } from "./tools/set-religion-form";
 export {
+  createSetReligionOriginsTool,
+  setReligionOriginsTool,
+} from "./tools/set-religion-origins";
+export {
   createSetReligionTypeTool,
   RELIGION_TYPES,
   resolveReligionType,
@@ -934,6 +939,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setReligionDeityTool);
   registry.register(setReligionExpansionTool);
   registry.register(setReligionCultureTool);
+  registry.register(setReligionOriginsTool);
   registry.register(setProvinceColorTool);
   registry.register(setZoneColorTool);
   registry.register(setZoneTypeTool);
