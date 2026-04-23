@@ -37,6 +37,7 @@ import { listStatesTool } from "./tools/list-states";
 import { listZonesTool } from "./tools/list-zones";
 import { loadMapTool } from "./tools/load-map";
 import { mergeStatesTool } from "./tools/merge-states";
+import { modifyHeightmapTool } from "./tools/modify-heightmap";
 import { moveBurgTool } from "./tools/move-burg";
 import { moveMarkerTool } from "./tools/move-marker";
 import { moveRegimentTool } from "./tools/move-regiment";
@@ -322,6 +323,10 @@ export {
   createMergeStatesTool,
   mergeStatesTool,
 } from "./tools/merge-states";
+export {
+  createModifyHeightmapTool,
+  modifyHeightmapTool,
+} from "./tools/modify-heightmap";
 export {
   createMoveBurgTool,
   moveBurgTool,
@@ -1026,6 +1031,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addPitTool);
   registry.register(addTroughTool);
   registry.register(addStraitTool);
+  registry.register(modifyHeightmapTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setProvinceFormTool);
