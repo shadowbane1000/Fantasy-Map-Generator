@@ -20,6 +20,7 @@ import { addTroughTool } from "./tools/add-trough";
 import { addZoneTool } from "./tools/add-zone";
 import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { clearHeightmapTool } from "./tools/clear-heightmap";
+import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getMapInfoTool } from "./tools/get-map-info";
@@ -249,6 +250,10 @@ export {
   clearHeightmapTool,
   createClearHeightmapTool,
 } from "./tools/clear-heightmap";
+export {
+  clearRulersTool,
+  createClearRulersTool,
+} from "./tools/clear-rulers";
 export {
   createExportMapTool,
   EXPORT_FORMATS,
@@ -1152,6 +1157,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateReligionNamesTool);
   registry.register(regenerateRiverNamesTool);
   registry.register(regenerateZonesTool);
+  registry.register(clearRulersTool);
   registry.register(saveMapTool);
   registry.register(loadMapTool);
   registry.register(exportMapTool);
