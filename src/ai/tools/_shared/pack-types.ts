@@ -197,6 +197,7 @@ export interface RawZone {
   color?: string;
   cells?: number[];
   hidden?: boolean;
+  removed?: boolean;
 }
 
 export interface Pack {

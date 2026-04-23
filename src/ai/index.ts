@@ -29,6 +29,7 @@ import { moveRegimentTool } from "./tools/move-regiment";
 import { regenerateDomainTool } from "./tools/regenerate-domain";
 import { regenerateEmblemsTool } from "./tools/regenerate-emblems";
 import { regenerateMapTool } from "./tools/regenerate-map";
+import { regenerateZonesTool } from "./tools/regenerate-zones";
 import { removeBiomeTool } from "./tools/remove-biome";
 import { removeBurgTool } from "./tools/remove-burg";
 import { removeCultureTool } from "./tools/remove-culture";
@@ -234,6 +235,11 @@ export {
   createRegenerateMapTool,
   regenerateMapTool,
 } from "./tools/regenerate-map";
+export {
+  createRegenerateZonesTool,
+  DEFAULT_ZONES_MULTIPLIER,
+  regenerateZonesTool,
+} from "./tools/regenerate-zones";
 export {
   createRemoveBiomeTool,
   DEFAULT_BIOME_COUNT,
@@ -676,6 +682,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateMapTool);
   registry.register(regenerateEmblemsTool);
   registry.register(regenerateDomainTool);
+  registry.register(regenerateZonesTool);
   registry.register(saveMapTool);
   registry.register(loadMapTool);
   registry.register(exportMapTool);
