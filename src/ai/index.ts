@@ -70,6 +70,7 @@ import { setMapNameTool } from "./tools/set-map-name";
 import { setMarkerIconTool } from "./tools/set-marker-icon";
 import { setMarkerLockTool } from "./tools/set-marker-lock";
 import { setMarkerNoteTool } from "./tools/set-marker-note";
+import { setMarkerPinTool } from "./tools/set-marker-pin";
 import { setMarkerPinnedTool } from "./tools/set-marker-pinned";
 import { setMarkerSizeTool } from "./tools/set-marker-size";
 import { setMarkerTypeTool } from "./tools/set-marker-type";
@@ -415,6 +416,13 @@ export {
   setMarkerNoteTool,
 } from "./tools/set-marker-note";
 export {
+  createSetMarkerPinTool,
+  DEFAULT_MARKER_PIN,
+  MARKER_PIN_SHAPES,
+  resolveMarkerPin,
+  setMarkerPinTool,
+} from "./tools/set-marker-pin";
+export {
   createSetMarkerPinnedTool,
   setMarkerPinnedTool,
 } from "./tools/set-marker-pinned";
@@ -611,6 +619,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setMarkerTypeTool);
   registry.register(setMarkerIconTool);
   registry.register(setMarkerSizeTool);
+  registry.register(setMarkerPinTool);
   registry.register(setNoteTool);
   registry.register(setHeightmapTemplateTool);
   registry.register(setEntityLockTool);

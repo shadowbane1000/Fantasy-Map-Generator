@@ -131,6 +131,9 @@ export interface RawMarker {
   dy?: number;
   px?: number;
   size?: number;
+  pin?: string;
+  fill?: string;
+  stroke?: string;
   pinned?: boolean;
   lock?: boolean;
   removed?: boolean;
