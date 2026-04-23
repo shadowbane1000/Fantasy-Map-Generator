@@ -26,6 +26,7 @@ import { exportMapTool } from "./tools/export-map";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
 import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
+import { findNearestMarkerTool } from "./tools/find-nearest-marker";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgInfoTool } from "./tools/get-burg-info";
@@ -319,6 +320,17 @@ export {
   findNearestBurgInPack,
   findNearestBurgTool,
 } from "./tools/find-nearest-burg";
+export {
+  createFindNearestMarkerTool,
+  defaultFindNearestMarkerRuntime,
+  type FindNearestMarkerHit,
+  type FindNearestMarkerOutcome,
+  type FindNearestMarkerQuery,
+  type FindNearestMarkerResult,
+  type FindNearestMarkerRuntime,
+  findNearestMarkerInPack,
+  findNearestMarkerTool,
+} from "./tools/find-nearest-marker";
 export {
   createFocusOnMapTool,
   focusOnMapTool,
@@ -1253,6 +1265,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listReligionsTool);
   registry.register(listProvincesTool);
   registry.register(listMarkersTool);
+  registry.register(findNearestMarkerTool);
   registry.register(listRiversTool);
   registry.register(listRoutesTool);
   registry.register(listRulersTool);
