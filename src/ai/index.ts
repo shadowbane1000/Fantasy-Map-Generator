@@ -49,6 +49,7 @@ import { listBurgsTool } from "./tools/list-burgs";
 import { listCulturesTool } from "./tools/list-cultures";
 import { listDiplomacyTool } from "./tools/list-diplomacy";
 import { listFeaturesTool } from "./tools/list-features";
+import { listHeightmapTemplatesTool } from "./tools/list-heightmap-templates";
 import { listMarkersTool } from "./tools/list-markers";
 import { listNotesTool } from "./tools/list-notes";
 import { listProvincesTool } from "./tools/list-provinces";
@@ -492,6 +493,14 @@ export {
   listFeaturesTool,
   readFeaturesFromPack,
 } from "./tools/list-features";
+export {
+  createListHeightmapTemplatesTool,
+  defaultHeightmapListRuntime,
+  type HeightmapListEntry,
+  type HeightmapListRuntime,
+  listHeightmapTemplatesTool,
+  readHeightmapListFromGlobals,
+} from "./tools/list-heightmap-templates";
 export {
   createListMarkersTool,
   listMarkersTool,
@@ -1273,6 +1282,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listCulturesTool);
   registry.register(listDiplomacyTool);
   registry.register(listFeaturesTool);
+  registry.register(listHeightmapTemplatesTool);
   registry.register(listReligionsTool);
   registry.register(listProvincesTool);
   registry.register(listMarkersTool);
