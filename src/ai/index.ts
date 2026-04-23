@@ -6,6 +6,7 @@ import { ToolRegistry } from "./tools";
 import { addBiomeTool } from "./tools/add-biome";
 import { addBurgTool } from "./tools/add-burg";
 import { addCultureTool } from "./tools/add-culture";
+import { addHillTool } from "./tools/add-hill";
 import { addMarkerTool } from "./tools/add-marker";
 import { addProvinceTool } from "./tools/add-province";
 import { addRegimentTool } from "./tools/add-regiment";
@@ -175,6 +176,12 @@ export {
   addCultureTool,
   createAddCultureTool,
 } from "./tools/add-culture";
+export {
+  addHillTool,
+  createAddHillTool,
+  DEFAULT_RANGE_X,
+  DEFAULT_RANGE_Y,
+} from "./tools/add-hill";
 export {
   addMarkerTool,
   createAddMarkerTool,
@@ -994,6 +1001,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setHeightmapTemplateTool);
   registry.register(setHeightmapOptionsTool);
   registry.register(smoothHeightmapTool);
+  registry.register(addHillTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setProvinceFormTool);
