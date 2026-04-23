@@ -25,6 +25,7 @@ import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
 import { findBurgsInAreaTool } from "./tools/find-burgs-in-area";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
+import { findCellsByBiomeTool } from "./tools/find-cells-by-biome";
 import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
 import { findMarkersInAreaTool } from "./tools/find-markers-in-area";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
@@ -323,6 +324,17 @@ export {
   findCellAtCoordsTool,
   scanPackForNearestCell,
 } from "./tools/find-cell-at-coords";
+export {
+  createFindCellsByBiomeTool,
+  DEFAULT_FIND_CELLS_BY_BIOME_LIMIT,
+  defaultFindCellsByBiomeRuntime,
+  type FindCellsByBiomeHit,
+  type FindCellsByBiomeResult,
+  type FindCellsByBiomeRuntime,
+  findBiomeCellsInPack,
+  findCellsByBiomeTool,
+  MAX_FIND_CELLS_BY_BIOME_LIMIT,
+} from "./tools/find-cells-by-biome";
 export {
   createFindCellsInRadiusTool,
   DEFAULT_FIND_CELLS_IN_RADIUS_LIMIT,
@@ -1364,6 +1376,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
   registry.register(findCellsInRadiusTool);
+  registry.register(findCellsByBiomeTool);
   registry.register(listStatesTool);
   registry.register(listStylePresetsTool);
   registry.register(listBurgsTool);
