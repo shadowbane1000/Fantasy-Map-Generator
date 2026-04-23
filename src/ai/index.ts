@@ -106,6 +106,7 @@ import { setStateColorTool } from "./tools/set-state-color";
 import { setStateCultureTool } from "./tools/set-state-culture";
 import { setStateFormTool } from "./tools/set-state-form";
 import { setStateTypeTool } from "./tools/set-state-type";
+import { setStylePresetTool } from "./tools/set-style-preset";
 import { setWorldRatesTool } from "./tools/set-world-rates";
 import { setYearAndEraTool } from "./tools/set-year-and-era";
 import { setZoneColorTool } from "./tools/set-zone-color";
@@ -604,6 +605,12 @@ export {
   setStateTypeTool,
 } from "./tools/set-state-type";
 export {
+  createSetStylePresetTool,
+  resolveStylePreset,
+  STYLE_PRESETS,
+  setStylePresetTool,
+} from "./tools/set-style-preset";
+export {
   createSetWorldRatesTool,
   setWorldRatesTool,
   validateRatesInput,
@@ -711,6 +718,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setStateTypeTool);
+  registry.register(setStylePresetTool);
   registry.register(setWorldRatesTool);
   registry.register(setLayerVisibilityTool);
   registry.register(applyLayersPresetTool);
