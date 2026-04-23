@@ -80,6 +80,7 @@ export interface RawCulture {
   rural?: number;
   urban?: number;
   expansionism?: number;
+  origins?: number[];
   lock?: boolean;
   removed?: boolean;
 }
