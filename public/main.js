@@ -406,8 +406,13 @@ function focusOn() {
   }
 }
 
+// OpenWidget ("Azgaar assistant") chat bubble is disabled because it overlaps
+// the in-app AI chat panel in the lower-right. Flip this to re-enable.
+const OPENWIDGET_ENABLED = false;
+
 let isAssistantLoaded = false;
 function toggleAssistant() {
+  if (!OPENWIDGET_ENABLED) return;
   const assistantContainer = byId("chat-widget-container");
   const showAssistant = byId("azgaarAssistant").value === "show";
 
