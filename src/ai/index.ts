@@ -36,6 +36,7 @@ import { findMarkersInAreaTool } from "./tools/find-markers-in-area";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
 import { findNearestMarkerTool } from "./tools/find-nearest-marker";
 import { findNearestRiverTool } from "./tools/find-nearest-river";
+import { findProvincesByStateTool } from "./tools/find-provinces-by-state";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgInfoTool } from "./tools/get-burg-info";
@@ -463,6 +464,18 @@ export {
   findNearestRiverInPack,
   findNearestRiverTool,
 } from "./tools/find-nearest-river";
+export {
+  createFindProvincesByStateTool,
+  DEFAULT_FIND_PROVINCES_BY_STATE_LIMIT,
+  defaultFindProvincesByStateRuntime,
+  type FindProvincesByStateHit,
+  type FindProvincesByStatePayload,
+  type FindProvincesByStateResult,
+  type FindProvincesByStateRuntime,
+  findProvincesByStateInPack,
+  findProvincesByStateTool,
+  MAX_FIND_PROVINCES_BY_STATE_LIMIT,
+} from "./tools/find-provinces-by-state";
 export {
   createFocusOnMapTool,
   focusOnMapTool,
@@ -1477,6 +1490,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findNearestBurgTool);
   registry.register(findBurgsInAreaTool);
   registry.register(findBurgsByStateTool);
+  registry.register(findProvincesByStateTool);
   registry.register(measureDistanceTool);
   registry.register(listBiomesTool);
   registry.register(listCulturesTool);
