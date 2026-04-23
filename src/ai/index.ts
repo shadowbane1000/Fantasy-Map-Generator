@@ -19,6 +19,7 @@ import { addStraitTool } from "./tools/add-strait";
 import { addTroughTool } from "./tools/add-trough";
 import { addZoneTool } from "./tools/add-zone";
 import { applyLayersPresetTool } from "./tools/apply-layers-preset";
+import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { exportMapTool } from "./tools/export-map";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getMapInfoTool } from "./tools/get-map-info";
@@ -238,6 +239,10 @@ export {
   applyLayersPresetTool,
   createApplyLayersPresetTool,
 } from "./tools/apply-layers-preset";
+export {
+  clearHeightmapTool,
+  createClearHeightmapTool,
+} from "./tools/clear-heightmap";
 export {
   createExportMapTool,
   EXPORT_FORMATS,
@@ -1054,6 +1059,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(modifyHeightmapTool);
   registry.register(maskHeightmapTool);
   registry.register(invertHeightmapTool);
+  registry.register(clearHeightmapTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setProvinceFormTool);
