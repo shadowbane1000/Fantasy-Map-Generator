@@ -109,6 +109,7 @@ import { setYearAndEraTool } from "./tools/set-year-and-era";
 import { setZoneColorTool } from "./tools/set-zone-color";
 import { setZoneTypeTool } from "./tools/set-zone-type";
 import { setZoneVisibilityTool } from "./tools/set-zone-visibility";
+import { splitRegimentTool } from "./tools/split-regiment";
 
 export { AnthropicApiError, AnthropicClient } from "./anthropic-client";
 export { clearApiKey, getApiKey, setApiKey } from "./api-key";
@@ -609,6 +610,10 @@ export {
   findZoneByRef,
   setZoneVisibilityTool,
 } from "./tools/set-zone-visibility";
+export {
+  createSplitRegimentTool,
+  splitRegimentTool,
+} from "./tools/split-regiment";
 
 export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
@@ -649,6 +654,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setRegimentUnitTool);
   registry.register(setRegimentNavalTool);
   registry.register(setRegimentIconTool);
+  registry.register(splitRegimentTool);
   registry.register(renameZoneTool);
   registry.register(setStateColorTool);
   registry.register(setCultureColorTool);
