@@ -49,6 +49,7 @@ import { findProvincesByStateTool } from "./tools/find-provinces-by-state";
 import { findRegimentsByStateTool } from "./tools/find-regiments-by-state";
 import { findReligionsByCultureTool } from "./tools/find-religions-by-culture";
 import { findReligionsByTypeTool } from "./tools/find-religions-by-type";
+import { findRiversByBasinTool } from "./tools/find-rivers-by-basin";
 import { findRiversInAreaTool } from "./tools/find-rivers-in-area";
 import { findRoutesByGroupTool } from "./tools/find-routes-by-group";
 import { findStatesByCultureTool } from "./tools/find-states-by-culture";
@@ -645,6 +646,21 @@ export {
   findReligionsByTypeTool,
   MAX_FIND_RELIGIONS_BY_TYPE_LIMIT,
 } from "./tools/find-religions-by-type";
+export {
+  createFindRiversByBasinTool,
+  DEFAULT_FIND_RIVERS_BY_BASIN_LIMIT,
+  defaultFindRiversByBasinRuntime,
+  type FindRiversByBasinBasinRef,
+  type FindRiversByBasinHit,
+  type FindRiversByBasinPayload,
+  type FindRiversByBasinResult,
+  type FindRiversByBasinRuntime,
+  findRiversByBasinInPack,
+  findRiversByBasinTool,
+  MAX_FIND_RIVERS_BY_BASIN_LIMIT,
+  type ResolveBasinResult,
+  resolveBasinRefInPack,
+} from "./tools/find-rivers-by-basin";
 export {
   createFindRiversInAreaTool,
   DEFAULT_FIND_RIVERS_IN_AREA_LIMIT,
@@ -1775,6 +1791,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listRiversTool);
   registry.register(findNearestRiverTool);
   registry.register(findRiversInAreaTool);
+  registry.register(findRiversByBasinTool);
   registry.register(listRoutesTool);
   registry.register(findRoutesByGroupTool);
   registry.register(listRulersTool);
