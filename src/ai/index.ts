@@ -23,6 +23,7 @@ import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
+import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getCellInfoTool } from "./tools/get-cell-info";
 import { getMapInfoTool } from "./tools/get-map-info";
@@ -272,6 +273,13 @@ export {
   exportMapTool,
   resolveExportFormat,
 } from "./tools/export-map";
+export {
+  createFindCellAtCoordsTool,
+  defaultFindCellRuntime,
+  type FindCellRuntime,
+  findCellAtCoordsTool,
+  scanPackForNearestCell,
+} from "./tools/find-cell-at-coords";
 export {
   createFocusOnMapTool,
   focusOnMapTool,
@@ -1051,6 +1059,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
   registry.register(getMapInfoTool);
   registry.register(getCellInfoTool);
+  registry.register(findCellAtCoordsTool);
   registry.register(listStatesTool);
   registry.register(listBurgsTool);
   registry.register(listBiomesTool);
