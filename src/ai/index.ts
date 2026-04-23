@@ -37,6 +37,7 @@ import { getProvinceInfoTool } from "./tools/get-province-info";
 import { getRegimentInfoTool } from "./tools/get-regiment-info";
 import { getReligionInfoTool } from "./tools/get-religion-info";
 import { getRiverInfoTool } from "./tools/get-river-info";
+import { getRouteInfoTool } from "./tools/get-route-info";
 import { getStateInfoTool } from "./tools/get-state-info";
 import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
@@ -399,6 +400,17 @@ export {
   type RiverInfoRuntime,
   readRiverInfoFromPack,
 } from "./tools/get-river-info";
+export {
+  createGetRouteInfoTool,
+  DEFAULT_POINTS_LIMIT,
+  defaultRouteInfoRuntime,
+  getRouteInfoTool,
+  MAX_POINTS_LIMIT,
+  type RouteInfo,
+  type RouteInfoPackLike,
+  type RouteInfoRuntime,
+  readRouteInfoFromPack,
+} from "./tools/get-route-info";
 export {
   createGetStateInfoTool,
   defaultStateInfoRuntime,
@@ -1192,6 +1204,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getCultureInfoTool);
   registry.register(getProvinceInfoTool);
   registry.register(getRiverInfoTool);
+  registry.register(getRouteInfoTool);
   registry.register(getBiomeInfoTool);
   registry.register(getMarkerInfoTool);
   registry.register(getRegimentInfoTool);
