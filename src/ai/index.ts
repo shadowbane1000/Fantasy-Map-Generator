@@ -414,9 +414,7 @@ export {
   scanPackForNearestCell,
 } from "./tools/find-cell-at-coords";
 export {
-  ADJACENT_ENTITY_TYPES,
   type AdjacentEntityCellsHit,
-  type AdjacentEntityType,
   type CollectAdjacentCellsResult,
   collectAdjacentCellsForEntity,
   createFindCellsAdjacentToEntityTool,
