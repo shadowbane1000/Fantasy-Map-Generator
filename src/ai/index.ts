@@ -24,6 +24,7 @@ import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
 import { findBurgsByCultureTool } from "./tools/find-burgs-by-culture";
+import { findBurgsByReligionTool } from "./tools/find-burgs-by-religion";
 import { findBurgsByStateTool } from "./tools/find-burgs-by-state";
 import { findBurgsInAreaTool } from "./tools/find-burgs-in-area";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
@@ -327,6 +328,20 @@ export {
   type ResolveCultureResult,
   resolveCultureRefInPack,
 } from "./tools/find-burgs-by-culture";
+export {
+  createFindBurgsByReligionTool,
+  DEFAULT_FIND_BURGS_BY_RELIGION_LIMIT,
+  defaultFindBurgsByReligionRuntime,
+  type FindBurgsByReligionHit,
+  type FindBurgsByReligionPayload,
+  type FindBurgsByReligionResult,
+  type FindBurgsByReligionRuntime,
+  findBurgsByReligionInPack,
+  findBurgsByReligionTool,
+  MAX_FIND_BURGS_BY_RELIGION_LIMIT,
+  type ResolveReligionResult,
+  resolveReligionRefInPack,
+} from "./tools/find-burgs-by-religion";
 export {
   createFindBurgsByStateTool,
   DEFAULT_FIND_BURGS_BY_STATE_LIMIT,
@@ -1519,6 +1534,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findBurgsInAreaTool);
   registry.register(findBurgsByStateTool);
   registry.register(findBurgsByCultureTool);
+  registry.register(findBurgsByReligionTool);
   registry.register(findProvincesByStateTool);
   registry.register(findRegimentsByStateTool);
   registry.register(measureDistanceTool);
