@@ -31,6 +31,7 @@ import { moveBurgTool } from "./tools/move-burg";
 import { moveMarkerTool } from "./tools/move-marker";
 import { moveRegimentTool } from "./tools/move-regiment";
 import { regenerateAllBurgNamesTool } from "./tools/regenerate-all-burg-names";
+import { regenerateAllProvinceNamesTool } from "./tools/regenerate-all-province-names";
 import { regenerateAllStateNamesTool } from "./tools/regenerate-all-state-names";
 import { regenerateBurgNameTool } from "./tools/regenerate-burg-name";
 import { regenerateDomainTool } from "./tools/regenerate-domain";
@@ -259,6 +260,10 @@ export {
   createRegenerateAllBurgNamesTool,
   regenerateAllBurgNamesTool,
 } from "./tools/regenerate-all-burg-names";
+export {
+  createRegenerateAllProvinceNamesTool,
+  regenerateAllProvinceNamesTool,
+} from "./tools/regenerate-all-province-names";
 export {
   createRegenerateAllStateNamesTool,
   regenerateAllStateNamesTool,
@@ -821,6 +826,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateStateNameTool);
   registry.register(regenerateProvinceNameTool);
   registry.register(regenerateAllBurgNamesTool);
+  registry.register(regenerateAllProvinceNamesTool);
   registry.register(regenerateAllStateNamesTool);
   registry.register(regenerateZonesTool);
   registry.register(saveMapTool);
