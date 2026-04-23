@@ -77,6 +77,7 @@ import { setBurgTypeTool } from "./tools/set-burg-type";
 import { setCellsDensityTool } from "./tools/set-cells-density";
 import { setClimateTool } from "./tools/set-climate";
 import { setCultureBaseTool } from "./tools/set-culture-base";
+import { setCultureCenterTool } from "./tools/set-culture-center";
 import { setCultureColorTool } from "./tools/set-culture-color";
 import { setCultureShieldTool } from "./tools/set-culture-shield";
 import { setCultureTypeTool } from "./tools/set-culture-type";
@@ -480,6 +481,10 @@ export {
   setCultureBaseTool,
 } from "./tools/set-culture-base";
 export {
+  createSetCultureCenterTool,
+  setCultureCenterTool,
+} from "./tools/set-culture-center";
+export {
   createSetCultureColorTool,
   setCultureColorTool,
 } from "./tools/set-culture-color";
@@ -812,6 +817,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setCultureColorTool);
   registry.register(setCultureTypeTool);
   registry.register(setCultureBaseTool);
+  registry.register(setCultureCenterTool);
   registry.register(setCultureShieldTool);
   registry.register(setCulturesSetTool);
   registry.register(setDefaultEmblemShapeTool);

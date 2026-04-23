@@ -156,6 +156,7 @@ export interface RawRiver {
   basin?: number;
   cells?: number[];
   points?: unknown[];
+  lock?: boolean;
   removed?: boolean;
 }
 
