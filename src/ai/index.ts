@@ -26,6 +26,7 @@ import { exportMapTool } from "./tools/export-map";
 import { findBurgsInAreaTool } from "./tools/find-burgs-in-area";
 import { findCellAtCoordsTool } from "./tools/find-cell-at-coords";
 import { findCellsByBiomeTool } from "./tools/find-cells-by-biome";
+import { findCellsByHeightRangeTool } from "./tools/find-cells-by-height-range";
 import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
 import { findMarkersInAreaTool } from "./tools/find-markers-in-area";
 import { findNearestBurgTool } from "./tools/find-nearest-burg";
@@ -336,6 +337,19 @@ export {
   findCellsByBiomeTool,
   MAX_FIND_CELLS_BY_BIOME_LIMIT,
 } from "./tools/find-cells-by-biome";
+export {
+  createFindCellsByHeightRangeTool,
+  DEFAULT_FIND_CELLS_BY_HEIGHT_RANGE_LIMIT,
+  defaultFindCellsByHeightRangeRuntime,
+  type FindCellsByHeightRangeHit,
+  type FindCellsByHeightRangeResult,
+  type FindCellsByHeightRangeRuntime,
+  findCellsByHeightRangeInPack,
+  findCellsByHeightRangeTool,
+  MAX_FIND_CELLS_BY_HEIGHT_RANGE_LIMIT,
+  MAX_HEIGHT,
+  MIN_HEIGHT,
+} from "./tools/find-cells-by-height-range";
 export {
   createFindCellsInRadiusTool,
   DEFAULT_FIND_CELLS_IN_RADIUS_LIMIT,
@@ -1389,6 +1403,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findCellAtCoordsTool);
   registry.register(findCellsInRadiusTool);
   registry.register(findCellsByBiomeTool);
+  registry.register(findCellsByHeightRangeTool);
   registry.register(listStatesTool);
   registry.register(listStylePresetsTool);
   registry.register(listBurgsTool);
