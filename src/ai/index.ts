@@ -109,6 +109,7 @@ import { setMeasurementUnitsTool } from "./tools/set-measurement-units";
 import { setNoteTool } from "./tools/set-note";
 import { setOnloadBehaviorTool } from "./tools/set-onload-behavior";
 import { setProvinceCapitalTool } from "./tools/set-province-capital";
+import { setProvinceCoaCustomTool } from "./tools/set-province-coa-custom";
 import { setProvinceColorTool } from "./tools/set-province-color";
 import { setRegimentIconTool } from "./tools/set-regiment-icon";
 import { setRegimentNavalTool } from "./tools/set-regiment-naval";
@@ -652,6 +653,10 @@ export {
   setProvinceCapitalTool,
 } from "./tools/set-province-capital";
 export {
+  createSetProvinceCoaCustomTool,
+  setProvinceCoaCustomTool,
+} from "./tools/set-province-coa-custom";
+export {
   createSetProvinceColorTool,
   setProvinceColorTool,
 } from "./tools/set-province-color";
@@ -898,6 +903,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateProvinceCoaTool);
   registry.register(setBurgCoaCustomTool);
   registry.register(setStateCoaCustomTool);
+  registry.register(setProvinceCoaCustomTool);
   registry.register(regenerateDomainTool);
   registry.register(regenerateBurgNameTool);
   registry.register(regenerateStateNameTool);
