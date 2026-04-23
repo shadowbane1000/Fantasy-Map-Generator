@@ -64,6 +64,7 @@ import { setBurgGroupTool } from "./tools/set-burg-group";
 import { setBurgPopulationTool } from "./tools/set-burg-population";
 import { setBurgPortTool } from "./tools/set-burg-port";
 import { setBurgTypeTool } from "./tools/set-burg-type";
+import { setCellsDensityTool } from "./tools/set-cells-density";
 import { setClimateTool } from "./tools/set-climate";
 import { setCultureBaseTool } from "./tools/set-culture-base";
 import { setCultureColorTool } from "./tools/set-culture-color";
@@ -399,6 +400,13 @@ export {
   setBurgTypeTool,
 } from "./tools/set-burg-type";
 export {
+  CELLS_DENSITY_MAP,
+  CELLS_DENSITY_OPTIONS,
+  createSetCellsDensityTool,
+  resolveCellsLevel,
+  setCellsDensityTool,
+} from "./tools/set-cells-density";
+export {
   CLIMATE_FIELDS,
   createSetClimateTool,
   setClimateTool,
@@ -677,6 +685,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setMapNameTool);
   registry.register(setMeasurementUnitsTool);
   registry.register(setClimateTool);
+  registry.register(setCellsDensityTool);
   registry.register(setGeographyTool);
   registry.register(setGeneratorRatesTool);
   registry.register(setHeightExponentTool);
