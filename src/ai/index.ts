@@ -110,6 +110,7 @@ import { setDiplomacyTool } from "./tools/set-diplomacy";
 import { setEntityExpansionismTool } from "./tools/set-entity-expansionism";
 import { setEntityLockTool } from "./tools/set-entity-lock";
 import { setFontFamilyTool } from "./tools/set-font-family";
+import { setFontSizeTool } from "./tools/set-font-size";
 import { setGeneratorRatesTool } from "./tools/set-generator-rates";
 import { setGeographyTool } from "./tools/set-geography";
 import { setHeightExponentTool } from "./tools/set-height-exponent";
@@ -674,6 +675,14 @@ export {
   setFontFamilyTool,
 } from "./tools/set-font-family";
 export {
+  createSetFontSizeTool,
+  defaultFontSizeRuntime,
+  FONT_SIZE_MAX,
+  FONT_SIZE_MIN,
+  type FontSizeRuntime,
+  setFontSizeTool,
+} from "./tools/set-font-size";
+export {
   createSetGeneratorRatesTool,
   GENERATOR_FIELDS,
   setGeneratorRatesTool,
@@ -1093,6 +1102,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setLayerOpacityTool);
   registry.register(setLayerStrokeWidthTool);
   registry.register(setFontFamilyTool);
+  registry.register(setFontSizeTool);
   registry.register(setYearAndEraTool);
   registry.register(setZoneVisibilityTool);
   registry.register(focusOnMapTool);
