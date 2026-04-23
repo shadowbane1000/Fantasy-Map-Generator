@@ -114,6 +114,7 @@ import { setHeightExponentTool } from "./tools/set-height-exponent";
 import { setHeightmapOptionsTool } from "./tools/set-heightmap-options";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
 import { setLabelTextTool } from "./tools/set-label-text";
+import { setLayerOpacityTool } from "./tools/set-layer-opacity";
 import { setLayerVisibilityTool } from "./tools/set-layer-visibility";
 import { setMapNameTool } from "./tools/set-map-name";
 import { setMarkerColorsTool } from "./tools/set-marker-colors";
@@ -689,7 +690,16 @@ export {
   setLabelTextTool,
 } from "./tools/set-label-text";
 export {
+  createSetLayerOpacityTool,
+  defaultLayerOpacityRuntime,
+  type LayerOpacityRuntime,
+  OPACITY_MAX,
+  OPACITY_MIN,
+  setLayerOpacityTool,
+} from "./tools/set-layer-opacity";
+export {
   createSetLayerVisibilityTool,
+  LAYER_SPECS,
   setLayerVisibilityTool,
 } from "./tools/set-layer-visibility";
 export { setMapNameTool } from "./tools/set-map-name";
@@ -1056,6 +1066,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setWorldRatesTool);
   registry.register(setLayerVisibilityTool);
   registry.register(applyLayersPresetTool);
+  registry.register(setLayerOpacityTool);
   registry.register(setYearAndEraTool);
   registry.register(setZoneVisibilityTool);
   registry.register(focusOnMapTool);

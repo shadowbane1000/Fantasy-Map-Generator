@@ -8,7 +8,7 @@ export interface LayerSpec {
   aliases: string[];
 }
 
-const LAYERS: LayerSpec[] = [
+export const LAYER_SPECS: LayerSpec[] = [
   {
     canonical: "heightmap",
     toggleFn: "toggleHeight",
@@ -193,7 +193,7 @@ const LAYERS: LayerSpec[] = [
 ];
 
 const LOOKUP = new Map<string, LayerSpec>();
-for (const spec of LAYERS) {
+for (const spec of LAYER_SPECS) {
   LOOKUP.set(spec.canonical.toLowerCase(), spec);
   for (const alias of spec.aliases) LOOKUP.set(alias.toLowerCase(), spec);
 }
@@ -221,7 +221,7 @@ export const defaultLayerRuntime: LayerRuntime = {
 };
 
 function supportedLayerList(): string[] {
-  return LAYERS.map((l) => l.canonical);
+  return LAYER_SPECS.map((l) => l.canonical);
 }
 
 export function createSetLayerVisibilityTool(
