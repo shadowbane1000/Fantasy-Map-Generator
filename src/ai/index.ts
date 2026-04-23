@@ -25,6 +25,7 @@ import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
 import { findAdjacentEntitiesTool } from "./tools/find-adjacent-entities";
 import { findBurgsByCultureTool } from "./tools/find-burgs-by-culture";
+import { findBurgsByPopulationRangeTool } from "./tools/find-burgs-by-population-range";
 import { findBurgsByReligionTool } from "./tools/find-burgs-by-religion";
 import { findBurgsByStateTool } from "./tools/find-burgs-by-state";
 import { findBurgsByTypeTool } from "./tools/find-burgs-by-type";
@@ -357,6 +358,18 @@ export {
   type ResolveCultureResult,
   resolveCultureRefInPack,
 } from "./tools/find-burgs-by-culture";
+export {
+  createFindBurgsByPopulationRangeTool,
+  DEFAULT_FIND_BURGS_BY_POPULATION_RANGE_LIMIT,
+  defaultFindBurgsByPopulationRangeRuntime,
+  type FindBurgsByPopulationRangeHit,
+  type FindBurgsByPopulationRangePayload,
+  type FindBurgsByPopulationRangeResult,
+  type FindBurgsByPopulationRangeRuntime,
+  findBurgsByPopulationRangeInPack,
+  findBurgsByPopulationRangeTool,
+  MAX_FIND_BURGS_BY_POPULATION_RANGE_LIMIT,
+} from "./tools/find-burgs-by-population-range";
 export {
   createFindBurgsByReligionTool,
   DEFAULT_FIND_BURGS_BY_RELIGION_LIMIT,
@@ -1738,6 +1751,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findBurgsByCultureTool);
   registry.register(findBurgsByReligionTool);
   registry.register(findBurgsByTypeTool);
+  registry.register(findBurgsByPopulationRangeTool);
   registry.register(findProvincesByStateTool);
   registry.register(findRegimentsByStateTool);
   registry.register(findStatesByCultureTool);
