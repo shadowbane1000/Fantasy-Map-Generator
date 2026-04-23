@@ -112,6 +112,7 @@ import { setProvinceColorTool } from "./tools/set-province-color";
 import { setRegimentIconTool } from "./tools/set-regiment-icon";
 import { setRegimentNavalTool } from "./tools/set-regiment-naval";
 import { setRegimentUnitTool } from "./tools/set-regiment-unit";
+import { setReligionCenterTool } from "./tools/set-religion-center";
 import { setReligionColorTool } from "./tools/set-religion-color";
 import { setReligionCultureTool } from "./tools/set-religion-culture";
 import { setReligionDeityTool } from "./tools/set-religion-deity";
@@ -661,6 +662,10 @@ export {
   setRegimentUnitTool,
 } from "./tools/set-regiment-unit";
 export {
+  createSetReligionCenterTool,
+  setReligionCenterTool,
+} from "./tools/set-religion-center";
+export {
   createSetReligionColorTool,
   setReligionColorTool,
 } from "./tools/set-religion-color";
@@ -828,6 +833,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setCultureShieldTool);
   registry.register(setCulturesSetTool);
   registry.register(setDefaultEmblemShapeTool);
+  registry.register(setReligionCenterTool);
   registry.register(setReligionColorTool);
   registry.register(setReligionTypeTool);
   registry.register(setReligionFormTool);
