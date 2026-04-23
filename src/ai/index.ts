@@ -194,8 +194,6 @@ export {
 export {
   addRangeTool,
   createAddRangeTool,
-  DEFAULT_RANGE_X,
-  DEFAULT_RANGE_Y,
 } from "./tools/add-range";
 export {
   addRegimentTool,
