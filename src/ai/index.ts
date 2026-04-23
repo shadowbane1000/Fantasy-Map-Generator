@@ -89,6 +89,7 @@ import { setLayerVisibilityTool } from "./tools/set-layer-visibility";
 import { setMapNameTool } from "./tools/set-map-name";
 import { setMarkerColorsTool } from "./tools/set-marker-colors";
 import { setMarkerIconTool } from "./tools/set-marker-icon";
+import { setMarkerIconSizeTool } from "./tools/set-marker-icon-size";
 import { setMarkerLockTool } from "./tools/set-marker-lock";
 import { setMarkerNoteTool } from "./tools/set-marker-note";
 import { setMarkerPinTool } from "./tools/set-marker-pin";
@@ -540,6 +541,13 @@ export {
   setMarkerIconTool,
 } from "./tools/set-marker-icon";
 export {
+  createSetMarkerIconSizeTool,
+  DEFAULT_MARKER_ICON_SIZE,
+  MARKER_ICON_SIZE_MAX,
+  MARKER_ICON_SIZE_MIN,
+  setMarkerIconSizeTool,
+} from "./tools/set-marker-icon-size";
+export {
   createSetMarkerLockTool,
   setMarkerLockTool,
 } from "./tools/set-marker-lock";
@@ -789,6 +797,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setMarkerTypeTool);
   registry.register(setMarkerIconTool);
   registry.register(setMarkerSizeTool);
+  registry.register(setMarkerIconSizeTool);
   registry.register(setMarkerPinTool);
   registry.register(setMarkerColorsTool);
   registry.register(setNoteTool);
