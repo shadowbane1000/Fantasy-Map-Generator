@@ -1,0 +1,26 @@
+# Tasks 176 — `set_cell_height`
+
+- [x] Capture lint + test baselines (7 warnings / 1 info / 0 errors; 2437 tests / 188 files).
+- [x] Study `clear-heightmap.ts`, `smooth-heightmap.ts`, `_shared/index.ts`, and the heightmap-editor brush flow in `public/modules/ui/heightmap-editor.js`.
+- [x] Write `aiplans/plan_176.md`.
+- [x] Create `src/ai/tools/set-cell-height.ts`:
+  - `SetCellHeightRuntime` interface with `set(cell, height) → { previousHeight }`.
+  - `defaultSetCellHeightRuntime` that validates `window.grid`, writes `grid.cells.h[cell]`, returns previous value.
+  - `createSetCellHeightTool(runtime)` with JSON schema (`cell`, `height` both required), validation, and execute.
+  - `setCellHeightTool` default singleton.
+- [x] Create `src/ai/tools/set-cell-height.test.ts`:
+  - Mocked-runtime happy path.
+  - Missing/invalid/out-of-range `cell` rejected.
+  - Missing/invalid/out-of-range `height` rejected.
+  - Runtime errors surfaced as `isError`.
+  - Tool shape (name, `required: ["cell","height"]`).
+  - `defaultSetCellHeightRuntime` integration block: throws on missing `grid`/`cells.h`, writes in place on a plain array, writes in place on a `Uint8Array`, rejects out-of-bounds cell index.
+- [x] Wire into `src/ai/index.ts`:
+  - Import `setCellHeightTool`.
+  - Re-export `{ setCellHeightTool, createSetCellHeightTool }` (no constants).
+  - `registry.register(setCellHeightTool)` after `clearHeightmapTool`.
+- [x] Add README_AI.md row directly below `clear_heightmap`.
+- [x] `npm run build` succeeds.
+- [x] `npm test` → 188 files, new test count > 2437.
+- [x] `npm run lint` → still 7 warnings / 1 info / 0 errors.
+- [x] Commit with `feat(ai): add set_cell_height tool`.
