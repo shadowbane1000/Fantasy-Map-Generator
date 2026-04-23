@@ -82,6 +82,7 @@ import { setEntityLockTool } from "./tools/set-entity-lock";
 import { setGeneratorRatesTool } from "./tools/set-generator-rates";
 import { setGeographyTool } from "./tools/set-geography";
 import { setHeightExponentTool } from "./tools/set-height-exponent";
+import { setHeightmapOptionsTool } from "./tools/set-heightmap-options";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
 import { setLayerVisibilityTool } from "./tools/set-layer-visibility";
 import { setMapNameTool } from "./tools/set-map-name";
@@ -507,6 +508,11 @@ export {
   setHeightExponentTool,
 } from "./tools/set-height-exponent";
 export {
+  createSetHeightmapOptionsTool,
+  HEIGHTMAP_OPTION_KEYS,
+  setHeightmapOptionsTool,
+} from "./tools/set-heightmap-options";
+export {
   createSetHeightmapTemplateTool,
   DISPLAY_NAMES as HEIGHTMAP_TEMPLATE_DISPLAY_NAMES,
   resolveTemplateKey,
@@ -782,6 +788,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setMarkerColorsTool);
   registry.register(setNoteTool);
   registry.register(setHeightmapTemplateTool);
+  registry.register(setHeightmapOptionsTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setStateTypeTool);
