@@ -45,6 +45,7 @@ import { findRegimentsByStateTool } from "./tools/find-regiments-by-state";
 import { findReligionsByCultureTool } from "./tools/find-religions-by-culture";
 import { findRiversInAreaTool } from "./tools/find-rivers-in-area";
 import { findStatesByCultureTool } from "./tools/find-states-by-culture";
+import { findZonesByTypeTool } from "./tools/find-zones-by-type";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgInfoTool } from "./tools/get-burg-info";
@@ -587,6 +588,19 @@ export {
   findStatesByCultureTool,
   MAX_FIND_STATES_BY_CULTURE_LIMIT,
 } from "./tools/find-states-by-culture";
+export {
+  createFindZonesByTypeTool,
+  DEFAULT_FIND_ZONES_BY_TYPE_LIMIT,
+  defaultFindZonesByTypeRuntime,
+  type FindZonesByTypeHit,
+  type FindZonesByTypePayload,
+  type FindZonesByTypeQuery,
+  type FindZonesByTypeResult,
+  type FindZonesByTypeRuntime,
+  findZonesByTypeInPack,
+  findZonesByTypeTool,
+  MAX_FIND_ZONES_BY_TYPE_LIMIT,
+} from "./tools/find-zones-by-type";
 export {
   createFocusOnMapTool,
   focusOnMapTool,
@@ -1629,6 +1643,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listRegimentsTool);
   registry.register(listNotesTool);
   registry.register(listZonesTool);
+  registry.register(findZonesByTypeTool);
   registry.register(setMapNameTool);
   registry.register(setLabelTextTool);
   registry.register(setMeasurementUnitsTool);
