@@ -107,6 +107,7 @@ import { setStateCapitalTool } from "./tools/set-state-capital";
 import { setStateColorTool } from "./tools/set-state-color";
 import { setStateCultureTool } from "./tools/set-state-culture";
 import { setStateFormTool } from "./tools/set-state-form";
+import { setStateLabelsModeTool } from "./tools/set-state-labels-mode";
 import { setStateTypeTool } from "./tools/set-state-type";
 import { setStylePresetTool } from "./tools/set-style-preset";
 import { setWorldRatesTool } from "./tools/set-world-rates";
@@ -612,6 +613,12 @@ export {
   setStateFormTool,
 } from "./tools/set-state-form";
 export {
+  createSetStateLabelsModeTool,
+  resolveStateLabelsMode,
+  STATE_LABELS_MODES,
+  setStateLabelsModeTool,
+} from "./tools/set-state-labels-mode";
+export {
   createSetStateTypeTool,
   resolveStateType,
   STATE_TYPES,
@@ -733,6 +740,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setStateTypeTool);
+  registry.register(setStateLabelsModeTool);
   registry.register(setStylePresetTool);
   registry.register(setWorldRatesTool);
   registry.register(setLayerVisibilityTool);
