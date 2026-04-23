@@ -24,6 +24,7 @@ import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
 import { focusOnMapTool } from "./tools/focus-on-map";
+import { getCellInfoTool } from "./tools/get-cell-info";
 import { getMapInfoTool } from "./tools/get-map-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
@@ -275,6 +276,14 @@ export {
   createFocusOnMapTool,
   focusOnMapTool,
 } from "./tools/focus-on-map";
+export {
+  type CellInfo,
+  type CellInfoRuntime,
+  createGetCellInfoTool,
+  defaultCellInfoRuntime,
+  getCellInfoTool,
+  readCellFromState,
+} from "./tools/get-cell-info";
 export {
   createGetMapInfoTool,
   getMapInfoTool,
@@ -1041,6 +1050,7 @@ export {
 export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
   registry.register(getMapInfoTool);
+  registry.register(getCellInfoTool);
   registry.register(listStatesTool);
   registry.register(listBurgsTool);
   registry.register(listBiomesTool);
