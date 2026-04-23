@@ -57,6 +57,7 @@ import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
 import { getCultureInfoTool } from "./tools/get-culture-info";
+import { getEntityBboxTool } from "./tools/get-entity-bbox";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getFeatureInfoTool } from "./tools/get-feature-info";
 import { getLayerStyleTool } from "./tools/get-layer-style";
@@ -719,6 +720,16 @@ export {
   getCultureInfoTool,
   readCultureInfoFromPack,
 } from "./tools/get-culture-info";
+export {
+  type Bbox,
+  type CollectEntityBboxResult,
+  collectEntityBbox,
+  createGetEntityBboxTool,
+  defaultGetEntityBboxRuntime,
+  type EntityBboxHit,
+  type GetEntityBboxRuntime,
+  getEntityBboxTool,
+} from "./tools/get-entity-bbox";
 export {
   type CollectEntityCellsResult,
   collectCellsForEntity,
@@ -1682,6 +1693,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getZoneInfoTool);
   registry.register(getFeatureInfoTool);
   registry.register(getEntityCellsTool);
+  registry.register(getEntityBboxTool);
   registry.register(findAdjacentEntitiesTool);
   registry.register(findCellsAdjacentToEntityTool);
   registry.register(findCellAtCoordsTool);
