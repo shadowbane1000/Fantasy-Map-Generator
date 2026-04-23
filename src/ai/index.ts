@@ -79,6 +79,7 @@ import { setMeasurementUnitsTool } from "./tools/set-measurement-units";
 import { setNoteTool } from "./tools/set-note";
 import { setProvinceCapitalTool } from "./tools/set-province-capital";
 import { setProvinceColorTool } from "./tools/set-province-color";
+import { setRegimentIconTool } from "./tools/set-regiment-icon";
 import { setRegimentNavalTool } from "./tools/set-regiment-naval";
 import { setRegimentUnitTool } from "./tools/set-regiment-unit";
 import { setReligionColorTool } from "./tools/set-religion-color";
@@ -462,6 +463,10 @@ export {
   setProvinceColorTool,
 } from "./tools/set-province-color";
 export {
+  createSetRegimentIconTool,
+  setRegimentIconTool,
+} from "./tools/set-regiment-icon";
+export {
   createSetRegimentNavalTool,
   setRegimentNavalTool,
 } from "./tools/set-regiment-naval";
@@ -594,6 +599,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameRegimentTool);
   registry.register(setRegimentUnitTool);
   registry.register(setRegimentNavalTool);
+  registry.register(setRegimentIconTool);
   registry.register(renameZoneTool);
   registry.register(setStateColorTool);
   registry.register(setCultureColorTool);
