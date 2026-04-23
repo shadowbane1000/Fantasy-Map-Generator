@@ -3,6 +3,7 @@ import { getApiKey } from "./api-key";
 import { ChatController } from "./chat-controller";
 import { mountChatWindow } from "./chat-window";
 import { ToolRegistry } from "./tools";
+import { addBiomeTool } from "./tools/add-biome";
 import { addBurgTool } from "./tools/add-burg";
 import { addCultureTool } from "./tools/add-culture";
 import { addMarkerTool } from "./tools/add-marker";
@@ -159,6 +160,10 @@ export { clearApiKey, getApiKey, setApiKey } from "./api-key";
 export { ChatController } from "./chat-controller";
 export { mountChatWindow } from "./chat-window";
 export { ToolRegistry } from "./tools";
+export {
+  addBiomeTool,
+  createAddBiomeTool,
+} from "./tools/add-biome";
 export {
   addBurgTool,
   createAddBurgTool,
@@ -1018,6 +1023,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addStateTool);
   registry.register(addProvinceTool);
   registry.register(addZoneTool);
+  registry.register(addBiomeTool);
   registry.register(moveMarkerTool);
   registry.register(moveRegimentTool);
   registry.register(moveBurgTool);
