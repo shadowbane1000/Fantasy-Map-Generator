@@ -33,6 +33,7 @@ import { moveRegimentTool } from "./tools/move-regiment";
 import { regenerateAllBurgNamesTool } from "./tools/regenerate-all-burg-names";
 import { regenerateAllProvinceNamesTool } from "./tools/regenerate-all-province-names";
 import { regenerateAllStateNamesTool } from "./tools/regenerate-all-state-names";
+import { regenerateBurgCoaTool } from "./tools/regenerate-burg-coa";
 import { regenerateBurgNameTool } from "./tools/regenerate-burg-name";
 import { regenerateDomainTool } from "./tools/regenerate-domain";
 import { regenerateEmblemsTool } from "./tools/regenerate-emblems";
@@ -270,6 +271,10 @@ export {
   createRegenerateAllStateNamesTool,
   regenerateAllStateNamesTool,
 } from "./tools/regenerate-all-state-names";
+export {
+  createRegenerateBurgCoaTool,
+  regenerateBurgCoaTool,
+} from "./tools/regenerate-burg-coa";
 export {
   BURG_NAME_MODES,
   createRegenerateBurgNameTool,
@@ -835,6 +840,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(focusOnMapTool);
   registry.register(regenerateMapTool);
   registry.register(regenerateEmblemsTool);
+  registry.register(regenerateBurgCoaTool);
   registry.register(regenerateDomainTool);
   registry.register(regenerateBurgNameTool);
   registry.register(regenerateStateNameTool);
