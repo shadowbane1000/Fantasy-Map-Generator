@@ -44,6 +44,7 @@ import { regenerateMapTool } from "./tools/regenerate-map";
 import { regenerateProvinceCoaTool } from "./tools/regenerate-province-coa";
 import { regenerateProvinceNameTool } from "./tools/regenerate-province-name";
 import { regenerateRegimentNamesTool } from "./tools/regenerate-regiment-names";
+import { regenerateReligionNamesTool } from "./tools/regenerate-religion-names";
 import { regenerateRiverNamesTool } from "./tools/regenerate-river-names";
 import { regenerateStateCoaTool } from "./tools/regenerate-state-coa";
 import { regenerateStateNameTool } from "./tools/regenerate-state-name";
@@ -339,6 +340,10 @@ export {
   createRegenerateRegimentNamesTool,
   regenerateRegimentNamesTool,
 } from "./tools/regenerate-regiment-names";
+export {
+  createRegenerateReligionNamesTool,
+  regenerateReligionNamesTool,
+} from "./tools/regenerate-religion-names";
 export {
   createRegenerateRiverNamesTool,
   RIVER_NAME_MODES,
@@ -946,6 +951,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateAllProvinceNamesTool);
   registry.register(regenerateAllStateNamesTool);
   registry.register(regenerateRegimentNamesTool);
+  registry.register(regenerateReligionNamesTool);
   registry.register(regenerateRiverNamesTool);
   registry.register(regenerateZonesTool);
   registry.register(saveMapTool);
