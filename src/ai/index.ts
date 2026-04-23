@@ -59,6 +59,7 @@ import { getCellInfoTool } from "./tools/get-cell-info";
 import { getCultureInfoTool } from "./tools/get-culture-info";
 import { getEntityBboxTool } from "./tools/get-entity-bbox";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
+import { getEntityCentroidTool } from "./tools/get-entity-centroid";
 import { getFeatureInfoTool } from "./tools/get-feature-info";
 import { getLayerStyleTool } from "./tools/get-layer-style";
 import { getMapInfoTool } from "./tools/get-map-info";
@@ -743,6 +744,16 @@ export {
   getEntityCellsTool,
   MAX_GET_ENTITY_CELLS_LIMIT,
 } from "./tools/get-entity-cells";
+export {
+  type CollectEntityCentroidResult,
+  computeEntityCentroid,
+  createGetEntityCentroidTool,
+  defaultGetEntityCentroidRuntime,
+  type EntityCentroid,
+  type EntityCentroidHit,
+  type GetEntityCentroidRuntime,
+  getEntityCentroidTool,
+} from "./tools/get-entity-centroid";
 export {
   createGetFeatureInfoTool,
   defaultFeatureInfoRuntime,
@@ -1694,6 +1705,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getFeatureInfoTool);
   registry.register(getEntityCellsTool);
   registry.register(getEntityBboxTool);
+  registry.register(getEntityCentroidTool);
   registry.register(findAdjacentEntitiesTool);
   registry.register(findCellsAdjacentToEntityTool);
   registry.register(findCellAtCoordsTool);
