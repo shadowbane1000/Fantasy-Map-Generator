@@ -125,6 +125,7 @@ import { setRiverWidthTool } from "./tools/set-river-width";
 import { setRouteGroupTool } from "./tools/set-route-group";
 import { setRouteLockTool } from "./tools/set-route-lock";
 import { setStateCapitalTool } from "./tools/set-state-capital";
+import { setStateCoaCustomTool } from "./tools/set-state-coa-custom";
 import { setStateColorTool } from "./tools/set-state-color";
 import { setStateCultureTool } from "./tools/set-state-culture";
 import { setStateFormTool } from "./tools/set-state-form";
@@ -725,6 +726,10 @@ export {
   setStateCapitalTool,
 } from "./tools/set-state-capital";
 export {
+  createSetStateCoaCustomTool,
+  setStateCoaCustomTool,
+} from "./tools/set-state-coa-custom";
+export {
   createSetStateColorTool,
   isValidCssColor,
   setStateColorTool,
@@ -892,6 +897,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateStateCoaTool);
   registry.register(regenerateProvinceCoaTool);
   registry.register(setBurgCoaCustomTool);
+  registry.register(setStateCoaCustomTool);
   registry.register(regenerateDomainTool);
   registry.register(regenerateBurgNameTool);
   registry.register(regenerateStateNameTool);
