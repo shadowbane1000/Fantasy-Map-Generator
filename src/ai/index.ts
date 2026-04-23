@@ -72,6 +72,7 @@ import { setCultureTypeTool } from "./tools/set-culture-type";
 import { setDiplomacyTool } from "./tools/set-diplomacy";
 import { setEntityExpansionismTool } from "./tools/set-entity-expansionism";
 import { setEntityLockTool } from "./tools/set-entity-lock";
+import { setGeneratorRatesTool } from "./tools/set-generator-rates";
 import { setGeographyTool } from "./tools/set-geography";
 import { setHeightExponentTool } from "./tools/set-height-exponent";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
@@ -441,6 +442,11 @@ export {
   setEntityLockTool,
 } from "./tools/set-entity-lock";
 export {
+  createSetGeneratorRatesTool,
+  GENERATOR_FIELDS,
+  setGeneratorRatesTool,
+} from "./tools/set-generator-rates";
+export {
   createSetGeographyTool,
   GEOGRAPHY_FIELDS,
   setGeographyTool,
@@ -658,6 +664,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setMeasurementUnitsTool);
   registry.register(setClimateTool);
   registry.register(setGeographyTool);
+  registry.register(setGeneratorRatesTool);
   registry.register(setHeightExponentTool);
   registry.register(renameStateTool);
   registry.register(renameBurgTool);
