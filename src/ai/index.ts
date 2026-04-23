@@ -30,6 +30,7 @@ import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getMapInfoTool } from "./tools/get-map-info";
+import { getReligionInfoTool } from "./tools/get-religion-info";
 import { getStateInfoTool } from "./tools/get-state-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
@@ -334,6 +335,14 @@ export {
   createGetMapInfoTool,
   getMapInfoTool,
 } from "./tools/get-map-info";
+export {
+  createGetReligionInfoTool,
+  defaultReligionInfoRuntime,
+  getReligionInfoTool,
+  type ReligionInfo,
+  type ReligionInfoRuntime,
+  readReligionInfoFromPack,
+} from "./tools/get-religion-info";
 export {
   createGetStateInfoTool,
   defaultStateInfoRuntime,
@@ -1116,6 +1125,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getMapInfoTool);
   registry.register(getCellInfoTool);
   registry.register(getStateInfoTool);
+  registry.register(getReligionInfoTool);
   registry.register(getBurgInfoTool);
   registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
