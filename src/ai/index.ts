@@ -28,6 +28,7 @@ import { findNearestBurgTool } from "./tools/find-nearest-burg";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
+import { getCultureInfoTool } from "./tools/get-culture-info";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getMapInfoTool } from "./tools/get-map-info";
 import { getStateInfoTool } from "./tools/get-state-info";
@@ -317,6 +318,14 @@ export {
   getCellInfoTool,
   readCellFromState,
 } from "./tools/get-cell-info";
+export {
+  type CultureInfo,
+  type CultureInfoRuntime,
+  createGetCultureInfoTool,
+  defaultCultureInfoRuntime,
+  getCultureInfoTool,
+  readCultureInfoFromPack,
+} from "./tools/get-culture-info";
 export {
   type CollectEntityCellsResult,
   collectCellsForEntity,
@@ -1117,6 +1126,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getCellInfoTool);
   registry.register(getStateInfoTool);
   registry.register(getBurgInfoTool);
+  registry.register(getCultureInfoTool);
   registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
   registry.register(listStatesTool);
