@@ -81,6 +81,7 @@ export interface RawCulture {
   urban?: number;
   expansionism?: number;
   origins?: number[];
+  center?: number;
   lock?: boolean;
   removed?: boolean;
 }

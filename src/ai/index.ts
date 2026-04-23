@@ -4,6 +4,7 @@ import { ChatController } from "./chat-controller";
 import { mountChatWindow } from "./chat-window";
 import { ToolRegistry } from "./tools";
 import { addBurgTool } from "./tools/add-burg";
+import { addCultureTool } from "./tools/add-culture";
 import { addMarkerTool } from "./tools/add-marker";
 import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { exportMapTool } from "./tools/export-map";
@@ -116,6 +117,10 @@ export {
   addBurgTool,
   createAddBurgTool,
 } from "./tools/add-burg";
+export {
+  addCultureTool,
+  createAddCultureTool,
+} from "./tools/add-culture";
 export {
   addMarkerTool,
   createAddMarkerTool,
@@ -691,6 +696,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeMarkerTool);
   registry.register(addMarkerTool);
   registry.register(addBurgTool);
+  registry.register(addCultureTool);
   registry.register(moveMarkerTool);
   registry.register(moveRegimentTool);
   registry.register(moveBurgTool);
