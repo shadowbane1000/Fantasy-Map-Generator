@@ -79,6 +79,7 @@ import { getBiomeDistributionTool } from "./tools/get-biome-distribution";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
+import { getClimateStatsTool } from "./tools/get-climate-stats";
 import { getCultureDistributionTool } from "./tools/get-culture-distribution";
 import { getCultureInfoTool } from "./tools/get-culture-info";
 import { getDiplomacyBetweenTool } from "./tools/get-diplomacy-between";
@@ -1049,6 +1050,16 @@ export {
   getCellInfoTool,
   readCellFromState,
 } from "./tools/get-cell-info";
+export {
+  type ClimateStat,
+  type ClimateStats,
+  type ClimateStatsGridLike,
+  type ClimateStatsRuntime,
+  createGetClimateStatsTool,
+  defaultClimateStatsRuntime,
+  getClimateStatsTool,
+  readClimateStatsFromGrid,
+} from "./tools/get-climate-stats";
 export {
   type CultureDistribution,
   type CultureDistributionEntry,
@@ -2086,6 +2097,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getMapInfoTool);
   registry.register(getPopulationStatsTool);
   registry.register(getTerrainStatsTool);
+  registry.register(getClimateStatsTool);
   registry.register(getReligionDistributionTool);
   registry.register(getCultureDistributionTool);
   registry.register(getStateDistributionTool);
