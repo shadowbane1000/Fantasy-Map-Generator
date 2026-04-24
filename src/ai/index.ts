@@ -42,6 +42,7 @@ import { findCellsByTemperatureRangeTool } from "./tools/find-cells-by-temperatu
 import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
 import { findCoastCellsTool } from "./tools/find-coast-cells";
 import { findCulturesByTypeTool } from "./tools/find-cultures-by-type";
+import { findCulturesInAreaTool } from "./tools/find-cultures-in-area";
 import { findMarkersByStateTool } from "./tools/find-markers-by-state";
 import { findMarkersByTypeTool } from "./tools/find-markers-by-type";
 import { findMarkersInAreaTool } from "./tools/find-markers-in-area";
@@ -576,6 +577,20 @@ export {
   findCulturesByTypeTool,
   MAX_FIND_CULTURES_BY_TYPE_LIMIT,
 } from "./tools/find-cultures-by-type";
+export {
+  createFindCulturesInAreaTool,
+  DEFAULT_FIND_CULTURES_IN_AREA_LIMIT,
+  defaultFindCulturesInAreaRuntime,
+  type FindCulturesInAreaArea,
+  type FindCulturesInAreaHit,
+  type FindCulturesInAreaPayload,
+  type FindCulturesInAreaQuery,
+  type FindCulturesInAreaResult,
+  type FindCulturesInAreaRuntime,
+  findCulturesInAreaInPack,
+  findCulturesInAreaTool,
+  MAX_FIND_CULTURES_IN_AREA_LIMIT,
+} from "./tools/find-cultures-in-area";
 export {
   createFindMarkersByStateTool,
   DEFAULT_FIND_MARKERS_BY_STATE_LIMIT,
@@ -1926,6 +1941,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findReligionsByCultureTool);
   registry.register(findReligionsByTypeTool);
   registry.register(findCulturesByTypeTool);
+  registry.register(findCulturesInAreaTool);
   registry.register(measureDistanceTool);
   registry.register(listBiomesTool);
   registry.register(listCulturesTool);
