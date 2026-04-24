@@ -92,6 +92,7 @@ import { getMapInfoTool } from "./tools/get-map-info";
 import { getMarkerInfoTool } from "./tools/get-marker-info";
 import { getNoteInfoTool } from "./tools/get-note-info";
 import { getPopulationStatsTool } from "./tools/get-population-stats";
+import { getProvinceDistributionTool } from "./tools/get-province-distribution";
 import { getProvinceInfoTool } from "./tools/get-province-info";
 import { getRegimentInfoTool } from "./tools/get-regiment-info";
 import { getReligionDistributionTool } from "./tools/get-religion-distribution";
@@ -1166,6 +1167,16 @@ export {
   readPopulationStatsFromPack,
 } from "./tools/get-population-stats";
 export {
+  createGetProvinceDistributionTool,
+  defaultProvinceDistributionRuntime,
+  getProvinceDistributionTool,
+  type ProvinceDistribution,
+  type ProvinceDistributionEntry,
+  type ProvinceDistributionPackLike,
+  type ProvinceDistributionRuntime,
+  readProvinceDistributionFromPack,
+} from "./tools/get-province-distribution";
+export {
   createGetProvinceInfoTool,
   defaultProvinceInfoRuntime,
   getProvinceInfoTool,
@@ -2101,6 +2112,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getReligionDistributionTool);
   registry.register(getCultureDistributionTool);
   registry.register(getStateDistributionTool);
+  registry.register(getProvinceDistributionTool);
   registry.register(getCellInfoTool);
   registry.register(getStateInfoTool);
   registry.register(getReligionInfoTool);
