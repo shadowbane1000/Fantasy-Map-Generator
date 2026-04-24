@@ -79,6 +79,7 @@ import { getBiomeDistributionTool } from "./tools/get-biome-distribution";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
+import { getCultureDistributionTool } from "./tools/get-culture-distribution";
 import { getCultureInfoTool } from "./tools/get-culture-info";
 import { getDiplomacyBetweenTool } from "./tools/get-diplomacy-between";
 import { getEntityBboxTool } from "./tools/get-entity-bbox";
@@ -1046,6 +1047,16 @@ export {
   getCellInfoTool,
   readCellFromState,
 } from "./tools/get-cell-info";
+export {
+  type CultureDistribution,
+  type CultureDistributionEntry,
+  type CultureDistributionPackLike,
+  type CultureDistributionRuntime,
+  createGetCultureDistributionTool,
+  defaultCultureDistributionRuntime,
+  getCultureDistributionTool,
+  readCultureDistributionFromPack,
+} from "./tools/get-culture-distribution";
 export {
   type CultureInfo,
   type CultureInfoRuntime,
@@ -2052,6 +2063,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getMapInfoTool);
   registry.register(getPopulationStatsTool);
   registry.register(getReligionDistributionTool);
+  registry.register(getCultureDistributionTool);
   registry.register(getCellInfoTool);
   registry.register(getStateInfoTool);
   registry.register(getReligionInfoTool);
