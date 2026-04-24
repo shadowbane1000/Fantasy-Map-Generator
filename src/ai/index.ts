@@ -93,6 +93,7 @@ import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getEntityCentroidTool } from "./tools/get-entity-centroid";
 import { getFeatureDistributionTool } from "./tools/get-feature-distribution";
 import { getFeatureInfoTool } from "./tools/get-feature-info";
+import { getGeneratorRatesTool } from "./tools/get-generator-rates";
 import { getLayerStyleTool } from "./tools/get-layer-style";
 import { getLayerVisibilityTool } from "./tools/get-layer-visibility";
 import { getMapInfoTool } from "./tools/get-map-info";
@@ -1210,6 +1211,13 @@ export {
   readFeatureInfoFromPack,
 } from "./tools/get-feature-info";
 export {
+  createGetGeneratorRatesTool,
+  defaultGeneratorRatesReadRuntime,
+  type GeneratorRatesReadRuntime,
+  type GeneratorRatesSnapshot,
+  getGeneratorRatesTool,
+} from "./tools/get-generator-rates";
+export {
   createGetLayerStyleTool,
   defaultLayerStyleRuntime,
   getLayerStyleTool,
@@ -2293,6 +2301,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getZoneInfoTool);
   registry.register(getFeatureInfoTool);
   registry.register(getClimateTool);
+  registry.register(getGeneratorRatesTool);
   registry.register(getEntityCellsTool);
   registry.register(getEntityBboxTool);
   registry.register(getEntityCentroidTool);
