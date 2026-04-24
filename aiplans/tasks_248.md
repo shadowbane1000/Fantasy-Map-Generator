@@ -1,0 +1,27 @@
+# Tasks 248 — `find_cultures_in_area`
+
+- [ ] Read analogs (find-states-in-area, find-provinces-in-area, list-cultures, get-culture-info, _shared/pack-types).
+- [ ] Baseline lint (7 warnings / 1 info / 0 errors) + tests (4304).
+- [ ] Create `src/ai/tools/find-cultures-in-area.ts`:
+  - [ ] `PackLike` shape: `cultures?: RawCulture[]`, `cells?.i`, `cells?.p`.
+  - [ ] `findCulturesInAreaInPack(pack, query)` pure scanner.
+  - [ ] `defaultFindCulturesInAreaRuntime` via `getPack`.
+  - [ ] `parseInput` with mutual exclusivity & numeric validation.
+  - [ ] `createFindCulturesInAreaTool` Tool factory + default export.
+  - [ ] Constants: `DEFAULT_FIND_CULTURES_IN_AREA_LIMIT = 10000`, `MAX_FIND_CULTURES_IN_AREA_LIMIT = 100000`.
+  - [ ] Culture hit: `{i, name, color, type, x, y, distance}`.
+  - [ ] Allow culture 0 when its center resolves; skip removed.
+  - [ ] Position solely from `pack.cells.p[culture.center]`.
+- [ ] Create `src/ai/tools/find-cultures-in-area.test.ts`:
+  - [ ] Pure scanner cases: rect normalisation, circle-coords, circle-cell, radius 0, limit truncation, skip removed/no-center/missing-cell-point, culture 0 allowed when center valid, not-ready, out-of-bounds, no-cell-point, color/type echoing.
+  - [ ] Tool surface: missing-params, mixed-forms, incomplete rect, non-finite numbers, bad cell, bad radius, bad limit, ok responses, structured errors.
+  - [ ] `defaultFindCulturesInAreaRuntime` integration block using `globalThis.pack`.
+- [ ] Register in `src/ai/index.ts`:
+  - [ ] Import `findCulturesInAreaTool`.
+  - [ ] Export block (types + runtime + constants + factory).
+  - [ ] `registry.register(findCulturesInAreaTool)` near other culture finders.
+- [ ] Add `README_AI.md` row near `find_states_in_area`.
+- [ ] `npm run build`.
+- [ ] `npm test` (4304 → expected ~4340).
+- [ ] `npm run lint` (7 warnings / 1 info / 0 errors — baseline preserved).
+- [ ] Commit `feat(ai): add find_cultures_in_area tool`.
