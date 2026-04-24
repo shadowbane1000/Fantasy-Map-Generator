@@ -1,0 +1,27 @@
+# Tasks 246 — `find_states_in_area`
+
+- [x] Read analogs (find-provinces-in-area, find-burgs-in-area, list-states, _shared/pack-types).
+- [x] Baseline lint (7 warnings / 1 info / 0 errors) + tests (4243).
+- [x] Create `src/ai/tools/find-states-in-area.ts`:
+  - [x] `PackLike` shape: `states?: RawState[]`, `burgs?: RawBurg[]`, `cells?.i`, `cells?.p`.
+  - [x] `findStatesInAreaInPack(pack, query)` pure scanner.
+  - [x] `defaultFindStatesInAreaRuntime` via `getPack`.
+  - [x] `parseInput` with mutual exclusivity & numeric validation.
+  - [x] `createFindStatesInAreaTool` Tool factory + default export.
+  - [x] Constants: `DEFAULT_FIND_STATES_IN_AREA_LIMIT = 10000`, `MAX_FIND_STATES_IN_AREA_LIMIT = 100000`.
+  - [x] State hit: `{i, name, fullName, color, form, capital, x, y, distance}`.
+  - [x] Capital resolution via `pack.burgs[state.capital]?.name`.
+  - [x] Pole first, fallback to `cells.p[center]`.
+- [x] Create `src/ai/tools/find-states-in-area.test.ts`:
+  - [x] Pure scanner cases: rect normalisation, circle-coords, circle-cell, radius 0, limit truncation, pole + center fallback, skip i=0/removed/no-pos, not-ready, out-of-bounds, no-cell-point, capital name resolution.
+  - [x] Tool surface: missing-params, mixed-forms, incomplete rect, non-finite numbers, bad cell, bad radius, bad limit, ok responses, structured errors.
+  - [x] `defaultFindStatesInAreaRuntime` integration block using `globalThis.pack`.
+- [x] Register in `src/ai/index.ts`:
+  - [x] Import `findStatesInAreaTool`.
+  - [x] Export block (types + runtime + constants + factory).
+  - [x] `registry.register(findStatesInAreaTool)` near other state finders.
+- [x] Add `README_AI.md` row near `find_provinces_in_area`.
+- [x] `npm run build`.
+- [x] `npm test` (4243 → 4282, +39 tests).
+- [x] `npm run lint` (7 warnings / 1 info / 0 errors — baseline preserved).
+- [x] Commit `feat(ai): add find_states_in_area tool`.
