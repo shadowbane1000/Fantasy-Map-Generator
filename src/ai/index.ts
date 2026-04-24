@@ -29,6 +29,7 @@ import { focusOnMapTool } from "./tools/focus-on-map";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
+import { getClimateTool } from "./tools/get-climate";
 import { getCultureInfoTool } from "./tools/get-culture-info";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getFeatureInfoTool } from "./tools/get-feature-info";
@@ -335,6 +336,13 @@ export {
   getCellInfoTool,
   readCellFromState,
 } from "./tools/get-cell-info";
+export {
+  type ClimateReadRuntime,
+  type ClimateSnapshot,
+  createGetClimateTool,
+  defaultClimateReadRuntime,
+  getClimateTool,
+} from "./tools/get-climate";
 export {
   type CultureInfo,
   type CultureInfoRuntime,
@@ -1219,6 +1227,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getRegimentInfoTool);
   registry.register(getZoneInfoTool);
   registry.register(getFeatureInfoTool);
+  registry.register(getClimateTool);
   registry.register(getEntityCellsTool);
   registry.register(findCellAtCoordsTool);
   registry.register(listStatesTool);
