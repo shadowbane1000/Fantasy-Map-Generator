@@ -51,6 +51,7 @@ import { findNearestRiverTool } from "./tools/find-nearest-river";
 import { findNotesByPrefixTool } from "./tools/find-notes-by-prefix";
 import { findProvincesByStateTool } from "./tools/find-provinces-by-state";
 import { findRegimentsByStateTool } from "./tools/find-regiments-by-state";
+import { findRegimentsByTypeTool } from "./tools/find-regiments-by-type";
 import { findReligionsByCultureTool } from "./tools/find-religions-by-culture";
 import { findReligionsByTypeTool } from "./tools/find-religions-by-type";
 import { findRiversByBasinTool } from "./tools/find-rivers-by-basin";
@@ -677,6 +678,19 @@ export {
   findRegimentsByStateTool,
   MAX_FIND_REGIMENTS_BY_STATE_LIMIT,
 } from "./tools/find-regiments-by-state";
+export {
+  createFindRegimentsByTypeTool,
+  DEFAULT_FIND_REGIMENTS_BY_TYPE_LIMIT,
+  defaultFindRegimentsByTypeRuntime,
+  type FindRegimentsByTypeHit,
+  type FindRegimentsByTypePayload,
+  type FindRegimentsByTypeResult,
+  type FindRegimentsByTypeRuntime,
+  type FindRegimentsByTypeStateRef,
+  findRegimentsByTypeInPack,
+  findRegimentsByTypeTool,
+  MAX_FIND_REGIMENTS_BY_TYPE_LIMIT,
+} from "./tools/find-regiments-by-type";
 export {
   createFindReligionsByCultureTool,
   DEFAULT_FIND_RELIGIONS_BY_CULTURE_LIMIT,
@@ -1836,6 +1850,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findBurgsByPopulationRangeTool);
   registry.register(findProvincesByStateTool);
   registry.register(findRegimentsByStateTool);
+  registry.register(findRegimentsByTypeTool);
   registry.register(findStatesByCultureTool);
   registry.register(findStatesByTypeTool);
   registry.register(findReligionsByCultureTool);
