@@ -1,0 +1,23 @@
+# Tasks 268 — `get_marker_distribution`
+
+- [ ] Confirm worktree + master up-to-date.
+- [ ] Study `list-marker-types.ts` (+ test), `find-markers-by-type.ts` (+ test), `get-burg-distribution.ts` (+ test), `_shared/index.ts`.
+- [ ] Write `src/ai/tools/get-marker-distribution.ts`:
+  - [ ] Import `UNTYPED_MARKER_BUCKET` from `./list-marker-types`.
+  - [ ] Pure scanner `readMarkerDistributionFromPack`.
+  - [ ] Runtime interface + default runtime.
+  - [ ] `createGetMarkerDistributionTool` factory + singleton `getMarkerDistributionTool`.
+- [ ] Write `src/ai/tools/get-marker-distribution.test.ts`:
+  - [ ] Pure scanner tests (null pack, empty, grouping, sort, tiebreak, casing, untyped fallback, removed skip, i=0 skip, null entries, percentages).
+  - [ ] Tool surface tests (no-args, unknown keys, not-ready error, schema).
+  - [ ] defaultRuntime integration block using `globalThis.pack` setup/teardown.
+  - [ ] Use `as unknown as { ... }` casts where needed.
+- [ ] Register in `src/ai/index.ts`:
+  - [ ] `import { getMarkerDistributionTool } from "./tools/get-marker-distribution";`
+  - [ ] Add re-exports (types + helpers) near `get-burg-distribution` exports.
+  - [ ] `registry.register(getMarkerDistributionTool);` after `getBurgDistributionTool`.
+- [ ] Add `README_AI.md` row for `get_marker_distribution` near `get_burg_distribution`.
+- [ ] `npm run build` succeeds.
+- [ ] `npm test` — all pass, test count = previous + new.
+- [ ] `npm run lint` — matches 7w/1i/0e baseline.
+- [ ] Commit with `feat(ai): add get_marker_distribution tool`.
