@@ -77,6 +77,7 @@ import { findZonesByTypeTool } from "./tools/find-zones-by-type";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getBiomeDistributionTool } from "./tools/get-biome-distribution";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
+import { getBurgDistributionTool } from "./tools/get-burg-distribution";
 import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
 import { getClimateStatsTool } from "./tools/get-climate-stats";
@@ -1034,6 +1035,17 @@ export {
   getBiomeInfoTool,
   readBiomeInfoFromPack,
 } from "./tools/get-biome-info";
+export {
+  type BurgDistribution,
+  type BurgDistributionEntry,
+  type BurgDistributionPackLike,
+  type BurgDistributionRates,
+  type BurgDistributionRuntime,
+  createGetBurgDistributionTool,
+  defaultBurgDistributionRuntime,
+  getBurgDistributionTool,
+  readBurgDistributionFromPack,
+} from "./tools/get-burg-distribution";
 export {
   type BurgCoaInfo,
   type BurgFeatureFlags,
@@ -2135,6 +2147,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getBiomeInfoTool);
   registry.register(getBiomeDistributionTool);
   registry.register(getFeatureDistributionTool);
+  registry.register(getBurgDistributionTool);
   registry.register(getMarkerInfoTool);
   registry.register(getNoteInfoTool);
   registry.register(getRegimentInfoTool);
