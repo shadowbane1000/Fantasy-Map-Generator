@@ -97,6 +97,7 @@ import { getNoteInfoTool } from "./tools/get-note-info";
 import { getPopulationStatsTool } from "./tools/get-population-stats";
 import { getProvinceDistributionTool } from "./tools/get-province-distribution";
 import { getProvinceInfoTool } from "./tools/get-province-info";
+import { getRegimentDistributionTool } from "./tools/get-regiment-distribution";
 import { getRegimentInfoTool } from "./tools/get-regiment-info";
 import { getReligionDistributionTool } from "./tools/get-religion-distribution";
 import { getReligionInfoTool } from "./tools/get-religion-info";
@@ -1222,6 +1223,17 @@ export {
   readProvinceInfoFromPack,
 } from "./tools/get-province-info";
 export {
+  createGetRegimentDistributionTool,
+  defaultRegimentDistributionRuntime,
+  getRegimentDistributionTool,
+  type RegimentDistribution,
+  type RegimentDistributionEntry,
+  type RegimentDistributionPackLike,
+  type RegimentDistributionRuntime,
+  readRegimentDistributionFromPack,
+  UNTYPED_REGIMENT_BUCKET,
+} from "./tools/get-regiment-distribution";
+export {
   createGetRegimentInfoTool,
   defaultRegimentInfoRuntime,
   getRegimentInfoTool,
@@ -2183,6 +2195,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getBiomeDistributionTool);
   registry.register(getFeatureDistributionTool);
   registry.register(getBurgDistributionTool);
+  registry.register(getRegimentDistributionTool);
   registry.register(getRiverDistributionTool);
   registry.register(getMarkerDistributionTool);
   registry.register(getMarkerInfoTool);
