@@ -105,6 +105,7 @@ import { getRouteInfoTool } from "./tools/get-route-info";
 import { getStateDistributionTool } from "./tools/get-state-distribution";
 import { getStateInfoTool } from "./tools/get-state-info";
 import { getTerrainStatsTool } from "./tools/get-terrain-stats";
+import { getZoneDistributionTool } from "./tools/get-zone-distribution";
 import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
@@ -1293,6 +1294,17 @@ export {
   type TerrainStatsRuntime,
 } from "./tools/get-terrain-stats";
 export {
+  createGetZoneDistributionTool,
+  defaultZoneDistributionRuntime,
+  getZoneDistributionTool,
+  readZoneDistributionFromPack,
+  UNTYPED_ZONE_BUCKET,
+  type ZoneDistribution,
+  type ZoneDistributionEntry,
+  type ZoneDistributionPackLike,
+  type ZoneDistributionRuntime,
+} from "./tools/get-zone-distribution";
+export {
   createGetZoneInfoTool,
   DEFAULT_ZONE_CELLS_LIMIT,
   getZoneInfoTool,
@@ -2239,6 +2251,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findNotesByPrefixTool);
   registry.register(listZonesTool);
   registry.register(findZonesByTypeTool);
+  registry.register(getZoneDistributionTool);
   registry.register(setMapNameTool);
   registry.register(setLabelTextTool);
   registry.register(setMeasurementUnitsTool);
