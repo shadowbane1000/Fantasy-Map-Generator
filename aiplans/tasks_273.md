@@ -1,0 +1,22 @@
+# Tasks 273 — `find_orphan_entities`
+
+- [ ] Capture lint baseline: `npm run lint 2>&1 | tail -5` — expect 7 warnings / 1 info / 0 errors.
+- [ ] Create `src/ai/tools/find-orphan-entities.ts`
+  - [ ] `OrphanEntity`, `FindOrphanEntitiesResult`, `FindOrphanEntitiesPackLike` types.
+  - [ ] `findOrphanEntitiesInPack(pack)` pure collector covering state.capital / province.state / province.burg / burg.state / burg.culture / religion.culture.
+  - [ ] `FindOrphanEntitiesRuntime` + `defaultFindOrphanEntitiesRuntime` (uses `getPack<FindOrphanEntitiesPackLike>()`).
+  - [ ] `createFindOrphanEntitiesTool(runtime)` factory with full description + empty schema.
+  - [ ] Module-level `findOrphanEntitiesTool` export.
+- [ ] Create `src/ai/tools/find-orphan-entities.test.ts`
+  - [ ] Pure collector describe block covering every rule in the plan (clean pack, each broken-ref case, valid-zero exceptions, sort order, skip removed / placeholder, not-ready).
+  - [ ] Tool-surface describe block (ok payload shape, extra-input tolerance, not-ready error, schema check).
+  - [ ] `defaultFindOrphanEntitiesRuntime (integration)` describe block stubbing `globalThis.pack` with `as unknown as { pack?: unknown }` cast.
+- [ ] Wire up `src/ai/index.ts`
+  - [ ] Import `findOrphanEntitiesTool` next to `findOrphanCellsTool` import.
+  - [ ] Re-export every new public member from `./tools/find-orphan-entities` (types + values).
+  - [ ] `registry.register(findOrphanEntitiesTool)` near `findOrphanCellsTool`.
+- [ ] Edit `README_AI.md`: add a `find_orphan_entities` row near `find_adjacent_entities`, with API-key pointer and sample questions.
+- [ ] Verify: `npm run build` succeeds.
+- [ ] Verify: `npm test` all pass.
+- [ ] Verify: `npm run lint` matches baseline (7 warnings / 1 info / 0 errors).
+- [ ] Commit: `feat(ai): add find_orphan_entities tool` with a short 1-2 line body.
