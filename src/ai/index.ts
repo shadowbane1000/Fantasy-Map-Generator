@@ -112,6 +112,7 @@ import { getRouteInfoTool } from "./tools/get-route-info";
 import { getStateDistributionTool } from "./tools/get-state-distribution";
 import { getStateInfoTool } from "./tools/get-state-info";
 import { getTerrainStatsTool } from "./tools/get-terrain-stats";
+import { getWorldRatesTool } from "./tools/get-world-rates";
 import { getZoneDistributionTool } from "./tools/get-zone-distribution";
 import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
@@ -1377,6 +1378,12 @@ export {
   type TerrainStatsRuntime,
 } from "./tools/get-terrain-stats";
 export {
+  createGetWorldRatesTool,
+  defaultGetWorldRatesRuntime,
+  type GetWorldRatesRuntime,
+  getWorldRatesTool,
+} from "./tools/get-world-rates";
+export {
   createGetZoneDistributionTool,
   defaultZoneDistributionRuntime,
   getZoneDistributionTool,
@@ -2443,6 +2450,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setPrecipitationTool);
   registry.register(setWindTool);
   registry.register(setWorldRatesTool);
+  registry.register(getWorldRatesTool);
   registry.register(setLayerVisibilityTool);
   registry.register(applyLayersPresetTool);
   registry.register(setLayerOpacityTool);

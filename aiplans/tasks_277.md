@@ -1,0 +1,29 @@
+# Tasks — Plan 277 (`get_world_rates`)
+
+- [x] Study `set-world-rates.ts` + test — note `WorldRates`, `WorldRatesRuntime.read()`, `defaultWorldRatesRuntime`.
+- [x] Study `_shared/index.ts` — confirm `okResult` is the helper.
+- [x] Study sibling `get-layer-visibility.ts` + test for read-only / integration pattern.
+- [x] Write plan doc (`plan_277.md`).
+- [ ] Implement `src/ai/tools/get-world-rates.ts`:
+  - [ ] Import `defaultWorldRatesRuntime`, `type WorldRates` from `./set-world-rates`.
+  - [ ] Define local narrow runtime seam `GetWorldRatesRuntime { read(): WorldRates }`.
+  - [ ] Export `defaultGetWorldRatesRuntime` that delegates to `defaultWorldRatesRuntime.read()`.
+  - [ ] Export `createGetWorldRatesTool(runtime?)` factory.
+  - [ ] Export `getWorldRatesTool` (default instance).
+  - [ ] Tool schema: `{ type: "object", properties: {} }`, no required.
+  - [ ] `execute`: read once, return `okResult({ populationRate, urbanization, urbanDensity })`.
+  - [ ] Description mentions it's the read-side inverse of `set_world_rates`, read-only, and null semantics.
+- [ ] Implement `src/ai/tools/get-world-rates.test.ts`:
+  - [ ] Unit suite (mocked runtime): returns current values; returns all-null when runtime gives all-null; input args ignored (extra keys); never mutates.
+  - [ ] Verify tool name and no-required-args schema.
+  - [ ] `defaultRuntime integration` describe block with `beforeEach`/`afterEach` that swaps `globalThis.document`. Uses `as unknown as { ... }` casts.
+  - [ ] Integration cases: reads all three DOM inputs; treats missing input as null; returns all null when `document` is undefined.
+- [ ] Register + re-export in `src/ai/index.ts`:
+  - [ ] Import next to `setWorldRatesTool`.
+  - [ ] Add export block (`createGetWorldRatesTool`, `defaultGetWorldRatesRuntime`, `getWorldRatesTool`, `type GetWorldRatesRuntime`).
+  - [ ] `registry.register(getWorldRatesTool)` near `setWorldRatesTool`.
+- [ ] Update `README_AI.md`: insert row right after the `set_world_rates` row. Mention no args, return shape, read-only, Anthropic API-key requirement, 2-3 example prompts.
+- [ ] `npm run build` — must pass.
+- [ ] `npm test` — must pass (baseline 5015 → +new tests).
+- [ ] `npm run lint` — must match baseline (7 warnings / 1 info / 0 errors).
+- [ ] Commit `feat(ai): add get_world_rates tool`.
