@@ -1,0 +1,25 @@
+# Tasks 249 — `find_religions_in_area`
+
+- [x] Read analogs (find-states-in-area, find-provinces-in-area, find-rivers-in-area, list-religions, get-religion-info, _shared/pack-types).
+- [x] Baseline lint (7 warnings / 1 info / 0 errors) + tests (4304).
+- [x] Create `src/ai/tools/find-religions-in-area.ts`:
+  - [x] `PackLike` shape: `religions?: RawReligion[]`, `cells?.i`, `cells?.p`.
+  - [x] `findReligionsInAreaInPack(pack, query)` pure scanner — position from `pack.cells.p[religion.center]` only.
+  - [x] `defaultFindReligionsInAreaRuntime` via `getPack`.
+  - [x] `parseInput` with mutual exclusivity & numeric validation.
+  - [x] `createFindReligionsInAreaTool` Tool factory + default export.
+  - [x] Constants: `DEFAULT_FIND_RELIGIONS_IN_AREA_LIMIT = 10000`, `MAX_FIND_RELIGIONS_IN_AREA_LIMIT = 100000`.
+  - [x] Religion hit: `{i, name, color, type, form, x, y, distance}`.
+- [x] Create `src/ai/tools/find-religions-in-area.test.ts`:
+  - [x] Pure scanner cases: rect normalisation, circle-coords, circle-cell, radius 0, limit truncation, skip i=0/removed/no-center/bad-center, not-ready, out-of-bounds, no-cell-point.
+  - [x] Tool surface: missing-params, mixed-forms, incomplete rect, non-finite numbers, bad cell, bad radius, bad limit, ok responses, structured errors.
+  - [x] `defaultFindReligionsInAreaRuntime` integration block using `globalThis.pack`.
+- [x] Register in `src/ai/index.ts`:
+  - [x] Import `findReligionsInAreaTool`.
+  - [x] Export block (types + runtime + constants + factory).
+  - [x] `registry.register(findReligionsInAreaTool)` near other religion finders.
+- [x] Add `README_AI.md` row near `find_states_in_area`.
+- [x] `npm run build`.
+- [x] `npm test` (4304 → 4342, +38 tests).
+- [x] `npm run lint` (7 warnings / 1 info / 0 errors — baseline preserved).
+- [x] Commit `feat(ai): add find_religions_in_area tool`.
