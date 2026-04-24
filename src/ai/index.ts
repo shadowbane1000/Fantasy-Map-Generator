@@ -96,6 +96,7 @@ import { getReligionDistributionTool } from "./tools/get-religion-distribution";
 import { getReligionInfoTool } from "./tools/get-religion-info";
 import { getRiverInfoTool } from "./tools/get-river-info";
 import { getRouteInfoTool } from "./tools/get-route-info";
+import { getStateDistributionTool } from "./tools/get-state-distribution";
 import { getStateInfoTool } from "./tools/get-state-info";
 import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
@@ -1195,6 +1196,16 @@ export {
   readRouteInfoFromPack,
 } from "./tools/get-route-info";
 export {
+  createGetStateDistributionTool,
+  defaultStateDistributionRuntime,
+  getStateDistributionTool,
+  readStateDistributionFromPack,
+  type StateDistribution,
+  type StateDistributionEntry,
+  type StateDistributionPackLike,
+  type StateDistributionRuntime,
+} from "./tools/get-state-distribution";
+export {
   createGetStateInfoTool,
   defaultStateInfoRuntime,
   getStateInfoTool,
@@ -2052,6 +2063,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getMapInfoTool);
   registry.register(getPopulationStatsTool);
   registry.register(getReligionDistributionTool);
+  registry.register(getStateDistributionTool);
   registry.register(getCellInfoTool);
   registry.register(getStateInfoTool);
   registry.register(getReligionInfoTool);
