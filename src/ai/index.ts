@@ -102,6 +102,7 @@ import { getReligionDistributionTool } from "./tools/get-religion-distribution";
 import { getReligionInfoTool } from "./tools/get-religion-info";
 import { getRiverDistributionTool } from "./tools/get-river-distribution";
 import { getRiverInfoTool } from "./tools/get-river-info";
+import { getRouteDistributionTool } from "./tools/get-route-distribution";
 import { getRouteInfoTool } from "./tools/get-route-info";
 import { getStateDistributionTool } from "./tools/get-state-distribution";
 import { getStateInfoTool } from "./tools/get-state-info";
@@ -1266,6 +1267,16 @@ export {
   readRiverInfoFromPack,
 } from "./tools/get-river-info";
 export {
+  createGetRouteDistributionTool,
+  defaultRouteDistributionRuntime,
+  getRouteDistributionTool,
+  type RouteDistribution,
+  type RouteDistributionEntry,
+  type RouteDistributionPackLike,
+  type RouteDistributionRuntime,
+  readRouteDistributionFromPack,
+} from "./tools/get-route-distribution";
+export {
   createGetRouteInfoTool,
   DEFAULT_POINTS_LIMIT,
   defaultRouteInfoRuntime,
@@ -2184,6 +2195,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getFeatureDistributionTool);
   registry.register(getBurgDistributionTool);
   registry.register(getRiverDistributionTool);
+  registry.register(getRouteDistributionTool);
   registry.register(getMarkerDistributionTool);
   registry.register(getMarkerInfoTool);
   registry.register(getNoteInfoTool);
