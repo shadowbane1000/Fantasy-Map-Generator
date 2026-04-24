@@ -1,0 +1,24 @@
+# Tasks 281 — `get_generator_rates`
+
+- [ ] 1. Read `src/ai/tools/set-generator-rates.ts` to confirm `GENERATOR_FIELDS` export.
+- [ ] 2. Read `src/ai/tools/get-climate.ts` + `get-climate.test.ts` for read-side patterns.
+- [ ] 3. Capture lint + test baselines (7 warnings / 1 info / 0 errors; 5057 tests pass).
+- [ ] 4. Create `src/ai/tools/get-generator-rates.ts`:
+  - `GeneratorRatesSnapshot` = `Record<string, number | null>`.
+  - `GeneratorRatesReadRuntime` with `read()`.
+  - `defaultGeneratorRatesReadRuntime` — options → DOM → localStorage per field.
+  - `createGetGeneratorRatesTool(runtime?)` — returns a `Tool`.
+  - Exported `getGeneratorRatesTool` singleton.
+- [ ] 5. Create `src/ai/tools/get-generator-rates.test.ts`:
+  - Unit tests for runtime-seam via `createGetGeneratorRatesTool({ read: () => snapshot })`.
+  - Metadata assertions (name, empty `input_schema.properties`).
+  - `defaultGeneratorRatesReadRuntime` integration suite using `globalThis` swaps and `as unknown as { ... }` casts.
+- [ ] 6. Register in `src/ai/index.ts`:
+  - `import { getGeneratorRatesTool } from "./tools/get-generator-rates";`
+  - Re-export the create/runtime/tool from the barrel.
+  - `registry.register(getGeneratorRatesTool);`.
+- [ ] 7. Add README_AI.md row describing tool (API key mention + usage examples).
+- [ ] 8. `npm run build`. Fix errors.
+- [ ] 9. `npm test`. All pass; count grew by new tests only.
+- [ ] 10. `npm run lint` matches baseline.
+- [ ] 11. Commit with the specified message.
