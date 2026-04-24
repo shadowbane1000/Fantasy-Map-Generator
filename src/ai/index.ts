@@ -75,6 +75,7 @@ import { findStatesByTypeTool } from "./tools/find-states-by-type";
 import { findStatesInAreaTool } from "./tools/find-states-in-area";
 import { findZonesByTypeTool } from "./tools/find-zones-by-type";
 import { focusOnMapTool } from "./tools/focus-on-map";
+import { getBiomeDistributionTool } from "./tools/get-biome-distribution";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
@@ -1006,6 +1007,18 @@ export {
   createFocusOnMapTool,
   focusOnMapTool,
 } from "./tools/focus-on-map";
+export {
+  type BiomeDistributionBiomesData,
+  type BiomeDistributionEntry,
+  type BiomeDistributionPackLike,
+  type BiomeDistributionPayload,
+  type BiomeDistributionResult,
+  type BiomeDistributionRuntime,
+  createGetBiomeDistributionTool,
+  defaultBiomeDistributionRuntime,
+  getBiomeDistributionTool,
+  readBiomeDistributionFromPack,
+} from "./tools/get-biome-distribution";
 export {
   type BiomeInfo,
   type BiomeInfoRuntime,
@@ -2036,6 +2049,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getRiverInfoTool);
   registry.register(getRouteInfoTool);
   registry.register(getBiomeInfoTool);
+  registry.register(getBiomeDistributionTool);
   registry.register(getMarkerInfoTool);
   registry.register(getNoteInfoTool);
   registry.register(getRegimentInfoTool);
