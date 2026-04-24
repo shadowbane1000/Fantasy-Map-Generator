@@ -83,6 +83,7 @@ import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgDistributionTool } from "./tools/get-burg-distribution";
 import { getBurgInfoTool } from "./tools/get-burg-info";
 import { getCellInfoTool } from "./tools/get-cell-info";
+import { getClimateTool } from "./tools/get-climate";
 import { getClimateStatsTool } from "./tools/get-climate-stats";
 import { getCultureDistributionTool } from "./tools/get-culture-distribution";
 import { getCultureInfoTool } from "./tools/get-culture-info";
@@ -1113,6 +1114,13 @@ export {
   getCellInfoTool,
   readCellFromState,
 } from "./tools/get-cell-info";
+export {
+  type ClimateReadRuntime,
+  type ClimateSnapshot,
+  createGetClimateTool,
+  defaultClimateReadRuntime,
+  getClimateTool,
+} from "./tools/get-climate";
 export {
   type ClimateStat,
   type ClimateStats,
@@ -2277,6 +2285,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getRegimentInfoTool);
   registry.register(getZoneInfoTool);
   registry.register(getFeatureInfoTool);
+  registry.register(getClimateTool);
   registry.register(getEntityCellsTool);
   registry.register(getEntityBboxTool);
   registry.register(getEntityCentroidTool);
