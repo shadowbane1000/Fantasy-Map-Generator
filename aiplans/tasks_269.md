@@ -1,0 +1,22 @@
+# Tasks 269 — `get_zone_distribution`
+
+- [ ] Capture lint baseline: `npm run lint 2>&1 | tail -5` — expect 7 warnings / 1 info / 0 errors.
+- [ ] Create `src/ai/tools/get-zone-distribution.ts`
+  - [ ] `ZoneDistributionEntry`, `ZoneDistribution`, `ZoneDistributionPackLike` types.
+  - [ ] `readZoneDistributionFromPack(pack)` pure aggregator.
+  - [ ] `ZoneDistributionRuntime` + `defaultZoneDistributionRuntime` (uses `getPack<ZoneDistributionPackLike>()`).
+  - [ ] `createGetZoneDistributionTool(runtime)` factory with full description + empty schema.
+  - [ ] Module-level `getZoneDistributionTool` export.
+- [ ] Create `src/ai/tools/get-zone-distribution.test.ts`
+  - [ ] Pure-aggregator describe block covering: skip removed, skip null slots, include `i===0`, group case-preserving, `"untyped"` fallback for missing / non-string / empty / whitespace, cells sum, percentages, sort order, empty pack, `"not-ready"` cases.
+  - [ ] Tool-surface describe block (ok payload, extra input tolerance, structured not-ready error, schema check).
+  - [ ] `defaultZoneDistributionRuntime (integration)` describe block stubbing `globalThis.pack` with `as unknown as { pack?: unknown }` cast.
+- [ ] Wire up `src/ai/index.ts`
+  - [ ] Import `getZoneDistributionTool` next to other get-*-distribution imports.
+  - [ ] Re-export every new public member from `./tools/get-zone-distribution` (types + values) in alphabetical position among other `type ZoneDistribution…` re-exports.
+  - [ ] `registry.register(getZoneDistributionTool)` near `getBurgDistributionTool` and/or `findZonesByTypeTool`.
+- [ ] Edit `README_AI.md`: add a `get_zone_distribution` row near `get_burg_distribution`, with API-key pointer and sample questions.
+- [ ] Verify: `npm run build` succeeds.
+- [ ] Verify: `npm test` all pass.
+- [ ] Verify: `npm run lint` matches baseline (7 warnings / 1 info / 0 errors).
+- [ ] Commit: `feat(ai): add get_zone_distribution tool` with a short 1-2 line body.
