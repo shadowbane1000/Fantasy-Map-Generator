@@ -44,6 +44,7 @@ import { findCoastCellsTool } from "./tools/find-coast-cells";
 import { findCulturesByTypeTool } from "./tools/find-cultures-by-type";
 import { findCulturesInAreaTool } from "./tools/find-cultures-in-area";
 import { findLargestBurgsTool } from "./tools/find-largest-burgs";
+import { findLongestRiversTool } from "./tools/find-longest-rivers";
 import { findMarkersByStateTool } from "./tools/find-markers-by-state";
 import { findMarkersByTypeTool } from "./tools/find-markers-by-type";
 import { findMarkersInAreaTool } from "./tools/find-markers-in-area";
@@ -605,6 +606,18 @@ export {
   findLargestBurgsTool,
   MAX_FIND_LARGEST_BURGS_N,
 } from "./tools/find-largest-burgs";
+export {
+  createFindLongestRiversTool,
+  DEFAULT_FIND_LONGEST_RIVERS_N,
+  defaultFindLongestRiversRuntime,
+  type FindLongestRiversHit,
+  type FindLongestRiversPayload,
+  type FindLongestRiversResult,
+  type FindLongestRiversRuntime,
+  findLongestRiversInPack,
+  findLongestRiversTool,
+  MAX_FIND_LONGEST_RIVERS_N,
+} from "./tools/find-longest-rivers";
 export {
   createFindMarkersByStateTool,
   DEFAULT_FIND_MARKERS_BY_STATE_LIMIT,
@@ -1991,6 +2004,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findRiversInAreaTool);
   registry.register(findRiversByBasinTool);
   registry.register(findRiversByStateTool);
+  registry.register(findLongestRiversTool);
   registry.register(listRoutesTool);
   registry.register(findRoutesByGroupTool);
   registry.register(listRulersTool);
