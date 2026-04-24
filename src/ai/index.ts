@@ -92,6 +92,7 @@ import { getNoteInfoTool } from "./tools/get-note-info";
 import { getPopulationStatsTool } from "./tools/get-population-stats";
 import { getProvinceInfoTool } from "./tools/get-province-info";
 import { getRegimentInfoTool } from "./tools/get-regiment-info";
+import { getReligionDistributionTool } from "./tools/get-religion-distribution";
 import { getReligionInfoTool } from "./tools/get-religion-info";
 import { getRiverInfoTool } from "./tools/get-river-info";
 import { getRouteInfoTool } from "./tools/get-route-info";
@@ -1157,6 +1158,16 @@ export {
   readRegimentInfoFromPack,
 } from "./tools/get-regiment-info";
 export {
+  createGetReligionDistributionTool,
+  defaultReligionDistributionRuntime,
+  getReligionDistributionTool,
+  type ReligionDistribution,
+  type ReligionDistributionEntry,
+  type ReligionDistributionPackLike,
+  type ReligionDistributionRuntime,
+  readReligionDistributionFromPack,
+} from "./tools/get-religion-distribution";
+export {
   createGetReligionInfoTool,
   defaultReligionInfoRuntime,
   getReligionInfoTool,
@@ -2040,6 +2051,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
   registry.register(getMapInfoTool);
   registry.register(getPopulationStatsTool);
+  registry.register(getReligionDistributionTool);
   registry.register(getCellInfoTool);
   registry.register(getStateInfoTool);
   registry.register(getReligionInfoTool);
