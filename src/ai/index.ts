@@ -86,6 +86,7 @@ import { getDiplomacyBetweenTool } from "./tools/get-diplomacy-between";
 import { getEntityBboxTool } from "./tools/get-entity-bbox";
 import { getEntityCellsTool } from "./tools/get-entity-cells";
 import { getEntityCentroidTool } from "./tools/get-entity-centroid";
+import { getFeatureDistributionTool } from "./tools/get-feature-distribution";
 import { getFeatureInfoTool } from "./tools/get-feature-info";
 import { getLayerStyleTool } from "./tools/get-layer-style";
 import { getMapInfoTool } from "./tools/get-map-info";
@@ -1121,6 +1122,16 @@ export {
   getEntityCentroidTool,
 } from "./tools/get-entity-centroid";
 export {
+  createGetFeatureDistributionTool,
+  defaultFeatureDistributionRuntime,
+  type FeatureDistribution,
+  type FeatureDistributionEntry,
+  type FeatureDistributionPackLike,
+  type FeatureDistributionRuntime,
+  getFeatureDistributionTool,
+  readFeatureDistributionFromPack,
+} from "./tools/get-feature-distribution";
+export {
   createGetFeatureInfoTool,
   defaultFeatureInfoRuntime,
   type FeatureInfo,
@@ -2123,6 +2134,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getRouteInfoTool);
   registry.register(getBiomeInfoTool);
   registry.register(getBiomeDistributionTool);
+  registry.register(getFeatureDistributionTool);
   registry.register(getMarkerInfoTool);
   registry.register(getNoteInfoTool);
   registry.register(getRegimentInfoTool);
