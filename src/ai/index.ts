@@ -49,6 +49,7 @@ import { findNearestBurgTool } from "./tools/find-nearest-burg";
 import { findNearestMarkerTool } from "./tools/find-nearest-marker";
 import { findNearestRiverTool } from "./tools/find-nearest-river";
 import { findNotesByPrefixTool } from "./tools/find-notes-by-prefix";
+import { findOrphanCellsTool } from "./tools/find-orphan-cells";
 import { findProvincesByStateTool } from "./tools/find-provinces-by-state";
 import { findProvincesInAreaTool } from "./tools/find-provinces-in-area";
 import { findRegimentsByStateTool } from "./tools/find-regiments-by-state";
@@ -656,6 +657,17 @@ export {
   NOTE_LEGEND_PREVIEW_MAX,
   type NoteMatch,
 } from "./tools/find-notes-by-prefix";
+export {
+  createFindOrphanCellsTool,
+  DEFAULT_FIND_ORPHAN_CELLS_LIMIT,
+  defaultFindOrphanCellsRuntime,
+  type FindOrphanCellsHit,
+  type FindOrphanCellsResult,
+  type FindOrphanCellsRuntime,
+  findOrphanCellsInPack,
+  findOrphanCellsTool,
+  MAX_FIND_ORPHAN_CELLS_LIMIT,
+} from "./tools/find-orphan-cells";
 export {
   createFindProvincesByStateTool,
   DEFAULT_FIND_PROVINCES_BY_STATE_LIMIT,
@@ -1865,6 +1877,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findCellsByPrecipitationRangeTool);
   registry.register(findCellsByPopulationRangeTool);
   registry.register(findCoastCellsTool);
+  registry.register(findOrphanCellsTool);
   registry.register(listStatesTool);
   registry.register(listStylePresetsTool);
   registry.register(listBurgsTool);
