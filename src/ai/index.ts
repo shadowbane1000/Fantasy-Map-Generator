@@ -99,6 +99,7 @@ import { getRiverInfoTool } from "./tools/get-river-info";
 import { getRouteInfoTool } from "./tools/get-route-info";
 import { getStateDistributionTool } from "./tools/get-state-distribution";
 import { getStateInfoTool } from "./tools/get-state-info";
+import { getTerrainStatsTool } from "./tools/get-terrain-stats";
 import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
@@ -1225,6 +1226,17 @@ export {
   type StateInfoRuntime,
 } from "./tools/get-state-info";
 export {
+  createGetTerrainStatsTool,
+  defaultTerrainStatsRuntime,
+  getTerrainStatsTool,
+  readTerrainStatsFromPack,
+  TERRAIN_BAND_RANGES,
+  type TerrainBandName,
+  type TerrainBands,
+  type TerrainStats,
+  type TerrainStatsRuntime,
+} from "./tools/get-terrain-stats";
+export {
   createGetZoneInfoTool,
   DEFAULT_ZONE_CELLS_LIMIT,
   getZoneInfoTool,
@@ -2073,6 +2085,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
   registry.register(getMapInfoTool);
   registry.register(getPopulationStatsTool);
+  registry.register(getTerrainStatsTool);
   registry.register(getReligionDistributionTool);
   registry.register(getCultureDistributionTool);
   registry.register(getStateDistributionTool);
