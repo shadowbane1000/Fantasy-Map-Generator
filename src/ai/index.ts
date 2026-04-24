@@ -97,6 +97,7 @@ import { getLayerVisibilityTool } from "./tools/get-layer-visibility";
 import { getMapInfoTool } from "./tools/get-map-info";
 import { getMarkerDistributionTool } from "./tools/get-marker-distribution";
 import { getMarkerInfoTool } from "./tools/get-marker-info";
+import { getMeasurementUnitsTool } from "./tools/get-measurement-units";
 import { getNoteInfoTool } from "./tools/get-note-info";
 import { getPopulationStatsTool } from "./tools/get-population-stats";
 import { getProvinceDistributionTool } from "./tools/get-province-distribution";
@@ -1235,6 +1236,12 @@ export {
   type MarkerInfoRuntime,
   readMarkerInfoFromPack,
 } from "./tools/get-marker-info";
+export {
+  createGetMeasurementUnitsTool,
+  defaultMeasurementUnitsReadRuntime,
+  getMeasurementUnitsTool,
+  type MeasurementUnitsReadRuntime,
+} from "./tools/get-measurement-units";
 export {
   createGetNoteInfoTool,
   defaultNoteInfoRuntime,
@@ -2453,6 +2460,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setLayerFillTool);
   registry.register(getLayerStyleTool);
   registry.register(getLayerVisibilityTool);
+  registry.register(getMeasurementUnitsTool);
   registry.register(setFontFamilyTool);
   registry.register(setFontSizeTool);
   registry.register(setYearAndEraTool);
