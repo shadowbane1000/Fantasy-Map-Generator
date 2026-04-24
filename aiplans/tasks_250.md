@@ -1,0 +1,27 @@
+# Tasks 250 — `find_largest_burgs`
+
+- [x] Read analogs (find-burgs-by-population-range, get-population-stats, list-burgs, find-burgs-by-state, _shared/pack-types).
+- [x] Baseline lint (7 warnings / 1 info / 0 errors) + tests (4380).
+- [x] Create `src/ai/tools/find-largest-burgs.ts`:
+  - [x] `PackLike` shape: `burgs?: RawBurg[]`, `states?: RawState[]`.
+  - [x] `findLargestBurgsInPack(pack, n, stateI)` pure ranker — sort by raw `burg.population` desc, slice top n.
+  - [x] `defaultFindLargestBurgsRuntime` via `getPack` + `findEntityByRef` for state resolution.
+  - [x] `parseN` validating integer in [1, 500].
+  - [x] State ref parsing via `parseEntityRef`.
+  - [x] `createFindLargestBurgsTool` Tool factory + default export.
+  - [x] Constants: `DEFAULT_FIND_LARGEST_BURGS_N = 10`, `MAX_FIND_LARGEST_BURGS_N = 500`.
+  - [x] Burg hit: `{i, name, x, y, population, capital, state_id}`.
+- [x] Create `src/ai/tools/find-largest-burgs.test.ts`:
+  - [x] Pure ranker cases: sort desc, n-truncation, skip i=0/removed/no-pop, empty, state filter, not-ready.
+  - [x] State resolver tests.
+  - [x] Tool surface: default n, explicit n, state by id, state by name, state 0 rejected, unresolvable state, invalid n, ok responses, structured errors.
+  - [x] `defaultFindLargestBurgsRuntime` integration block using `globalThis.pack`.
+- [x] Register in `src/ai/index.ts`:
+  - [x] Import `findLargestBurgsTool`.
+  - [x] Export block (types + runtime + constants + factory).
+  - [x] `registry.register(findLargestBurgsTool)` near `findBurgsByPopulationRangeTool`.
+- [x] Add `README_AI.md` row near `find_burgs_by_population_range`.
+- [x] `npm run build`.
+- [x] `npm test` (4380 → 4414, +34 tests).
+- [x] `npm run lint` (7 warnings / 1 info / 0 errors — baseline preserved).
+- [ ] Commit `feat(ai): add find_largest_burgs tool`.
