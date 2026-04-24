@@ -76,6 +76,7 @@ import { findStatesByCultureTool } from "./tools/find-states-by-culture";
 import { findStatesByTypeTool } from "./tools/find-states-by-type";
 import { findStatesInAreaTool } from "./tools/find-states-in-area";
 import { findZonesByTypeTool } from "./tools/find-zones-by-type";
+import { focusOnEntityTool } from "./tools/focus-on-entity";
 import { focusOnMapTool } from "./tools/focus-on-map";
 import { getBiomeDistributionTool } from "./tools/get-biome-distribution";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
@@ -1044,6 +1045,18 @@ export {
   findZonesByTypeTool,
   MAX_FIND_ZONES_BY_TYPE_LIMIT,
 } from "./tools/find-zones-by-type";
+export {
+  computeFitScale,
+  createFocusOnEntityTool,
+  DEFAULT_FOCUS_PADDING,
+  defaultFocusOnEntityRuntime,
+  FALLBACK_VIEWPORT_SIZE,
+  type FocusOnEntityRuntime,
+  focusOnEntityTool,
+  MAX_FOCUS_PADDING,
+  MIN_FIT_SCALE,
+  type Viewport,
+} from "./tools/focus-on-entity";
 export {
   createFocusOnMapTool,
   focusOnMapTool,
@@ -2437,6 +2450,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setYearAndEraTool);
   registry.register(setZoneVisibilityTool);
   registry.register(focusOnMapTool);
+  registry.register(focusOnEntityTool);
   registry.register(regenerateMapTool);
   registry.register(regenerateEmblemsTool);
   registry.register(regenerateBurgCoaTool);
