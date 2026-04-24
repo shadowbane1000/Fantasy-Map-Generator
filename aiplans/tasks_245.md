@@ -1,0 +1,21 @@
+# Tasks 245 — `find_orphan_cells`
+
+- [ ] Create `src/ai/tools/find-orphan-cells.ts` with:
+  - Constants: `DEFAULT_FIND_ORPHAN_CELLS_LIMIT`, `MAX_FIND_ORPHAN_CELLS_LIMIT`, `ELEVATION_NEUTRAL_HEIGHT`.
+  - `PackLike` interface (cells.state + cells.h).
+  - `FindOrphanCellsHit` / `FindOrphanCellsResult` types.
+  - `findOrphanCellsInPack(pack, includeWater, limit)` pure collector.
+  - `FindOrphanCellsRuntime` + `defaultFindOrphanCellsRuntime`.
+  - `parseIncludeWater`, `parseLimit` argument parsers.
+  - `createFindOrphanCellsTool(runtime?)` + default export `findOrphanCellsTool`.
+- [ ] Create `src/ai/tools/find-orphan-cells.test.ts` covering:
+  - Pure collector (land-only default, include_water path, empty results, limit truncation, not-ready branches).
+  - Tool surface (happy path, limit, default limit, default include_water, invalid include_water, invalid limit, not-ready error, exported name/schema, constants).
+  - `defaultFindOrphanCellsRuntime` integration block (set `globalThis.pack`, check real runtime reads + tool uses it).
+- [ ] Register in `src/ai/index.ts`:
+  - Add `import { findOrphanCellsTool } from "./tools/find-orphan-cells";` in the imports block.
+  - Add `export { ... } from "./tools/find-orphan-cells";` in the exports block.
+  - Add `registry.register(findOrphanCellsTool);` in the registration block (after `findCoastCellsTool`).
+- [ ] Add README_AI.md row after `find_cells_by_population_range`.
+- [ ] Verify: `npm run build` succeeds, `npm test` all pass, `npm run lint` matches baseline (7 warnings / 1 info / 0 errors).
+- [ ] Commit with `feat(ai): add find_orphan_cells tool`.
