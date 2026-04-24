@@ -43,6 +43,7 @@ import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
 import { findCoastCellsTool } from "./tools/find-coast-cells";
 import { findCulturesByTypeTool } from "./tools/find-cultures-by-type";
 import { findCulturesInAreaTool } from "./tools/find-cultures-in-area";
+import { findDuplicateNamesTool } from "./tools/find-duplicate-names";
 import { findHighestPeaksTool } from "./tools/find-highest-peaks";
 import { findLargestBurgsTool } from "./tools/find-largest-burgs";
 import { findLargestCulturesTool } from "./tools/find-largest-cultures";
@@ -614,6 +615,20 @@ export {
   findCulturesInAreaTool,
   MAX_FIND_CULTURES_IN_AREA_LIMIT,
 } from "./tools/find-cultures-in-area";
+export {
+  createFindDuplicateNamesTool,
+  DEFAULT_FIND_DUPLICATE_NAMES_LIMIT,
+  DUPLICATE_NAME_DOMAINS,
+  type DuplicateNameDomain,
+  type DuplicateNameGroup,
+  defaultFindDuplicateNamesRuntime,
+  type FindDuplicateNamesPayload,
+  type FindDuplicateNamesResult,
+  type FindDuplicateNamesRuntime,
+  findDuplicateNamesInPack,
+  findDuplicateNamesTool,
+  MAX_FIND_DUPLICATE_NAMES_LIMIT,
+} from "./tools/find-duplicate-names";
 export {
   createFindHighestPeaksTool,
   DEFAULT_FIND_HIGHEST_PEAKS_N,
@@ -2220,6 +2235,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getEntityCentroidTool);
   registry.register(getDiplomacyBetweenTool);
   registry.register(findAdjacentEntitiesTool);
+  registry.register(findDuplicateNamesTool);
   registry.register(findCellsAdjacentToEntityTool);
   registry.register(findCellAtCoordsTool);
   registry.register(findCellsInRadiusTool);
