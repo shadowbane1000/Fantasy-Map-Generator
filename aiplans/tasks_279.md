@@ -1,0 +1,29 @@
+# Tasks — Plan 279 (`get_year_and_era`)
+
+- [x] Study `set-year-and-era.ts` + test — note `WorldDateState`, `WorldDateRuntime.read()`, `defaultWorldDateRuntime`.
+- [x] Study `get-world-rates.ts` + test — the recent readback analog.
+- [x] Study `_shared/index.ts` — confirm `okResult` is the helper.
+- [x] Write plan doc (`plan_279.md`).
+- [ ] Implement `src/ai/tools/get-year-and-era.ts`:
+  - [ ] Import `defaultWorldDateRuntime`, `type WorldDateState` from `./set-year-and-era`.
+  - [ ] Define local narrow runtime seam `GetYearAndEraRuntime { read(): WorldDateState | null }`.
+  - [ ] Export `defaultGetYearAndEraRuntime` that delegates to `defaultWorldDateRuntime.read()`.
+  - [ ] Export `createGetYearAndEraTool(runtime?)` factory.
+  - [ ] Export `getYearAndEraTool` (default instance).
+  - [ ] Tool schema: `{ type: "object", properties: {} }`, no required.
+  - [ ] `execute`: read once, return `okResult({ year, era, era_short })` — pass through or `null` when runtime is null.
+  - [ ] Description mentions it's the read-side inverse of `set_year_and_era`, read-only, null semantics, Anthropic API key.
+- [ ] Implement `src/ai/tools/get-year-and-era.test.ts`:
+  - [ ] Unit suite (mocked runtime): returns current values; returns all-null when runtime gives null; individual fields pass through; input args ignored (extra keys, null, undefined); never mutates.
+  - [ ] Verify tool name and no-required-args schema.
+  - [ ] `defaultRuntime integration` describe block with `beforeEach`/`afterEach` that swaps `globalThis.window.options`. Uses `as unknown as { ... }` casts.
+  - [ ] Integration cases: reads options.year/era/eraShort; treats missing options as null; handles partially-filled options.
+- [ ] Register + re-export in `src/ai/index.ts`:
+  - [ ] Import next to `setYearAndEraTool`.
+  - [ ] Add export block (`createGetYearAndEraTool`, `defaultGetYearAndEraRuntime`, `getYearAndEraTool`, `type GetYearAndEraRuntime`).
+  - [ ] `registry.register(getYearAndEraTool)` near `setYearAndEraTool`.
+- [ ] Update `README_AI.md`: insert row right after the `set_year_and_era` row. Mention no args, return shape, read-only, Anthropic API-key requirement, 2-3 example prompts.
+- [ ] `npm run build` — must pass.
+- [ ] `npm test` — must pass (baseline 5037 → +new tests).
+- [ ] `npm run lint` — must match baseline (7 warnings / 1 info / 0 errors).
+- [ ] Commit `feat(ai): add get_year_and_era tool`.

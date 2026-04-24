@@ -114,6 +114,7 @@ import { getStateDistributionTool } from "./tools/get-state-distribution";
 import { getStateInfoTool } from "./tools/get-state-info";
 import { getTerrainStatsTool } from "./tools/get-terrain-stats";
 import { getWorldRatesTool } from "./tools/get-world-rates";
+import { getYearAndEraTool } from "./tools/get-year-and-era";
 import { getZoneDistributionTool } from "./tools/get-zone-distribution";
 import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
@@ -1391,6 +1392,12 @@ export {
   getWorldRatesTool,
 } from "./tools/get-world-rates";
 export {
+  createGetYearAndEraTool,
+  defaultGetYearAndEraRuntime,
+  type GetYearAndEraRuntime,
+  getYearAndEraTool,
+} from "./tools/get-year-and-era";
+export {
   createGetZoneDistributionTool,
   defaultZoneDistributionRuntime,
   getZoneDistributionTool,
@@ -2472,6 +2479,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setFontFamilyTool);
   registry.register(setFontSizeTool);
   registry.register(setYearAndEraTool);
+  registry.register(getYearAndEraTool);
   registry.register(setZoneVisibilityTool);
   registry.register(focusOnMapTool);
   registry.register(focusOnEntityTool);
