@@ -93,6 +93,7 @@ import { getEntityCentroidTool } from "./tools/get-entity-centroid";
 import { getFeatureDistributionTool } from "./tools/get-feature-distribution";
 import { getFeatureInfoTool } from "./tools/get-feature-info";
 import { getLayerStyleTool } from "./tools/get-layer-style";
+import { getLayerVisibilityTool } from "./tools/get-layer-visibility";
 import { getMapInfoTool } from "./tools/get-map-info";
 import { getMarkerDistributionTool } from "./tools/get-marker-distribution";
 import { getMarkerInfoTool } from "./tools/get-marker-info";
@@ -1204,6 +1205,12 @@ export {
   type LayerStyleAttrs,
   type LayerStyleRuntime,
 } from "./tools/get-layer-style";
+export {
+  createGetLayerVisibilityTool,
+  defaultLayerVisibilityRuntime,
+  getLayerVisibilityTool,
+  type LayerVisibilityRuntime,
+} from "./tools/get-layer-visibility";
 export {
   createGetMapInfoTool,
   getMapInfoTool,
@@ -2445,6 +2452,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setLayerFilterTool);
   registry.register(setLayerFillTool);
   registry.register(getLayerStyleTool);
+  registry.register(getLayerVisibilityTool);
   registry.register(setFontFamilyTool);
   registry.register(setFontSizeTool);
   registry.register(setYearAndEraTool);
