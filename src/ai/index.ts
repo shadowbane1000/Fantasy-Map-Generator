@@ -43,6 +43,7 @@ import { findCellsInRadiusTool } from "./tools/find-cells-in-radius";
 import { findCoastCellsTool } from "./tools/find-coast-cells";
 import { findCulturesByTypeTool } from "./tools/find-cultures-by-type";
 import { findCulturesInAreaTool } from "./tools/find-cultures-in-area";
+import { findHighestPeaksTool } from "./tools/find-highest-peaks";
 import { findLargestBurgsTool } from "./tools/find-largest-burgs";
 import { findLongestRiversTool } from "./tools/find-longest-rivers";
 import { findMarkersByStateTool } from "./tools/find-markers-by-state";
@@ -594,6 +595,19 @@ export {
   findCulturesInAreaTool,
   MAX_FIND_CULTURES_IN_AREA_LIMIT,
 } from "./tools/find-cultures-in-area";
+export {
+  createFindHighestPeaksTool,
+  DEFAULT_FIND_HIGHEST_PEAKS_N,
+  defaultFindHighestPeaksRuntime,
+  type FindHighestPeaksHit,
+  type FindHighestPeaksPayload,
+  type FindHighestPeaksResult,
+  type FindHighestPeaksRuntime,
+  findHighestPeaksInPack,
+  findHighestPeaksTool,
+  LAND_HEIGHT_MIN,
+  MAX_FIND_HIGHEST_PEAKS_N,
+} from "./tools/find-highest-peaks";
 export {
   createFindLargestBurgsTool,
   DEFAULT_FIND_LARGEST_BURGS_N,
@@ -1956,6 +1970,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findCellsByBiomeTool);
   registry.register(findCellsByFeatureTool);
   registry.register(findCellsByHeightRangeTool);
+  registry.register(findHighestPeaksTool);
   registry.register(findCellsByTemperatureRangeTool);
   registry.register(findCellsByPrecipitationRangeTool);
   registry.register(findCellsByPopulationRangeTool);
