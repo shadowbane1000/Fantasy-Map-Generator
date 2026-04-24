@@ -1,0 +1,22 @@
+# Tasks 271 — `get_regiment_distribution`
+
+- [ ] Capture lint baseline: `npm run lint 2>&1 | tail -5` — expect 7 warnings / 1 info / 0 errors.
+- [ ] Create `src/ai/tools/get-regiment-distribution.ts`
+  - [ ] `RegimentDistributionEntry`, `RegimentDistribution`, `RegimentDistributionPackLike` types.
+  - [ ] `readRegimentDistributionFromPack(pack)` pure aggregator.
+  - [ ] `RegimentDistributionRuntime` + `defaultRegimentDistributionRuntime` (uses `getPack<RegimentDistributionPackLike>()`).
+  - [ ] `createGetRegimentDistributionTool(runtime)` factory with full description + empty schema.
+  - [ ] Module-level `getRegimentDistributionTool` export.
+- [ ] Create `src/ai/tools/get-regiment-distribution.test.ts`
+  - [ ] Pure-aggregator describe block covering: skip index-0 state, skip removed states, skip states without military, skip malformed regiments, group case-preserving, `"untyped"` fallback for missing / non-string / empty / whitespace, soldiers sum (including non-finite `t`), percentages, sort order, empty pack, `"not-ready"` cases.
+  - [ ] Tool-surface describe block (ok payload, extra input tolerance, structured not-ready error, schema check).
+  - [ ] `defaultRegimentDistributionRuntime (integration)` describe block stubbing `globalThis.pack` with `as unknown as { pack?: unknown }` cast.
+- [ ] Wire up `src/ai/index.ts`
+  - [ ] Import `getRegimentDistributionTool` next to other get-*-distribution imports.
+  - [ ] Re-export every new public member from `./tools/get-regiment-distribution` (types + values) in alphabetical position among other `type RegimentDistribution…` re-exports.
+  - [ ] `registry.register(getRegimentDistributionTool)` near `getBurgDistributionTool` and/or other `*DistributionTool` registrations.
+- [ ] Edit `README_AI.md`: add a `get_regiment_distribution` row near `get_burg_distribution`, with API-key pointer and sample questions.
+- [ ] Verify: `npm run build` succeeds.
+- [ ] Verify: `npm test` all pass.
+- [ ] Verify: `npm run lint` matches baseline (7 warnings / 1 info / 0 errors).
+- [ ] Commit: `feat(ai): add get_regiment_distribution tool` with a short 1-2 line body.
