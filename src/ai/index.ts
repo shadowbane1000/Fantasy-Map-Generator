@@ -91,6 +91,7 @@ import { getFeatureDistributionTool } from "./tools/get-feature-distribution";
 import { getFeatureInfoTool } from "./tools/get-feature-info";
 import { getLayerStyleTool } from "./tools/get-layer-style";
 import { getMapInfoTool } from "./tools/get-map-info";
+import { getMarkerDistributionTool } from "./tools/get-marker-distribution";
 import { getMarkerInfoTool } from "./tools/get-marker-info";
 import { getNoteInfoTool } from "./tools/get-note-info";
 import { getPopulationStatsTool } from "./tools/get-population-stats";
@@ -1164,6 +1165,17 @@ export {
   getMapInfoTool,
 } from "./tools/get-map-info";
 export {
+  createGetMarkerDistributionTool,
+  defaultMarkerDistributionRuntime,
+  getMarkerDistributionTool,
+  type MarkerDistribution,
+  type MarkerDistributionEntry,
+  type MarkerDistributionPackLike,
+  type MarkerDistributionResult,
+  type MarkerDistributionRuntime,
+  readMarkerDistributionFromPack,
+} from "./tools/get-marker-distribution";
+export {
   createGetMarkerInfoTool,
   defaultMarkerInfoRuntime,
   getMarkerInfoTool,
@@ -2160,6 +2172,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getFeatureDistributionTool);
   registry.register(getBurgDistributionTool);
   registry.register(getRiverDistributionTool);
+  registry.register(getMarkerDistributionTool);
   registry.register(getMarkerInfoTool);
   registry.register(getNoteInfoTool);
   registry.register(getRegimentInfoTool);
