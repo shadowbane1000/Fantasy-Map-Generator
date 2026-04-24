@@ -1,0 +1,26 @@
+# Tasks 244 — `find_provinces_in_area`
+
+- [x] Read analogs (find-burgs-in-area, find-rivers-in-area, list-provinces, get-province-info, _shared helpers).
+- [x] Baseline lint (7 warnings / 1 info / 0 errors) + tests (4182).
+- [ ] Create `src/ai/tools/find-provinces-in-area.ts`:
+  - [ ] `PackLike` shape: `provinces?: RawProvince[]`, `cells?.i`, `cells?.p`.
+  - [ ] `findProvincesInAreaInPack(pack, query)` pure scanner.
+  - [ ] `defaultFindProvincesInAreaRuntime` via `getPack`.
+  - [ ] `parseInput` with mutual exclusivity & numeric validation.
+  - [ ] `createFindProvincesInAreaTool` Tool factory + default export.
+  - [ ] Constants: `DEFAULT_FIND_PROVINCES_IN_AREA_LIMIT = 10000`, `MAX_FIND_PROVINCES_IN_AREA_LIMIT = 100000`.
+  - [ ] Province hit: `{i, name, fullName, color, x, y, distance}`.
+  - [ ] Pole first, fallback to `cells.p[center]`.
+- [ ] Create `src/ai/tools/find-provinces-in-area.test.ts`:
+  - [ ] Pure scanner cases: rect normalisation, circle-coords, circle-cell, radius 0, limit truncation, pole + center fallback, skip i=0/removed/no-pos, not-ready, out-of-bounds, no-cell-point.
+  - [ ] Tool surface: missing-params, mixed-forms, incomplete rect, non-finite numbers, bad cell, bad radius, bad limit, ok responses, structured errors.
+  - [ ] `defaultFindProvincesInAreaRuntime` integration block using globalThis.pack.
+- [ ] Register in `src/ai/index.ts`:
+  - [ ] Import `findProvincesInAreaTool`.
+  - [ ] Export block (types + runtime + constants + factory).
+  - [ ] `registry.register(findProvincesInAreaTool)` near other province finders.
+- [ ] Add `README_AI.md` row.
+- [ ] `npm run build`.
+- [ ] `npm test`.
+- [ ] `npm run lint` (compare to baseline).
+- [ ] Commit `feat(ai): add find_provinces_in_area tool`.
