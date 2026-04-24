@@ -78,6 +78,7 @@ import { getLayerStyleTool } from "./tools/get-layer-style";
 import { getMapInfoTool } from "./tools/get-map-info";
 import { getMarkerInfoTool } from "./tools/get-marker-info";
 import { getNoteInfoTool } from "./tools/get-note-info";
+import { getPopulationStatsTool } from "./tools/get-population-stats";
 import { getProvinceInfoTool } from "./tools/get-province-info";
 import { getRegimentInfoTool } from "./tools/get-regiment-info";
 import { getReligionInfoTool } from "./tools/get-religion-info";
@@ -964,6 +965,16 @@ export {
   type NoteInfoRuntime,
   type ReadNoteInfoResult,
 } from "./tools/get-note-info";
+export {
+  createGetPopulationStatsTool,
+  DEFAULT_TOP_N,
+  defaultPopulationStatsRuntime,
+  getPopulationStatsTool,
+  MAX_TOP_N,
+  type PopulationStats,
+  type PopulationStatsRuntime,
+  readPopulationStatsFromPack,
+} from "./tools/get-population-stats";
 export {
   createGetProvinceInfoTool,
   defaultProvinceInfoRuntime,
@@ -1863,6 +1874,7 @@ export {
 export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
   registry.register(getMapInfoTool);
+  registry.register(getPopulationStatsTool);
   registry.register(getCellInfoTool);
   registry.register(getStateInfoTool);
   registry.register(getReligionInfoTool);

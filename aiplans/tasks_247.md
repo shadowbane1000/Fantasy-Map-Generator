@@ -1,0 +1,21 @@
+# Tasks 247 — `get_population_stats`
+
+- [ ] Create `src/ai/tools/get-population-stats.ts` with:
+  - Constants `DEFAULT_TOP_N = 10`, `MAX_TOP_N = 500`.
+  - `PopulationStatsPackLike` interface (cells.pop, burgs, states).
+  - `TopEntry` / `PopulationStats` / `PopulationRates` types.
+  - `readPopulationStatsFromPack(pack, rates, topN)` pure collector returning `PopulationStats | "not-ready"`.
+  - `PopulationStatsRuntime` + `defaultPopulationStatsRuntime` (reads `pack`, `populationRate`, `urbanization` via shared getters).
+  - `createGetPopulationStatsTool(runtime?)` + default export `getPopulationStatsTool`.
+- [ ] Create `src/ai/tools/get-population-stats.test.ts` covering:
+  - Pure collector: sums correct, top_n ordering + truncation, top_n=0, oversized top_n, skips placeholders / removed, not-ready branches, safe-multiplier fallback.
+  - Tool surface: happy path, default top_n=10, invalid top_n values (non-integer, negative, > MAX), not-ready error, ignores unrelated keys, exported name/schema/constants.
+  - `defaultPopulationStatsRuntime` integration block: seed `globalThis.pack` + rates; verify real runtime reads + tool uses it; cleanup in afterEach.
+  - Uses `as unknown as { ... }` casts when reading globals.
+- [ ] Register in `src/ai/index.ts`:
+  - Add `import { getPopulationStatsTool } from "./tools/get-population-stats";` alongside `getMapInfoTool`.
+  - Add matching `export { ... } from "./tools/get-population-stats";` block near the `get-map-info` export.
+  - Add `registry.register(getPopulationStatsTool);` directly after `registry.register(getMapInfoTool);`.
+- [ ] Add README_AI.md row after the `get_map_info` row (before `get_state_info`). Include API key note + usage examples.
+- [ ] Verify: `npm run build` succeeds, `npm test` passes, `npm run lint` matches baseline (7 warnings / 1 info / 0 errors).
+- [ ] Commit with `feat(ai): add get_population_stats tool` message.
