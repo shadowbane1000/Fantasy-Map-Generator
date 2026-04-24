@@ -1,0 +1,25 @@
+# Tasks 274 — `focus_on_entity`
+
+- [ ] Capture lint baseline: `npm run lint 2>&1 | tail -5` — expect 7 warnings / 1 info / 0 errors.
+- [ ] Create `src/ai/tools/focus-on-entity.ts`
+  - [ ] Reuse `collectEntityBbox` + `Bbox` from `./get-entity-bbox`.
+  - [ ] Reuse `FOCUS_ZOOM_LEVEL` + `FOCUS_ZOOM_DURATION` from `./focus-on-map`.
+  - [ ] Reuse `ADJACENT_ENTITY_TYPES` + `AdjacentEntityType` from `./find-adjacent-entities`.
+  - [ ] `computeFitScale(bboxWidth, bboxHeight, viewportWidth, viewportHeight, padding, maxScale)` pure helper.
+  - [ ] `FocusOnEntityRuntime` interface with `collect`, `zoomTo`, `getViewport`.
+  - [ ] `defaultFocusOnEntityRuntime` (uses `getPack`, `getGlobal<BiomesDataLike>("biomesData")`, `getGlobal<Function>("zoomTo")`, `getGlobal<number>("svgWidth"/"svgHeight")`).
+  - [ ] `createFocusOnEntityTool(runtime)` factory with full description + schema.
+  - [ ] Module-level `focusOnEntityTool` export.
+- [ ] Create `src/ai/tools/focus-on-entity.test.ts`
+  - [ ] `computeFitScale` describe block covering every rule.
+  - [ ] Tool-surface describe block (ok payload shape, case-insensitive entity_type, default padding, custom padding, single-cell bbox, zoomTo coords verification, all error paths, schema check).
+  - [ ] `defaultFocusOnEntityRuntime (integration)` describe block stubbing `globalThis.pack` / `globalThis.biomesData` / `globalThis.zoomTo` / `globalThis.svgWidth` / `globalThis.svgHeight` with `as unknown as { ... }` casts.
+- [ ] Wire up `src/ai/index.ts`
+  - [ ] Import `focusOnEntityTool` next to `focusOnMapTool`.
+  - [ ] Re-export every new public member from `./tools/focus-on-entity` (types + values).
+  - [ ] `registry.register(focusOnEntityTool)` near `focusOnMapTool`.
+- [ ] Edit `README_AI.md`: add a `focus_on_entity` row near `focus_on_map`, with API-key pointer and sample questions.
+- [ ] Verify: `npm run build` succeeds.
+- [ ] Verify: `npm test` all pass (expect +N tests).
+- [ ] Verify: `npm run lint` matches baseline (7 warnings / 1 info / 0 errors).
+- [ ] Commit: `feat(ai): add focus_on_entity tool` with a short 1-2 line body.
