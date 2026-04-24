@@ -46,6 +46,7 @@ import { findCulturesInAreaTool } from "./tools/find-cultures-in-area";
 import { findHighestPeaksTool } from "./tools/find-highest-peaks";
 import { findLargestBurgsTool } from "./tools/find-largest-burgs";
 import { findLargestCulturesTool } from "./tools/find-largest-cultures";
+import { findLargestFeaturesTool } from "./tools/find-largest-features";
 import { findLargestReligionsTool } from "./tools/find-largest-religions";
 import { findLargestStatesTool } from "./tools/find-largest-states";
 import { findLongestRiversTool } from "./tools/find-longest-rivers";
@@ -638,6 +639,23 @@ export {
   findLargestCulturesTool,
   MAX_FIND_LARGEST_CULTURES_N,
 } from "./tools/find-largest-cultures";
+export {
+  createFindLargestFeaturesTool,
+  DEFAULT_FIND_LARGEST_FEATURES_BY,
+  DEFAULT_FIND_LARGEST_FEATURES_N,
+  defaultFindLargestFeaturesRuntime,
+  FIND_LARGEST_FEATURES_METRICS,
+  FIND_LARGEST_FEATURES_TYPE_FILTERS,
+  type FindLargestFeaturesHit,
+  type FindLargestFeaturesMetric,
+  type FindLargestFeaturesPayload,
+  type FindLargestFeaturesResult,
+  type FindLargestFeaturesRuntime,
+  type FindLargestFeaturesTypeFilter,
+  findLargestFeaturesInPack,
+  findLargestFeaturesTool,
+  MAX_FIND_LARGEST_FEATURES_N,
+} from "./tools/find-largest-features";
 export {
   createFindLargestReligionsTool,
   DEFAULT_FIND_LARGEST_RELIGIONS_BY,
@@ -2038,6 +2056,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findLargestBurgsTool);
   registry.register(findLargestStatesTool);
   registry.register(findLargestCulturesTool);
+  registry.register(findLargestFeaturesTool);
   registry.register(findLargestReligionsTool);
   registry.register(findProvincesByStateTool);
   registry.register(findProvincesInAreaTool);
