@@ -50,6 +50,7 @@ import { findNearestMarkerTool } from "./tools/find-nearest-marker";
 import { findNearestRiverTool } from "./tools/find-nearest-river";
 import { findNotesByPrefixTool } from "./tools/find-notes-by-prefix";
 import { findProvincesByStateTool } from "./tools/find-provinces-by-state";
+import { findProvincesInAreaTool } from "./tools/find-provinces-in-area";
 import { findRegimentsByStateTool } from "./tools/find-regiments-by-state";
 import { findRegimentsByTypeTool } from "./tools/find-regiments-by-type";
 import { findReligionsByCultureTool } from "./tools/find-religions-by-culture";
@@ -667,6 +668,20 @@ export {
   findProvincesByStateTool,
   MAX_FIND_PROVINCES_BY_STATE_LIMIT,
 } from "./tools/find-provinces-by-state";
+export {
+  createFindProvincesInAreaTool,
+  DEFAULT_FIND_PROVINCES_IN_AREA_LIMIT,
+  defaultFindProvincesInAreaRuntime,
+  type FindProvincesInAreaArea,
+  type FindProvincesInAreaHit,
+  type FindProvincesInAreaPayload,
+  type FindProvincesInAreaQuery,
+  type FindProvincesInAreaResult,
+  type FindProvincesInAreaRuntime,
+  findProvincesInAreaInPack,
+  findProvincesInAreaTool,
+  MAX_FIND_PROVINCES_IN_AREA_LIMIT,
+} from "./tools/find-provinces-in-area";
 export {
   createFindRegimentsByStateTool,
   DEFAULT_FIND_REGIMENTS_BY_STATE_LIMIT,
@@ -1862,6 +1877,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findBurgsByTypeTool);
   registry.register(findBurgsByPopulationRangeTool);
   registry.register(findProvincesByStateTool);
+  registry.register(findProvincesInAreaTool);
   registry.register(findRegimentsByStateTool);
   registry.register(findRegimentsByTypeTool);
   registry.register(findStatesByCultureTool);
