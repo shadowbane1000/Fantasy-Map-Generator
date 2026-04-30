@@ -1,0 +1,29 @@
+# Tasks 282 — `get_precipitation`
+
+- [ ] 1. Read `src/ai/tools/set-precipitation.ts` to confirm exported constants (`PRECIPITATION_INPUT_ID`, `PRECIPITATION_OUTPUT_ID`, `PRECIPITATION_STORED_KEY`).
+- [ ] 2. Read `src/ai/tools/get-generator-rates.ts` + `get-generator-rates.test.ts` for the runtime-seam template.
+- [ ] 3. Read `src/ai/tools/get-climate.ts` for the alternate three-tier pattern.
+- [ ] 4. Capture lint + test baselines (7 warnings / 1 info / 0 errors; 5076 tests pass).
+- [ ] 5. Create `src/ai/tools/get-precipitation.ts`:
+  - Reuse `PRECIPITATION_INPUT_ID`, `PRECIPITATION_OUTPUT_ID`, `PRECIPITATION_STORED_KEY` from `./set-precipitation`.
+  - Export `PRECIPITATION_OPTION_KEY = "prec"` (matches localStorage stored key).
+  - `PrecipitationSnapshot = { value: number | null }`.
+  - `PrecipitationReadRuntime` with `read(): PrecipitationSnapshot`.
+  - `defaultPrecipitationReadRuntime` — options → DOM-output → DOM-input → localStorage → null.
+  - `createGetPrecipitationTool(runtime?)` — returns a `Tool`, takes no params, returns `{ ok, value }`.
+  - Exported `getPrecipitationTool` singleton.
+- [ ] 6. Create `src/ai/tools/get-precipitation.test.ts`:
+  - Unit tests for runtime-seam via `createGetPrecipitationTool({ read: () => snapshot })`.
+  - Metadata assertions (name, empty `input_schema.properties`, no `required`).
+  - `defaultPrecipitationReadRuntime` integration suite using `globalThis` swaps with `as unknown as { ... }` casts (mirrors `get_generator_rates.test.ts`).
+- [ ] 7. Register in `src/ai/index.ts`:
+  - `import { getPrecipitationTool } from "./tools/get-precipitation";` (alphabetical between `getPopulationStatsTool` and `getProvinceDistributionTool`).
+  - Re-export the create/runtime/tool from the barrel (alphabetical placement).
+  - `registry.register(getPrecipitationTool);` (next to other read-tools, e.g. after `getGeneratorRatesTool`).
+- [ ] 8. Add README_AI.md row describing the tool (place near `set_precipitation` / `get_geography`; include API key mention + sample utterances).
+- [ ] 9. `npm run build`. Fix errors.
+- [ ] 10. `npm test`. All pass; count grew by exactly the new tests.
+- [ ] 11. `npm run lint` matches baseline (7 warnings, 0 errors).
+- [ ] 12. `git add` only the files touched by this plan (do NOT add `.claude/`, the existing modified `src/ai/chat-controller.ts` from master, or `current-ralph-loop.prompt`).
+- [ ] 13. Commit with `feat(ai): add get_precipitation tool` and the Co-Authored-By line.
+- [ ] 14. `git push -u origin plan-282-precipitation`. Report failure if push errors.

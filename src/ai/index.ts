@@ -103,6 +103,7 @@ import { getMarkerInfoTool } from "./tools/get-marker-info";
 import { getMeasurementUnitsTool } from "./tools/get-measurement-units";
 import { getNoteInfoTool } from "./tools/get-note-info";
 import { getPopulationStatsTool } from "./tools/get-population-stats";
+import { getPrecipitationTool } from "./tools/get-precipitation";
 import { getProvinceDistributionTool } from "./tools/get-province-distribution";
 import { getProvinceInfoTool } from "./tools/get-province-info";
 import { getRegimentDistributionTool } from "./tools/get-regiment-distribution";
@@ -1287,6 +1288,14 @@ export {
   readPopulationStatsFromPack,
 } from "./tools/get-population-stats";
 export {
+  createGetPrecipitationTool,
+  defaultPrecipitationReadRuntime,
+  getPrecipitationTool,
+  PRECIPITATION_OPTION_KEY,
+  type PrecipitationReadRuntime,
+  type PrecipitationSnapshot,
+} from "./tools/get-precipitation";
+export {
   createGetProvinceDistributionTool,
   defaultProvinceDistributionRuntime,
   getProvinceDistributionTool,
@@ -2311,6 +2320,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getClimateTool);
   registry.register(getGeographyTool);
   registry.register(getGeneratorRatesTool);
+  registry.register(getPrecipitationTool);
   registry.register(getEntityCellsTool);
   registry.register(getEntityBboxTool);
   registry.register(getEntityCentroidTool);
