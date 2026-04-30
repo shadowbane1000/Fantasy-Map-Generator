@@ -95,6 +95,7 @@ import { getFeatureDistributionTool } from "./tools/get-feature-distribution";
 import { getFeatureInfoTool } from "./tools/get-feature-info";
 import { getGeneratorRatesTool } from "./tools/get-generator-rates";
 import { getGeographyTool } from "./tools/get-geography";
+import { getHeightExponentTool } from "./tools/get-height-exponent";
 import { getLayerStyleTool } from "./tools/get-layer-style";
 import { getLayerVisibilityTool } from "./tools/get-layer-visibility";
 import { getMapInfoTool } from "./tools/get-map-info";
@@ -1226,6 +1227,12 @@ export {
   getGeographyTool,
 } from "./tools/get-geography";
 export {
+  createGetHeightExponentTool,
+  defaultHeightExponentReadRuntime,
+  getHeightExponentTool,
+  type HeightExponentReadRuntime,
+} from "./tools/get-height-exponent";
+export {
   createGetLayerStyleTool,
   defaultLayerStyleRuntime,
   getLayerStyleTool,
@@ -1962,6 +1969,9 @@ export {
 } from "./tools/set-geography";
 export {
   createSetHeightExponentTool,
+  HEIGHT_EXPONENT_INPUT_ID,
+  HEIGHT_EXPONENT_OPTION_KEY,
+  HEIGHT_EXPONENT_STORED_KEY,
   setHeightExponentTool,
 } from "./tools/set-height-exponent";
 export {
@@ -2311,6 +2321,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getClimateTool);
   registry.register(getGeographyTool);
   registry.register(getGeneratorRatesTool);
+  registry.register(getHeightExponentTool);
   registry.register(getEntityCellsTool);
   registry.register(getEntityBboxTool);
   registry.register(getEntityCentroidTool);

@@ -1,8 +1,17 @@
 import { errorResult, okResult } from "./_shared";
 import type { Tool, ToolResult } from "./index";
 
-const MIN_EXPONENT = 1.5;
-const MAX_EXPONENT = 2.2;
+export const MIN_EXPONENT = 1.5;
+export const MAX_EXPONENT = 2.2;
+
+/**
+ * Shared key/id constants for the height-exponent setting. The setter
+ * writes (and the getter reads) these locations, matching the UI's own
+ * persistence in `public/modules/ui/units-editor.js`.
+ */
+export const HEIGHT_EXPONENT_OPTION_KEY = "heightExponent";
+export const HEIGHT_EXPONENT_INPUT_ID = "heightExponentInput";
+export const HEIGHT_EXPONENT_STORED_KEY = "heightExponent";
 
 export interface HeightExponentRuntime {
   apply(value: number): void;
@@ -13,12 +22,12 @@ export const defaultHeightExponentRuntime: HeightExponentRuntime = {
     const asStr = String(value);
     if (typeof document !== "undefined") {
       const el = document.getElementById(
-        "heightExponentInput",
+        HEIGHT_EXPONENT_INPUT_ID,
       ) as HTMLInputElement | null;
       if (el) el.value = asStr;
     }
     if (typeof localStorage !== "undefined") {
-      localStorage.setItem("heightExponent", asStr);
+      localStorage.setItem(HEIGHT_EXPONENT_STORED_KEY, asStr);
     }
   },
 };
