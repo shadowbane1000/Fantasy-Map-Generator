@@ -1,0 +1,31 @@
+# Tasks 284 — `get_cells_density`
+
+- [ ] 1. Read `src/ai/tools/set-cells-density.ts` + test to confirm `CELLS_DENSITY_MAP`, `pointsInput` DOM id, `localStorage["points"]` key.
+- [ ] 2. Read `src/ai/tools/get-generator-rates.ts` + test for the read-tool pattern.
+- [ ] 3. Capture lint baseline (warnings/info/errors).
+- [ ] 4. Create `src/ai/tools/get-cells-density.ts`:
+  - Import `CELLS_DENSITY_MAP` from `./set-cells-density` (reuse).
+  - `CellsDensityReadRuntime` interface with `read(): number | null`.
+  - `defaultCellsDensityReadRuntime` — try `pointsInput.dataset.cells` (must be a finite positive integer), then `pointsInput.value` mapped through `CELLS_DENSITY_MAP`, then `localStorage.getItem("points")` mapped through `CELLS_DENSITY_MAP`.
+  - `createGetCellsDensityTool(runtime?)` — returns a `Tool` with `okResult({ value })`.
+  - Exported singleton `getCellsDensityTool`.
+- [ ] 5. Create `src/ai/tools/get-cells-density.test.ts`:
+  - Tool-level unit tests for runtime-seam: returns value, returns null, ignores extra args, exposes correct metadata.
+  - `defaultCellsDensityReadRuntime` integration tests via `globalThis` swaps for `document` + `localStorage`:
+    - reads from `pointsInput.dataset.cells` when valid
+    - falls back to `pointsInput.value` level → cells
+    - falls back to `localStorage` "points" level → cells
+    - returns null when nothing usable
+    - precedence: dataset > value > localStorage
+    - ignores non-finite / out-of-range values, falls through
+- [ ] 6. Wire into `src/ai/index.ts`:
+  - Add `import { getCellsDensityTool } from "./tools/get-cells-density";` alphabetically.
+  - Add the barrel re-export block (mirror `getGeneratorRatesTool`'s style: `createGetCellsDensityTool`, `defaultCellsDensityReadRuntime`, `CellsDensityReadRuntime`, `getCellsDensityTool`).
+  - Add `registry.register(getCellsDensityTool);` near other read tools.
+- [ ] 7. Add a README_AI.md row near `set_cells_density` (`get_cells_density` description + example user prompts).
+- [ ] 8. `npm test -- get-cells-density`. New tests pass.
+- [ ] 9. `npm test`. No regressions.
+- [ ] 10. `npx tsc --noEmit`. Clean.
+- [ ] 11. `npm run lint`. No worse than baseline.
+- [ ] 12. Commit with `feat(ai): add get_cells_density tool` and Co-Authored-By trailer.
+- [ ] 13. Push `plan-284`.
