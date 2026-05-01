@@ -6,6 +6,7 @@ import { ToolRegistry } from "./tools";
 import { addBiomeTool } from "./tools/add-biome";
 import { addBurgTool } from "./tools/add-burg";
 import { addBurgGroupTool } from "./tools/add-burg-group";
+import { addCoastlineGroupTool } from "./tools/add-coastline-group";
 import { addCultureTool } from "./tools/add-culture";
 import { addHillTool } from "./tools/add-hill";
 import { addIcebergTool } from "./tools/add-iceberg";
@@ -370,6 +371,12 @@ export {
   addBurgGroupTool,
   createAddBurgGroupTool,
 } from "./tools/add-burg-group";
+export {
+  type AddCoastlineGroupRuntime,
+  addCoastlineGroupTool,
+  createAddCoastlineGroupTool,
+  defaultAddCoastlineGroupRuntime,
+} from "./tools/add-coastline-group";
 export {
   addCultureTool,
   createAddCultureTool,
@@ -2965,6 +2972,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listLakeGroupsTool);
   registry.register(addLabelGroupTool);
   registry.register(addLakeGroupTool);
+  registry.register(addCoastlineGroupTool);
   registry.register(removeLakeGroupTool);
   registry.register(removeLabelGroupTool);
   registry.register(removeLabelTool);
