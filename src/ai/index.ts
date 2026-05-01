@@ -140,6 +140,7 @@ import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { invertMarkerLocksTool } from "./tools/invert-marker-locks";
 import { invertMarkerPinsTool } from "./tools/invert-marker-pins";
+import { joinRoutesTool } from "./tools/join-routes";
 import { listBiomesTool } from "./tools/list-biomes";
 import { listBurgGroupsTool } from "./tools/list-burg-groups";
 import { listBurgsTool } from "./tools/list-burgs";
@@ -1641,6 +1642,14 @@ export {
   invertMarkerPinsTool,
 } from "./tools/invert-marker-pins";
 export {
+  createJoinRoutesTool,
+  defaultJoinRoutesRuntime,
+  type JoinRoutesApplyArgs,
+  type JoinRoutesRuntime,
+  joinRoutesTool,
+  type MergeCase,
+} from "./tools/join-routes";
+export {
   createListBiomesTool,
   listBiomesTool,
   readBiomesFromPack,
@@ -3015,6 +3024,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeRouteGroupTool);
   registry.register(addRouteTool);
   registry.register(addRouteGroupTool);
+  registry.register(joinRoutesTool);
   registry.register(renameRegimentTool);
   registry.register(listRegimentUnitsTool);
   registry.register(setRegimentUnitTool);
