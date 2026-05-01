@@ -180,6 +180,7 @@ import { regenerateAllProvinceNamesTool } from "./tools/regenerate-all-province-
 import { regenerateAllStateNamesTool } from "./tools/regenerate-all-state-names";
 import { regenerateBurgCoaTool } from "./tools/regenerate-burg-coa";
 import { regenerateBurgNameTool } from "./tools/regenerate-burg-name";
+import { regenerateDiplomacyTool } from "./tools/regenerate-diplomacy";
 import { regenerateDomainTool } from "./tools/regenerate-domain";
 import { regenerateEmblemsTool } from "./tools/regenerate-emblems";
 import { regenerateLabelNameTool } from "./tools/regenerate-label-name";
@@ -1838,6 +1839,13 @@ export {
   resolveBurgNameMode,
 } from "./tools/regenerate-burg-name";
 export {
+  createRegenerateDiplomacyTool,
+  defaultRegenerateDiplomacyRuntime,
+  type RegenerateDiplomacyResult,
+  type RegenerateDiplomacyRuntime,
+  regenerateDiplomacyTool,
+} from "./tools/regenerate-diplomacy";
+export {
   createRegenerateDomainTool,
   DOMAIN_TO_GLOBAL,
   REGENERATE_DOMAINS,
@@ -2921,6 +2929,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateReligionNamesTool);
   registry.register(regenerateRiverNamesTool);
   registry.register(regenerateRouteNameTool);
+  registry.register(regenerateDiplomacyTool);
   registry.register(regenerateZonesTool);
   registry.register(clearReliefIconsTool);
   registry.register(addReliefIconTool);
