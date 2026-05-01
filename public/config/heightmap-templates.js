@@ -164,3 +164,9 @@ const heightmapTemplates = (function () {
     fractious: {id: 13, name: "Fractious", template: fractious, probability: 3}
   };
 })();
+
+// Classic-script top-level `const` doesn't attach to `window`, so module
+// scripts (the AI chat tools) can't reach `heightmapTemplates` through
+// `globalThis`. Expose it explicitly. Same fix-shape as
+// `window.regenerateMap = regenerateMap` in public/main.js.
+window.heightmapTemplates = heightmapTemplates;

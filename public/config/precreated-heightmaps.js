@@ -25,3 +25,8 @@ const precreatedHeightmaps = {
   world: {id: 21, name: "World"},
   "world-from-pacific": {id: 22, name: "World from Pacific"}
 };
+
+// Classic-script top-level `const` doesn't attach to `window`, so module
+// scripts (the AI chat tools) can't reach `precreatedHeightmaps` through
+// `globalThis`. Expose it explicitly.
+window.precreatedHeightmaps = precreatedHeightmaps;
