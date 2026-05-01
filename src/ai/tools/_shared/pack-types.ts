@@ -65,6 +65,7 @@ export interface RawBurg {
   temple?: number;
   shanty?: number;
   removed?: boolean;
+  link?: string;
 }
 
 export interface RawCulture {
