@@ -209,6 +209,7 @@ import { regenerateRiverNameTool } from "./tools/regenerate-river-name";
 import { regenerateRiverNamesTool } from "./tools/regenerate-river-names";
 import { regenerateRouteNameTool } from "./tools/regenerate-route-name";
 import { regenerateStateCoaTool } from "./tools/regenerate-state-coa";
+import { regenerateStateFullNameTool } from "./tools/regenerate-state-full-name";
 import { regenerateStateNameTool } from "./tools/regenerate-state-name";
 import { regenerateZonesTool } from "./tools/regenerate-zones";
 import { removeAllBurgsTool } from "./tools/remove-all-burgs";
@@ -2059,6 +2060,12 @@ export {
   regenerateStateCoaTool,
 } from "./tools/regenerate-state-coa";
 export {
+  createRegenerateStateFullNameTool,
+  regenerateStateFullNameTool,
+  resolveStateFullNamePattern,
+  STATE_FULL_NAME_PATTERNS,
+} from "./tools/regenerate-state-full-name";
+export {
   createRegenerateStateNameTool,
   regenerateStateNameTool,
   resolveStateNameMode,
@@ -3213,6 +3220,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateLabelNameTool);
   registry.register(regenerateLakeNameTool);
   registry.register(regenerateStateNameTool);
+  registry.register(regenerateStateFullNameTool);
   registry.register(regenerateProvinceNameTool);
   registry.register(regenerateAllBurgNamesTool);
   registry.register(regenerateAllCultureNamesTool);
