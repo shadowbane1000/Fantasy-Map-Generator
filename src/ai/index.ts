@@ -29,6 +29,7 @@ import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { clearReliefIconsTool } from "./tools/clear-relief-icons";
 import { clearRulersTool } from "./tools/clear-rulers";
+import { countReliefIconsTool } from "./tools/count-relief-icons";
 import { exportMapTool } from "./tools/export-map";
 import { findAdjacentEntitiesTool } from "./tools/find-adjacent-entities";
 import { findBurgsByCultureTool } from "./tools/find-burgs-by-culture";
@@ -454,6 +455,13 @@ export {
   clearRulersTool,
   createClearRulersTool,
 } from "./tools/clear-rulers";
+export {
+  type CountReliefIconsRuntime,
+  countReliefIconsTool,
+  createCountReliefIconsTool,
+  defaultCountReliefIconsRuntime,
+  type ReliefIconTypeCount,
+} from "./tools/count-relief-icons";
 export {
   createExportMapTool,
   EXPORT_FORMATS,
@@ -2684,6 +2692,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listFeaturesTool);
   registry.register(listHeightmapTemplatesTool);
   registry.register(listIceTool);
+  registry.register(countReliefIconsTool);
   registry.register(listReligionsTool);
   registry.register(listProvincesTool);
   registry.register(listMarkersTool);
