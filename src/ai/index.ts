@@ -227,6 +227,7 @@ import { renameRiverTool } from "./tools/rename-river";
 import { renameRouteTool } from "./tools/rename-route";
 import { renameStateTool } from "./tools/rename-state";
 import { renameZoneTool } from "./tools/rename-zone";
+import { resetStateDiplomacyTool } from "./tools/reset-state-diplomacy";
 import { saveMapTool } from "./tools/save-map";
 import { setBiomeColorTool } from "./tools/set-biome-color";
 import { setBiomeCostTool } from "./tools/set-biome-cost";
@@ -2083,6 +2084,15 @@ export {
   renameZoneTool,
 } from "./tools/rename-zone";
 export {
+  createResetStateDiplomacyTool,
+  defaultResetStateDiplomacyRuntime,
+  type ResetStateDiplomacyChange,
+  type ResetStateDiplomacyError,
+  type ResetStateDiplomacyResult,
+  type ResetStateDiplomacyRuntime,
+  resetStateDiplomacyTool,
+} from "./tools/reset-state-diplomacy";
+export {
   createSaveMapTool,
   resolveSaveTarget,
   saveMapTool,
@@ -2937,6 +2947,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateRiverNamesTool);
   registry.register(regenerateRouteNameTool);
   registry.register(regenerateDiplomacyTool);
+  registry.register(resetStateDiplomacyTool);
   registry.register(regenerateZonesTool);
   registry.register(regenerateReliefIconsTool);
   registry.register(clearReliefIconsTool);
