@@ -33,6 +33,7 @@ import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { clearReliefIconsTool } from "./tools/clear-relief-icons";
 import { clearRulersTool } from "./tools/clear-rulers";
 import { countReliefIconsTool } from "./tools/count-relief-icons";
+import { disruptHeightmapTool } from "./tools/disrupt-heightmap";
 import { exportMapTool } from "./tools/export-map";
 import { findAdjacentEntitiesTool } from "./tools/find-adjacent-entities";
 import { findBurgsByCultureTool } from "./tools/find-burgs-by-culture";
@@ -509,6 +510,12 @@ export {
   defaultCountReliefIconsRuntime,
   type ReliefIconTypeCount,
 } from "./tools/count-relief-icons";
+export {
+  createDisruptHeightmapTool,
+  type DisruptHeightmapRuntime,
+  defaultDisruptHeightmapRuntime,
+  disruptHeightmapTool,
+} from "./tools/disrupt-heightmap";
 export {
   createExportMapTool,
   EXPORT_FORMATS,
@@ -3065,6 +3072,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(maskHeightmapTool);
   registry.register(invertHeightmapTool);
   registry.register(clearHeightmapTool);
+  registry.register(disruptHeightmapTool);
   registry.register(setCellHeightTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
