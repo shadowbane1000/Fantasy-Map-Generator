@@ -135,6 +135,7 @@ import { listDiplomacyTool } from "./tools/list-diplomacy";
 import { listEmblemShapesTool } from "./tools/list-emblem-shapes";
 import { listFeaturesTool } from "./tools/list-features";
 import { listHeightmapTemplatesTool } from "./tools/list-heightmap-templates";
+import { listLakeGroupsTool } from "./tools/list-lake-groups";
 import { listMarkerPinsTool } from "./tools/list-marker-pins";
 import { listMarkerTypesTool } from "./tools/list-marker-types";
 import { listMarkersTool } from "./tools/list-markers";
@@ -1545,6 +1546,15 @@ export {
   readHeightmapListFromGlobals,
 } from "./tools/list-heightmap-templates";
 export {
+  createListLakeGroupsTool,
+  DEFAULT_LAKE_GROUPS,
+  defaultListLakeGroupsRuntime,
+  type LakeGroupElement,
+  type LakeGroupSummary,
+  type ListLakeGroupsRuntime,
+  listLakeGroupsTool,
+} from "./tools/list-lake-groups";
+export {
   createListMarkerPinsTool,
   defaultMarkerPinListRuntime,
   listMarkerPinsTool,
@@ -2511,6 +2521,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameRouteTool);
   registry.register(setRouteGroupTool);
   registry.register(setLakeGroupTool);
+  registry.register(listLakeGroupsTool);
   registry.register(setRouteLockTool);
   registry.register(removeRouteTool);
   registry.register(listRouteGroupsTool);
