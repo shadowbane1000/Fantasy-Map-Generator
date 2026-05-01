@@ -235,6 +235,7 @@ import { setHeightExponentTool } from "./tools/set-height-exponent";
 import { setHeightmapOptionsTool } from "./tools/set-heightmap-options";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
 import { setLabelTextTool } from "./tools/set-label-text";
+import { setLakeGroupTool } from "./tools/set-lake-group";
 import { setLayerFillTool } from "./tools/set-layer-fill";
 import { setLayerFilterTool } from "./tools/set-layer-filter";
 import { setLayerOpacityTool } from "./tools/set-layer-opacity";
@@ -2057,6 +2058,14 @@ export {
   setLabelTextTool,
 } from "./tools/set-label-text";
 export {
+  createSetLakeGroupTool,
+  defaultSetLakeGroupRuntime,
+  type LakeGroupRef,
+  type LakeGroupResolution,
+  type SetLakeGroupRuntime,
+  setLakeGroupTool,
+} from "./tools/set-lake-group";
+export {
   createSetLayerFillTool,
   defaultLayerFillRuntime,
   type LayerFillRuntime,
@@ -2491,6 +2500,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameRiverTool);
   registry.register(renameRouteTool);
   registry.register(setRouteGroupTool);
+  registry.register(setLakeGroupTool);
   registry.register(setRouteLockTool);
   registry.register(removeRouteTool);
   registry.register(listRouteGroupsTool);
