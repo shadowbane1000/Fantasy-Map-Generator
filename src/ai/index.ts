@@ -358,6 +358,7 @@ import { setStylePresetTool } from "./tools/set-style-preset";
 import { setWindTool } from "./tools/set-wind";
 import { setWorldRatesTool } from "./tools/set-world-rates";
 import { setYearAndEraTool } from "./tools/set-year-and-era";
+import { setZoneCellsTool } from "./tools/set-zone-cells";
 import { setZoneColorTool } from "./tools/set-zone-color";
 import { setZoneTypeTool } from "./tools/set-zone-type";
 import { setZoneVisibilityTool } from "./tools/set-zone-visibility";
@@ -2861,6 +2862,14 @@ export {
   setYearAndEraTool,
 } from "./tools/set-year-and-era";
 export {
+  type CellRangeResult,
+  createSetZoneCellsTool,
+  defaultZoneCellsRuntime,
+  setZoneCellsTool,
+  type ZoneCellsRef,
+  type ZoneCellsRuntime,
+} from "./tools/set-zone-cells";
+export {
   createSetZoneColorTool,
   setZoneColorTool,
 } from "./tools/set-zone-color";
@@ -3102,6 +3111,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setReligionCultureTool);
   registry.register(setReligionOriginsTool);
   registry.register(setProvinceColorTool);
+  registry.register(setZoneCellsTool);
   registry.register(setZoneColorTool);
   registry.register(setZoneTypeTool);
   registry.register(setRiverParentTool);
