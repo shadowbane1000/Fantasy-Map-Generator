@@ -129,6 +129,7 @@ import { getRiverDistributionTool } from "./tools/get-river-distribution";
 import { getRiverInfoTool } from "./tools/get-river-info";
 import { getRouteDistributionTool } from "./tools/get-route-distribution";
 import { getRouteInfoTool } from "./tools/get-route-info";
+import { getSelectedEntityTool } from "./tools/get-selected-entity";
 import { getStateDistributionTool } from "./tools/get-state-distribution";
 import { getStateInfoTool } from "./tools/get-state-info";
 import { getTerrainStatsTool } from "./tools/get-terrain-stats";
@@ -1568,6 +1569,13 @@ export {
   readRouteInfoFromPack,
 } from "./tools/get-route-info";
 export {
+  createGetSelectedEntityTool,
+  defaultSelectedEntityRuntime,
+  getSelectedEntityTool,
+  type SelectedEntityNodeView,
+  type SelectedEntityRuntime,
+} from "./tools/get-selected-entity";
+export {
   createGetStateDistributionTool,
   defaultStateDistributionRuntime,
   getStateDistributionTool,
@@ -2950,6 +2958,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getProvinceInfoTool);
   registry.register(getRiverInfoTool);
   registry.register(getRouteInfoTool);
+  registry.register(getSelectedEntityTool);
   registry.register(getBiomeInfoTool);
   registry.register(getBiomeDistributionTool);
   registry.register(getFeatureDistributionTool);
