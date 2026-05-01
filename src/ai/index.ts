@@ -241,6 +241,7 @@ import { setGeographyTool } from "./tools/set-geography";
 import { setHeightExponentTool } from "./tools/set-height-exponent";
 import { setHeightmapOptionsTool } from "./tools/set-heightmap-options";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
+import { setLabelGroupTool } from "./tools/set-label-group";
 import { setLabelTextTool } from "./tools/set-label-text";
 import { setLakeGroupTool } from "./tools/set-lake-group";
 import { setLayerFillTool } from "./tools/set-layer-fill";
@@ -2112,6 +2113,14 @@ export {
   TEMPLATE_KEYS,
 } from "./tools/set-heightmap-template";
 export {
+  createSetLabelGroupTool,
+  defaultSetLabelGroupRuntime,
+  type LabelLookup,
+  type SetLabelGroupRuntime,
+  setLabelGroupTool,
+  type TargetGroupLookup,
+} from "./tools/set-label-group";
+export {
   createSetLabelTextTool,
   defaultSetLabelTextRuntime,
   setLabelTextTool,
@@ -2560,6 +2569,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameRouteTool);
   registry.register(setRouteGroupTool);
   registry.register(setLakeGroupTool);
+  registry.register(setLabelGroupTool);
   registry.register(listLabelGroupsTool);
   registry.register(listLakeGroupsTool);
   registry.register(addLabelGroupTool);
