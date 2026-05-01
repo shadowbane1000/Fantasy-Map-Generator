@@ -134,6 +134,7 @@ import { getStateDistributionTool } from "./tools/get-state-distribution";
 import { getStateInfoTool } from "./tools/get-state-info";
 import { getTerrainStatsTool } from "./tools/get-terrain-stats";
 import { getWindTool } from "./tools/get-wind";
+import { getWorldNoteTool } from "./tools/get-world-note";
 import { getWorldRatesTool } from "./tools/get-world-rates";
 import { getYearAndEraTool } from "./tools/get-year-and-era";
 import { getZoneDistributionTool } from "./tools/get-zone-distribution";
@@ -170,6 +171,7 @@ import { listRoutesTool } from "./tools/list-routes";
 import { listRulersTool } from "./tools/list-rulers";
 import { listStatesTool } from "./tools/list-states";
 import { listStylePresetsTool } from "./tools/list-style-presets";
+import { listWorldNotesTool } from "./tools/list-world-notes";
 import { listZonesTool } from "./tools/list-zones";
 import { loadMapTool } from "./tools/load-map";
 import { maskHeightmapTool } from "./tools/mask-heightmap";
@@ -234,6 +236,7 @@ import { removeRouteTool } from "./tools/remove-route";
 import { removeRouteGroupTool } from "./tools/remove-route-group";
 import { removeRulerTool } from "./tools/remove-ruler";
 import { removeStateTool } from "./tools/remove-state";
+import { removeWorldNoteTool } from "./tools/remove-world-note";
 import { removeZoneTool } from "./tools/remove-zone";
 import { renameBiomeTool } from "./tools/rename-biome";
 import { renameBurgTool } from "./tools/rename-burg";
@@ -361,6 +364,7 @@ import { setStateLabelsModeTool } from "./tools/set-state-labels-mode";
 import { setStateTypeTool } from "./tools/set-state-type";
 import { setStylePresetTool } from "./tools/set-style-preset";
 import { setWindTool } from "./tools/set-wind";
+import { setWorldNoteTool } from "./tools/set-world-note";
 import { setWorldRatesTool } from "./tools/set-world-rates";
 import { setYearAndEraTool } from "./tools/set-year-and-era";
 import { setZoneCellsTool } from "./tools/set-zone-cells";
@@ -1615,6 +1619,13 @@ export {
   type WindSnapshot,
 } from "./tools/get-wind";
 export {
+  createGetWorldNoteTool,
+  defaultGetWorldNoteRuntime,
+  type GetWorldNoteRuntime,
+  getWorldNoteTool,
+  type WorldNoteInfo,
+} from "./tools/get-world-note";
+export {
   createGetWorldRatesTool,
   defaultGetWorldRatesRuntime,
   type GetWorldRatesRuntime,
@@ -1843,6 +1854,14 @@ export {
   type StylePresetEntry,
   type StylePresetListRuntime,
 } from "./tools/list-style-presets";
+export {
+  collectWorldNotes,
+  createListWorldNotesTool,
+  defaultListWorldNotesRuntime,
+  type ListWorldNotesRuntime,
+  listWorldNotesTool,
+  type WorldNoteSummary,
+} from "./tools/list-world-notes";
 export {
   createListZonesTool,
   listZonesTool,
@@ -2198,6 +2217,12 @@ export {
   createRemoveStateTool,
   removeStateTool,
 } from "./tools/remove-state";
+export {
+  createRemoveWorldNoteTool,
+  defaultRemoveWorldNoteRuntime,
+  type RemoveWorldNoteRuntime,
+  removeWorldNoteTool,
+} from "./tools/remove-world-note";
 export {
   createRemoveZoneTool,
   removeZoneTool,
@@ -2903,6 +2928,13 @@ export {
   WIND_BAND_COUNT,
 } from "./tools/set-wind";
 export {
+  createSetWorldNoteTool,
+  defaultSetWorldNoteRuntime,
+  type SetWorldNoteRuntime,
+  setWorldNoteTool,
+  type WorldNoteRef,
+} from "./tools/set-world-note";
+export {
   createSetWorldRatesTool,
   setWorldRatesTool,
   validateRatesInput,
@@ -2989,6 +3021,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(getMarkerDistributionTool);
   registry.register(getMarkerInfoTool);
   registry.register(getNoteInfoTool);
+  registry.register(getWorldNoteTool);
   registry.register(getRegimentInfoTool);
   registry.register(getZoneInfoTool);
   registry.register(getFeatureInfoTool);
@@ -3077,6 +3110,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listRegimentsTool);
   registry.register(listNotesTool);
   registry.register(findNotesByPrefixTool);
+  registry.register(listWorldNotesTool);
   registry.register(listZonesTool);
   registry.register(findZonesByTypeTool);
   registry.register(getZoneDistributionTool);
@@ -3198,6 +3232,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listMarkerPinsTool);
   registry.register(setMarkerColorsTool);
   registry.register(setNoteTool);
+  registry.register(setWorldNoteTool);
   registry.register(setHeightmapTemplateTool);
   registry.register(setHeightmapOptionsTool);
   registry.register(setOptionsLockTool);
@@ -3320,6 +3355,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(moveLabelTool);
   registry.register(mergeStatesTool);
   registry.register(removeNoteTool);
+  registry.register(removeWorldNoteTool);
   registry.register(removeProvinceTool);
   registry.register(removeRegimentTool);
   registry.register(removeReligionTool);
