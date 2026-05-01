@@ -191,6 +191,7 @@ import { recalculateStatesTool } from "./tools/recalculate-states";
 import { regenerateAllBurgNamesTool } from "./tools/regenerate-all-burg-names";
 import { regenerateAllCultureNamesTool } from "./tools/regenerate-all-culture-names";
 import { regenerateAllProvinceNamesTool } from "./tools/regenerate-all-province-names";
+import { regenerateAllRouteNamesTool } from "./tools/regenerate-all-route-names";
 import { regenerateAllStateNamesTool } from "./tools/regenerate-all-state-names";
 import { regenerateBurgCoaTool } from "./tools/regenerate-burg-coa";
 import { regenerateBurgNameTool } from "./tools/regenerate-burg-name";
@@ -1962,6 +1963,13 @@ export {
   regenerateAllProvinceNamesTool,
 } from "./tools/regenerate-all-province-names";
 export {
+  createRegenerateAllRouteNamesTool,
+  defaultRegenerateAllRouteNamesRuntime,
+  type RegenerateAllRouteNamesRuntime,
+  type RouteLike,
+  regenerateAllRouteNamesTool,
+} from "./tools/regenerate-all-route-names";
+export {
   createRegenerateAllStateNamesTool,
   regenerateAllStateNamesTool,
 } from "./tools/regenerate-all-state-names";
@@ -3302,6 +3310,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateAllCultureNamesTool);
   registry.register(regenerateCultureBurgsTool);
   registry.register(regenerateAllProvinceNamesTool);
+  registry.register(regenerateAllRouteNamesTool);
   registry.register(regenerateAllStateNamesTool);
   registry.register(regenerateRegimentLegendTool);
   registry.register(regenerateRegimentNameTool);
