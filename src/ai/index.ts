@@ -246,6 +246,7 @@ import { renameZoneTool } from "./tools/rename-zone";
 import { resetStateDiplomacyTool } from "./tools/reset-state-diplomacy";
 import { restoreDefaultNamesbasesTool } from "./tools/restore-default-namesbases";
 import { saveMapTool } from "./tools/save-map";
+import { setAreaUnitTool } from "./tools/set-area-unit";
 import { setBiomeColorTool } from "./tools/set-biome-color";
 import { setBiomeCostTool } from "./tools/set-biome-cost";
 import { setBiomeHabitabilityTool } from "./tools/set-biome-habitability";
@@ -2237,6 +2238,12 @@ export {
   saveMapTool,
 } from "./tools/save-map";
 export {
+  type AreaUnitRuntime,
+  createSetAreaUnitTool,
+  defaultAreaUnitRuntime,
+  setAreaUnitTool,
+} from "./tools/set-area-unit";
+export {
   createSetBiomeColorTool,
   setBiomeColorTool,
 } from "./tools/set-biome-color";
@@ -2959,6 +2966,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setMapNameTool);
   registry.register(setLabelTextTool);
   registry.register(setMeasurementUnitsTool);
+  registry.register(setAreaUnitTool);
   registry.register(setClimateTool);
   registry.register(setCellsDensityTool);
   registry.register(setGeographyTool);
