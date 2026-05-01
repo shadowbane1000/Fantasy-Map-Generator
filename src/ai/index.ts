@@ -248,6 +248,7 @@ import { renameZoneTool } from "./tools/rename-zone";
 import { resetStateDiplomacyTool } from "./tools/reset-state-diplomacy";
 import { restoreDefaultBiomesTool } from "./tools/restore-default-biomes";
 import { restoreDefaultNamesbasesTool } from "./tools/restore-default-namesbases";
+import { restoreDefaultUnitsTool } from "./tools/restore-default-units";
 import { saveMapTool } from "./tools/save-map";
 import { setAreaUnitTool } from "./tools/set-area-unit";
 import { setBiomeColorTool } from "./tools/set-biome-color";
@@ -2266,6 +2267,16 @@ export {
   restoreDefaultNamesbasesTool,
 } from "./tools/restore-default-namesbases";
 export {
+  createRestoreDefaultUnitsTool,
+  DEFAULT_UNITS,
+  defaultRestoreDefaultUnitsRuntime,
+  type RestoreDefaultUnitsApplied,
+  type RestoreDefaultUnitsPrevious,
+  type RestoreDefaultUnitsResult,
+  type RestoreDefaultUnitsRuntime,
+  restoreDefaultUnitsTool,
+} from "./tools/restore-default-units";
+export {
   createSaveMapTool,
   resolveSaveTarget,
   saveMapTool,
@@ -3230,6 +3241,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(resetStateDiplomacyTool);
   registry.register(restoreDefaultBiomesTool);
   registry.register(restoreDefaultNamesbasesTool);
+  registry.register(restoreDefaultUnitsTool);
   registry.register(regenerateZonesTool);
   registry.register(regenerateReliefIconsTool);
   registry.register(clearReliefIconsTool);
