@@ -244,6 +244,7 @@ import { setHeightExponentTool } from "./tools/set-height-exponent";
 import { setHeightmapOptionsTool } from "./tools/set-heightmap-options";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
 import { setLabelGroupTool } from "./tools/set-label-group";
+import { setLabelLetterSpacingTool } from "./tools/set-label-letter-spacing";
 import { setLabelOffsetTool } from "./tools/set-label-offset";
 import { setLabelSizeTool } from "./tools/set-label-size";
 import { setLabelTextTool } from "./tools/set-label-text";
@@ -2138,6 +2139,12 @@ export {
   type TargetGroupLookup,
 } from "./tools/set-label-group";
 export {
+  createSetLabelLetterSpacingTool,
+  defaultSetLabelLetterSpacingRuntime,
+  type SetLabelLetterSpacingRuntime,
+  setLabelLetterSpacingTool,
+} from "./tools/set-label-letter-spacing";
+export {
   createSetLabelOffsetTool,
   defaultSetLabelOffsetRuntime,
   type SetLabelOffsetRuntime,
@@ -2600,6 +2607,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setLakeGroupTool);
   registry.register(setLabelGroupTool);
   registry.register(setLabelOffsetTool);
+  registry.register(setLabelLetterSpacingTool);
   registry.register(setLabelSizeTool);
   registry.register(listLabelGroupsTool);
   registry.register(listLakeGroupsTool);
