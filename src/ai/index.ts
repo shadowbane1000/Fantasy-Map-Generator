@@ -12,6 +12,7 @@ import { addIcebergTool } from "./tools/add-iceberg";
 import { addLabelGroupTool } from "./tools/add-label-group";
 import { addLakeGroupTool } from "./tools/add-lake-group";
 import { addMarkerTool } from "./tools/add-marker";
+import { addNamesbaseTool } from "./tools/add-namesbase";
 import { addPitTool } from "./tools/add-pit";
 import { addProvinceTool } from "./tools/add-province";
 import { addRangeTool } from "./tools/add-range";
@@ -373,6 +374,13 @@ export {
   addMarkerTool,
   createAddMarkerTool,
 } from "./tools/add-marker";
+export {
+  type AddNamesbaseRuntime,
+  addNamesbaseTool,
+  createAddNamesbaseTool,
+  DEFAULT_NAMESBASE_CORPUS,
+  defaultAddNamesbaseRuntime,
+} from "./tools/add-namesbase";
 export {
   addPitTool,
   createAddPitTool,
@@ -2707,6 +2715,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeBiomeTool);
   registry.register(renameCultureTool);
   registry.register(renameLakeTool);
+  registry.register(addNamesbaseTool);
   registry.register(renameNamesbaseTool);
   registry.register(setNamesbaseLengthRangeTool);
   registry.register(setNamesbaseNamesTool);
