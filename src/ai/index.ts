@@ -5,6 +5,7 @@ import { mountChatWindow } from "./chat-window";
 import { ToolRegistry } from "./tools";
 import { addBiomeTool } from "./tools/add-biome";
 import { addBurgTool } from "./tools/add-burg";
+import { addBurgGroupTool } from "./tools/add-burg-group";
 import { addCultureTool } from "./tools/add-culture";
 import { addHillTool } from "./tools/add-hill";
 import { addLabelGroupTool } from "./tools/add-label-group";
@@ -324,6 +325,10 @@ export {
   addBurgTool,
   createAddBurgTool,
 } from "./tools/add-burg";
+export {
+  addBurgGroupTool,
+  createAddBurgGroupTool,
+} from "./tools/add-burg-group";
 export {
   addCultureTool,
   createAddCultureTool,
@@ -2780,6 +2785,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addMarkerTool);
   registry.register(addRulerTool);
   registry.register(addBurgTool);
+  registry.register(addBurgGroupTool);
   registry.register(addCultureTool);
   registry.register(addReligionTool);
   registry.register(addRegimentTool);
