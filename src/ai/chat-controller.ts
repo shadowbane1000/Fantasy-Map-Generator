@@ -10,6 +10,20 @@ import type {
 } from "./anthropic-client";
 import type { ToolRegistry } from "./tools";
 
+export type ClickTarget =
+  | "any"
+  | "cell"
+  | "burg"
+  | "state"
+  | "province"
+  | "culture"
+  | "religion"
+  | "marker"
+  | "route"
+  | "river"
+  | "zone"
+  | "label";
+
 export type UiEvent =
   | { type: "user"; text: string }
   | { type: "assistant"; text: string }
@@ -17,7 +31,14 @@ export type UiEvent =
   | { type: "tool_result"; name: string; output: string; isError?: boolean }
   | { type: "usage"; usage: AnthropicUsage }
   | { type: "cleared" }
-  | { type: "error"; message: string };
+  | { type: "error"; message: string }
+  | {
+      type: "click_request";
+      prompt: string;
+      target: ClickTarget;
+      cancelToken: object;
+    }
+  | { type: "click_request_end"; cancelToken: object };
 
 export type UiEventListener = (event: UiEvent) => void;
 
@@ -112,6 +133,7 @@ export class ChatController {
   private maxToolIterations: number;
   private history: AnthropicMessage[] = [];
   private listeners = new Set<UiEventListener>();
+  private cancelClickListeners = new Map<object, Set<() => void>>();
 
   constructor(opts: ChatControllerOptions) {
     this.client = opts.client;
@@ -128,6 +150,45 @@ export class ChatController {
 
   private emit(event: UiEvent): void {
     for (const l of this.listeners) l(event);
+  }
+
+  emitClickRequest(payload: {
+    prompt: string;
+    target: ClickTarget;
+    cancelToken: object;
+  }): void {
+    this.emit({ type: "click_request", ...payload });
+  }
+
+  emitClickRequestEnd(cancelToken: object): void {
+    this.emit({ type: "click_request_end", cancelToken });
+  }
+
+  registerClickCancel(token: object, callback: () => void): () => void {
+    let set = this.cancelClickListeners.get(token);
+    if (!set) {
+      set = new Set();
+      this.cancelClickListeners.set(token, set);
+    }
+    set.add(callback);
+    return () => {
+      const s = this.cancelClickListeners.get(token);
+      if (!s) return;
+      s.delete(callback);
+      if (s.size === 0) this.cancelClickListeners.delete(token);
+    };
+  }
+
+  cancelClickRequest(token: object): void {
+    const set = this.cancelClickListeners.get(token);
+    if (!set) return;
+    for (const cb of [...set]) {
+      try {
+        cb();
+      } catch {
+        // swallow listener errors so one bad subscriber can't poison others
+      }
+    }
   }
 
   reset(): void {

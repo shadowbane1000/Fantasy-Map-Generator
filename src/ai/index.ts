@@ -246,6 +246,7 @@ import { renameRiverTool } from "./tools/rename-river";
 import { renameRouteTool } from "./tools/rename-route";
 import { renameStateTool } from "./tools/rename-state";
 import { renameZoneTool } from "./tools/rename-zone";
+import { requestMapClickTool } from "./tools/request-map-click";
 import { resetStateDiplomacyTool } from "./tools/reset-state-diplomacy";
 import { restoreDefaultBiomesTool } from "./tools/restore-default-biomes";
 import { restoreDefaultNamesbasesTool } from "./tools/restore-default-namesbases";
@@ -2250,6 +2251,25 @@ export {
   renameZoneTool,
 } from "./tools/rename-zone";
 export {
+  buildMisclickTip,
+  type ClickHits,
+  type ClickRequestRuntime,
+  createRequestMapClickTool,
+  DEFAULT_REQUEST_MAP_CLICK_TIMEOUT_MS,
+  defaultClickRequestRuntime,
+  defaultHitTest,
+  type EntityHit,
+  type LabelHit,
+  type MarkerHit,
+  matchTarget,
+  type RawHits,
+  REQUEST_MAP_CLICK_TARGETS,
+  REQUEST_MAP_CLICK_TIMEOUT_MAX_MS,
+  REQUEST_MAP_CLICK_TIMEOUT_MIN_MS,
+  requestMapClickTool,
+  type ViewboxLike,
+} from "./tools/request-map-click";
+export {
   createResetStateDiplomacyTool,
   defaultResetStateDiplomacyRuntime,
   type ResetStateDiplomacyChange,
@@ -3219,6 +3239,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(focusOnMapTool);
   registry.register(focusOnEntityTool);
   registry.register(regenerateMapTool);
+  registry.register(requestMapClickTool);
   registry.register(regenerateEmblemsTool);
   registry.register(regenerateBurgCoaTool);
   registry.register(regenerateStateCoaTool);
@@ -3319,6 +3340,8 @@ export function bootstrapAiChat(): void {
   };
 
   const controller = new ChatController({ client: clientProxy, registry });
+  (globalThis as { __aiChatController?: ChatController }).__aiChatController =
+    controller;
   mountChatWindow({ controller });
 }
 
