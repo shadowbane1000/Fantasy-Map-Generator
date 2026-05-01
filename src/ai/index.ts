@@ -250,6 +250,7 @@ import { setGeographyTool } from "./tools/set-geography";
 import { setHeightExponentTool } from "./tools/set-height-exponent";
 import { setHeightmapOptionsTool } from "./tools/set-heightmap-options";
 import { setHeightmapTemplateTool } from "./tools/set-heightmap-template";
+import { setIcebergSizeTool } from "./tools/set-iceberg-size";
 import { setLabelGroupTool } from "./tools/set-label-group";
 import { setLabelLetterSpacingTool } from "./tools/set-label-letter-spacing";
 import { setLabelOffsetTool } from "./tools/set-label-offset";
@@ -2179,6 +2180,13 @@ export {
   TEMPLATE_KEYS,
 } from "./tools/set-heightmap-template";
 export {
+  createSetIcebergSizeTool,
+  defaultSetIcebergSizeRuntime,
+  type SetIcebergSizeIceRef,
+  type SetIcebergSizeRuntime,
+  setIcebergSizeTool,
+} from "./tools/set-iceberg-size";
+export {
   createSetLabelGroupTool,
   defaultSetLabelGroupRuntime,
   type LabelLookup,
@@ -2801,6 +2809,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeIceTool);
   registry.register(removeMarkerTool);
   registry.register(addIcebergTool);
+  registry.register(setIcebergSizeTool);
   registry.register(addMarkerTool);
   registry.register(addRulerTool);
   registry.register(addBurgTool);
