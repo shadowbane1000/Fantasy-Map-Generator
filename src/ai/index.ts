@@ -160,6 +160,7 @@ import { measureDistanceTool } from "./tools/measure-distance";
 import { mergeStatesTool } from "./tools/merge-states";
 import { modifyHeightmapTool } from "./tools/modify-heightmap";
 import { moveBurgTool } from "./tools/move-burg";
+import { moveLabelTool } from "./tools/move-label";
 import { moveMarkerTool } from "./tools/move-marker";
 import { moveRegimentTool } from "./tools/move-regiment";
 import { regenerateAllBurgNamesTool } from "./tools/regenerate-all-burg-names";
@@ -1711,6 +1712,10 @@ export {
   moveBurgTool,
 } from "./tools/move-burg";
 export {
+  createMoveLabelTool,
+  moveLabelTool,
+} from "./tools/move-label";
+export {
   createMoveMarkerTool,
   moveMarkerTool,
 } from "./tools/move-marker";
@@ -2753,6 +2758,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(moveMarkerTool);
   registry.register(moveRegimentTool);
   registry.register(moveBurgTool);
+  registry.register(moveLabelTool);
   registry.register(mergeStatesTool);
   registry.register(removeNoteTool);
   registry.register(removeProvinceTool);
