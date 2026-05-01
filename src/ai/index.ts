@@ -213,6 +213,7 @@ import { removeAllMarkersTool } from "./tools/remove-all-markers";
 import { removeBiomeTool } from "./tools/remove-biome";
 import { removeBurgTool } from "./tools/remove-burg";
 import { removeBurgGroupTool } from "./tools/remove-burg-group";
+import { removeCoastlineGroupTool } from "./tools/remove-coastline-group";
 import { removeCultureTool } from "./tools/remove-culture";
 import { removeIceTool } from "./tools/remove-ice";
 import { removeLabelTool } from "./tools/remove-label";
@@ -2064,6 +2065,13 @@ export {
   removeBurgGroupTool,
 } from "./tools/remove-burg-group";
 export {
+  createRemoveCoastlineGroupTool,
+  DEFAULT_COASTLINE_GROUPS,
+  defaultRemoveCoastlineGroupRuntime,
+  type RemoveCoastlineGroupRuntime,
+  removeCoastlineGroupTool,
+} from "./tools/remove-coastline-group";
+export {
   createRemoveCultureTool,
   removeCultureTool,
 } from "./tools/remove-culture";
@@ -2973,6 +2981,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addLabelGroupTool);
   registry.register(addLakeGroupTool);
   registry.register(addCoastlineGroupTool);
+  registry.register(removeCoastlineGroupTool);
   registry.register(removeLakeGroupTool);
   registry.register(removeLabelGroupTool);
   registry.register(removeLabelTool);
