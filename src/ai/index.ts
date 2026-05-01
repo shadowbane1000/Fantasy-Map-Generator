@@ -184,6 +184,7 @@ import { regenerateStateNameTool } from "./tools/regenerate-state-name";
 import { regenerateZonesTool } from "./tools/regenerate-zones";
 import { removeBiomeTool } from "./tools/remove-biome";
 import { removeBurgTool } from "./tools/remove-burg";
+import { removeBurgGroupTool } from "./tools/remove-burg-group";
 import { removeCultureTool } from "./tools/remove-culture";
 import { removeLabelTool } from "./tools/remove-label";
 import { removeLabelGroupTool } from "./tools/remove-label-group";
@@ -1834,6 +1835,14 @@ export {
   removeBurgTool,
 } from "./tools/remove-burg";
 export {
+  createRemoveBurgGroupTool,
+  defaultRemoveBurgGroupRuntime,
+  type RemoveBurgGroupBurg,
+  type RemoveBurgGroupGroup,
+  type RemoveBurgGroupRuntime,
+  removeBurgGroupTool,
+} from "./tools/remove-burg-group";
+export {
   createRemoveCultureTool,
   removeCultureTool,
 } from "./tools/remove-culture";
@@ -2765,6 +2774,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(loadMapTool);
   registry.register(exportMapTool);
   registry.register(removeBurgTool);
+  registry.register(removeBurgGroupTool);
   registry.register(removeCultureTool);
   registry.register(removeMarkerTool);
   registry.register(addMarkerTool);
