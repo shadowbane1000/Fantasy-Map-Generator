@@ -119,6 +119,7 @@ function addListeners() {
     else if (classList.contains("icon-dot-circled")) overviewBurgs({stateId});
     else if (classList.contains("statePopulation")) changePopulation(stateId);
     else if (classList.contains("icon-pin")) toggleFog(stateId, classList);
+    else if (classList.contains("icon-edit")) editStateNotes(stateId);
     else if (classList.contains("icon-trash-empty")) stateRemovePrompt(stateId);
     else if (classList.contains("icon-lock") || classList.contains("icon-lock-open"))
       updateLockStatus(stateId, classList);
@@ -208,6 +209,7 @@ function statesEditorAddLines() {
         <input class="statePower ${hidden} placeholder show hide" type="number" value="0" />
         <span data-tip="Cells count" class="icon-check-empty ${hidden} show hide"></span>
         <div data-tip="Cells count" class="stateCells ${hidden} show hide">${s.cells}</div>
+        <span data-tip="Edit notes" class="icon-edit hide"></span>
       </div>`;
       continue;
     }
@@ -260,6 +262,7 @@ function statesEditorAddLines() {
       <span data-tip="Lock the state to protect it from re-generation" class="icon-lock${
         s.lock ? "" : "-open"
       } hide"></span>
+      <span data-tip="Edit notes" class="icon-edit hide"></span>
       <span data-tip="Remove the state" class="icon-trash-empty hide"></span>
     </div>`;
   }
@@ -554,6 +557,12 @@ function stateCapitalZoomIn(state) {
   const x = +l.attr("x"),
     y = +l.attr("y");
   zoomTo(x, y, 8, 2000);
+}
+
+function editStateNotes(stateId) {
+  const s = pack.states[stateId];
+  if (!s) return;
+  editNotes("state" + stateId, s.fullName || s.name);
 }
 
 function stateChangeCulture(state, line, value) {

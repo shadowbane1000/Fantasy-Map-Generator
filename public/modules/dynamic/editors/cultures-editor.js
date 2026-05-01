@@ -169,6 +169,7 @@ function culturesEditorAddLines() {
           <div data-tip="${populationTip}" class="culturePopulation hide pointer"
             style="width: 4em">${si(population)}</div>
           ${getShapeOptions(selectShape, c.shield)}
+          <span data-tip="Edit notes" class="icon-edit hide"></span>
         </div>`;
       continue;
     }
@@ -214,6 +215,7 @@ function culturesEditorAddLines() {
           style="width: 4em">${si(population)}</div>
         ${getShapeOptions(selectShape, c.shield)}
         <span data-tip="Lock culture" class="icon-lock${c.lock ? "" : "-open"} hide"></span>
+        <span data-tip="Edit notes" class="icon-edit hide"></span>
         <span data-tip="Remove culture" class="icon-trash-empty hide"></span>
       </div>`;
   }
@@ -245,6 +247,7 @@ function culturesEditorAddLines() {
   $body.querySelectorAll("div > span.icon-trash-empty").forEach($el => $el.on("click", cultureRemovePrompt));
   $body.querySelectorAll("div > span.icon-lock").forEach($el => $el.on("click", updateLockStatus));
   $body.querySelectorAll("div > span.icon-lock-open").forEach($el => $el.on("click", updateLockStatus));
+  $body.querySelectorAll("div > span.icon-edit").forEach($el => $el.on("click", cultureEditNotes));
 
   const $culturesHeader = byId("culturesHeader");
   $culturesHeader.querySelector("div[data-sortby='emblems']").style.display = selectShape ? "inline-block" : "none";
@@ -542,6 +545,13 @@ function cultureRemovePrompt() {
     confirm: "Remove",
     onConfirm: () => removeCulture(cultureId)
   });
+}
+
+function cultureEditNotes() {
+  const cultureId = +this.parentNode.dataset.id;
+  const c = pack.cultures[cultureId];
+  if (!c) return;
+  editNotes("culture" + cultureId, c.name);
 }
 
 function drawCultureCenters() {
