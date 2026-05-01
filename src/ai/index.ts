@@ -143,6 +143,7 @@ import { listRegimentUnitsTool } from "./tools/list-regiment-units";
 import { listRegimentsTool } from "./tools/list-regiments";
 import { listReligionsTool } from "./tools/list-religions";
 import { listRiversTool } from "./tools/list-rivers";
+import { listRouteGroupsTool } from "./tools/list-route-groups";
 import { listRoutesTool } from "./tools/list-routes";
 import { listRulersTool } from "./tools/list-rulers";
 import { listStatesTool } from "./tools/list-states";
@@ -1590,6 +1591,14 @@ export {
   resolveBasinRef,
 } from "./tools/list-rivers";
 export {
+  createListRouteGroupsTool,
+  defaultListRouteGroupsRuntime,
+  type ListRouteGroupsRuntime,
+  listRouteGroupsTool,
+  type RouteGroupElement,
+  type RouteGroupSummary,
+} from "./tools/list-route-groups";
+export {
   createListRoutesTool,
   listRoutesTool,
   ROUTE_GROUPS,
@@ -2469,6 +2478,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setRouteGroupTool);
   registry.register(setRouteLockTool);
   registry.register(removeRouteTool);
+  registry.register(listRouteGroupsTool);
   registry.register(removeRouteGroupTool);
   registry.register(addRouteTool);
   registry.register(addRouteGroupTool);
