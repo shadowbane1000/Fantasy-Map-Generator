@@ -1,0 +1,46 @@
+# Tasks for plan 317
+
+- [ ] Lint baseline recorded (`npm run lint` → 7 warnings, 1 info, 0 errors).
+- [ ] Plan 317 written + self-reviewed.
+- [ ] Implement `src/ai/tools/rename-namesbase.ts`:
+  - [ ] `NamesbaseRenameRef` type.
+  - [ ] `findNamesbaseByIndex(bases, index)` — pure helper.
+  - [ ] `findNamesbasesByName(bases, needle)` — case-insensitive, trimmed.
+  - [ ] `RenameNamesbaseRuntime` interface (`getNameBases`, `setName`).
+  - [ ] `defaultRenameNamesbaseRuntime` reading `window.nameBases`.
+  - [ ] `createRenameNamesbaseTool(runtime?)`:
+    - [ ] Validate `new_name` first (non-empty string after trim).
+    - [ ] Sanitise: trim → strip `/` and `|`. Reject if empty after.
+    - [ ] Require either `index` or `current_name`.
+    - [ ] Validate `index` (non-negative integer).
+    - [ ] Validate `current_name` (non-empty string).
+    - [ ] Resolve target; ambiguity error with candidates; disagree error.
+    - [ ] Apply mutation via runtime; catch + surface errors.
+    - [ ] Return `okResult({ index, old_name, new_name })`.
+  - [ ] `renameNamesbaseTool` — default singleton.
+- [ ] Wire into `src/ai/index.ts`:
+  - [ ] Import next to `renameLakeTool`.
+  - [ ] Re-export create + tool.
+  - [ ] `registry.register(renameNamesbaseTool)` near other rename tools.
+- [ ] Tests `src/ai/tools/rename-namesbase.test.ts`:
+  - [ ] Happy by index.
+  - [ ] Happy by current_name (unique).
+  - [ ] Sanitisation (`/` and `|` stripped).
+  - [ ] Trim.
+  - [ ] Empty-after-sanitisation error.
+  - [ ] Whitespace-only error.
+  - [ ] Ambiguity error with candidates `{index, name}`.
+  - [ ] Non-existent name error.
+  - [ ] Index out of range error.
+  - [ ] Negative / non-integer / non-finite / NaN / "5" string index error.
+  - [ ] Disagreement error.
+  - [ ] Both supplied + agree → success.
+  - [ ] Neither supplied → error.
+  - [ ] `nameBases` missing → error; not array → error.
+  - [ ] Pure-helper unit tests for `findNamesbaseByIndex` and `findNamesbasesByName`.
+  - [ ] Tool name + registry round-trip.
+- [ ] `npm test` — all green.
+- [ ] `npx tsc --noEmit` — clean.
+- [ ] `npm run lint` — no regression.
+- [ ] Commit `feat(ai): add rename_namesbase tool` with only the new files +
+      `src/ai/index.ts` line edits staged.
