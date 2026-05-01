@@ -135,6 +135,7 @@ import { getYearAndEraTool } from "./tools/get-year-and-era";
 import { getZoneDistributionTool } from "./tools/get-zone-distribution";
 import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
+import { invertMarkerPinsTool } from "./tools/invert-marker-pins";
 import { listBiomesTool } from "./tools/list-biomes";
 import { listBurgGroupsTool } from "./tools/list-burg-groups";
 import { listBurgsTool } from "./tools/list-burgs";
@@ -1594,6 +1595,13 @@ export {
   invertHeightmapTool,
 } from "./tools/invert-heightmap";
 export {
+  createInvertMarkerPinsTool,
+  defaultInvertMarkerPinsRuntime,
+  type InvertMarkerPinsResult,
+  type InvertMarkerPinsRuntime,
+  invertMarkerPinsTool,
+} from "./tools/invert-marker-pins";
+export {
   createListBiomesTool,
   listBiomesTool,
   readBiomesFromPack,
@@ -2945,6 +2953,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setDiplomacyTool);
   registry.register(setMarkerNoteTool);
   registry.register(setMarkerPinnedTool);
+  registry.register(invertMarkerPinsTool);
   registry.register(setMarkerLockTool);
   registry.register(setMarkerTypeTool);
   registry.register(setMarkerIconTool);
