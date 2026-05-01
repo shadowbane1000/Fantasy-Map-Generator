@@ -3,9 +3,19 @@ import type { AnthropicToolSchema } from "./tools";
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const ANTHROPIC_VERSION = "2023-06-01";
 
+// Marks a content block as a prompt-cache breakpoint. Everything before and
+// including the marked block becomes a cacheable prefix; subsequent requests
+// whose prefix matches read at 0.10× input rate, and the marker also resets
+// rate-limit accounting at the same fraction. See
+// https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching.
+export interface CacheControlEphemeral {
+  type: "ephemeral";
+}
+
 export interface AnthropicTextBlock {
   type: "text";
   text: string;
+  cache_control?: CacheControlEphemeral;
 }
 
 export interface AnthropicToolUseBlock {
@@ -13,6 +23,7 @@ export interface AnthropicToolUseBlock {
   id: string;
   name: string;
   input: unknown;
+  cache_control?: CacheControlEphemeral;
 }
 
 export interface AnthropicToolResultBlock {
@@ -20,6 +31,7 @@ export interface AnthropicToolResultBlock {
   tool_use_id: string;
   content: string;
   is_error?: boolean;
+  cache_control?: CacheControlEphemeral;
 }
 
 export type AnthropicContentBlock =
@@ -34,11 +46,23 @@ export interface AnthropicMessage {
 
 export interface AnthropicRequest {
   model: string;
-  system?: string;
+  // Array form is required when attaching cache_control to the system prompt.
+  system?: string | AnthropicTextBlock[];
   messages: AnthropicMessage[];
   tools?: AnthropicToolSchema[];
   max_tokens?: number;
   temperature?: number;
+}
+
+export interface AnthropicUsage {
+  input_tokens: number;
+  output_tokens: number;
+  // Tokens written into the prompt cache during this request (billed at
+  // 1.25× input rate). Present only when prompt caching is active.
+  cache_creation_input_tokens?: number;
+  // Tokens served from the prompt cache during this request (billed at
+  // 0.10× input rate). Present only when a cache hit occurred.
+  cache_read_input_tokens?: number;
 }
 
 export interface AnthropicResponse {
@@ -54,7 +78,7 @@ export interface AnthropicResponse {
     | "tool_use"
     | string;
   stop_sequence: string | null;
-  usage?: { input_tokens: number; output_tokens: number };
+  usage?: AnthropicUsage;
 }
 
 export class AnthropicApiError extends Error {

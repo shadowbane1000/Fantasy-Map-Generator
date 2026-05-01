@@ -3,8 +3,10 @@ import type {
   AnthropicContentBlock,
   AnthropicMessage,
   AnthropicResponse,
+  AnthropicTextBlock,
   AnthropicToolResultBlock,
   AnthropicToolUseBlock,
+  AnthropicUsage,
 } from "./anthropic-client";
 import type { ToolRegistry } from "./tools";
 
@@ -13,6 +15,8 @@ export type UiEvent =
   | { type: "assistant"; text: string }
   | { type: "tool_call"; name: string; input: unknown }
   | { type: "tool_result"; name: string; output: string; isError?: boolean }
+  | { type: "usage"; usage: AnthropicUsage }
+  | { type: "cleared" }
   | { type: "error"; message: string };
 
 export type UiEventListener = (event: UiEvent) => void;
@@ -73,6 +77,33 @@ function isToolUse(
   return block.type === "tool_use";
 }
 
+// Returns a copy of the message list with `cache_control: { type: "ephemeral" }`
+// attached to the LAST content block of the LAST message — the conversation-tail
+// breakpoint. Combined with a system-prompt breakpoint, this caches:
+//   - tools + system (long-lived, until edited)
+//   - everything in `messages` up through the last completed turn
+// On the next request, the matched prefix is billed at 0.10× input rate and
+// counts against the input rate limit at the same fraction. The system-prompt
+// breakpoint persists for ~5 min; the tail breakpoint is rewritten each turn
+// (every iteration writes a small increment and reads the much larger prefix).
+function withTailCacheBreakpoint(
+  messages: AnthropicMessage[],
+): AnthropicMessage[] {
+  if (messages.length === 0) return messages;
+  const last = messages[messages.length - 1];
+  const blocks: AnthropicContentBlock[] =
+    typeof last.content === "string"
+      ? [{ type: "text", text: last.content }]
+      : [...last.content];
+  if (blocks.length === 0) return messages;
+  const tail = blocks[blocks.length - 1];
+  blocks[blocks.length - 1] = {
+    ...tail,
+    cache_control: { type: "ephemeral" },
+  } as AnthropicContentBlock;
+  return [...messages.slice(0, -1), { ...last, content: blocks }];
+}
+
 export class ChatController {
   private client: AnthropicClientLike;
   private registry: ToolRegistry;
@@ -101,6 +132,7 @@ export class ChatController {
 
   reset(): void {
     this.history = [];
+    this.emit({ type: "cleared" });
   }
 
   getHistory(): AnthropicMessage[] {
@@ -114,20 +146,35 @@ export class ChatController {
     this.history.push({ role: "user", content: trimmed });
 
     const tools = this.registry.toAnthropicSchemas();
+    // System breakpoint: caches tools + system as one entry. The API orders
+    // cacheable content as tools -> system -> messages, so a marker on the
+    // last (only) system block covers the tools array too. Stable until the
+    // system prompt or tools list changes.
+    const system: AnthropicTextBlock[] = [
+      {
+        type: "text",
+        text: this.systemPrompt,
+        cache_control: { type: "ephemeral" },
+      },
+    ];
 
     for (let iter = 0; iter < this.maxToolIterations; iter++) {
       let response: AnthropicResponse;
       try {
         response = await this.client.sendMessage({
           model: this.model,
-          system: this.systemPrompt,
-          messages: this.history,
+          system,
+          messages: withTailCacheBreakpoint(this.history),
           tools: tools.length ? tools : undefined,
         });
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
         this.emit({ type: "error", message });
         return;
+      }
+
+      if (response.usage) {
+        this.emit({ type: "usage", usage: response.usage });
       }
 
       this.history.push({ role: "assistant", content: response.content });

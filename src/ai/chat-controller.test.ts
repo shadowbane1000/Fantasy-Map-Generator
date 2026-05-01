@@ -165,4 +165,157 @@ describe("ChatController", () => {
     await controller.send("   ");
     expect(client.calls).toHaveLength(0);
   });
+
+  it("attaches a cache_control breakpoint to the system prompt", async () => {
+    const client = scriptedClient([
+      makeResponse([{ type: "text", text: "ok" }]),
+    ]);
+    const controller = new ChatController({
+      client,
+      registry: new ToolRegistry(),
+      systemPrompt: "you are a test bot",
+    });
+    await controller.send("hi");
+
+    const sys = client.calls[0].system;
+    // System must be array form so cache_control can hang off the text block.
+    expect(Array.isArray(sys)).toBe(true);
+    const sysArr = sys as {
+      type: string;
+      text: string;
+      cache_control?: unknown;
+    }[];
+    expect(sysArr).toHaveLength(1);
+    expect(sysArr[0]).toMatchObject({
+      type: "text",
+      text: "you are a test bot",
+      cache_control: { type: "ephemeral" },
+    });
+  });
+
+  it("attaches a cache_control breakpoint to the last block of the conversation tail", async () => {
+    const client = scriptedClient([
+      makeResponse([{ type: "text", text: "ok" }]),
+    ]);
+    const controller = new ChatController({
+      client,
+      registry: new ToolRegistry(),
+    });
+    await controller.send("hello");
+
+    const lastMsg = client.calls[0].messages.at(-1);
+    expect(lastMsg?.role).toBe("user");
+    // String content gets normalised to a single text block so the marker
+    // can attach. The last (only) block carries cache_control.
+    const blocks = lastMsg?.content as AnthropicContentBlock[];
+    expect(Array.isArray(blocks)).toBe(true);
+    const tail = blocks.at(-1) as AnthropicContentBlock & {
+      cache_control?: { type: string };
+    };
+    expect(tail.cache_control).toEqual({ type: "ephemeral" });
+  });
+
+  it("moves the tail breakpoint forward each tool-use iteration", async () => {
+    const reg = new ToolRegistry();
+    reg.register({
+      name: "noop",
+      description: "",
+      input_schema: { type: "object", properties: {} },
+      execute: () => ({ content: "{}" }),
+    });
+    const client = scriptedClient([
+      makeResponse(
+        [
+          {
+            type: "tool_use",
+            id: "toolu_1",
+            name: "noop",
+            input: {},
+          },
+        ],
+        "tool_use",
+      ),
+      makeResponse([{ type: "text", text: "done" }]),
+    ]);
+    const controller = new ChatController({ client, registry: reg });
+    await controller.send("go");
+
+    // First call: tail breakpoint on the user message block.
+    const firstBlocks = client.calls[0].messages.at(-1)
+      ?.content as AnthropicContentBlock[];
+    expect(
+      (firstBlocks.at(-1) as { cache_control?: unknown }).cache_control,
+    ).toEqual({ type: "ephemeral" });
+
+    // Second call: tool_results have been appended; the marker now sits on
+    // the last tool_result block, NOT on the original user message.
+    const secondBlocks = client.calls[1].messages.at(-1)
+      ?.content as AnthropicContentBlock[];
+    expect(secondBlocks.at(-1)?.type).toBe("tool_result");
+    expect(
+      (secondBlocks.at(-1) as { cache_control?: unknown }).cache_control,
+    ).toEqual({ type: "ephemeral" });
+
+    // And the older user message in the same request is NOT marked — only
+    // the most-recent tail carries the breakpoint.
+    const earlier = client.calls[1].messages[0].content as unknown as
+      | AnthropicContentBlock[]
+      | string;
+    if (typeof earlier !== "string") {
+      for (const b of earlier) {
+        expect(
+          (b as { cache_control?: unknown }).cache_control,
+        ).toBeUndefined();
+      }
+    }
+  });
+
+  it("emits a 'usage' event with cache hit/write counts when the API returns them", async () => {
+    const responseWithUsage: AnthropicResponse = {
+      ...makeResponse([{ type: "text", text: "ok" }]),
+      usage: {
+        input_tokens: 10,
+        output_tokens: 5,
+        cache_creation_input_tokens: 100,
+        cache_read_input_tokens: 30000,
+      },
+    };
+    const client = scriptedClient([responseWithUsage]);
+    const controller = new ChatController({
+      client,
+      registry: new ToolRegistry(),
+    });
+    const events: UiEvent[] = [];
+    controller.on((e) => events.push(e));
+    await controller.send("hi");
+
+    const usage = events.find((e) => e.type === "usage");
+    expect(usage).toMatchObject({
+      type: "usage",
+      usage: {
+        input_tokens: 10,
+        output_tokens: 5,
+        cache_creation_input_tokens: 100,
+        cache_read_input_tokens: 30000,
+      },
+    });
+  });
+
+  it("reset() clears history and emits a 'cleared' event", async () => {
+    const client = scriptedClient([
+      makeResponse([{ type: "text", text: "ok" }]),
+    ]);
+    const controller = new ChatController({
+      client,
+      registry: new ToolRegistry(),
+    });
+    const events: UiEvent[] = [];
+    controller.on((e) => events.push(e));
+    await controller.send("hi");
+    expect(controller.getHistory().length).toBeGreaterThan(0);
+
+    controller.reset();
+    expect(controller.getHistory()).toEqual([]);
+    expect(events.at(-1)).toEqual({ type: "cleared" });
+  });
 });

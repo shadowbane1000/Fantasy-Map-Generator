@@ -18,6 +18,7 @@ export interface AnthropicToolSchema {
   name: string;
   description: string;
   input_schema: Tool["input_schema"];
+  cache_control?: { type: "ephemeral" };
 }
 
 export class ToolRegistry {

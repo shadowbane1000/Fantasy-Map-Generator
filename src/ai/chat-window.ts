@@ -7,10 +7,12 @@ export interface ChatWindowElements {
   log: HTMLDivElement;
   textarea: HTMLTextAreaElement;
   sendButton: HTMLButtonElement;
+  clearButton: HTMLButtonElement;
   apiKeyRow: HTMLDivElement;
   apiKeyInput: HTMLInputElement;
   apiKeySave: HTMLButtonElement;
   apiKeyToggle: HTMLButtonElement;
+  usageBar: HTMLDivElement;
 }
 
 function el<K extends keyof HTMLElementTagNameMap>(
@@ -70,8 +72,16 @@ export function buildChatWindow(): ChatWindowElements {
     textContent: "AI",
   });
 
+  const clearButton = el("button", {
+    type: "button",
+    className: "ai-chat-clear",
+    title: "Clear conversation (keeps system prompt + tool cache warm)",
+    textContent: "⟲",
+  });
+
   const header = el("div", { className: "ai-chat-header" }, [
     el("span", { className: "ai-chat-title", textContent: "AI Assistant" }),
+    clearButton,
     el("button", {
       type: "button",
       className: "ai-chat-close",
@@ -85,6 +95,8 @@ export function buildChatWindow(): ChatWindowElements {
   ]);
 
   const log = el("div", { id: "ai-chat-log", className: "ai-chat-log" });
+
+  const usageBar = el("div", { className: "ai-chat-usage" });
 
   const textarea = el("textarea", {
     id: "ai-chat-input",
@@ -137,6 +149,7 @@ export function buildChatWindow(): ChatWindowElements {
   const panel = el("div", { id: "ai-chat-panel", className: "ai-chat-panel" }, [
     header,
     log,
+    usageBar,
     apiKeyRow,
     inputRow,
   ]);
@@ -153,10 +166,12 @@ export function buildChatWindow(): ChatWindowElements {
     log,
     textarea,
     sendButton,
+    clearButton,
     apiKeyRow,
     apiKeyInput,
     apiKeySave,
     apiKeyToggle,
+    usageBar,
   };
 }
 
@@ -202,12 +217,38 @@ export function mountChatWindow({
       case "tool_result":
         renderToolResult(parts.log, event.name, event.output, event.isError);
         break;
+      case "usage": {
+        const u = event.usage;
+        const cached = u.cache_read_input_tokens ?? 0;
+        const written = u.cache_creation_input_tokens ?? 0;
+        const fresh = u.input_tokens;
+        const total = cached + written + fresh;
+        const pct = total > 0 ? Math.round((cached / total) * 100) : 0;
+        parts.usageBar.textContent =
+          `in: ${total.toLocaleString()} tok` +
+          ` (${pct}% cached, ${fresh.toLocaleString()} fresh, ${written.toLocaleString()} write)` +
+          ` · out: ${u.output_tokens.toLocaleString()}`;
+        break;
+      }
+      case "cleared":
+        parts.log.replaceChildren();
+        parts.usageBar.textContent = "";
+        appendMessage(
+          parts.log,
+          "tool",
+          "Conversation cleared. System prompt + tool cache stay warm.",
+        );
+        break;
       case "error":
         appendMessage(parts.log, "error", event.message);
         break;
     }
   };
   controller.on(handleEvent);
+
+  parts.clearButton.onclick = () => {
+    controller.reset();
+  };
 
   const submit = async () => {
     const text = parts.textarea.value;
