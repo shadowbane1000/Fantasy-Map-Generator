@@ -27,6 +27,7 @@ import { addTroughTool } from "./tools/add-trough";
 import { addZoneTool } from "./tools/add-zone";
 import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { clearHeightmapTool } from "./tools/clear-heightmap";
+import { clearReliefIconsTool } from "./tools/clear-relief-icons";
 import { clearRulersTool } from "./tools/clear-rulers";
 import { exportMapTool } from "./tools/export-map";
 import { findAdjacentEntitiesTool } from "./tools/find-adjacent-entities";
@@ -445,6 +446,10 @@ export {
   clearHeightmapTool,
   createClearHeightmapTool,
 } from "./tools/clear-heightmap";
+export {
+  clearReliefIconsTool,
+  createClearReliefIconsTool,
+} from "./tools/clear-relief-icons";
 export {
   clearRulersTool,
   createClearRulersTool,
@@ -2871,6 +2876,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateReligionNamesTool);
   registry.register(regenerateRiverNamesTool);
   registry.register(regenerateZonesTool);
+  registry.register(clearReliefIconsTool);
   registry.register(clearRulersTool);
   registry.register(saveMapTool);
   registry.register(loadMapTool);
