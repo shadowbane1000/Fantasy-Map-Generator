@@ -184,6 +184,7 @@ import { regenerateAllProvinceNamesTool } from "./tools/regenerate-all-province-
 import { regenerateAllStateNamesTool } from "./tools/regenerate-all-state-names";
 import { regenerateBurgCoaTool } from "./tools/regenerate-burg-coa";
 import { regenerateBurgNameTool } from "./tools/regenerate-burg-name";
+import { regenerateCultureBurgsTool } from "./tools/regenerate-culture-burgs";
 import { regenerateDiplomacyTool } from "./tools/regenerate-diplomacy";
 import { regenerateDomainTool } from "./tools/regenerate-domain";
 import { regenerateEmblemsTool } from "./tools/regenerate-emblems";
@@ -1871,6 +1872,14 @@ export {
   resolveBurgNameMode,
 } from "./tools/regenerate-burg-name";
 export {
+  createRegenerateCultureBurgsTool,
+  defaultRegenerateCultureBurgsRuntime,
+  type RegenerateCultureBurgsBurgRef,
+  type RegenerateCultureBurgsCultureRef,
+  type RegenerateCultureBurgsRuntime,
+  regenerateCultureBurgsTool,
+} from "./tools/regenerate-culture-burgs";
+export {
   createRegenerateDiplomacyTool,
   defaultRegenerateDiplomacyRuntime,
   type RegenerateDiplomacyResult,
@@ -2978,6 +2987,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateProvinceNameTool);
   registry.register(regenerateAllBurgNamesTool);
   registry.register(regenerateAllCultureNamesTool);
+  registry.register(regenerateCultureBurgsTool);
   registry.register(regenerateAllProvinceNamesTool);
   registry.register(regenerateAllStateNamesTool);
   registry.register(regenerateRegimentNamesTool);
