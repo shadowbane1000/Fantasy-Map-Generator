@@ -35,7 +35,7 @@ if (PRODUCTION && "serviceWorker" in navigator) {
 let svg = d3.select("#map");
 let defs = svg.select("#deftemp");
 let viewbox = svg.select("#viewbox");
-let scaleBar = svg.select("#scaleBar");
+var scaleBar = svg.select("#scaleBar");
 let legend = svg.append("g").attr("id", "legend");
 let ocean = viewbox.append("g").attr("id", "ocean");
 let oceanLayers = ocean.append("g").attr("id", "oceanLayers");
@@ -168,7 +168,7 @@ let color = d3.scaleSequential(d3.interpolateSpectral); // default color scheme
 const lineGen = d3.line().curve(d3.curveBasis); // d3 line generator with default curve interpolation
 
 // d3 zoom behavior
-let scale = 1;
+var scale = 1;
 let viewX = 0;
 let viewY = 0;
 

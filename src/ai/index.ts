@@ -273,6 +273,7 @@ import { setCultureTypeTool } from "./tools/set-culture-type";
 import { setCulturesSetTool } from "./tools/set-cultures-set";
 import { setDefaultEmblemShapeTool } from "./tools/set-default-emblem-shape";
 import { setDiplomacyTool } from "./tools/set-diplomacy";
+import { setDistanceScaleTool } from "./tools/set-distance-scale";
 import { setEmblemPositionTool } from "./tools/set-emblem-position";
 import { setEmblemShieldTool } from "./tools/set-emblem-shield";
 import { setEmblemSizeTool } from "./tools/set-emblem-size";
@@ -2372,6 +2373,14 @@ export {
   setDiplomacyTool,
 } from "./tools/set-diplomacy";
 export {
+  createSetDistanceScaleTool,
+  type DistanceScaleRuntime,
+  defaultDistanceScaleRuntime,
+  MAX_DISTANCE_SCALE,
+  MIN_DISTANCE_SCALE_EXCLUSIVE,
+  setDistanceScaleTool,
+} from "./tools/set-distance-scale";
+export {
   createSetEmblemPositionTool,
   defaultSetEmblemPositionRuntime,
   type EmblemPositionRef,
@@ -3045,6 +3054,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setProvinceCapitalTool);
   registry.register(setEntityExpansionismTool);
   registry.register(setDiplomacyTool);
+  registry.register(setDistanceScaleTool);
   registry.register(setMarkerNoteTool);
   registry.register(setMarkerPinnedTool);
   registry.register(invertMarkerPinsTool);
