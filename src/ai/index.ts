@@ -139,6 +139,7 @@ import { listDiplomacyTool } from "./tools/list-diplomacy";
 import { listEmblemShapesTool } from "./tools/list-emblem-shapes";
 import { listFeaturesTool } from "./tools/list-features";
 import { listHeightmapTemplatesTool } from "./tools/list-heightmap-templates";
+import { listIceTool } from "./tools/list-ice";
 import { listLabelGroupsTool } from "./tools/list-label-groups";
 import { listLakeGroupsTool } from "./tools/list-lake-groups";
 import { listMarkerPinsTool } from "./tools/list-marker-pins";
@@ -1589,6 +1590,13 @@ export {
   readHeightmapListFromGlobals,
 } from "./tools/list-heightmap-templates";
 export {
+  createListIceTool,
+  defaultListIceRuntime,
+  type ListIceEntry,
+  type ListIceRuntime,
+  listIceTool,
+} from "./tools/list-ice";
+export {
   createListLabelGroupsTool,
   defaultListLabelGroupsRuntime,
   EDITOR_FILTERED_LABEL_GROUPS,
@@ -2613,6 +2621,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listDiplomacyTool);
   registry.register(listFeaturesTool);
   registry.register(listHeightmapTemplatesTool);
+  registry.register(listIceTool);
   registry.register(listReligionsTool);
   registry.register(listProvincesTool);
   registry.register(listMarkersTool);
