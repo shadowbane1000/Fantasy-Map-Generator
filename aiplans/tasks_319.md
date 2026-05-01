@@ -1,0 +1,53 @@
+# Tasks for plan 319
+
+- [ ] Lint baseline recorded (`npm run lint` → 7 warnings, 1 info, 0 errors).
+- [ ] Plan 319 written + self-reviewed.
+- [ ] Implement `src/ai/tools/set-namesbase-names.ts`:
+  - [ ] `SetNamesbaseNamesRuntime` interface (`getNameBases`, `setNamesData`, `updateChain`).
+  - [ ] `defaultSetNamesbaseNamesRuntime` reading `window.nameBases` and `window.Names.updateChain`.
+  - [ ] Reuse `findNamesbaseByIndex` / `findNamesbasesByName` from `./rename-namesbase`.
+  - [ ] `createSetNamesbaseNamesTool(runtime?)`:
+    - [ ] Validate `names` first (string OR array of strings).
+    - [ ] Build sanitised string: array → trim + filter empties + join `,`; string → as-is.
+    - [ ] Strip `/` and `|` from result.
+    - [ ] Reject empty / whitespace-only.
+    - [ ] Reject `result.split(",").length < 3`.
+    - [ ] Require either `index` or `current_name`.
+    - [ ] Validate `index` (non-negative integer).
+    - [ ] Validate `current_name` (non-empty string).
+    - [ ] Resolve target; ambiguity error with candidates; disagree error.
+    - [ ] Apply mutation: `setNamesData(index, sanitised)`, then `updateChain(index)`.
+    - [ ] Surface errors from each step (catch + errorResult).
+    - [ ] Return `okResult({ ok, index, name, name_count, sample_names })`.
+  - [ ] `setNamesbaseNamesTool` — default singleton.
+- [ ] Wire into `src/ai/index.ts`:
+  - [ ] Import next to `setMapNameTool`.
+  - [ ] Re-export create + tool.
+  - [ ] `registry.register(setNamesbaseNamesTool)` after `registry.register(setMapNameTool);`.
+- [ ] Tests `src/ai/tools/set-namesbase-names.test.ts`:
+  - [ ] Happy by index with array.
+  - [ ] Happy by index with string.
+  - [ ] Sanitisation (`/` and `|` stripped).
+  - [ ] Array with empty/whitespace entries trimmed/filtered.
+  - [ ] < 3 entries (array) error.
+  - [ ] < 3 entries (string) error.
+  - [ ] Empty array error.
+  - [ ] Empty string error.
+  - [ ] Whitespace-only string error.
+  - [ ] `updateChain` throws → error surfaced; assert `b` IS mutated.
+  - [ ] `Names.updateChain` not available → error before mutation.
+  - [ ] Index out of range error.
+  - [ ] `current_name` not found error.
+  - [ ] Ambiguity error with candidates.
+  - [ ] Disagreement error.
+  - [ ] Neither provided error.
+  - [ ] `nameBases` missing → error.
+  - [ ] `current_name` empty/non-string error.
+  - [ ] Negative / non-integer index error.
+  - [ ] Tool name + registry round-trip.
+  - [ ] Schema includes both `names` shapes.
+- [ ] `npm test` — all green.
+- [ ] `npx tsc --noEmit` — clean.
+- [ ] `npm run lint` — no regression.
+- [ ] Commit `feat(ai): add set_namesbase_names tool` with only the new files +
+      `src/ai/index.ts` line edits + plan/tasks staged.

@@ -281,6 +281,7 @@ import { setMarkerShiftTool } from "./tools/set-marker-shift";
 import { setMarkerSizeTool } from "./tools/set-marker-size";
 import { setMarkerTypeTool } from "./tools/set-marker-type";
 import { setMeasurementUnitsTool } from "./tools/set-measurement-units";
+import { setNamesbaseNamesTool } from "./tools/set-namesbase-names";
 import { setNoteTool } from "./tools/set-note";
 import { setOnloadBehaviorTool } from "./tools/set-onload-behavior";
 import { setPrecipitationTool } from "./tools/set-precipitation";
@@ -2370,6 +2371,12 @@ export {
   setMeasurementUnitsTool,
 } from "./tools/set-measurement-units";
 export {
+  createSetNamesbaseNamesTool,
+  defaultSetNamesbaseNamesRuntime,
+  type SetNamesbaseNamesRuntime,
+  setNamesbaseNamesTool,
+} from "./tools/set-namesbase-names";
+export {
   createSetNoteTool,
   setNoteTool,
 } from "./tools/set-note";
@@ -2694,6 +2701,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameCultureTool);
   registry.register(renameLakeTool);
   registry.register(renameNamesbaseTool);
+  registry.register(setNamesbaseNamesTool);
   registry.register(renameReligionTool);
   registry.register(renameProvinceTool);
   registry.register(renameRiverTool);
