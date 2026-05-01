@@ -210,6 +210,7 @@ import { renameBiomeTool } from "./tools/rename-biome";
 import { renameBurgTool } from "./tools/rename-burg";
 import { renameCultureTool } from "./tools/rename-culture";
 import { renameLakeTool } from "./tools/rename-lake";
+import { renameNamesbaseTool } from "./tools/rename-namesbase";
 import { renameProvinceTool } from "./tools/rename-province";
 import { renameRegimentTool } from "./tools/rename-regiment";
 import { renameReligionTool } from "./tools/rename-religion";
@@ -1979,6 +1980,12 @@ export {
   renameLakeTool,
 } from "./tools/rename-lake";
 export {
+  createRenameNamesbaseTool,
+  findNamesbaseByIndex,
+  findNamesbasesByName,
+  renameNamesbaseTool,
+} from "./tools/rename-namesbase";
+export {
   createRenameProvinceTool,
   renameProvinceTool,
 } from "./tools/rename-province";
@@ -2677,6 +2684,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeBiomeTool);
   registry.register(renameCultureTool);
   registry.register(renameLakeTool);
+  registry.register(renameNamesbaseTool);
   registry.register(renameReligionTool);
   registry.register(renameProvinceTool);
   registry.register(renameRiverTool);
