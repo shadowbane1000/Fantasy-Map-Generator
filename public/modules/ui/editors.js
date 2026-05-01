@@ -1006,3 +1006,9 @@ async function editReligions() {
   const Editor = await import("../dynamic/editors/religions-editor.js?v=1.104.0");
   Editor.open();
 }
+
+async function editWorld() {
+  if (customization) return;
+  const Editor = await import("../dynamic/editors/world-editor.js?v=1.114.1");
+  Editor.open();
+}
