@@ -166,6 +166,7 @@ import { regenerateBurgCoaTool } from "./tools/regenerate-burg-coa";
 import { regenerateBurgNameTool } from "./tools/regenerate-burg-name";
 import { regenerateDomainTool } from "./tools/regenerate-domain";
 import { regenerateEmblemsTool } from "./tools/regenerate-emblems";
+import { regenerateLakeNameTool } from "./tools/regenerate-lake-name";
 import { regenerateMapTool } from "./tools/regenerate-map";
 import { regenerateProvinceCoaTool } from "./tools/regenerate-province-coa";
 import { regenerateProvinceNameTool } from "./tools/regenerate-province-name";
@@ -1716,6 +1717,15 @@ export {
   regenerateEmblemsTool,
 } from "./tools/regenerate-emblems";
 export {
+  createRegenerateLakeNameTool,
+  defaultRegenerateLakeNameRuntime,
+  LAKE_NAME_MODES,
+  type LakeNameMode,
+  type RegenerateLakeNameRef,
+  type RegenerateLakeNameRuntime,
+  regenerateLakeNameTool,
+} from "./tools/regenerate-lake-name";
+export {
   createRegenerateMapTool,
   regenerateMapTool,
 } from "./tools/regenerate-map";
@@ -2614,6 +2624,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setProvinceCoaCustomTool);
   registry.register(regenerateDomainTool);
   registry.register(regenerateBurgNameTool);
+  registry.register(regenerateLakeNameTool);
   registry.register(regenerateStateNameTool);
   registry.register(regenerateProvinceNameTool);
   registry.register(regenerateAllBurgNamesTool);
