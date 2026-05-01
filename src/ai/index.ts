@@ -345,6 +345,7 @@ import { setZoneTypeTool } from "./tools/set-zone-type";
 import { setZoneVisibilityTool } from "./tools/set-zone-visibility";
 import { smoothHeightmapTool } from "./tools/smooth-heightmap";
 import { splitRegimentTool } from "./tools/split-regiment";
+import { toggleLockAllBurgsTool } from "./tools/toggle-lock-all-burgs";
 
 export { AnthropicApiError, AnthropicClient } from "./anthropic-client";
 export { clearApiKey, getApiKey, setApiKey } from "./api-key";
@@ -2744,6 +2745,13 @@ export {
   createSplitRegimentTool,
   splitRegimentTool,
 } from "./tools/split-regiment";
+export {
+  createToggleLockAllBurgsTool,
+  defaultToggleLockAllBurgsRuntime,
+  type ToggleLockAllBurgsResult,
+  type ToggleLockAllBurgsRuntime,
+  toggleLockAllBurgsTool,
+} from "./tools/toggle-lock-all-burgs";
 
 export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
@@ -3089,6 +3097,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeRulerTool);
   registry.register(removeStateTool);
   registry.register(removeZoneTool);
+  registry.register(toggleLockAllBurgsTool);
   return registry;
 }
 
