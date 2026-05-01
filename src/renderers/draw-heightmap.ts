@@ -1,7 +1,22 @@
 import type { CurveFactory } from "d3";
-import * as d3 from "d3";
-import { color, line, range } from "d3";
+import {
+  color,
+  curveBasisClosed,
+  curveLinear,
+  curveStep,
+  line,
+  range,
+} from "d3";
 import { round } from "../utils";
+
+// The Style panel's heightmap-curve selector is the only writer of the
+// `curve` SVG attribute; it offers exactly these three. Unknown values
+// (e.g. from an old saved map) fall back to curveBasisClosed.
+const HEIGHTMAP_CURVES: Record<string, CurveFactory> = {
+  curveBasisClosed,
+  curveLinear,
+  curveStep,
+};
 
 declare global {
   var drawHeightmap: () => void;
@@ -28,10 +43,10 @@ const heightmapRenderer = (): void => {
   if (renderOceanCells) {
     const skip = +ocean.attr("skip") + 1 || 1;
     const relax = +ocean.attr("relax") || 0;
-    // TODO: Improve for treeshaking
-    const curveType: keyof typeof d3 = (ocean.attr("curve") ||
-      "curveBasisClosed") as keyof typeof d3;
-    const lineGen = line().curve(d3[curveType] as CurveFactory);
+    const curveType = ocean.attr("curve") || "curveBasisClosed";
+    const lineGen = line().curve(
+      HEIGHTMAP_CURVES[curveType] ?? curveBasisClosed,
+    );
 
     let currentLayer = 0;
     for (const i of heights) {
@@ -59,9 +74,10 @@ const heightmapRenderer = (): void => {
   {
     const skip = +land.attr("skip") + 1 || 1;
     const relax = +land.attr("relax") || 0;
-    const curveType: keyof typeof d3 = (land.attr("curve") ||
-      "curveBasisClosed") as keyof typeof d3;
-    const lineGen = line().curve(d3[curveType] as CurveFactory);
+    const curveType = land.attr("curve") || "curveBasisClosed";
+    const lineGen = line().curve(
+      HEIGHTMAP_CURVES[curveType] ?? curveBasisClosed,
+    );
 
     let currentLayer = 20;
     for (const i of heights) {
