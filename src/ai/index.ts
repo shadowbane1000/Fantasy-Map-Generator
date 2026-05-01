@@ -17,6 +17,7 @@ import { addPitTool } from "./tools/add-pit";
 import { addProvinceTool } from "./tools/add-province";
 import { addRangeTool } from "./tools/add-range";
 import { addRegimentTool } from "./tools/add-regiment";
+import { addReliefIconTool } from "./tools/add-relief-icon";
 import { addReligionTool } from "./tools/add-religion";
 import { addRouteTool } from "./tools/add-route";
 import { addRouteGroupTool } from "./tools/add-route-group";
@@ -400,6 +401,12 @@ export {
   addRegimentTool,
   createAddRegimentTool,
 } from "./tools/add-regiment";
+export {
+  type AddReliefIconRuntime,
+  addReliefIconTool,
+  createAddReliefIconTool,
+  defaultAddReliefIconRuntime,
+} from "./tools/add-relief-icon";
 export {
   addReligionTool,
   createAddReligionTool,
@@ -2886,6 +2893,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateRiverNamesTool);
   registry.register(regenerateZonesTool);
   registry.register(clearReliefIconsTool);
+  registry.register(addReliefIconTool);
   registry.register(clearRulersTool);
   registry.register(saveMapTool);
   registry.register(loadMapTool);
