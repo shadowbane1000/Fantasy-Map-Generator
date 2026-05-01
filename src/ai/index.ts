@@ -8,6 +8,7 @@ import { addBurgTool } from "./tools/add-burg";
 import { addBurgGroupTool } from "./tools/add-burg-group";
 import { addCultureTool } from "./tools/add-culture";
 import { addHillTool } from "./tools/add-hill";
+import { addIcebergTool } from "./tools/add-iceberg";
 import { addLabelGroupTool } from "./tools/add-label-group";
 import { addLakeGroupTool } from "./tools/add-lake-group";
 import { addMarkerTool } from "./tools/add-marker";
@@ -339,6 +340,14 @@ export {
   DEFAULT_RANGE_X,
   DEFAULT_RANGE_Y,
 } from "./tools/add-hill";
+export {
+  type AddIcebergIceEntry,
+  type AddIcebergInput,
+  type AddIcebergRuntime,
+  addIcebergTool,
+  createAddIcebergTool,
+  defaultAddIcebergRuntime,
+} from "./tools/add-iceberg";
 export {
   type AddLabelGroupRuntime,
   addLabelGroupTool,
@@ -2782,6 +2791,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeBurgGroupTool);
   registry.register(removeCultureTool);
   registry.register(removeMarkerTool);
+  registry.register(addIcebergTool);
   registry.register(addMarkerTool);
   registry.register(addRulerTool);
   registry.register(addBurgTool);
