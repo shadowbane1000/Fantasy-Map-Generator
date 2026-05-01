@@ -1,0 +1,56 @@
+# Tasks for plan 320
+
+- [ ] Lint baseline recorded (`npm run lint` → 7 warnings, 1 info, 0 errors).
+- [ ] Plan 320 written + self-reviewed.
+- [ ] Implement `src/ai/tools/add-namesbase.ts`:
+  - [ ] `AddNamesbaseRuntime` interface (`getNameBases`, `appendNamesbase`).
+  - [ ] `defaultAddNamesbaseRuntime` reading `window.nameBases` and pushing onto it.
+  - [ ] Default placeholder corpus matching `namesbaseAdd` exactly.
+  - [ ] `createAddNamesbaseTool(runtime?)`:
+    - [ ] Validate optional `name` (string).
+    - [ ] Validate optional `min` / `max` (integer in [2, 100]; min <= max).
+    - [ ] Validate optional `duplicate_chars` (string).
+    - [ ] Validate optional `multiword_rate` (finite, in [0, 1]).
+    - [ ] Validate optional `names` (string OR array of strings).
+    - [ ] Build sanitised corpus: array → trim + filter empties + join `,`; string → as-is. Strip `/` and `|`.
+    - [ ] Reject sanitised corpus that is empty / has < 3 entries.
+    - [ ] Read live `nameBases` via runtime (catches missing global).
+    - [ ] Compute fallback name `"Base" + nameBases.length` if no `name` or sanitised name empty.
+    - [ ] Build new entry; push via runtime.
+    - [ ] Return `okResult({ ok, index, name, min, max, duplicate_chars, multiword_rate, name_count, sample_names })`.
+  - [ ] `addNamesbaseTool` — default singleton.
+- [ ] Wire into `src/ai/index.ts`:
+  - [ ] Import in alphabetical slot among `add*` imports (between `addMarkerTool` and `addPitTool`).
+  - [ ] Re-export create + tool.
+  - [ ] `registry.register(addNamesbaseTool)` near other namesbase registrations (around `registry.register(setNamesbaseNamesTool);`).
+- [ ] Tests `src/ai/tools/add-namesbase.test.ts`:
+  - [ ] Happy path no inputs (empty nameBases) → index 0, defaults applied.
+  - [ ] Happy path with N existing → index N, name "BaseN".
+  - [ ] Happy path with all custom inputs.
+  - [ ] Custom name with `/` and `|` → sanitised.
+  - [ ] Sanitised name empty (`"|||"`) → falls back to default.
+  - [ ] Whitespace-only name → falls back to default.
+  - [ ] Custom names array (3 entries).
+  - [ ] Custom names string.
+  - [ ] Names with `/` and `|` → stripped.
+  - [ ] < 3 names (array) error.
+  - [ ] < 3 names (string) error.
+  - [ ] Empty names string error.
+  - [ ] min/max boundaries 2/100 accepted.
+  - [ ] min=1 / max=101 / min=1.5 rejected.
+  - [ ] min > max rejected.
+  - [ ] multiword_rate boundaries 0 and 1 accepted.
+  - [ ] multiword_rate -0.1 / 1.1 / NaN rejected.
+  - [ ] duplicate_chars non-string rejected.
+  - [ ] name non-string rejected.
+  - [ ] names wrong type rejected.
+  - [ ] nameBases missing → error.
+  - [ ] nameBases not array → error.
+  - [ ] Tool name + registry round-trip.
+  - [ ] Schema includes both `names` shapes (smoke check).
+  - [ ] Default runtime exposes seam.
+- [ ] `npm test` — all green.
+- [ ] `npx tsc --noEmit` — clean.
+- [ ] `npm run lint` — no regression.
+- [ ] Commit `feat(ai): add add_namesbase tool` with only the new files +
+      `src/ai/index.ts` line edits + plan/tasks staged.
