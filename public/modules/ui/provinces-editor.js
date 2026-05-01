@@ -54,6 +54,7 @@ function editProvinces() {
     else if (cl.contains("icon-dot-circled")) overviewBurgs({stateId});
     else if (cl.contains("culturePopulation")) changePopulation(p);
     else if (cl.contains("icon-pin")) toggleFog(p, cl);
+    else if (cl.contains("icon-edit")) editProvinceNotes(p);
     else if (cl.contains("icon-trash-empty")) removeProvince(p);
     else if (cl.contains("icon-lock") || cl.contains("icon-lock-open")) updateLockStatus(p, cl);
   });
@@ -180,6 +181,7 @@ function editProvinces() {
         ></span>
         <span data-tip="Toggle province focus" class="icon-pin ${focused ? "" : " inactive"} hide"></span>
         <span data-tip="Lock the province" class="icon-lock${p.lock ? "" : "-open"} hide"></span>
+        <span data-tip="Edit notes" class="icon-edit hide"></span>
         <span data-tip="Remove the province" class="icon-trash-empty hide"></span>
       </div>`;
     }
@@ -265,6 +267,12 @@ function editProvinces() {
     const x = +l.attr("x");
     const y = +l.attr("y");
     zoomTo(x, y, 8, 2000);
+  }
+
+  function editProvinceNotes(p) {
+    const province = pack.provinces[p];
+    if (!province) return;
+    editNotes("province" + p, province.fullName || province.name);
   }
 
   function triggerIndependencePromps(p) {

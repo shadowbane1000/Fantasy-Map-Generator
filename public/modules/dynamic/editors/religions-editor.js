@@ -176,6 +176,7 @@ function religionsEditorAddLines() {
         <div data-tip="${populationTip}" class="religionPopulation hide pointer" style="width: 5em">${si(
         population
       )}</div>
+        <span data-tip="Edit notes" class="icon-edit hide"></span>
       </div>`;
       continue;
     }
@@ -212,6 +213,7 @@ function religionsEditorAddLines() {
     )}</div>
       ${getExpansionColumns(r)}
       <span data-tip="Lock this religion" class="icon-lock${r.lock ? "" : "-open"} hide"></span>
+      <span data-tip="Edit notes" class="icon-edit hide"></span>
       <span data-tip="Remove religion" class="icon-trash-empty hide"></span>
     </div>`;
   }
@@ -246,6 +248,7 @@ function religionsEditorAddLines() {
   $body.querySelectorAll("div > span.icon-trash-empty").forEach(el => el.on("click", religionRemovePrompt));
   $body.querySelectorAll("div > span.icon-lock").forEach($el => $el.on("click", updateLockStatus));
   $body.querySelectorAll("div > span.icon-lock-open").forEach($el => $el.on("click", updateLockStatus));
+  $body.querySelectorAll("div > span.icon-edit").forEach($el => $el.on("click", religionEditNotes));
 
   if ($body.dataset.type === "percentage") {
     $body.dataset.type = "absolute";
@@ -491,6 +494,13 @@ function religionRemovePrompt() {
     confirm: "Remove",
     onConfirm: () => removeReligion(religionId)
   });
+}
+
+function religionEditNotes() {
+  const religionId = +this.parentNode.dataset.id;
+  const r = pack.religions[religionId];
+  if (!r) return;
+  editNotes("religion" + religionId, r.name);
 }
 
 function removeReligion(religionId) {
