@@ -250,12 +250,17 @@ export function mountChatWindow({
         const written = u.cache_creation_input_tokens ?? 0;
         const fresh = u.input_tokens;
         const total = cached + written + fresh;
-        // Billable-equivalent input tokens, per user-defined formula:
-        // (total - cached) * 0.1 + written.
-        const billable = Math.round((total - cached) * 0.1 + written);
+        const pct = total > 0 ? Math.round((cached / total) * 100) : 0;
+        // Billable-equivalent input tokens at Anthropic's published rates:
+        // cache reads at 0.10x, cache writes at 1.25x, fresh at 1.0x.
+        const billable = Math.round(cached * 0.1 + written * 1.25 + fresh);
         parts.usageBar.textContent =
-          `in: ${total.toLocaleString()}/${billable.toLocaleString()}` +
-          ` out: ${u.output_tokens.toLocaleString()}`;
+          `in: ${total.toLocaleString()} tok` +
+          ` (${billable.toLocaleString()} billable,` +
+          ` ${pct}% cached,` +
+          ` ${fresh.toLocaleString()} fresh,` +
+          ` ${written.toLocaleString()} write)` +
+          ` · out: ${u.output_tokens.toLocaleString()}`;
         break;
       }
       case "cleared":
