@@ -139,7 +139,7 @@ var pack = {}; // packed graph and data
 var seed;
 let mapId;
 let mapHistory = [];
-let elSelected;
+var elSelected;
 let modules = {};
 var notes = [];
 var rulers = new Rulers();
