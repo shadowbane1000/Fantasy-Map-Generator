@@ -246,6 +246,7 @@ import { renameRouteTool } from "./tools/rename-route";
 import { renameStateTool } from "./tools/rename-state";
 import { renameZoneTool } from "./tools/rename-zone";
 import { resetStateDiplomacyTool } from "./tools/reset-state-diplomacy";
+import { restoreDefaultBiomesTool } from "./tools/restore-default-biomes";
 import { restoreDefaultNamesbasesTool } from "./tools/restore-default-namesbases";
 import { saveMapTool } from "./tools/save-map";
 import { setAreaUnitTool } from "./tools/set-area-unit";
@@ -2245,6 +2246,14 @@ export {
   resetStateDiplomacyTool,
 } from "./tools/reset-state-diplomacy";
 export {
+  type BiomesDataLike,
+  createRestoreDefaultBiomesTool,
+  defaultRestoreDefaultBiomesRuntime,
+  type RestoreDefaultBiomesResult,
+  type RestoreDefaultBiomesRuntime,
+  restoreDefaultBiomesTool,
+} from "./tools/restore-default-biomes";
+export {
   createRestoreDefaultNamesbasesTool,
   defaultRestoreDefaultNamesbasesRuntime,
   type RestoreDefaultNamesbasesResult,
@@ -3185,6 +3194,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateRouteNameTool);
   registry.register(regenerateDiplomacyTool);
   registry.register(resetStateDiplomacyTool);
+  registry.register(restoreDefaultBiomesTool);
   registry.register(restoreDefaultNamesbasesTool);
   registry.register(regenerateZonesTool);
   registry.register(regenerateReliefIconsTool);
