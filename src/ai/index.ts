@@ -205,6 +205,7 @@ import { regenerateRegimentNameTool } from "./tools/regenerate-regiment-name";
 import { regenerateRegimentNamesTool } from "./tools/regenerate-regiment-names";
 import { regenerateReliefIconsTool } from "./tools/regenerate-relief-icons";
 import { regenerateReligionNamesTool } from "./tools/regenerate-religion-names";
+import { regenerateRiverNameTool } from "./tools/regenerate-river-name";
 import { regenerateRiverNamesTool } from "./tools/regenerate-river-names";
 import { regenerateRouteNameTool } from "./tools/regenerate-route-name";
 import { regenerateStateCoaTool } from "./tools/regenerate-state-coa";
@@ -2027,6 +2028,13 @@ export {
   regenerateReligionNamesTool,
 } from "./tools/regenerate-religion-names";
 export {
+  createRegenerateRiverNameTool,
+  defaultRegenerateRiverNameRuntime,
+  type RegenerateRiverNameRef,
+  type RegenerateRiverNameRuntime,
+  regenerateRiverNameTool,
+} from "./tools/regenerate-river-name";
+export {
   createRegenerateRiverNamesTool,
   RIVER_NAME_MODES,
   regenerateRiverNamesTool,
@@ -3166,6 +3174,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateRegimentNameTool);
   registry.register(regenerateRegimentNamesTool);
   registry.register(regenerateReligionNamesTool);
+  registry.register(regenerateRiverNameTool);
   registry.register(regenerateRiverNamesTool);
   registry.register(regenerateRouteNameTool);
   registry.register(regenerateDiplomacyTool);
