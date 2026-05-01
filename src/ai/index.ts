@@ -182,6 +182,7 @@ import { removeRegimentTool } from "./tools/remove-regiment";
 import { removeReligionTool } from "./tools/remove-religion";
 import { removeRiverTool } from "./tools/remove-river";
 import { removeRouteTool } from "./tools/remove-route";
+import { removeRouteGroupTool } from "./tools/remove-route-group";
 import { removeRulerTool } from "./tools/remove-ruler";
 import { removeStateTool } from "./tools/remove-state";
 import { removeZoneTool } from "./tools/remove-zone";
@@ -1774,6 +1775,13 @@ export {
   removeRouteTool,
 } from "./tools/remove-route";
 export {
+  createRemoveRouteGroupTool,
+  DEFAULT_ROUTE_GROUPS,
+  defaultRemoveRouteGroupRuntime,
+  type RemoveRouteGroupRuntime,
+  removeRouteGroupTool,
+} from "./tools/remove-route-group";
+export {
   createRemoveRulerTool,
   defaultRulerRemovalRuntime,
   type RulerRemovalRuntime,
@@ -2452,6 +2460,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setRouteGroupTool);
   registry.register(setRouteLockTool);
   registry.register(removeRouteTool);
+  registry.register(removeRouteGroupTool);
   registry.register(addRouteTool);
   registry.register(renameRegimentTool);
   registry.register(listRegimentUnitsTool);
