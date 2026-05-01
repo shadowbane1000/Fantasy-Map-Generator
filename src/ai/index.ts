@@ -187,6 +187,7 @@ import { removeBiomeTool } from "./tools/remove-biome";
 import { removeBurgTool } from "./tools/remove-burg";
 import { removeBurgGroupTool } from "./tools/remove-burg-group";
 import { removeCultureTool } from "./tools/remove-culture";
+import { removeIceTool } from "./tools/remove-ice";
 import { removeLabelTool } from "./tools/remove-label";
 import { removeLabelGroupTool } from "./tools/remove-label-group";
 import { removeLakeGroupTool } from "./tools/remove-lake-group";
@@ -1852,6 +1853,13 @@ export {
   removeCultureTool,
 } from "./tools/remove-culture";
 export {
+  createRemoveIceTool,
+  defaultRemoveIceRuntime,
+  type RemoveIceRef,
+  type RemoveIceRuntime,
+  removeIceTool,
+} from "./tools/remove-ice";
+export {
   createRemoveLabelTool,
   defaultRemoveLabelRuntime,
   type LabelLookup as RemoveLabelLabelLookup,
@@ -2781,6 +2789,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeBurgTool);
   registry.register(removeBurgGroupTool);
   registry.register(removeCultureTool);
+  registry.register(removeIceTool);
   registry.register(removeMarkerTool);
   registry.register(addMarkerTool);
   registry.register(addRulerTool);
