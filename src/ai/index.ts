@@ -269,6 +269,7 @@ import { setCellBiomeTool } from "./tools/set-cell-biome";
 import { setCellCultureTool } from "./tools/set-cell-culture";
 import { setCellHeightTool } from "./tools/set-cell-height";
 import { setCellReligionTool } from "./tools/set-cell-religion";
+import { setCellStateTool } from "./tools/set-cell-state";
 import { setCellsDensityTool } from "./tools/set-cells-density";
 import { setClimateTool } from "./tools/set-climate";
 import { setCultureBaseTool } from "./tools/set-culture-base";
@@ -2362,6 +2363,10 @@ export {
   setCellReligionTool,
 } from "./tools/set-cell-religion";
 export {
+  createSetCellStateTool,
+  setCellStateTool,
+} from "./tools/set-cell-state";
+export {
   CELLS_DENSITY_MAP,
   CELLS_DENSITY_OPTIONS,
   createSetCellsDensityTool,
@@ -3154,6 +3159,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setCellCultureTool);
   registry.register(setCellHeightTool);
   registry.register(setCellReligionTool);
+  registry.register(setCellStateTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
   registry.register(setProvinceFormTool);
