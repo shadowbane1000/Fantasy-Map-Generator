@@ -185,12 +185,19 @@ describe("ChatController", () => {
       text: string;
       cache_control?: unknown;
     }[];
-    expect(sysArr).toHaveLength(1);
+    // Two blocks: [0] tools+system_prompt cache layer, [1] world-context
+    // snapshot cache layer. See plan 371.
+    expect(sysArr).toHaveLength(2);
     expect(sysArr[0]).toMatchObject({
       type: "text",
       text: "you are a test bot",
       cache_control: { type: "ephemeral" },
     });
+    expect(sysArr[1]).toMatchObject({
+      type: "text",
+      cache_control: { type: "ephemeral" },
+    });
+    expect(sysArr[1].text).toContain("World premise:");
   });
 
   it("attaches a cache_control breakpoint to the last block of the conversation tail", async () => {

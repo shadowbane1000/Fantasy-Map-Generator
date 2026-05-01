@@ -9,6 +9,7 @@ import type {
   AnthropicUsage,
 } from "./anthropic-client";
 import type { ToolRegistry } from "./tools";
+import { getNotes, type RawNote } from "./tools/_shared";
 
 export type ClickTarget =
   | "any"
@@ -100,6 +101,55 @@ function isToolUse(
   return block.type === "tool_use";
 }
 
+// Defensive cap on the world:premise legend in the prompt. The real budget
+// is much larger; this just prevents pathological pastes from ballooning
+// every cached request for the lifetime of a conversation.
+const WORLD_CONTEXT_MAX_LEGEND_CHARS = 4000;
+
+// Snapshot the current world-building lore (window.notes['world:premise']
+// + the inventory of world:* topic ids) into a short text block. Called
+// once per conversation lifecycle (at controller construction and on
+// reset()) — NOT per send() — so the resulting block is stable across the
+// conversation and lives in its own prompt-cache entry.
+function buildWorldContextBlock(): string {
+  const notes = getNotes<RawNote>();
+
+  let premiseText = "(not yet defined)";
+  const topicIds: string[] = [];
+  const seen = new Set<string>();
+
+  if (notes && notes.length > 0) {
+    for (const note of notes) {
+      const id = note?.id;
+      if (typeof id !== "string" || seen.has(id)) continue;
+      seen.add(id);
+
+      if (id === "world:premise") {
+        const legend = typeof note.legend === "string" ? note.legend : "";
+        if (legend.trim().length > 0) {
+          premiseText =
+            legend.length > WORLD_CONTEXT_MAX_LEGEND_CHARS
+              ? `${legend.slice(0, WORLD_CONTEXT_MAX_LEGEND_CHARS)}\n…(truncated)`
+              : legend;
+        }
+        continue;
+      }
+
+      if (id.startsWith("world:")) {
+        topicIds.push(id);
+      }
+    }
+  }
+
+  const topicsText = topicIds.length > 0 ? topicIds.join(", ") : "(none yet)";
+
+  return `# World context (snapshot at conversation start)
+
+World premise: ${premiseText}
+
+World topics defined: ${topicsText}. Use \`get_world_note(topic)\` to fetch any of these.`;
+}
+
 // Returns a copy of the message list with `cache_control: { type: "ephemeral" }`
 // attached to the LAST content block of the LAST message — the conversation-tail
 // breakpoint. Combined with a system-prompt breakpoint, this caches:
@@ -136,6 +186,11 @@ export class ChatController {
   private history: AnthropicMessage[] = [];
   private listeners = new Set<UiEventListener>();
   private cancelClickListeners = new Map<object, Set<() => void>>();
+  // Snapshot of window.notes['world:premise'] + the world:* topic
+  // inventory, captured at conversation start and frozen for the
+  // lifetime of the conversation. Refreshed only by reset().
+  // Lives in its own prompt-cache entry (see send()).
+  private worldContextBlock: string;
 
   constructor(opts: ChatControllerOptions) {
     this.client = opts.client;
@@ -143,6 +198,7 @@ export class ChatController {
     this.model = opts.model ?? "claude-haiku-4-5-20251001";
     this.systemPrompt = opts.systemPrompt ?? DEFAULT_SYSTEM_PROMPT;
     this.maxToolIterations = opts.maxToolIterations ?? 8;
+    this.worldContextBlock = buildWorldContextBlock();
   }
 
   on(listener: UiEventListener): () => void {
@@ -195,6 +251,9 @@ export class ChatController {
 
   reset(): void {
     this.history = [];
+    // Re-snapshot the world context: notes added/edited since the last
+    // reset (or construction) become visible in the next conversation.
+    this.worldContextBlock = buildWorldContextBlock();
     this.emit({ type: "cleared" });
   }
 
@@ -209,14 +268,23 @@ export class ChatController {
     this.history.push({ role: "user", content: trimmed });
 
     const tools = this.registry.toAnthropicSchemas();
-    // System breakpoint: caches tools + system as one entry. The API orders
-    // cacheable content as tools -> system -> messages, so a marker on the
-    // last (only) system block covers the tools array too. Stable until the
-    // system prompt or tools list changes.
+    // Two cache breakpoints in the system slot:
+    //   [0] tools + system_prompt   — cache layer 1 (long-lived; only
+    //       invalidated when the system prompt or tools list changes).
+    //   [1] world-context snapshot  — cache layer 2 (per-conversation;
+    //       frozen for the lifetime of the conversation, refreshed by
+    //       reset()).
+    // The conversation tail in `messages[]` carries a third breakpoint
+    // (per-iteration, see withTailCacheBreakpoint).
     const system: AnthropicTextBlock[] = [
       {
         type: "text",
         text: this.systemPrompt,
+        cache_control: { type: "ephemeral" },
+      },
+      {
+        type: "text",
+        text: this.worldContextBlock,
         cache_control: { type: "ephemeral" },
       },
     ];
