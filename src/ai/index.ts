@@ -375,6 +375,7 @@ import { smoothHeightmapTool } from "./tools/smooth-heightmap";
 import { splitRegimentTool } from "./tools/split-regiment";
 import { splitRouteTool } from "./tools/split-route";
 import { toggleLockAllBurgsTool } from "./tools/toggle-lock-all-burgs";
+import { toggleLockAllStatesTool } from "./tools/toggle-lock-all-states";
 
 export { AnthropicApiError, AnthropicClient } from "./anthropic-client";
 export { clearApiKey, getApiKey, setApiKey } from "./api-key";
@@ -2991,6 +2992,13 @@ export {
   type ToggleLockAllBurgsRuntime,
   toggleLockAllBurgsTool,
 } from "./tools/toggle-lock-all-burgs";
+export {
+  createToggleLockAllStatesTool,
+  defaultToggleLockAllStatesRuntime,
+  type ToggleLockAllStatesResult,
+  type ToggleLockAllStatesRuntime,
+  toggleLockAllStatesTool,
+} from "./tools/toggle-lock-all-states";
 
 export function buildDefaultRegistry(): ToolRegistry {
   const registry = new ToolRegistry();
@@ -3364,6 +3372,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeStateTool);
   registry.register(removeZoneTool);
   registry.register(toggleLockAllBurgsTool);
+  registry.register(toggleLockAllStatesTool);
   registry.register(generateNamesbaseExamplesTool);
   registry.register(setEmblemShieldTool);
   return registry;
