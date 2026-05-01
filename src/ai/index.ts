@@ -177,6 +177,7 @@ import { moveRegimentTool } from "./tools/move-regiment";
 import { randomizeIcebergShapeTool } from "./tools/randomize-iceberg-shape";
 import { randomizeStatesExpansionTool } from "./tools/randomize-states-expansion";
 import { recalculateCulturesTool } from "./tools/recalculate-cultures";
+import { recalculateReligionsTool } from "./tools/recalculate-religions";
 import { regenerateAllBurgNamesTool } from "./tools/regenerate-all-burg-names";
 import { regenerateAllCultureNamesTool } from "./tools/regenerate-all-culture-names";
 import { regenerateAllProvinceNamesTool } from "./tools/regenerate-all-province-names";
@@ -1836,6 +1837,12 @@ export {
   recalculateCulturesTool,
 } from "./tools/recalculate-cultures";
 export {
+  createRecalculateReligionsTool,
+  defaultRecalculateReligionsRuntime,
+  type RecalculateReligionsRuntime,
+  recalculateReligionsTool,
+} from "./tools/recalculate-religions";
+export {
   createRegenerateAllBurgNamesTool,
   regenerateAllBurgNamesTool,
 } from "./tools/regenerate-all-burg-names";
@@ -2998,6 +3005,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(randomizeIcebergShapeTool);
   registry.register(randomizeStatesExpansionTool);
   registry.register(recalculateCulturesTool);
+  registry.register(recalculateReligionsTool);
   registry.register(moveIceTool);
   registry.register(addMarkerTool);
   registry.register(addRulerTool);
