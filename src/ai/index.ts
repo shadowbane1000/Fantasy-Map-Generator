@@ -127,6 +127,7 @@ import { getZoneDistributionTool } from "./tools/get-zone-distribution";
 import { getZoneInfoTool } from "./tools/get-zone-info";
 import { invertHeightmapTool } from "./tools/invert-heightmap";
 import { listBiomesTool } from "./tools/list-biomes";
+import { listBurgGroupsTool } from "./tools/list-burg-groups";
 import { listBurgsTool } from "./tools/list-burgs";
 import { listCulturesTool } from "./tools/list-cultures";
 import { listCulturesSetsTool } from "./tools/list-cultures-sets";
@@ -1492,6 +1493,11 @@ export {
   readBiomesFromPack,
 } from "./tools/list-biomes";
 export {
+  type BurgGroupSummary,
+  createListBurgGroupsTool,
+  listBurgGroupsTool,
+} from "./tools/list-burg-groups";
+export {
   createListBurgsTool,
   listBurgsTool,
 } from "./tools/list-burgs";
@@ -2397,6 +2403,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(findOrphanEntitiesTool);
   registry.register(listStatesTool);
   registry.register(listStylePresetsTool);
+  registry.register(listBurgGroupsTool);
   registry.register(listBurgsTool);
   registry.register(findNearestBurgTool);
   registry.register(findBurgsInAreaTool);
