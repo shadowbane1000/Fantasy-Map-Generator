@@ -14,6 +14,7 @@ import { addRangeTool } from "./tools/add-range";
 import { addRegimentTool } from "./tools/add-regiment";
 import { addReligionTool } from "./tools/add-religion";
 import { addRouteTool } from "./tools/add-route";
+import { addRouteGroupTool } from "./tools/add-route-group";
 import { addRulerTool } from "./tools/add-ruler";
 import { addStateTool } from "./tools/add-state";
 import { addStraitTool } from "./tools/add-strait";
@@ -339,6 +340,14 @@ export {
   addRouteTool,
   createAddRouteTool,
 } from "./tools/add-route";
+export {
+  type AddRouteGroupRuntime,
+  addRouteGroupTool,
+  createAddRouteGroupTool,
+  defaultAddRouteGroupRuntime,
+  prefixWithRoute,
+  sanitizeGroupName,
+} from "./tools/add-route-group";
 export {
   addRulerTool,
   createAddRulerTool,
@@ -2453,6 +2462,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setRouteLockTool);
   registry.register(removeRouteTool);
   registry.register(addRouteTool);
+  registry.register(addRouteGroupTool);
   registry.register(renameRegimentTool);
   registry.register(listRegimentUnitsTool);
   registry.register(setRegimentUnitTool);
