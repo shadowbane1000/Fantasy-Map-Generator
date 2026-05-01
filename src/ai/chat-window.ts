@@ -8,11 +8,11 @@ export interface ChatWindowElements {
   textarea: HTMLTextAreaElement;
   sendButton: HTMLButtonElement;
   clearButton: HTMLButtonElement;
+  billableCounter: HTMLSpanElement;
   apiKeyRow: HTMLDivElement;
   apiKeyInput: HTMLInputElement;
   apiKeySave: HTMLButtonElement;
   apiKeyToggle: HTMLButtonElement;
-  usageBar: HTMLDivElement;
   clickBanner: HTMLDivElement;
   clickBannerText: HTMLSpanElement;
   clickBannerCancel: HTMLButtonElement;
@@ -75,6 +75,13 @@ export function buildChatWindow(): ChatWindowElements {
     textContent: "AI",
   });
 
+  const billableCounter = el("span", {
+    className: "ai-chat-billable",
+    title:
+      "Billable-equivalent input tokens since last clear (cache reads ×0.10, writes ×1.25, fresh ×1.0)",
+    textContent: "0",
+  });
+
   const clearButton = el("button", {
     type: "button",
     className: "ai-chat-clear",
@@ -84,6 +91,7 @@ export function buildChatWindow(): ChatWindowElements {
 
   const header = el("div", { className: "ai-chat-header" }, [
     el("span", { className: "ai-chat-title", textContent: "AI Assistant" }),
+    billableCounter,
     clearButton,
     el("button", {
       type: "button",
@@ -98,8 +106,6 @@ export function buildChatWindow(): ChatWindowElements {
   ]);
 
   const log = el("div", { id: "ai-chat-log", className: "ai-chat-log" });
-
-  const usageBar = el("div", { className: "ai-chat-usage" });
 
   const clickBannerText = el("span", {
     className: "ai-chat-click-banner-text",
@@ -169,7 +175,6 @@ export function buildChatWindow(): ChatWindowElements {
   const panel = el("div", { id: "ai-chat-panel", className: "ai-chat-panel" }, [
     header,
     log,
-    usageBar,
     clickBanner,
     apiKeyRow,
     inputRow,
@@ -188,11 +193,11 @@ export function buildChatWindow(): ChatWindowElements {
     textarea,
     sendButton,
     clearButton,
+    billableCounter,
     apiKeyRow,
     apiKeyInput,
     apiKeySave,
     apiKeyToggle,
-    usageBar,
     clickBanner,
     clickBannerText,
     clickBannerCancel,
@@ -229,6 +234,9 @@ export function mountChatWindow({
 
   let activeClickToken: object | null = null;
   let escListener: ((evt: KeyboardEvent) => void) | null = null;
+  // Running sum of billable-equivalent input tokens since the last reset.
+  // Cleared by the "cleared" UI event.
+  let billableTotal = 0;
 
   const handleEvent = (event: UiEvent): void => {
     switch (event.type) {
@@ -249,23 +257,17 @@ export function mountChatWindow({
         const cached = u.cache_read_input_tokens ?? 0;
         const written = u.cache_creation_input_tokens ?? 0;
         const fresh = u.input_tokens;
-        const total = cached + written + fresh;
-        const pct = total > 0 ? Math.round((cached / total) * 100) : 0;
         // Billable-equivalent input tokens at Anthropic's published rates:
         // cache reads at 0.10x, cache writes at 1.25x, fresh at 1.0x.
-        const billable = Math.round(cached * 0.1 + written * 1.25 + fresh);
-        parts.usageBar.textContent =
-          `in: ${total.toLocaleString()} tok` +
-          ` (${billable.toLocaleString()} billable,` +
-          ` ${pct}% cached,` +
-          ` ${fresh.toLocaleString()} fresh,` +
-          ` ${written.toLocaleString()} write)` +
-          ` · out: ${u.output_tokens.toLocaleString()}`;
+        billableTotal += cached * 0.1 + written * 1.25 + fresh;
+        parts.billableCounter.textContent =
+          Math.round(billableTotal).toLocaleString();
         break;
       }
       case "cleared":
         parts.log.replaceChildren();
-        parts.usageBar.textContent = "";
+        billableTotal = 0;
+        parts.billableCounter.textContent = "0";
         appendMessage(
           parts.log,
           "tool",
