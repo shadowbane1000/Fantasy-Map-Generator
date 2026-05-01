@@ -287,6 +287,7 @@ import { setMarkerTypeTool } from "./tools/set-marker-type";
 import { setMeasurementUnitsTool } from "./tools/set-measurement-units";
 import { setNamesbaseDuplicationTool } from "./tools/set-namesbase-duplication";
 import { setNamesbaseLengthRangeTool } from "./tools/set-namesbase-length-range";
+import { setNamesbaseMultiwordRateTool } from "./tools/set-namesbase-multiword-rate";
 import { setNamesbaseNamesTool } from "./tools/set-namesbase-names";
 import { setNoteTool } from "./tools/set-note";
 import { setOnloadBehaviorTool } from "./tools/set-onload-behavior";
@@ -2413,6 +2414,12 @@ export {
   setNamesbaseLengthRangeTool,
 } from "./tools/set-namesbase-length-range";
 export {
+  createSetNamesbaseMultiwordRateTool,
+  defaultSetNamesbaseMultiwordRateRuntime,
+  type SetNamesbaseMultiwordRateRuntime,
+  setNamesbaseMultiwordRateTool,
+} from "./tools/set-namesbase-multiword-rate";
+export {
   createSetNamesbaseNamesTool,
   defaultSetNamesbaseNamesRuntime,
   type SetNamesbaseNamesRuntime,
@@ -2747,6 +2754,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameNamesbaseTool);
   registry.register(setNamesbaseDuplicationTool);
   registry.register(setNamesbaseLengthRangeTool);
+  registry.register(setNamesbaseMultiwordRateTool);
   registry.register(setNamesbaseNamesTool);
   registry.register(renameReligionTool);
   registry.register(renameProvinceTool);
