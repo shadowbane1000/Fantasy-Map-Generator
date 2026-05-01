@@ -1,7 +1,8 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   createSetHeightmapTemplateTool,
   DISPLAY_NAMES,
+  defaultHeightmapTemplateRuntime,
   type HeightmapTemplateRuntime,
   resolveTemplateKey,
   TEMPLATE_KEYS,
@@ -90,6 +91,147 @@ describe("set_heightmap_template tool", () => {
     const tool = createSetHeightmapTemplateTool(runtime);
     const result = await tool.execute({ template: "volcano" });
     expect(JSON.parse(result.content).previousTemplate).toBe("pangea");
+  });
+});
+
+type StubOption = { value: string; text: string };
+type StubSelect = {
+  _value: string;
+  _options: StubOption[];
+  value: string;
+  options: StubOption[] & { add: (opt: StubOption) => void };
+};
+
+function createStubSelect(initial: StubOption[] = []): StubSelect {
+  const opts = [...initial];
+  const optionsList = Object.assign(opts, {
+    add: (opt: StubOption) => {
+      opts.push(opt);
+    },
+  });
+  const sel = {
+    _value: "",
+    _options: opts,
+    options: optionsList,
+    get value(): string {
+      return this._value;
+    },
+    set value(v: string) {
+      // Mirror real <select>: silently drop unknown values.
+      if (opts.some((o) => o.value === v)) this._value = v;
+    },
+  };
+  return sel as StubSelect;
+}
+
+describe("defaultHeightmapTemplateRuntime", () => {
+  type Globals = {
+    document?: unknown;
+    window?: unknown;
+    Option?: unknown;
+  };
+  const original: Globals = {};
+
+  beforeEach(() => {
+    const g = globalThis as Globals;
+    original.document = g.document;
+    original.window = g.window;
+    original.Option = g.Option;
+    g.Option = function StubOptionCtor(text: string, value: string) {
+      return { text, value };
+    } as unknown as typeof Option;
+  });
+
+  afterEach(() => {
+    const g = globalThis as Globals;
+    g.document = original.document;
+    g.window = original.window;
+    g.Option = original.Option;
+  });
+
+  it("adds the option if missing and sets value", () => {
+    const sel = createStubSelect([
+      { value: "highIsland", text: "High Island" },
+    ]);
+    const lockCalls: string[] = [];
+    (globalThis as Globals).document = {
+      getElementById: (id: string) => (id === "templateInput" ? sel : null),
+    };
+    (globalThis as Globals).window = {
+      heightmapTemplates: { pangea: { name: "Pangea" } },
+      // lock is intentionally present to prove we do NOT auto-call it.
+      lock: (id: string) => {
+        lockCalls.push(id);
+      },
+    };
+
+    defaultHeightmapTemplateRuntime.write("pangea");
+
+    expect(sel._options).toContainEqual({ value: "pangea", text: "Pangea" });
+    expect(sel.value).toBe("pangea");
+    expect(lockCalls).toEqual([]);
+  });
+
+  it("falls back to DISPLAY_NAMES when window.heightmapTemplates is missing", () => {
+    const sel = createStubSelect();
+    (globalThis as Globals).document = {
+      getElementById: () => sel,
+    };
+    (globalThis as Globals).window = {};
+
+    defaultHeightmapTemplateRuntime.write("oldWorld");
+
+    expect(sel._options).toContainEqual({
+      value: "oldWorld",
+      text: "Old World",
+    });
+    expect(sel.value).toBe("oldWorld");
+  });
+
+  it("does not duplicate an existing option", () => {
+    const sel = createStubSelect([
+      { value: "highIsland", text: "High Island" },
+      { value: "pangea", text: "Pangea" },
+    ]);
+    (globalThis as Globals).document = { getElementById: () => sel };
+    (globalThis as Globals).window = { lock: () => {} };
+
+    defaultHeightmapTemplateRuntime.write("pangea");
+
+    expect(sel._options.length).toBe(2);
+    expect(sel.value).toBe("pangea");
+  });
+
+  it("succeeds when window is unavailable", () => {
+    const sel = createStubSelect();
+    (globalThis as Globals).document = { getElementById: () => sel };
+    (globalThis as Globals).window = {};
+
+    expect(() =>
+      defaultHeightmapTemplateRuntime.write("volcano"),
+    ).not.toThrow();
+    expect(sel.value).toBe("volcano");
+  });
+
+  it("throws if #templateInput is missing", () => {
+    (globalThis as Globals).document = { getElementById: () => null };
+    (globalThis as Globals).window = {};
+
+    expect(() => defaultHeightmapTemplateRuntime.write("volcano")).toThrow(
+      /templateInput/,
+    );
+  });
+
+  it("read returns the current value or null when empty / missing", () => {
+    const sel = createStubSelect([{ value: "pangea", text: "Pangea" }]);
+    sel.value = "pangea";
+    (globalThis as Globals).document = { getElementById: () => sel };
+    expect(defaultHeightmapTemplateRuntime.read()).toEqual({
+      template: "pangea",
+    });
+
+    (globalThis as Globals).document = { getElementById: () => null };
+    expect(defaultHeightmapTemplateRuntime.read()).toEqual({ template: null });
   });
 });
 

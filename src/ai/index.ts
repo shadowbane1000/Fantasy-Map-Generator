@@ -151,6 +151,7 @@ import { listMarkerTypesTool } from "./tools/list-marker-types";
 import { listMarkersTool } from "./tools/list-markers";
 import { listNamesbasesTool } from "./tools/list-namesbases";
 import { listNotesTool } from "./tools/list-notes";
+import { listOptionsLocksTool } from "./tools/list-options-locks";
 import { listProvincesTool } from "./tools/list-provinces";
 import { listRegimentUnitsTool } from "./tools/list-regiment-units";
 import { listRegimentsTool } from "./tools/list-regiments";
@@ -291,6 +292,7 @@ import { setNamesbaseMultiwordRateTool } from "./tools/set-namesbase-multiword-r
 import { setNamesbaseNamesTool } from "./tools/set-namesbase-names";
 import { setNoteTool } from "./tools/set-note";
 import { setOnloadBehaviorTool } from "./tools/set-onload-behavior";
+import { setOptionsLockTool } from "./tools/set-options-lock";
 import { setPrecipitationTool } from "./tools/set-precipitation";
 import { setProvinceCapitalTool } from "./tools/set-province-capital";
 import { setProvinceCoaCustomTool } from "./tools/set-province-coa-custom";
@@ -2706,6 +2708,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listFeaturesTool);
   registry.register(listHeightmapTemplatesTool);
   registry.register(listIceTool);
+  registry.register(listOptionsLocksTool);
   registry.register(countReliefIconsTool);
   registry.register(listReligionsTool);
   registry.register(listProvincesTool);
@@ -2837,6 +2840,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setNoteTool);
   registry.register(setHeightmapTemplateTool);
   registry.register(setHeightmapOptionsTool);
+  registry.register(setOptionsLockTool);
   registry.register(smoothHeightmapTool);
   registry.register(addHillTool);
   registry.register(addRangeTool);

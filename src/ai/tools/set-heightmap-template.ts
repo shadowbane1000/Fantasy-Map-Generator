@@ -78,7 +78,28 @@ export const defaultHeightmapTemplateRuntime: HeightmapTemplateRuntime = {
         "#templateInput is not available yet; wait for the map to finish loading.",
       );
     }
+
+    const w = (typeof window !== "undefined" ? window : undefined) as
+      | {
+          heightmapTemplates?: Record<string, { name?: string }>;
+        }
+      | undefined;
+
+    // <select> silently ignores `el.value = key` for values that aren't already
+    // an <option>. Mirror public/modules/ui/general.js applyOption: add the
+    // option first, then assign.
+    const hasOption = Array.from(el.options).some((o) => o.value === key);
+    if (!hasOption) {
+      const display = w?.heightmapTemplates?.[key]?.name ?? DISPLAY_NAMES[key];
+      el.options.add(new Option(display, key));
+    }
     el.value = key;
+
+    if (el.value !== key) {
+      throw new Error(
+        `Failed to set #templateInput to ${JSON.stringify(key)}; the browser dropped the assignment.`,
+      );
+    }
   },
 };
 
@@ -87,7 +108,7 @@ export function createSetHeightmapTemplateTool(
 ): Tool {
   return {
     name: "set_heightmap_template",
-    description: `Pick the heightmap template used on the next map regeneration. Supported templates: ${TEMPLATE_KEYS.map((k) => DISPLAY_NAMES[k]).join(", ")}. Accepts either the canonical key (e.g. "oldWorld") or the display name (e.g. "Old World"), case-insensitive. The change is passive; call regenerate_map afterwards to apply it.`,
+    description: `Pick the heightmap template used on the next map regeneration. Supported templates: ${TEMPLATE_KEYS.map((k) => DISPLAY_NAMES[k]).join(", ")}. Accepts either the canonical key (e.g. "oldWorld") or the display name (e.g. "Old World"), case-insensitive. The change is passive; call regenerate_map afterwards to apply it. Does NOT auto-lock — \`regenerate_map\` re-randomizes the template via \`randomizeOptions()\` unless the template lock is set. To make the pick survive a regenerate, follow up with \`set_options_lock({id: "template", locked: true})\`.`,
     input_schema: {
       type: "object",
       properties: {

@@ -65,7 +65,7 @@ export function createRegenerateDomainTool(
 ): Tool {
   return {
     name: "regenerate_domain",
-    description: `Regenerate a single domain of the map — same side-effect as clicking one of the Tools panel's Regenerate buttons. Domain is one of: ${REGENERATE_DOMAINS.join(", ")} (case-insensitive). Delegates to the matching global (e.g. rivers → regenerateRivers, population → recalculatePopulation). Use regenerate_map for a full re-gen and regenerate_emblems for all coats of arms.`,
+    description: `Regenerate a single domain of the map — same side-effect as clicking one of the Tools panel's Regenerate buttons. Domain is one of: ${REGENERATE_DOMAINS.join(", ")} (case-insensitive). Delegates to the matching global (e.g. rivers → regenerateRivers, population → recalculatePopulation). Use regenerate_map for a full re-gen and regenerate_emblems for all coats of arms. **Locks consulted:** does NOT call \`randomizeOptions()\`, so Options-dialog locks (template, statesNumber, cultures, climate, …) are irrelevant here — settings are not re-randomized regardless. Per-entity locks ARE consulted: \`state.lock\` keeps a state's borders, name, and color across \`regenerate_domain("states")\`; \`burg.lock\` survives \`regenerate_domain("burgs")\`; \`culture.lock\`, \`religion.lock\`, \`province.lock\`, \`marker.lock\`, \`route.lock\` likewise pin their entities. Set those via \`set_entity_lock\` / \`set_marker_lock\` / \`set_route_lock\`.`,
     input_schema: {
       type: "object",
       properties: {

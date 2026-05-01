@@ -37,7 +37,7 @@ export function createRegenerateMapTool(
   return {
     name: "regenerate_map",
     description:
-      "Generate a new fantasy map. Equivalent to clicking the 'New Map' button. Optionally pass a specific seed to reproduce a map. Waits for the new map to finish generating before returning.",
+      "Generate a new fantasy map. Equivalent to clicking the 'New Map' button. Optionally pass a specific seed to reproduce a map. Waits for the new map to finish generating before returning. **Locks consulted:** the Options-dialog and World-configurator locks gate `randomizeOptions()`, which runs at the start of every regeneration. Unlocked settings are re-randomized; locked ones are preserved. The gating set is: template, points, statesNumber, provincesRatio, manors, religionsNumber, sizeVariety, growthRate, cultures, culturesSet, mapSize, latitude, longitude, temperatureEquator, temperatureNorthPole, temperatureSouthPole, prec, distanceScale. Use `list_options_locks` to inspect the current state and `set_options_lock` to adjust. Setter tools (`set_heightmap_template`, `set_climate`, `set_generator_rates`, …) do **not** auto-lock — if a setting was just changed and should survive regeneration, lock it explicitly first. Per-entity locks (state.lock, burg.lock, culture.lock, religion.lock, province.lock, marker.lock, route.lock) are NOT consulted by regenerate_map; they apply to `regenerate_domain` instead.",
     input_schema: {
       type: "object",
       properties: {
