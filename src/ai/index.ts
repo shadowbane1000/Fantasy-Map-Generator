@@ -88,6 +88,7 @@ import { findStatesInAreaTool } from "./tools/find-states-in-area";
 import { findZonesByTypeTool } from "./tools/find-zones-by-type";
 import { focusOnEntityTool } from "./tools/focus-on-entity";
 import { focusOnMapTool } from "./tools/focus-on-map";
+import { generateNamesbaseExamplesTool } from "./tools/generate-namesbase-examples";
 import { getBiomeDistributionTool } from "./tools/get-biome-distribution";
 import { getBiomeInfoTool } from "./tools/get-biome-info";
 import { getBurgDistributionTool } from "./tools/get-burg-distribution";
@@ -1194,6 +1195,13 @@ export {
   createFocusOnMapTool,
   focusOnMapTool,
 } from "./tools/focus-on-map";
+export {
+  createGenerateNamesbaseExamplesTool,
+  defaultGenerateNamesbaseExamplesRuntime,
+  type GenerateNamesbaseExamplesResult,
+  type GenerateNamesbaseExamplesRuntime,
+  generateNamesbaseExamplesTool,
+} from "./tools/generate-namesbase-examples";
 export {
   type BiomeDistributionBiomesData,
   type BiomeDistributionEntry,
@@ -3107,6 +3115,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeStateTool);
   registry.register(removeZoneTool);
   registry.register(toggleLockAllBurgsTool);
+  registry.register(generateNamesbaseExamplesTool);
   return registry;
 }
 
