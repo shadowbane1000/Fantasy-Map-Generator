@@ -166,6 +166,7 @@ import { moveBurgTool } from "./tools/move-burg";
 import { moveLabelTool } from "./tools/move-label";
 import { moveMarkerTool } from "./tools/move-marker";
 import { moveRegimentTool } from "./tools/move-regiment";
+import { randomizeIcebergShapeTool } from "./tools/randomize-iceberg-shape";
 import { regenerateAllBurgNamesTool } from "./tools/regenerate-all-burg-names";
 import { regenerateAllCultureNamesTool } from "./tools/regenerate-all-culture-names";
 import { regenerateAllProvinceNamesTool } from "./tools/regenerate-all-province-names";
@@ -1752,6 +1753,13 @@ export {
   moveRegimentTool,
 } from "./tools/move-regiment";
 export {
+  createRandomizeIcebergShapeTool,
+  defaultRandomizeIcebergShapeRuntime,
+  type RandomizeIcebergShapeIceRef,
+  type RandomizeIcebergShapeRuntime,
+  randomizeIcebergShapeTool,
+} from "./tools/randomize-iceberg-shape";
+export {
   createRegenerateAllBurgNamesTool,
   regenerateAllBurgNamesTool,
 } from "./tools/regenerate-all-burg-names";
@@ -2819,6 +2827,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeMarkerTool);
   registry.register(addIcebergTool);
   registry.register(setIcebergSizeTool);
+  registry.register(randomizeIcebergShapeTool);
   registry.register(addMarkerTool);
   registry.register(addRulerTool);
   registry.register(addBurgTool);
