@@ -271,6 +271,7 @@ import { setCulturesSetTool } from "./tools/set-cultures-set";
 import { setDefaultEmblemShapeTool } from "./tools/set-default-emblem-shape";
 import { setDiplomacyTool } from "./tools/set-diplomacy";
 import { setEmblemShieldTool } from "./tools/set-emblem-shield";
+import { setEmblemSizeTool } from "./tools/set-emblem-size";
 import { setEntityExpansionismTool } from "./tools/set-entity-expansionism";
 import { setEntityLockTool } from "./tools/set-entity-lock";
 import { setFontFamilyTool } from "./tools/set-font-family";
@@ -2356,6 +2357,18 @@ export {
   setEmblemShieldTool,
 } from "./tools/set-emblem-shield";
 export {
+  createSetEmblemSizeTool,
+  defaultSetEmblemSizeRuntime,
+  EMBLEM_ENTITY_TYPES,
+  EMBLEM_SIZE_MAX,
+  EMBLEM_SIZE_MIN,
+  type EmblemEntityType,
+  type EmblemSizeRef,
+  resolveEmblemEntityType,
+  type SetEmblemSizeRuntime,
+  setEmblemSizeTool,
+} from "./tools/set-emblem-size";
+export {
   createSetEntityExpansionismTool,
   EXPANSIONABLE_TYPES,
   resolveExpansionableType,
@@ -2971,6 +2984,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listCulturesSetsTool);
   registry.register(setDefaultEmblemShapeTool);
   registry.register(listEmblemShapesTool);
+  registry.register(setEmblemSizeTool);
   registry.register(setReligionCenterTool);
   registry.register(setReligionColorTool);
   registry.register(setReligionTypeTool);
