@@ -145,6 +145,7 @@ import { listLakeGroupsTool } from "./tools/list-lake-groups";
 import { listMarkerPinsTool } from "./tools/list-marker-pins";
 import { listMarkerTypesTool } from "./tools/list-marker-types";
 import { listMarkersTool } from "./tools/list-markers";
+import { listNamesbasesTool } from "./tools/list-namesbases";
 import { listNotesTool } from "./tools/list-notes";
 import { listProvincesTool } from "./tools/list-provinces";
 import { listRegimentUnitsTool } from "./tools/list-regiment-units";
@@ -1640,6 +1641,13 @@ export {
   readMarkersFromPack,
 } from "./tools/list-markers";
 export {
+  createListNamesbasesTool,
+  defaultListNamesbasesRuntime,
+  type ListNamesbasesRuntime,
+  listNamesbasesTool,
+  type NamesbaseEntry,
+} from "./tools/list-namesbases";
+export {
   classifyNoteId,
   createListNotesTool,
   listNotesTool,
@@ -2639,6 +2647,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(listProvincesTool);
   registry.register(listMarkersTool);
   registry.register(listMarkerTypesTool);
+  registry.register(listNamesbasesTool);
   registry.register(findNearestMarkerTool);
   registry.register(findMarkersInAreaTool);
   registry.register(findMarkersByTypeTool);
