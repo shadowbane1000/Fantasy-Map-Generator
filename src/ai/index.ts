@@ -194,6 +194,7 @@ import { regenerateLakeNameTool } from "./tools/regenerate-lake-name";
 import { regenerateMapTool } from "./tools/regenerate-map";
 import { regenerateProvinceCoaTool } from "./tools/regenerate-province-coa";
 import { regenerateProvinceNameTool } from "./tools/regenerate-province-name";
+import { regenerateRegimentLegendTool } from "./tools/regenerate-regiment-legend";
 import { regenerateRegimentNameTool } from "./tools/regenerate-regiment-name";
 import { regenerateRegimentNamesTool } from "./tools/regenerate-regiment-names";
 import { regenerateReliefIconsTool } from "./tools/regenerate-relief-icons";
@@ -1936,6 +1937,16 @@ export {
   resolveProvinceNameMode,
 } from "./tools/regenerate-province-name";
 export {
+  createRegenerateRegimentLegendTool,
+  defaultRegenerateRegimentLegendRuntime,
+  type RegenerateRegimentLegendFound,
+  type RegenerateRegimentLegendNoteRef,
+  type RegenerateRegimentLegendRegimentRef,
+  type RegenerateRegimentLegendRuntime,
+  type RegenerateRegimentLegendStateRef,
+  regenerateRegimentLegendTool,
+} from "./tools/regenerate-regiment-legend";
+export {
   createRegenerateRegimentNameTool,
   defaultRegenerateRegimentNameRuntime,
   findRegimentMatches,
@@ -3007,6 +3018,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateCultureBurgsTool);
   registry.register(regenerateAllProvinceNamesTool);
   registry.register(regenerateAllStateNamesTool);
+  registry.register(regenerateRegimentLegendTool);
   registry.register(regenerateRegimentNameTool);
   registry.register(regenerateRegimentNamesTool);
   registry.register(regenerateReligionNamesTool);
