@@ -192,6 +192,7 @@ import { removeZoneTool } from "./tools/remove-zone";
 import { renameBiomeTool } from "./tools/rename-biome";
 import { renameBurgTool } from "./tools/rename-burg";
 import { renameCultureTool } from "./tools/rename-culture";
+import { renameLakeTool } from "./tools/rename-lake";
 import { renameProvinceTool } from "./tools/rename-province";
 import { renameRegimentTool } from "./tools/rename-regiment";
 import { renameReligionTool } from "./tools/rename-religion";
@@ -1833,6 +1834,12 @@ export {
   renameCultureTool,
 } from "./tools/rename-culture";
 export {
+  createRenameLakeTool,
+  findLakeById,
+  findLakesByName,
+  renameLakeTool,
+} from "./tools/rename-lake";
+export {
   createRenameProvinceTool,
   renameProvinceTool,
 } from "./tools/rename-province";
@@ -2478,6 +2485,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setBiomeIconsTool);
   registry.register(removeBiomeTool);
   registry.register(renameCultureTool);
+  registry.register(renameLakeTool);
   registry.register(renameReligionTool);
   registry.register(renameProvinceTool);
   registry.register(renameRiverTool);
