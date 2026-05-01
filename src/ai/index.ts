@@ -163,6 +163,7 @@ import { measureDistanceTool } from "./tools/measure-distance";
 import { mergeStatesTool } from "./tools/merge-states";
 import { modifyHeightmapTool } from "./tools/modify-heightmap";
 import { moveBurgTool } from "./tools/move-burg";
+import { moveIceTool } from "./tools/move-ice";
 import { moveLabelTool } from "./tools/move-label";
 import { moveMarkerTool } from "./tools/move-marker";
 import { moveRegimentTool } from "./tools/move-regiment";
@@ -1741,6 +1742,10 @@ export {
   moveBurgTool,
 } from "./tools/move-burg";
 export {
+  createMoveIceTool,
+  moveIceTool,
+} from "./tools/move-ice";
+export {
   createMoveLabelTool,
   moveLabelTool,
 } from "./tools/move-label";
@@ -2828,6 +2833,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(addIcebergTool);
   registry.register(setIcebergSizeTool);
   registry.register(randomizeIcebergShapeTool);
+  registry.register(moveIceTool);
   registry.register(addMarkerTool);
   registry.register(addRulerTool);
   registry.register(addBurgTool);
