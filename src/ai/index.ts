@@ -7,6 +7,7 @@ import { addBiomeTool } from "./tools/add-biome";
 import { addBurgTool } from "./tools/add-burg";
 import { addCultureTool } from "./tools/add-culture";
 import { addHillTool } from "./tools/add-hill";
+import { addLabelGroupTool } from "./tools/add-label-group";
 import { addLakeGroupTool } from "./tools/add-lake-group";
 import { addMarkerTool } from "./tools/add-marker";
 import { addPitTool } from "./tools/add-pit";
@@ -321,6 +322,12 @@ export {
   DEFAULT_RANGE_X,
   DEFAULT_RANGE_Y,
 } from "./tools/add-hill";
+export {
+  type AddLabelGroupRuntime,
+  addLabelGroupTool,
+  createAddLabelGroupTool,
+  defaultAddLabelGroupRuntime,
+} from "./tools/add-label-group";
 export {
   type AddLakeGroupRuntime,
   addLakeGroupTool,
@@ -2536,6 +2543,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setRouteGroupTool);
   registry.register(setLakeGroupTool);
   registry.register(listLakeGroupsTool);
+  registry.register(addLabelGroupTool);
   registry.register(addLakeGroupTool);
   registry.register(removeLakeGroupTool);
   registry.register(setRouteLockTool);
