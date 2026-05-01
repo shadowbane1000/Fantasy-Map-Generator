@@ -181,6 +181,7 @@ import { regenerateZonesTool } from "./tools/regenerate-zones";
 import { removeBiomeTool } from "./tools/remove-biome";
 import { removeBurgTool } from "./tools/remove-burg";
 import { removeCultureTool } from "./tools/remove-culture";
+import { removeLakeGroupTool } from "./tools/remove-lake-group";
 import { removeMarkerTool } from "./tools/remove-marker";
 import { removeNoteTool } from "./tools/remove-note";
 import { removeProvinceTool } from "./tools/remove-province";
@@ -1800,6 +1801,12 @@ export {
   removeCultureTool,
 } from "./tools/remove-culture";
 export {
+  createRemoveLakeGroupTool,
+  defaultRemoveLakeGroupRuntime,
+  type RemoveLakeGroupRuntime,
+  removeLakeGroupTool,
+} from "./tools/remove-lake-group";
+export {
   createRemoveMarkerTool,
   removeMarkerTool,
 } from "./tools/remove-marker";
@@ -2530,6 +2537,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setLakeGroupTool);
   registry.register(listLakeGroupsTool);
   registry.register(addLakeGroupTool);
+  registry.register(removeLakeGroupTool);
   registry.register(setRouteLockTool);
   registry.register(removeRouteTool);
   registry.register(listRouteGroupsTool);
