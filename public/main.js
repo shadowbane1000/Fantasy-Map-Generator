@@ -1283,6 +1283,12 @@ const regenerateMap = debounce(async function (options) {
 // reach `regenerateMap` through `globalThis`. Expose it explicitly.
 window.regenerateMap = regenerateMap;
 
+// `let viewbox` above is a classic-script binding and is also DOM-shadowed by
+// `<g id="viewbox">`. Modules that need the D3 selection (e.g. the
+// `request_map_click` AI tool) reach it through `window.viewbox`; the explicit
+// assignment below overwrites the DOM shadow with the JS value.
+window.viewbox = viewbox;
+
 // clear the map
 function undraw() {
   viewbox

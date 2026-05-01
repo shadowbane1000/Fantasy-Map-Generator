@@ -13,6 +13,9 @@ export interface ChatWindowElements {
   apiKeySave: HTMLButtonElement;
   apiKeyToggle: HTMLButtonElement;
   usageBar: HTMLDivElement;
+  clickBanner: HTMLDivElement;
+  clickBannerText: HTMLSpanElement;
+  clickBannerCancel: HTMLButtonElement;
 }
 
 function el<K extends keyof HTMLElementTagNameMap>(
@@ -98,6 +101,23 @@ export function buildChatWindow(): ChatWindowElements {
 
   const usageBar = el("div", { className: "ai-chat-usage" });
 
+  const clickBannerText = el("span", {
+    className: "ai-chat-click-banner-text",
+  });
+  const clickBannerCancel = el("button", {
+    type: "button",
+    className: "ai-chat-click-banner-cancel",
+    textContent: "Cancel",
+  });
+  const clickBanner = el(
+    "div",
+    {
+      className: "ai-chat-click-banner",
+      hidden: true,
+    },
+    [clickBannerText, clickBannerCancel],
+  );
+
   const textarea = el("textarea", {
     id: "ai-chat-input",
     className: "ai-chat-input",
@@ -150,6 +170,7 @@ export function buildChatWindow(): ChatWindowElements {
     header,
     log,
     usageBar,
+    clickBanner,
     apiKeyRow,
     inputRow,
   ]);
@@ -172,6 +193,9 @@ export function buildChatWindow(): ChatWindowElements {
     apiKeySave,
     apiKeyToggle,
     usageBar,
+    clickBanner,
+    clickBannerText,
+    clickBannerCancel,
   };
 }
 
@@ -202,6 +226,9 @@ export function mountChatWindow({
     appendMessage(parts.log, "tool", "API key saved.");
     parts.apiKeyRow.classList.remove("ai-chat-apikey-visible");
   };
+
+  let activeClickToken: object | null = null;
+  let escListener: ((evt: KeyboardEvent) => void) | null = null;
 
   const handleEvent = (event: UiEvent): void => {
     switch (event.type) {
@@ -242,6 +269,41 @@ export function mountChatWindow({
       case "error":
         appendMessage(parts.log, "error", event.message);
         break;
+      case "click_request": {
+        activeClickToken = event.cancelToken;
+        parts.clickBannerText.textContent = event.prompt;
+        parts.clickBanner.hidden = false;
+        parts.clickBannerCancel.onclick = () => {
+          if (activeClickToken) controller.cancelClickRequest(activeClickToken);
+        };
+        if (escListener) {
+          document.removeEventListener("keydown", escListener);
+        }
+        escListener = (evt: KeyboardEvent) => {
+          if (evt.key === "Escape" && activeClickToken) {
+            controller.cancelClickRequest(activeClickToken);
+          }
+        };
+        document.addEventListener("keydown", escListener);
+        break;
+      }
+      case "click_request_end":
+        if (activeClickToken === event.cancelToken) {
+          activeClickToken = null;
+          parts.clickBanner.hidden = true;
+          parts.clickBannerText.textContent = "";
+          parts.clickBannerCancel.onclick = null;
+          if (escListener) {
+            document.removeEventListener("keydown", escListener);
+            escListener = null;
+          }
+        }
+        break;
+      default: {
+        const _exhaustive: never = event;
+        void _exhaustive;
+        break;
+      }
     }
   };
   controller.on(handleEvent);
