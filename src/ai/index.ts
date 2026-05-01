@@ -357,6 +357,7 @@ import { setZoneTypeTool } from "./tools/set-zone-type";
 import { setZoneVisibilityTool } from "./tools/set-zone-visibility";
 import { smoothHeightmapTool } from "./tools/smooth-heightmap";
 import { splitRegimentTool } from "./tools/split-regiment";
+import { splitRouteTool } from "./tools/split-route";
 import { toggleLockAllBurgsTool } from "./tools/toggle-lock-all-burgs";
 
 export { AnthropicApiError, AnthropicClient } from "./anthropic-client";
@@ -2846,6 +2847,15 @@ export {
   splitRegimentTool,
 } from "./tools/split-regiment";
 export {
+  createSplitRouteTool,
+  defaultSplitRouteRuntime,
+  findRouteIncludingRemoved,
+  type SplitRouteRef,
+  type SplitRouteResult,
+  type SplitRouteRuntime,
+  splitRouteTool,
+} from "./tools/split-route";
+export {
   createToggleLockAllBurgsTool,
   defaultToggleLockAllBurgsRuntime,
   type ToggleLockAllBurgsResult,
@@ -3031,6 +3041,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setRegimentNavalTool);
   registry.register(setRegimentIconTool);
   registry.register(splitRegimentTool);
+  registry.register(splitRouteTool);
   registry.register(renameZoneTool);
   registry.register(setStateColorTool);
   registry.register(setCultureColorTool);
