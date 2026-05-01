@@ -221,6 +221,7 @@ import { setBurgCultureTool } from "./tools/set-burg-culture";
 import { setBurgFeatureTool } from "./tools/set-burg-feature";
 import { setBurgGroupTool } from "./tools/set-burg-group";
 import { setBurgGroupActiveTool } from "./tools/set-burg-group-active";
+import { setBurgGroupDefaultTool } from "./tools/set-burg-group-default";
 import { setBurgPopulationTool } from "./tools/set-burg-population";
 import { setBurgPortTool } from "./tools/set-burg-port";
 import { setBurgTypeTool } from "./tools/set-burg-type";
@@ -2003,6 +2004,12 @@ export {
   setBurgGroupActiveTool,
 } from "./tools/set-burg-group-active";
 export {
+  applyDefault as applyBurgGroupDefault,
+  createSetBurgGroupDefaultTool,
+  findPreviousDefault as findPreviousBurgGroupDefault,
+  setBurgGroupDefaultTool,
+} from "./tools/set-burg-group-default";
+export {
   createSetBurgPopulationTool,
   scaleDisplayToInternal,
   scaleInternalToDisplay,
@@ -2670,6 +2677,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(setBurgPortTool);
   registry.register(setBurgGroupTool);
   registry.register(setBurgGroupActiveTool);
+  registry.register(setBurgGroupDefaultTool);
   registry.register(setStateCapitalTool);
   registry.register(setStateCultureTool);
   registry.register(setProvinceCapitalTool);
