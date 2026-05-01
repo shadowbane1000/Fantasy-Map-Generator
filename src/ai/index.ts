@@ -204,6 +204,7 @@ import { regenerateRouteNameTool } from "./tools/regenerate-route-name";
 import { regenerateStateCoaTool } from "./tools/regenerate-state-coa";
 import { regenerateStateNameTool } from "./tools/regenerate-state-name";
 import { regenerateZonesTool } from "./tools/regenerate-zones";
+import { removeAllMarkersTool } from "./tools/remove-all-markers";
 import { removeBiomeTool } from "./tools/remove-biome";
 import { removeBurgTool } from "./tools/remove-burg";
 import { removeBurgGroupTool } from "./tools/remove-burg-group";
@@ -1998,6 +1999,12 @@ export {
   regenerateZonesTool,
 } from "./tools/regenerate-zones";
 export {
+  createRemoveAllMarkersTool,
+  defaultRemoveAllMarkersRuntime,
+  type RemoveAllMarkersRuntime,
+  removeAllMarkersTool,
+} from "./tools/remove-all-markers";
+export {
   createRemoveBiomeTool,
   DEFAULT_BIOME_COUNT,
   removeBiomeTool,
@@ -3039,6 +3046,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeBurgGroupTool);
   registry.register(removeCultureTool);
   registry.register(removeIceTool);
+  registry.register(removeAllMarkersTool);
   registry.register(removeMarkerTool);
   registry.register(addIcebergTool);
   registry.register(setIcebergSizeTool);
