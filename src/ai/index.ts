@@ -270,6 +270,7 @@ import { setCultureTypeTool } from "./tools/set-culture-type";
 import { setCulturesSetTool } from "./tools/set-cultures-set";
 import { setDefaultEmblemShapeTool } from "./tools/set-default-emblem-shape";
 import { setDiplomacyTool } from "./tools/set-diplomacy";
+import { setEmblemShieldTool } from "./tools/set-emblem-shield";
 import { setEntityExpansionismTool } from "./tools/set-entity-expansionism";
 import { setEntityLockTool } from "./tools/set-entity-lock";
 import { setFontFamilyTool } from "./tools/set-font-family";
@@ -2347,6 +2348,14 @@ export {
   setDiplomacyTool,
 } from "./tools/set-diplomacy";
 export {
+  createSetEmblemShieldTool,
+  defaultEmblemShieldRuntime,
+  type EmblemShieldEntityType,
+  type EmblemShieldRef,
+  type EmblemShieldRuntime,
+  setEmblemShieldTool,
+} from "./tools/set-emblem-shield";
+export {
   createSetEntityExpansionismTool,
   EXPANSIONABLE_TYPES,
   resolveExpansionableType,
@@ -3124,6 +3133,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(removeZoneTool);
   registry.register(toggleLockAllBurgsTool);
   registry.register(generateNamesbaseExamplesTool);
+  registry.register(setEmblemShieldTool);
   return registry;
 }
 
