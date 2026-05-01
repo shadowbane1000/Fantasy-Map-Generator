@@ -19,6 +19,7 @@ toolsContent.addEventListener("click", function (event) {
   else if (button === "editNamesBaseButton") editNamesbase();
   else if (button === "editUnitsButton") editUnits();
   else if (button === "editNotesButton") editNotes();
+  else if (button === "editWorldButton") editWorld();
   else if (button === "editZonesButton") editZones();
   else if (button === "overviewChartsButton") overviewCharts();
   else if (button === "overviewBurgsButton") overviewBurgs();
