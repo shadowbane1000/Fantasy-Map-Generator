@@ -40,7 +40,7 @@ let legend = svg.append("g").attr("id", "legend");
 let ocean = viewbox.append("g").attr("id", "ocean");
 let oceanLayers = ocean.append("g").attr("id", "oceanLayers");
 let oceanPattern = ocean.append("g").attr("id", "oceanPattern");
-let lakes = viewbox.append("g").attr("id", "lakes");
+var lakes = viewbox.append("g").attr("id", "lakes");
 let landmass = viewbox.append("g").attr("id", "landmass");
 let texture = viewbox.append("g").attr("id", "texture");
 let terrs = viewbox.append("g").attr("id", "terrs");
@@ -61,18 +61,18 @@ let zones = viewbox.append("g").attr("id", "zones");
 let borders = viewbox.append("g").attr("id", "borders");
 let stateBorders = borders.append("g").attr("id", "stateBorders");
 let provinceBorders = borders.append("g").attr("id", "provinceBorders");
-let routes = viewbox.append("g").attr("id", "routes");
+var routes = viewbox.append("g").attr("id", "routes");
 let roads = routes.append("g").attr("id", "roads");
 let trails = routes.append("g").attr("id", "trails");
 let searoutes = routes.append("g").attr("id", "searoutes");
 let temperature = viewbox.append("g").attr("id", "temperature");
 let coastline = viewbox.append("g").attr("id", "coastline");
-let ice = viewbox.append("g").attr("id", "ice");
+var ice = viewbox.append("g").attr("id", "ice");
 let prec = viewbox.append("g").attr("id", "prec").style("display", "none");
 let population = viewbox.append("g").attr("id", "population");
 let emblems = viewbox.append("g").attr("id", "emblems").style("display", "none");
 let icons = viewbox.append("g").attr("id", "icons");
-let labels = viewbox.append("g").attr("id", "labels");
+var labels = viewbox.append("g").attr("id", "labels");
 let burgIcons = icons.append("g").attr("id", "burgIcons");
 let anchors = icons.append("g").attr("id", "anchors");
 let armies = viewbox.append("g").attr("id", "armies");
@@ -141,12 +141,12 @@ let mapId;
 let mapHistory = [];
 let elSelected;
 let modules = {};
-let notes = [];
-let rulers = new Rulers();
+var notes = [];
+var rulers = new Rulers();
 let customization = 0;
 
 // global options; in v2.0 to be used for all UI settings
-let options = {
+var options = {
   pinNotes: false,
   winds: [225, 45, 225, 315, 135, 315],
   temperatureEquator: 27,
@@ -162,8 +162,8 @@ let options = {
 // global style object; in v2.0 to be used for all map styles and render settings
 let style = {burgLabels: {}, burgIcons: {}, anchors: {}};
 
-let biomesData = Biomes.getDefault();
-let nameBases = Names.getNameBases(); // cultures-related data
+var biomesData = Biomes.getDefault();
+var nameBases = Names.getNameBases(); // cultures-related data
 let color = d3.scaleSequential(d3.interpolateSpectral); // default color scheme
 const lineGen = d3.line().curve(d3.curveBasis); // d3 line generator with default curve interpolation
 
@@ -237,9 +237,9 @@ const postZoom = () => {
 const zoom = d3.zoom().scaleExtent([1, 20]).on("zoom", zoomRaf);
 
 var mapCoordinates = {}; // map coordinates on globe
-let populationRate = +byId("populationRateInput").value;
-let distanceScale = +byId("distanceScaleInput").value;
-let urbanization = +byId("urbanizationInput").value;
+var populationRate = +byId("populationRateInput").value;
+var distanceScale = +byId("distanceScaleInput").value;
+var urbanization = +byId("urbanizationInput").value;
 let urbanDensity = +byId("urbanDensityInput").value;
 
 applyStoredOptions();
@@ -249,8 +249,8 @@ var graphWidth = +mapWidthInput.value;
 var graphHeight = +mapHeightInput.value;
 
 // svg canvas resolution, can be changed
-let svgWidth = graphWidth;
-let svgHeight = graphHeight;
+var svgWidth = graphWidth;
+var svgHeight = graphHeight;
 
 landmass.append("rect").attr("x", 0).attr("y", 0).attr("width", graphWidth).attr("height", graphHeight);
 oceanPattern

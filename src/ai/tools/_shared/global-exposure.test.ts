@@ -33,48 +33,11 @@ const KNOWN_EXPOSED: ReadonlySet<string> = new Set([
 
 // Names that are NOT correctly exposed at runtime — getGlobal returns
 // `undefined` or a DOM-element shadow instead of the intended value. Each
-// represents a latent or real bug in an AI tool. Fixing one means picking
-// the right exposure mechanism (window.<name> = <name>, or `let` -> `var`,
-// or renaming to dodge the DOM shadow) and removing the entry here.
-const KNOWN_BROKEN: ReadonlyMap<string, string> = new Map([
-  // -- `let` at top of public/main.js — bound only in the global lexical
-  // environment, never on globalThis. Fix by adding `window.<name> = <name>`
-  // after the declaration (mirroring the regenerateMap pattern at main.js
-  // ~line 1284) or by changing `let` to `var`.
-  ["biomesData", "main.js:165 `let biomesData` — not on globalThis"],
-  ["nameBases", "main.js:166 `let nameBases` — not on globalThis"],
-  ["populationRate", "main.js:240 `let populationRate` — not on globalThis"],
-  ["distanceScale", "main.js:241 `let distanceScale` — not on globalThis"],
-  ["urbanization", "main.js:242 `let urbanization` — not on globalThis"],
-  ["rulers", "main.js:145 `let rulers = new Rulers()` — not on globalThis"],
-  ["svgHeight", "main.js `let svgHeight` — not on globalThis"],
-  ["svgWidth", "main.js `let svgWidth` — not on globalThis"],
-  // -- DOM-shadowed: window.<name> is the HTML element with that id, NOT
-  // the same-named JS binding. Tools mutate the DOM element silently. Fix
-  // by exposing the JS binding under a different name (e.g. `window.appOptions
-  // = options`) and updating the consumer, or by renaming the id.
-  [
-    "options",
-    "DOM-shadowed by <div id='options'> — window.options is the dialog DIV",
-  ],
-  [
-    "notes",
-    "DOM-shadowed by <div id='notes'> — window.notes is the notes-editor DIV",
-  ],
-  ["ice", "DOM-shadowed by <g id='ice'> — window.ice is the SVG ice layer"],
-  [
-    "lakes",
-    "DOM-shadowed by <g id='lakes'> — window.lakes is the SVG lakes layer",
-  ],
-  [
-    "routes",
-    "DOM-shadowed by <g id='routes'> — window.routes is the SVG routes layer",
-  ],
-  [
-    "labels",
-    "DOM-shadowed by <g id='labels'> — window.labels is the SVG labels layer",
-  ],
-]);
+// entry represents a latent or real bug in an AI tool. Fix one by picking
+// the right exposure mechanism (window.<name> = <name>, or `let` -> `var`
+// in classic scripts, or renaming to dodge the DOM shadow) and remove the
+// entry here.
+const KNOWN_BROKEN: ReadonlyMap<string, string> = new Map();
 
 async function walk(
   dir: string,
