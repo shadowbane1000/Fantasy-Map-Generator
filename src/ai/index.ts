@@ -265,6 +265,7 @@ import { setBurgLinkTool } from "./tools/set-burg-link";
 import { setBurgPopulationTool } from "./tools/set-burg-population";
 import { setBurgPortTool } from "./tools/set-burg-port";
 import { setBurgTypeTool } from "./tools/set-burg-type";
+import { setCellBiomeTool } from "./tools/set-cell-biome";
 import { setCellHeightTool } from "./tools/set-cell-height";
 import { setCellsDensityTool } from "./tools/set-cells-density";
 import { setClimateTool } from "./tools/set-climate";
@@ -2343,6 +2344,10 @@ export {
   setBurgTypeTool,
 } from "./tools/set-burg-type";
 export {
+  createSetCellBiomeTool,
+  setCellBiomeTool,
+} from "./tools/set-cell-biome";
+export {
   createSetCellHeightTool,
   setCellHeightTool,
 } from "./tools/set-cell-height";
@@ -3135,6 +3140,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(invertHeightmapTool);
   registry.register(clearHeightmapTool);
   registry.register(disruptHeightmapTool);
+  registry.register(setCellBiomeTool);
   registry.register(setCellHeightTool);
   registry.register(setEntityLockTool);
   registry.register(setStateFormTool);
