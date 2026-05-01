@@ -26,6 +26,7 @@ import { addStateTool } from "./tools/add-state";
 import { addStraitTool } from "./tools/add-strait";
 import { addTroughTool } from "./tools/add-trough";
 import { addZoneTool } from "./tools/add-zone";
+import { analyzeNamesbaseTool } from "./tools/analyze-namesbase";
 import { applyLayersPresetTool } from "./tools/apply-layers-preset";
 import { clearHeightmapTool } from "./tools/clear-heightmap";
 import { clearReliefIconsTool } from "./tools/clear-relief-icons";
@@ -456,6 +457,12 @@ export {
   addZoneTool,
   createAddZoneTool,
 } from "./tools/add-zone";
+export {
+  type AnalyzeNamesbaseRuntime,
+  analyzeNamesbaseTool,
+  createAnalyzeNamesbaseTool,
+  defaultAnalyzeNamesbaseRuntime,
+} from "./tools/analyze-namesbase";
 export {
   applyLayersPresetTool,
   createApplyLayersPresetTool,
@@ -2811,6 +2818,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(renameCultureTool);
   registry.register(renameLakeTool);
   registry.register(addNamesbaseTool);
+  registry.register(analyzeNamesbaseTool);
   registry.register(renameNamesbaseTool);
   registry.register(setNamesbaseDuplicationTool);
   registry.register(setNamesbaseLengthRangeTool);
