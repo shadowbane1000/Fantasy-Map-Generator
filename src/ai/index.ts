@@ -190,6 +190,7 @@ import { regenerateProvinceNameTool } from "./tools/regenerate-province-name";
 import { regenerateRegimentNamesTool } from "./tools/regenerate-regiment-names";
 import { regenerateReligionNamesTool } from "./tools/regenerate-religion-names";
 import { regenerateRiverNamesTool } from "./tools/regenerate-river-names";
+import { regenerateRouteNameTool } from "./tools/regenerate-route-name";
 import { regenerateStateCoaTool } from "./tools/regenerate-state-coa";
 import { regenerateStateNameTool } from "./tools/regenerate-state-name";
 import { regenerateZonesTool } from "./tools/regenerate-zones";
@@ -1891,6 +1892,13 @@ export {
   resolveRiverNameMode,
 } from "./tools/regenerate-river-names";
 export {
+  createRegenerateRouteNameTool,
+  defaultRegenerateRouteNameRuntime,
+  type RegenerateRouteNameRef,
+  type RegenerateRouteNameRuntime,
+  regenerateRouteNameTool,
+} from "./tools/regenerate-route-name";
+export {
   createRegenerateStateCoaTool,
   regenerateStateCoaTool,
 } from "./tools/regenerate-state-coa";
@@ -2903,6 +2911,7 @@ export function buildDefaultRegistry(): ToolRegistry {
   registry.register(regenerateRegimentNamesTool);
   registry.register(regenerateReligionNamesTool);
   registry.register(regenerateRiverNamesTool);
+  registry.register(regenerateRouteNameTool);
   registry.register(regenerateZonesTool);
   registry.register(clearReliefIconsTool);
   registry.register(addReliefIconTool);
