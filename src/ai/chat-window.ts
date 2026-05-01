@@ -223,11 +223,12 @@ export function mountChatWindow({
         const written = u.cache_creation_input_tokens ?? 0;
         const fresh = u.input_tokens;
         const total = cached + written + fresh;
-        const pct = total > 0 ? Math.round((cached / total) * 100) : 0;
+        // Billable-equivalent input tokens, per user-defined formula:
+        // (total - cached) * 0.1 + written.
+        const billable = Math.round((total - cached) * 0.1 + written);
         parts.usageBar.textContent =
-          `in: ${total.toLocaleString()} tok` +
-          ` (${pct}% cached, ${fresh.toLocaleString()} fresh, ${written.toLocaleString()} write)` +
-          ` · out: ${u.output_tokens.toLocaleString()}`;
+          `in: ${total.toLocaleString()}/${billable.toLocaleString()}` +
+          ` out: ${u.output_tokens.toLocaleString()}`;
         break;
       }
       case "cleared":
